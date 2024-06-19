@@ -1,0 +1,99 @@
+header {
+    width: 100vw;
+    height: 5.5em;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    font-family: "Helvetica Nueue", sans-serif;
+    font-size: 1rem;
+    position: relative;
+
+}
+#logo {
+    margin-left: 2em;
+    margin-right: 4em;
+}
+.searchBarWrapper {
+    position: relative;
+    
+    
+}
+.searchBar {
+    background-image: url(/src/assets/search.svg);
+    background-repeat: no-repeat;
+    background-position: 1em;
+    background-size: 1.2em;
+    width: 30em;
+    height: 2.8em;
+    background-color: #F2F4F8;
+    text-indent: 2.5em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: none;
+    &:focus {
+        &::before {
+            content: '';
+            background-color: red;
+            width: 20em;
+            height: 10em
+        }
+    }
+}
+ul {
+    margin-left: 1em;
+    display: flex;
+    list-style: none;
+}
+li {
+    margin-right: 1.5em;
+    a {
+        transition: 0.2s ease-in-out;
+        text-decoration: none;
+        color: #646464;
+        &:hover {
+            color: #146BEC;
+        }
+    }
+}
+.profileWrapper {
+    position: absolute;
+    right: 1em;
+    display: flex;
+    align-items: center;
+
+}
+.profileName {
+    margin-left: 1em;
+    p {
+        color:#646464;
+        margin: 0 0;
+    }
+    .username {
+        display: flex;
+        align-items: center;
+        p {
+            margin: 0 0 0 0.3em;
+            color:#B6B6B6;
+        }
+        
+    }
+}
+.profilePic {
+    margin: 0em 1em 0em 1em;
+}
+#pointBar {
+    margin: 0em 0.7em 0em 0.7em;
+    width: 8em;
+    height: 2.3em;
+    background-color: #DFEEFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    p {
+        margin: 0em 0.3em 0em 0.3em;
+        font-size: 0.95rem;
+        color: #0085FF;
+    }
+}

@@ -1,0 +1,79 @@
+.Breadcrumb {
+    width: 20em;
+    height: 2em;
+    background-color: #F2F4F8;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Helvetica Neue", sans-serif;
+    a {
+        position: relative;
+        transition: 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-weight: 400;
+        &::after {
+            transition: 0.2s ease-in-out;
+            position: absolute;
+            bottom: -0.5em;
+            left: 50%;
+            content: '';
+            height: 2px;
+            width: 0%;
+            background-color: #146aec00;
+        }
+        &::before {
+            transition: 0.2s ease-in-out;
+            position: absolute;
+            bottom: -0.5em;
+            content: '';
+            height: 2px;
+            width: 0%;
+            right: 50%;
+            background-color: #146aec00;
+        }
+        &:hover {
+            transition: 0.2s ease-in-out;
+            font-weight: 500;
+            &::after {
+                transition: 0.2s ease-in-out;
+                position: absolute;
+                bottom: -0.5em;
+                content: '';
+                height: 2px;
+                width: 50%;
+                left: 50%;
+                background-color: #146BEC;
+            }
+            &::before {
+                transition: 0.2s ease-in-out;
+                position: absolute;
+                bottom: -0.5em;
+                content: '';
+                height: 2px;
+                width: 50%;
+                background-color: #146BEC;
+            }
+            h1 {
+                transition: 0.2s ease-in-out;
+                color: #146BEC;
+            }
+            path {
+                transition: 0.2s ease-in-out;
+                fill: #146BEC;
+            }
+            rect {
+                transition: 0.2s ease-in-out;
+                stroke: #146BEC;
+            }
+        }
+    }
+    h1 {
+        margin: 0em 0.5em 0em 0.5em;
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: #606060
+    }
+}
