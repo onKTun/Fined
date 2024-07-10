@@ -1,0 +1,53 @@
+.goToLesson {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
+    font-weight: 320;
+    width: 11em;
+    height: 2.8em;
+    font-family: "Helvetica Neue", sans-serif;
+    color:white;
+    font-size: 0.9rem;
+    background-color: #146BEC;
+    border-radius: 3px;
+    border: none;
+    margin-left: 0.5em;
+    &:hover {
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+        transform: scale(1.05);
+        background-color: rgb(53, 151, 255);
+    }
+    svg {
+        
+        transition: ease-in-out 0.1s;
+        margin-left: 0.3em;
+        position: relative;
+    }
+    &::after {
+        transition: ease-in-out 0.1s;
+        position: absolute;
+        right: 2.1em;
+        content: '';
+        background-color: transparent;
+        width: 0.5em;
+        height: 1px;
+    }
+    &:hover {
+        &::after {
+            transition: 0.1s ease-in-out;
+            position: absolute;
+            right: 1.8em;
+            content: '';
+            background-color: white;
+            width: 0.8em;
+            height: 1px;
+            border-radius: 1em;
+        }
+        svg {
+            transition: ease-in-out 0.1s;
+            transform: translate(5px);
+        }
+    }
+}

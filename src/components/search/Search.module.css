@@ -1,0 +1,40 @@
+.searchBarWrapper {
+    position: relative;
+    display: flex;
+    p {
+        position: absolute;
+        margin: 0;
+        right: 1em;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9c9c9c
+    }
+    
+
+}
+.searchBar {
+    transition: 0.3s ease-in-out;
+    background-image: url(/src/assets/search.svg);
+    background-repeat: no-repeat;
+    background-position: 1em;
+    background-size: 1.2em;
+    width: 30em;
+    height: 2.8em;
+    background-color: #F5F5F5;
+    text-indent: 2.5em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: none;
+    outline: none;
+    &:focus {
+        transition: 0.3s ease-in-out;
+        background-color: #efefef;
+        background-size: 0;
+        text-indent: 1em;
+    }
+    &::-webkit-search-cancel-button {
+        margin-right: 1em;
+    }
+    
+}
