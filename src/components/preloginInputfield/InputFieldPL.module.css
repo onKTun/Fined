@@ -1,0 +1,27 @@
+.wrapper {
+    background-color: white;
+    width: 1fr;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px rgba(0, 0, 0, 0.1) solid;
+    font-size: 16px;
+    font-weight: 300;
+    &:focus {
+        outline: none;
+        background-color: rgb(248, 247, 247);
+        border-color: rgba(0, 0, 0, 0);
+    }
+}
+.button {
+    transform: scale(1);
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    right: 10px;
+    bottom: 53px;
+    width: auto;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}

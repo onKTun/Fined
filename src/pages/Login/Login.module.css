@@ -1,0 +1,126 @@
+:root {
+    --finedblue: #3385FF;
+    --offblack: #242424;
+}
+
+* {
+    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+    font-family: "Inter Tight", sans-serif;
+    p {
+        margin: 0;
+        width: fit-content;
+        height: fit-content;
+        color: var(--offblack)
+    }
+}
+.left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 30em; /* Fixed width of 40em */
+    height: 1fr; /* Full height */
+    background-color: white;
+    margin: 90px 70px 70px 70px;
+    gap: 60px;
+    
+}
+.right {
+    flex: 1; /* Take up remaining space */
+    height: 100%; /* Full height */
+    background-image: url(/src/assets/backgrounds/image.png);
+    background-repeat: repeat;
+    background-size: 20em;
+}
+.contentWrapper {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    margin: auto;
+}
+.logoSVGwrapper {
+    z-index: 0;
+    position: absolute;
+    left: 22px;
+    background-color: var(--finedblue);
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+.logoWrapper {
+    position: relative;
+    width: fit-content;
+    padding: 13px 25px 13px 25px;
+    background-color: white;
+    border: 1px solid var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    font-weight: 500;
+    p {
+        color: var(--finedblue);
+        z-index: 1;
+        margin: 0;
+    }
+    svg {
+        z-index: 10;
+    }
+    &:hover {
+        cursor: pointer;
+        color: white;
+        p {
+            color: white;
+        }
+        .logoSVGwrapper {
+            width: 100%;
+            height: 100%;
+            left:0;
+        }
+    }
+}
+.leftContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.title {
+    .titleHeader {
+        font-size: 25pt;
+    }
+    .titleSubheader {
+        color: gray;
+    }
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    position: relative;
+
+}
+.extraContent {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        color: var(--finedblue);
+        font-size: 16px;
+    }
+}
+.rememberMeWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    width: fit-content;
+    p {
+        font-size: 16px;
+    }
+}
+
+

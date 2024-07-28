@@ -1,0 +1,39 @@
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    
+}
+  
+.checkboxInput {
+    /* Hide the default checkbox */
+    display: none;
+}
+  
+  .checkboxLabel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; /* Adjust size as needed */
+    height: 18px; /* Adjust size as needed */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px; /* Apply border radius */
+    position: relative; /* Ensure the checkmark is positioned correctly */
+    &:hover {
+        cursor: pointer;
+    }
+  }
+  
+  .checkboxInput:checked + .checkboxLabel {
+    background-color: #3385FF;
+    border-color: transparent;
+    background-image: url(/src/assets/profilepictures/seen.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  
+  .checkboxInput:checked + .checkboxLabel::after {
+    visibility: visible;
+  }
