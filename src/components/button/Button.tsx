@@ -10,7 +10,7 @@ function Button() {
             fill="rgb(255,255,255)"
           ></path>
         </svg>
-        <p>Sign in</p>
+        <p className={styles.button_text}>Sign in</p>
       </button>
     </>
   );
