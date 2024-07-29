@@ -1,20 +1,24 @@
-import type { Metadata } from 'next'
-import 'src/index.css' 
+import "src/index.css";
 
-export const metadata: Metadata = {
-  title: 'React App',
-  description: 'Web site created with Next.js.',
-}
+export const metadata = {
+  title: "React App",
+  description: "Web site created with Next.js.",
+};
+
 export default function RootLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
-    return (
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
     <html lang="en">
-        <body>
-          <div id="root">(children)</div>
-          
-        </body>
-      </html>)
-  }
+      <head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+  );
+}
