@@ -27,7 +27,7 @@
 .right {
     flex: 1; /* Take up remaining space */
     height: 100%; /* Full height */
-    background-image: url(/src/assets/backgrounds/image.png);
+    background-image: url('/assets/backgrounds/image.png');
     background-repeat: repeat;
     background-size: 20em;
 }
