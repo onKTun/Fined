@@ -14,7 +14,7 @@ function InputFieldPL({ type }: Props) {
 
   if (type === "password") {
     return (
-      <>
+      <div className={styles.container}>
         <input
           type={isPasswordVisible ? "text" : "password"}
           placeholder="Enter your password"
@@ -38,7 +38,7 @@ function InputFieldPL({ type }: Props) {
             />
           </svg>
         </button>
-      </>
+      </div>
     );
   } else {
     return (

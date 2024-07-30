@@ -53,7 +53,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <Button />
+          <Button text="Sign in" />
         </div>
       </div>
       <div className={styles.right}></div>

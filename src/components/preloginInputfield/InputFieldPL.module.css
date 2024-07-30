@@ -1,6 +1,13 @@
+
+.container {
+    position: relative;
+    width: 1fr;
+    height: fit-content;
+}
+
 .wrapper {
     background-color: white;
-    width: 1fr;
+    width: calc(100% - 40px);
     padding: 20px;
     border-radius: 5px;
     border: 1px rgba(0, 0, 0, 0.1) solid;
@@ -18,8 +25,7 @@
     background-color: transparent;
     border: none;
     right: 10px;
-    bottom: 53px;
-    width: auto;
+    bottom: 16px;
     &:hover {
         cursor: pointer;
         transform: scale(1.1);

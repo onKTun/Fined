@@ -1,0 +1,30 @@
+.wrapper {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    column-gap: 10px;
+}
+.button {
+    width: 10em;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px rgba(0, 0, 0, 0.1) solid;
+    background-color: transparent;
+    font-size: 1rem;
+    color: rgb(142, 142, 142);
+    &:hover {
+        cursor: pointer;
+        border-color: transparent;
+        background-color: rgb(248, 246, 246);
+        color:rgba(0, 0, 0, 0.9)
+    }
+}
+.selected {
+    background-color: #3385FF;  
+    border-color: transparent;
+    color: white;
+    &:hover {
+        background-color: #3385ffde;
+        color: white;
+    }
+}
