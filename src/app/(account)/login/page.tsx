@@ -1,5 +1,3 @@
-'use client'
-
 import styles from "./Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Checkbox from "src/components/checkbox/Checkbox";

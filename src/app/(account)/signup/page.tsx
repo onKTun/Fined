@@ -1,15 +1,8 @@
-<<<<<<< HEAD:src/app/(account)/signup/page.tsx
-import styles from "src/app/account/login/Login.module.css";
-import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Checkbox from "src/components/checkbox/Checkbox";
-import Button from "src/components/button/Button";
-=======
+import TypeSelector from "src/app/(account)/signup/components/typeSelection/TypeSelector";
 import styles from "./Login.module.css";
-import InputFieldPL from "../../components/preloginInputfield/InputFieldPL";
-import Button from "../../components/button/Button";
-import TypeSelector from "./typeSelection/TypeSelector";
-import SecurityIndicator from "./securityIndicator/SecurityIndicator";
->>>>>>> ddf73b0 (finished signup design. just need to tie the requirmenets to the input fields (kevin pelase do that) also added two folders in account that need to be sorted when u make the files for each page. so those two will go in the same folder as the signup page):src/app/account/Signup.tsx
+import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
+import Button from "src/components/button/Button";
+import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 
 export default function Page() {
   return (
@@ -65,4 +58,3 @@ export default function Page() {
     </div>
   );
 }
-
