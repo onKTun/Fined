@@ -1,18 +1,3 @@
-
-/*
-* {
-    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
-    font-family: "Inter Tight", sans-serif;
-    p {
-        margin: 0;
-        width: fit-content;
-        height: fit-content;
-        color: var(--offblack)
-    }
-}
-    */
-
-
 .left {
     position: relative;
     display: flex;
@@ -20,20 +5,20 @@
     flex: 0 0 30em; /* Fixed width of 40em */
     height: 1fr; /* Full height */
     background-color: white;
-    padding: 90px 70px 0px 70px;
+    padding: 8vh 70px 0px 70px;
     gap: 60px;
 }
 .right {
     flex: 1; /* Take up remaining space */
-    height: 100%; /* Full height */
-    background-image: url('/assets/backgrounds/image.png');
+    height: 1fr; /* Full height */
+    background-image: url("/assets/backgrounds/image.png");
     background-repeat: repeat;
     background-size: 20em;
 }
 .contentWrapper {
     display: flex;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     margin: auto;
 }
 .logoSVGwrapper {
@@ -83,11 +68,15 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 25px;
 }
 .title {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
     .titleHeader {
         font-size: 25pt;
+        color: var(--black1);
     }
     .titleSubheader {
         color: gray;
@@ -97,29 +86,46 @@
 .inputWrapper {
     display: flex;
     flex-direction: column;
-    row-gap: 6px;
+    row-gap: 12px;
     position: relative;
+    color: var(--black2)
 
 }
 .extraContent {
     width: 100%;
-    height: fit-content;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     .forgotPasswordText {
         color: var(--finedblue);
         font-size: 16px;
+        height: fit-content;
     }
 }
 .rememberMeWrapper {
     display: flex;
-    align-items: center;
+    align-items: start;
     column-gap: 6px;
     width: fit-content;
     font-size: 16px;
+    height: 30px;
 }
-
 .requirements {
-    height: 80px;
+    height: fit-content;
+}
+.bottomLinkWrapper {
+    position: absolute;
+    width: 100%; /* Ensure it takes the full width of the container */
+    justify-content: center;
+    bottom: 1.5em;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    .bottomLink {
+        color: gray;
+    }
+    .bottomLinkSpan {
+        color: var(--finedblue);
+        text-decoration: none;
+    }
 }

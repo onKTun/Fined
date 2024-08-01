@@ -1,12 +1,12 @@
 "use client";
 
-import styles from "./Login.module.css";
+import styles from "../login/Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Checkbox from "src/components/checkbox/Checkbox";
 import Button from "src/components/button/Button";
 import Link from "next/link";
 
-export default function Login() {
+export default function ForgotPassword() {
   return (
     <div className={styles.contentWrapper}>
       <div className={styles.left}>
@@ -32,31 +32,18 @@ export default function Login() {
         </div>
         <div className={styles.leftContent}>
           <div className={styles.title}>
-            <p className={styles.titleHeader}>Hello, Welcome Back!</p>
+            <p className={styles.titleHeader}>Forgot your Password?</p>
             <p className={styles.titleSubheader}>
-              Please enter your details below
+              No worries, please enter your details below
             </p>
           </div>
           <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your username</p>
+            <p className={styles.subtitle}>
+              Enter your account's email or username
+            </p>
             <InputFieldPL type="email" />
           </div>
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your password</p>
-            <InputFieldPL type="password" />
-            <div className={styles.extraContent}>
-              <div className={styles.rememberMeWrapper}>
-                <Checkbox />
-                Remember me
-              </div>
-              <div className={styles.forgotPasswordText}>
-                <Link href="/forgotpassword" className="highlightedText">
-                  Forgot your password?
-                </Link>
-              </div>
-            </div>
-          </div>
-          <Button text="Sign in" />
+          <Button text="Send Confirmaiton Email" />
         </div>
         <div className={styles.bottomLinkWrapper}>
           <p className={styles.bottomLink}>

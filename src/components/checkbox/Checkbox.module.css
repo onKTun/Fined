@@ -26,7 +26,7 @@
   .checkboxInput:checked + .checkboxLabel {
     background-color: #3385FF;
     border-color: transparent;
-    background-image: url(/public/assets/profilepictures/seen.svg);
+    background-image: url(/assets/seen.svg);
     background-repeat: no-repeat;
     background-position: center;
   }

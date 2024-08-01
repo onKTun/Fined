@@ -1,17 +1,29 @@
 body {
     margin: 0;
+    height: 100vh;
 }
 :root {
     --finedblue: #3385FF;
-    --offblack: #242424;
+    --black1: #242424;
+    --black2: #4D4D4D;
 }
 
 p {
     margin: 0;
     width: fit-content;
     height: fit-content;
-    color: var(--offblack)
+    color: var(--black1)
 }
 
-* {transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
-font-family: "Inter Tight", sans-serif;}
+* {
+    transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+    font-family: "Inter Tight", sans-serif;
+}
+
+.highlightedText {
+    color: var(--finedblue);
+    text-decoration: none;
+    height: fit-content;
+}
+
+

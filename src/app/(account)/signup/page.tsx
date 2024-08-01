@@ -1,10 +1,12 @@
+"use client";
 import TypeSelector from "src/app/(account)/signup/components/typeSelection/TypeSelector";
-import styles from "./Login.module.css";
+import styles from "../login/Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Button from "src/components/button/Button";
 import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
+import Link from "next/link";
 
-export default function Page() {
+export default function Signup() {
   return (
     <div className={styles.contentWrapper}>
       <div className={styles.left}>
@@ -37,10 +39,6 @@ export default function Page() {
           </div>
           <TypeSelector />
           <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your username</p>
-            <InputFieldPL type="email" />
-          </div>
-          <div className={styles.inputWrapper}>
             <p className={styles.subtitle}>Enter your email</p>
             <InputFieldPL type="email" />
           </div>
@@ -52,6 +50,14 @@ export default function Page() {
             <SecurityIndicator />
           </div>
           <Button text="Sign up" />
+        </div>
+        <div className={styles.bottomLinkWrapper}>
+          <p className={styles.bottomLink}>
+            Already have an account?&nbsp;
+            <Link href="/login" className="highlightedText">
+              Sign in.
+            </Link>
+          </p>
         </div>
       </div>
       <div className={styles.right}></div>
