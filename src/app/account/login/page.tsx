@@ -1,12 +1,12 @@
 "use client";
-import TypeSelector from "src/app/(account)/signup/components/typeSelection/TypeSelector";
-import styles from "../login/Login.module.css";
+
+import styles from "./Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
+import Checkbox from "src/components/checkbox/Checkbox";
 import Button from "src/components/button/Button";
-import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 import Link from "next/link";
 
-export default function Signup() {
+export default function Login() {
   return (
     <div className={styles.contentWrapper}>
       <div className={styles.left}>
@@ -32,30 +32,40 @@ export default function Signup() {
         </div>
         <div className={styles.leftContent}>
           <div className={styles.title}>
-            <p className={styles.titleHeader}>Hello, Sign up!</p>
+            <p className={styles.titleHeader}>Hello, Welcome Back!</p>
             <p className={styles.titleSubheader}>
               Please enter your details below
             </p>
           </div>
-          <TypeSelector />
           <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your email</p>
+            <p className={styles.subtitle}>Enter your username</p>
             <InputFieldPL type="email" />
           </div>
           <div className={styles.inputWrapper}>
             <p className={styles.subtitle}>Enter your password</p>
             <InputFieldPL type="password" />
+            <div className={styles.extraContent}>
+              <div className={styles.rememberMeWrapper}>
+                <Checkbox />
+                Remember me
+              </div>
+              <div className={styles.forgotPasswordText}>
+                <Link
+                  href="/account/forgotpassword"
+                  className="highlightedText"
+                >
+                  Forgot your password?
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className={styles.requirements}>
-            <SecurityIndicator />
-          </div>
-          <Button text="Sign up" />
+          <Button text="Sign in" />
         </div>
         <div className={styles.bottomLinkWrapper}>
           <p className={styles.bottomLink}>
-            Already have an account?&nbsp;
-            <Link href="/login" className="highlightedText">
-              Sign in.
+            Don't have an account?&nbsp;
+            <Link href="/account/signup" className="highlightedText">
+              Sign up.
             </Link>
           </p>
         </div>
