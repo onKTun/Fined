@@ -1,0 +1,8 @@
+.bodyDash {
+    width: calc(100vw - 20em);
+    height: 100%;
+    background-color: red;
+}
+.noSidebar {
+    width: 100vw;
+}

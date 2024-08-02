@@ -1,12 +1,11 @@
+"use client";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import Search from "../search/Search";
+import { useSidebar } from "../sidebar/sidebarContext";
 
-interface Props {
-  toggleClass: () => void;
-}
-
-const Header: React.FC<Props> = ({ toggleClass }) => {
+export default function Header() {
+  const { toggleSidebar } = useSidebar();
   return (
     <div className={styles.headerContainer}>
       <div className={styles.headerWrapper}>
@@ -58,12 +57,11 @@ const Header: React.FC<Props> = ({ toggleClass }) => {
           <Search wid={35} />
         </div>
       </div>
-      <button onClick={toggleClass} className={styles.sideBarMinimizer}>
+      <button onClick={toggleSidebar} className={styles.sideBarMinimizer}>
         <div className={styles.hamburgerPart}></div>
         <div className={styles.hamburgerPart}></div>
         <div className={styles.hamburgerPart}></div>
       </button>
     </div>
   );
-};
-export default Header;
+}

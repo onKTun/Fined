@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 import "src/index.css";
-import { metadata } from "./education/metadata";
 
 interface RootLayoutProps {
   children: ReactNode;
 }
 
-export const getMetadata = () =>
-  metadata; /* metadata had to be on seperate file to match layout from /education */
+export const metadata = {
+  title: "Fin'ed",
+  description: "Web site created with Next.js.",
+};
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (

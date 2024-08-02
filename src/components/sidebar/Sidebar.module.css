@@ -1,12 +1,19 @@
 .sidebar {
-    width: 20em;
-    height: 100%;
-    background-color: white;
-    border-right: 1px rgba(0, 0, 0, 0.1) solid;
+  width: 20em;
+  height: 100%;
+  background-color: white;
+  border-right: 1px rgba(0, 0, 0, 0.1) solid;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
 }
+
 .sidebarhidden {
-    transform: translateX(-20em);
-  }
+  transform: translateX(-100%);
+}
+
+.hidden-transitioned {
+  display: none;
+}
   .sidebarshown {
     transform: translate(0em);
   }

@@ -1,14 +1,12 @@
 "use client";
 
 import styles from "./Sidebar.module.css";
+import { useSidebar } from "./sidebarContext";
 
-interface Props {
-  sidebarState: boolean;
-}
-
-export default function Sidebar({ sidebarState }: Props) {
+export default function Sidebar() {
+  const { isSidebarActive } = useSidebar();
   const className = `${styles.sidebar} ${
-    sidebarState ? styles.sidebarshown : styles.sidebarhidden
+    isSidebarActive ? styles.sidebarshown : styles.sidebarhidden
   }`;
 
   return <aside className={className}></aside>;
