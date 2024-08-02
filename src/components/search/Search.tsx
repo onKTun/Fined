@@ -14,7 +14,10 @@ const Search: React.FC<Props> = ({ wid }) => {
         placeholder="Search..."
         style={{ width: `${wid}em` }}
       />
-      <p>⌘S</p>
+      <div className={styles.text}>
+        <p className={styles.buttonStyle}>⌘</p>
+        <p className={styles.buttonStyle}>S</p>
+      </div>
     </div>
   );
 };

@@ -14,6 +14,9 @@ export default function SiteMap() {
       <Link href="/account/forgotpassword" className="highlightedText">
         Forgot Password
       </Link>
+      <Link href="/education/dashboard" className="highlightedText">
+        Dashboard
+      </Link>
     </div>
   );
 }

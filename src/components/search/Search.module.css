@@ -1,20 +1,21 @@
 .searchBarWrapper {
     position: relative;
     display: flex;
-    p {
+    overflow: hidden;
+    .text {
         position: absolute;
+        display: flex;
+        column-gap: 5px;
         margin: 0;
         right: 1em;
         top: 50%;
         transform: translateY(-50%);
         color: #9c9c9c
     }
-    
-
 }
 .searchBar {
     transition: 0.3s ease-in-out;
-    background-image: url(/src/assets/search.svg);
+    background-image: url(/assets/search.svg);
     background-repeat: no-repeat;
     background-position: 1em;
     background-size: 1.2em;
@@ -31,10 +32,22 @@
         transition: 0.3s ease-in-out;
         background-color: #efefef;
         background-size: 0;
-        text-indent: 1em;
+        text-indent: 1em;  
     }
     &::-webkit-search-cancel-button {
         margin-right: 1em;
-    }
-    
+    } 
+}
+.searchBar:focus ~ .text .buttonStyle {
+    transform: translate(5em) scale(0);
+}  
+.buttonStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e5e5;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    color: var(--black3)
 }

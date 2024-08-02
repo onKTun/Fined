@@ -4,8 +4,9 @@ body {
 }
 :root {
     --finedblue: #3385FF;
-    --black1: #242424;
-    --black2: #4D4D4D;
+    --black1: rgba(0, 0, 0, 0.9);
+    --black2: rgba(0, 0, 0, 0.8);
+    --black3: rgba(0, 0, 0, 0.6);
 }
 
 p {
@@ -18,12 +19,20 @@ p {
 * {
     transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
     font-family: "Inter Tight", sans-serif;
+    text-decoration: none;
 }
 
 .highlightedText {
     color: var(--finedblue);
-    text-decoration: none;
     height: fit-content;
 }
 
+.pageContent {
+    height: calc(100vh - 71px);
+    background-color: #FAFAFA;
+}
 
+.viewport {
+    height: 100vh;
+    width: 100vw;
+}

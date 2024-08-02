@@ -1,15 +1,15 @@
+import { ReactNode } from "react";
 import "src/index.css";
+import { metadata } from "./education/metadata";
 
-export const metadata = {
-  title: "React App",
-  description: "Web site created with Next.js.",
-};
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const getMetadata = () =>
+  metadata; /* metadata had to be on seperate file to match layout from /education */
+
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <head>
@@ -21,4 +21,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
