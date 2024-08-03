@@ -32,6 +32,7 @@ p {
     height: calc(100vh - 71px);
     background-color: #FAFAFA;
     display: flex;
+    overflow: hidden;
 }
 
 .viewport {

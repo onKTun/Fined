@@ -3,12 +3,15 @@
   height: 100%;
   background-color: white;
   border-right: 1px rgba(0, 0, 0, 0.1) solid;
+  transition: 0.1s cubic-bezier(0.215, 0.610, 0.355, 1);
   transform: translateX(0);
-  transition: transform 0.3s ease;
 }
 
 .sidebarhidden {
-  transform: translateX(-100%);
+  transition: all 0.1s cubic-bezier(0.215, 0.610, 0.355, 1);
+  transform: translateX(-101%);
+  border: none;
+  
 }
 
 .hidden-transitioned {

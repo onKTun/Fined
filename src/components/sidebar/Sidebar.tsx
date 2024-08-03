@@ -6,7 +6,7 @@ import { useSidebar } from "./sidebarContext";
 export default function Sidebar() {
   const { isSidebarActive } = useSidebar();
   const className = `${styles.sidebar} ${
-    isSidebarActive ? styles.sidebarshown : styles.sidebarhidden
+    isSidebarActive ? styles.sidebarhidden : styles.sidebarshown
   }`;
 
   return <aside className={className}></aside>;
