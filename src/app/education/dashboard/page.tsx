@@ -9,9 +9,7 @@ export default function Dashboard() {
   }`;
   return (
     <>
-      <div className={className}>
-        <p>hsdjhsdjs</p>
-      </div>
+      <div className={className}></div>
     </>
   );
 }

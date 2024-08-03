@@ -1,0 +1,66 @@
+.topWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+.name {
+    font-size: 1.1rem;
+}
+.role {
+    background-color: #EAF3FF;
+    padding: 4px 15px;
+    border-radius: 7px;
+    font-size: .9rem;
+    color: var(--finedblue)
+}
+
+.topButton {
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    column-gap: 3px;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+        .dot {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+.dot {
+    height: 6px;
+    width: 6px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+}
+.bottomWrapper {
+    display:flex;
+    flex-direction: column;
+    row-gap: 8px;
+    .leftText {
+        color: var(--black1);
+        font-size: 1rem;
+    }
+    .rightText {
+        color: var(--finedblue);
+        font-size: 1rem;
+    }
+    
+}
+.rowSpace {
+    display: flex;
+    justify-content: space-between;
+    
+}
+.lvlText {
+    color: gray;
+    font-size: .9rem;
+}

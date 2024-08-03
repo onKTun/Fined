@@ -4,6 +4,7 @@ body {
 }
 :root {
     --finedblue: #3385FF;
+    --finedgreen: #00C421;
     --black1: rgba(0, 0, 0, 0.9);
     --black2: rgba(0, 0, 0, 0.8);
     --black3: rgba(0, 0, 0, 0.6);
