@@ -54,7 +54,7 @@ export default function Header() {
           </div>
         </Link>
         <div className={styles.search}>
-          <Search wid={35} />
+          <Search wid={"30em"} />
         </div>
       </div>
       <button onClick={toggleSidebar} className={styles.sideBarMinimizer}>

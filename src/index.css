@@ -30,7 +30,7 @@ p {
 .pageContent {
     width: 100vw;
     height: calc(100vh - 71px);
-    background-color: #FAFAFA;
+    background-color: white;
     display: flex;
     overflow: hidden;
 }

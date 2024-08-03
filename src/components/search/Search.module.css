@@ -1,7 +1,10 @@
 .searchBarWrapper {
+    width: fit-content;
     position: relative;
     display: flex;
+    align-items: center;
     overflow: hidden;
+    height: fit-content;
     .text {
         position: absolute;
         display: flex;
@@ -19,8 +22,7 @@
     background-repeat: no-repeat;
     background-position: 1em;
     background-size: 1.2em;
-    width: 30em;
-    height: 2.8em;
+    height: 2.7em;
     background-color: #F5F5F5;
     text-indent: 2.5em;
     border: none;
@@ -28,6 +30,7 @@
     font-size: 1rem;
     padding: none;
     outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.03);
     &:focus {
         transition: 0.3s ease-in-out;
         background-color: #efefef;
@@ -41,13 +44,22 @@
 .searchBar:focus ~ .text .buttonStyle {
     transform: translate(5em) scale(0);
 }  
+
+.searchBar::placeholder {
+    color: rgba(0, 0, 0, 0.8);
+}
+.searchBar:focus::placeholder {
+    color: var(--black3);
+}
 .buttonStyle {
+    font-size: small;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #e5e5e5;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
     color: var(--black3)
 }

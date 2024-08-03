@@ -1,7 +1,7 @@
 .bodyDash {
-    width: calc(100vw - 20em);
+    width: calc(100vw - 23em);
     height: 100%;
-    background-color: gray;
+    background-color: rgb(250, 250, 250);
 }
 .noSidebar {
     width: 100vw;
