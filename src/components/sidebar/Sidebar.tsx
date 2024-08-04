@@ -15,7 +15,7 @@ export default function Sidebar() {
   return (
     <aside className={className}>
       <div className={styles.top}>
-        <Search wid={"18em"} />
+        <Search rad={5} wid={"18em"} color="#f8f8f8" />
         <div className={styles.buttonGroup}>
           <div className={styles.subtitle}>Essentials</div>
           <Item
@@ -23,24 +23,28 @@ export default function Sidebar() {
             leftvalue={20}
             topvalue={13}
             src="/assets/sidebar/dashboard.svg"
+            link="/education/dashboard"
           />
           <Item
             text="Lessons"
             leftvalue={20}
             topvalue={13}
             src="/assets/sidebar/lessons.svg"
+            link=""
           />
           <Item
             text="Progress"
             leftvalue={19}
             topvalue={12}
             src="/assets/sidebar/progress.svg"
+            link=""
           />
           <Item
             text="Glossary"
             leftvalue={19}
             topvalue={13}
             src="/assets/sidebar/glossary.svg"
+            link="/education/glossary"
           />
         </div>
         <div className={styles.buttonGroup}>
@@ -50,18 +54,21 @@ export default function Sidebar() {
             leftvalue={20}
             topvalue={13}
             src="/assets/sidebar/updates.svg"
+            link=""
           />
           <Item
             text="Account"
             leftvalue={20}
             topvalue={13}
             src="/assets/sidebar/profile.svg"
+            link=""
           />
           <Item
             text="Settings"
             leftvalue={19}
             topvalue={12}
             src="/assets/sidebar/settings.svg"
+            link=""
           />
         </div>
       </div>
@@ -70,7 +77,7 @@ export default function Sidebar() {
           name="Adam Darzidan"
           role="Student"
           profile="/assets/profilepictures/spacepfp.png"
-          xp={5500}
+          xp={2089}
         />
       </div>
     </aside>

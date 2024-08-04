@@ -3,24 +3,29 @@ import styles from "./Search.module.css";
 
 interface Props {
   wid: string;
+  rad: number;
+  color: string;
 }
 const convertToMeasurement = (value: string): string => {
-  // Check if the value contains any CSS unit
   if (/\d+(em|px|%|rem|vw|vh)$/.test(value)) {
     return value;
   }
-  // If no unit is found, default to 'em'
   return `${value}em`;
 };
-const Search: React.FC<Props> = ({ wid }) => {
-  const width = convertToMeasurement(wid);
+export default function Search({ wid, rad, color }: Props) {
+  const style = {
+    width: convertToMeasurement(wid),
+    borderRadius: `${rad}px`,
+    backgroundColor: `${color}`,
+  };
+
   return (
     <div className={styles.searchBarWrapper}>
       <input
         type="search"
         className={styles.searchBar}
         placeholder="Search..."
-        style={{ width }}
+        style={style}
       />
       <div className={styles.text}>
         <p className={styles.buttonStyle}>⌘</p>
@@ -28,6 +33,4 @@ const Search: React.FC<Props> = ({ wid }) => {
       </div>
     </div>
   );
-};
-
-export default Search;
+}

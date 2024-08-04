@@ -8,12 +8,8 @@ interface Props {
 }
 
 export default function Profile({ name, role, profile, xp }: Props) {
-  const level = () => {
-    xp / 100;
-  };
-  const xpUntilNext = () => {
-    xp % 100;
-  };
+  const level = Math.floor(xp / 100);
+  const xpUntilNext = 100 - (xp % 100);
   return (
     <>
       <div className={styles.topWrapper}>
@@ -33,14 +29,14 @@ export default function Profile({ name, role, profile, xp }: Props) {
       <div className={styles.bottomWrapper}>
         <div className={styles.rowSpace}>
           <p className={styles.leftText}>{xp}</p>
-          <p className={styles.rightText}>55 XP To Next Level</p>
+          <p className={styles.rightText}>{xpUntilNext} XP To Next Level</p>
         </div>
         <div className={styles.secondRow}>
-          <ProgressBar progress={20} />
+          <ProgressBar progress={xpUntilNext} />
         </div>
         <div className={styles.rowSpace}>
-          <p className={styles.lvlText}>Lvl. 19</p>
-          <p className={styles.lvlText}>Lvl. 20</p>
+          <p className={styles.lvlText}>Lvl. {level}</p>
+          <p className={styles.lvlText}>Lvl. {level + 1}</p>
         </div>
       </div>
     </>

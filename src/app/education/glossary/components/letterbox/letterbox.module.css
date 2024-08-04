@@ -1,0 +1,40 @@
+.letterboxWrapper {
+    width: 20em;
+    height: 20em;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.letterContainer {
+   display: flex;
+   flex-grow: 1 0;
+   height: fit-content;
+   padding: 10px 15px;
+   box-sizing: border-box;
+   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+}
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 40px;
+    height: 40px;
+    background-color: var(--finedblue);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 550;
+}
+.wordWrapper {
+    display: flex;
+    width: 100%;
+    height: min-content;
+    background-color: red;
+    padding: 10px;
+    flex-direction: column;
+    row-gap: 10px;
+}

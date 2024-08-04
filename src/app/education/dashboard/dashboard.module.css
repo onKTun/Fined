@@ -6,3 +6,8 @@
 .noSidebar {
     width: 100vw;
 }
+.banner {
+    width: 100%;
+    background-color: var(--finedblue);
+    height: 5em;
+}

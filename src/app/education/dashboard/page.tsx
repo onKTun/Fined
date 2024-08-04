@@ -9,7 +9,9 @@ export default function Dashboard() {
   }`;
   return (
     <>
-      <div className={className}></div>
+      <div className={className}>
+        <div className={styles.banner}></div>
+      </div>
     </>
   );
 }

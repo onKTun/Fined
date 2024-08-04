@@ -6,13 +6,19 @@
 .leftWrapper {
     display: flex;
     align-items: center;
-    column-gap: 8px;
+    column-gap: 10px;
+}
+.infoWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
 }
 .name {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .role {
     background-color: #EAF3FF;
+    border: 1px #ddebff solid;
     padding: 4px 15px;
     border-radius: 7px;
     font-size: .9rem;
@@ -21,14 +27,14 @@
 
 .topButton {
     padding: 8px 12px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: none;
+    background-color: #f8f8f8;
+    border: 1px solid rgba(0, 0, 0, 0.03);
     border-radius: 10px;
     display: flex;
     column-gap: 3px;
     &:hover {
         cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: #f2f2f2;
         .dot {
             background-color: rgba(0, 0, 0, 0.5);
         }

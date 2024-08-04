@@ -19,8 +19,7 @@
 }
 
 .sidebarhidden {
-  transform: translateX(-100%);
-  border-color: transparent;
+  border: none;
   width: 0;
   .top {
     transform: translateX(-100%);

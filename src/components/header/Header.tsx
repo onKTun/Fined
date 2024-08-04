@@ -54,7 +54,7 @@ export default function Header() {
           </div>
         </Link>
         <div className={styles.search}>
-          <Search wid={"30em"} />
+          <Search rad={10} wid={"30em"} color="#f8f8f8" />
         </div>
       </div>
       <button onClick={toggleSidebar} className={styles.sideBarMinimizer}>
