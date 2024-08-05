@@ -30,7 +30,7 @@ export default function Sidebar() {
             leftvalue={20}
             topvalue={13}
             src="/assets/sidebar/lessons.svg"
-            link=""
+            link="/education/unitselector"
           />
           <Item
             text="Progress"

@@ -14,9 +14,11 @@ export default function RootLayout({ children }) {
     <SidebarProvider>
       <div className="viewport">
         <Header />
-        <div className="pageContent">
+        <div className="contentWithSidebar">
           <Sidebar />
-          <div id="root">{children}</div>
+          <div className="content" id="root">
+            {children}
+          </div>
         </div>
       </div>
     </SidebarProvider>

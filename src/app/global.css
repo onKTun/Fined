@@ -1,6 +1,7 @@
-body {
+html, body {
+    height: 100%;
     margin: 0;
-    height: 100vh;
+    padding: 0;
 }
 :root {
     --finedblue: #3385FF;
@@ -28,15 +29,17 @@ p {
     height: fit-content;
 }
 
-.pageContent {
-    width: 100vw;
-    height: calc(100vh - 71px);
-    background-color: white;
+.contentWithSidebar {
     display: flex;
-    overflow: hidden;
+    height: calc(100vh - 71px);
+    background-color: #FAFAFA;
 }
 
 .viewport {
     height: 100vh;
     width: 100vw;
+}
+.content {
+    display: flex;
+    flex-grow: 1;
 }

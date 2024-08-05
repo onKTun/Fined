@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   width: 20.5em;
-  height: 100%;
   background-color: white;
   border-right: 1px rgba(0, 0, 0, 0.1) solid;
   transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1), width 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);

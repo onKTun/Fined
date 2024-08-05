@@ -9,7 +9,7 @@ export default function Glossary() {
     <>
       <div className={styles.bodyDash}>
         <div className={styles.bannerContainer}>
-          <div className={`${styles.bannerContainer} ${styles.bannerTop}`}>
+          <div className={styles.bannerTop}>
             <div className={styles.pageIndicator}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
                 <path
@@ -32,12 +32,90 @@ export default function Glossary() {
           </div>
         </div>
         <div className={styles.bottomContainer}>
-          <Letterbox letter="A" />
-          <Letterbox letter="B" />
-          <Letterbox letter="C" />
-          <Letterbox letter="D" />
-          <Letterbox letter="E" />
-          <Letterbox letter="F" />
+          <Letterbox
+            letter="A"
+            terms={[
+              "Asset",
+              "Amortization",
+              "Annuity",
+              "Arbitrage",
+              "Appreciation",
+            ]}
+          />
+          <Letterbox
+            letter="B"
+            terms={["Balance Sheet", "Bonds", "Bear Market", "Broker"]}
+          />
+          <Letterbox
+            letter="C"
+            terms={["Capital", "Collateral", "Commodities", "Credit"]}
+          />
+          <Letterbox
+            letter="D"
+            terms={[
+              "Dividend",
+              "Depreciation",
+              "Debt",
+              "Derivatives",
+              "Dow Jones Industrial Average (DJIA)",
+            ]}
+          />
+          <Letterbox
+            letter="A"
+            terms={[
+              "Asset",
+              "Amortization",
+              "Annuity",
+              "Arbitrage",
+              "Appreciation",
+            ]}
+          />
+          <Letterbox
+            letter="B"
+            terms={["Balance Sheet", "Bonds", "Bear Market", "Broker"]}
+          />
+          <Letterbox
+            letter="C"
+            terms={["Capital", "Collateral", "Commodities", "Credit"]}
+          />
+          <Letterbox
+            letter="D"
+            terms={[
+              "Dividend",
+              "Depreciation",
+              "Debt",
+              "Derivatives",
+              "Dow Jones Industrial Average (DJIA)",
+            ]}
+          />
+          <Letterbox
+            letter="A"
+            terms={[
+              "Asset",
+              "Amortization",
+              "Annuity",
+              "Arbitrage",
+              "Appreciation",
+            ]}
+          />
+          <Letterbox
+            letter="B"
+            terms={["Balance Sheet", "Bonds", "Bear Market", "Broker"]}
+          />
+          <Letterbox
+            letter="C"
+            terms={["Capital", "Collateral", "Commodities", "Credit"]}
+          />
+          <Letterbox
+            letter="D"
+            terms={[
+              "Dividend",
+              "Depreciation",
+              "Debt",
+              "Derivatives",
+              "Dow Jones Industrial Average (DJIA)",
+            ]}
+          />
         </div>
       </div>
     </>

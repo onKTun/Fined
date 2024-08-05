@@ -30,11 +30,17 @@
     font-weight: 550;
 }
 .wordWrapper {
+    padding: 10px;
+    box-sizing: border-box;
+}
+.list {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: min-content;
-    background-color: red;
-    padding: 10px;
-    flex-direction: column;
-    row-gap: 10px;
+    box-sizing: border-box;
+    row-gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
