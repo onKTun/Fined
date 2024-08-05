@@ -1,6 +1,6 @@
 "use client";
 import styles from "./glossary.module.css";
-import { useSidebar } from "../../../components/sidebar/sidebarContext";
+//import { useSidebar } from "../../../components/sidebar/sidebarContext"; commented out since unused
 import Search from "src/components/search/Search";
 import Letterbox from "./components/letterbox/Letterbox";
 
