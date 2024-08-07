@@ -63,4 +63,5 @@
     column-gap: 2em;
     row-gap: 2em;
     padding: 2em;
+    box-sizing: border-box;
 }

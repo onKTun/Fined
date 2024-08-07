@@ -1,5 +1,8 @@
 // UnitSelector.tsx
 "use client";
+import ParentComponent from "./components/parentcomponent/ParentComponent";
+import Swipebutton from "./components/swipebutton/Swipebutton";
+import Unitbox from "./components/unitbox/Unitbox";
 import styles from "./unitselector.module.css";
 
 export default function UnitSelector() {
@@ -18,11 +21,12 @@ export default function UnitSelector() {
           </div>
           <p className={styles.bannerTitle}>FIN'ED© Introduction to Finance</p>
           <p className={styles.bannerText}>
-            You can search, read, and learn any terms within that is mentioned
-            within the website here.
+            Please select one of the following unit.
           </p>
         </div>
-        <div className={styles.bannerBottom}>s</div>
+        <div className={styles.bannerBottom}>
+          <ParentComponent />
+        </div>
       </div>
     </div>
   );

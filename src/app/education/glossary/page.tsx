@@ -1,4 +1,3 @@
-"use client";
 import styles from "./glossary.module.css";
 import { useSidebar } from "../../../components/sidebar/sidebarContext";
 import Search from "src/components/search/Search";
