@@ -1,8 +1,6 @@
 // UnitSelector.tsx
 "use client";
 import ParentComponent from "./components/parentcomponent/ParentComponent";
-import Swipebutton from "./components/swipebutton/Swipebutton";
-import Unitbox from "./components/unitbox/Unitbox";
 import styles from "./unitselector.module.css";
 
 export default function UnitSelector() {
@@ -25,7 +23,7 @@ export default function UnitSelector() {
           </p>
         </div>
         <div className={styles.bannerBottom}>
-          <ParentComponent />
+          <ParentComponent percent={[100, 24, 0, 0]} />
         </div>
       </div>
     </div>

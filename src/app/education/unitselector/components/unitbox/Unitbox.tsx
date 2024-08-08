@@ -13,6 +13,8 @@ export default function Unitbox({
   isSelected,
   onClick,
 }: Props) {
+  const progressIndicatorStyle = {};
+
   return (
     <div
       className={`${styles.wrapper} ${
@@ -20,6 +22,15 @@ export default function Unitbox({
       }`}
       onClick={onClick}
     >
+      <div
+        className={`${
+          progress === 0
+            ? styles.notstarted
+            : progress < 100 && progress > 0
+            ? styles.inprogress
+            : styles.completed
+        }`}
+      ></div>
       <div className={styles.content}>
         <div className={styles.unitTitle}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">

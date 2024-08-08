@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import Unitbox from "../unitbox/Unitbox";
 import Swipebutton from "../swipebutton/Swipebutton";
 import styles from "./parentcomponent.module.css";
+interface Props {
+  percent: number[];
+}
 
-const ParentComponent = () => {
+export default function ParentComponent({ percent }: Props) {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [isSwipeButtonSelected, setIsSwipeButtonSelected] = useState(false);
 
@@ -24,7 +27,7 @@ const ParentComponent = () => {
           <Unitbox
             key={unit}
             unit={unit}
-            progress={unit === 1 ? 100 : unit === 2 ? 20 : 0}
+            progress={percent[unit - 1]}
             isSelected={selectedUnit === unit}
             onClick={() => handleUnitClick(unit)}
           />
@@ -35,6 +38,4 @@ const ParentComponent = () => {
       </div>
     </>
   );
-};
-
-export default ParentComponent;
+}

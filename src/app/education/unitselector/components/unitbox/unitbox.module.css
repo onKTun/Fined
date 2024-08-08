@@ -1,3 +1,8 @@
+.container {
+  width: 18em;
+  height: fit-content;
+  background-color: rebeccapurple;
+}
 .wrapper {
   position: relative;
   background-color: white;
@@ -16,6 +21,8 @@
   }
 }
 .unselected {
+  transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transform: rotateY(360deg);
   height: 23em;
   opacity: 0.5;
   &:hover {
@@ -57,4 +64,77 @@
 }
 .complete {
   color: var(--finedgreen);
+}
+
+.completed {
+  position: absolute;
+  right: -1.5em;
+  top: 1.6em;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  width: 10em;
+  height: 1em;
+  &::before {
+    position: relative;
+    content: "";
+    width: 1.3em;
+    height: 1.3em;
+    background-image: url(/assets/status/complete.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &::after {
+    content: "Completed";
+    font-size: 1.1rem;
+    color: var(--finedgreen);
+  }
+}
+.notstarted {
+  position: absolute;
+  right: -1.5em;
+  top: 1.6em;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  width: 10em;
+  height: 1em;
+  &::before {
+    position: relative;
+    content: "";
+    width: 1.3em;
+    height: 1.3em;
+    background-image: url(/assets/status/notstarted.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &::after {
+    content: "Not Started";
+    font-size: 1.1rem;
+    color: gray;
+  }
+}
+.inprogress {
+  position: absolute;
+  right: -1.5em;
+  top: 1.6em;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  width: 10em;
+  height: 1em;
+  &::before {
+    position: relative;
+    content: "";
+    width: 1.3em;
+    height: 1.3em;
+    background-image: url(/assets/status/inprogress.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &::after {
+    content: "In Progress";
+    font-size: 1.1rem;
+    color: var(--finedblue);
+  }
 }
