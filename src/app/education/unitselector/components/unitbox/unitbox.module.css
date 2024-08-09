@@ -21,8 +21,6 @@
   }
 }
 .unselected {
-  transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  transform: rotateY(360deg);
   height: 23em;
   opacity: 0.5;
   &:hover {
@@ -62,11 +60,10 @@
   align-items: center;
   font-size: 1.1rem;
 }
-.complete {
-  color: var(--finedgreen);
-}
 
-.completed {
+/* This is for the top indicator which indicates where they are on that unit (not the individual lessons) */
+
+.topIndicator {
   position: absolute;
   right: -1.5em;
   top: 1.6em;
@@ -80,61 +77,86 @@
     content: "";
     width: 1.3em;
     height: 1.3em;
-    background-image: url(/assets/status/complete.svg);
     background-repeat: no-repeat;
     background-size: cover;
+    &::after {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.completed {
+  &::before {
+    background-image: url(/assets/status/complete.svg);
   }
   &::after {
     content: "Completed";
-    font-size: 1.1rem;
     color: var(--finedgreen);
   }
 }
 .notstarted {
-  position: absolute;
-  right: -1.5em;
-  top: 1.6em;
-  display: flex;
-  align-items: center;
-  column-gap: 6px;
-  width: 10em;
-  height: 1em;
   &::before {
-    position: relative;
-    content: "";
-    width: 1.3em;
-    height: 1.3em;
     background-image: url(/assets/status/notstarted.png);
-    background-repeat: no-repeat;
-    background-size: cover;
   }
   &::after {
     content: "Not Started";
-    font-size: 1.1rem;
     color: gray;
   }
 }
 .inprogress {
-  position: absolute;
-  right: -1.5em;
-  top: 1.6em;
-  display: flex;
-  align-items: center;
-  column-gap: 6px;
-  width: 10em;
-  height: 1em;
   &::before {
-    position: relative;
-    content: "";
-    width: 1.3em;
-    height: 1.3em;
     background-image: url(/assets/status/inprogress.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
   }
   &::after {
     content: "In Progress";
-    font-size: 1.1rem;
     color: var(--finedblue);
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  row-gap: 12px;
+}
+/* These are for the topics that are displayed in the content section (not top right) */
+.topicDefault {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 10em;
+  height: 1em;
+  font-weight: 550;
+  font-size: 1.1rem;
+  padding-left: 1.5em;
+  &:before {
+    left: 0;
+    position: absolute;
+    content: "";
+    width: 1.2em;
+    height: 1.2em;
+    background: url(/assets/status/notstarted.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.completedTopic {
+  color: var(--finedgreen);
+  &::before {
+    background-image: url(/assets/status/complete.svg);
+  }
+}
+.inprogressTopic {
+  color: var(--finedblue);
+  &::before {
+    background-image: url(/assets/status/inprogress.svg);
+  }
+}
+.notStartedTopic {
+  color: gray;
+  &::before {
+    background-image: url(/assets/status/notstarted.png);
   }
 }

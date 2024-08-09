@@ -4,6 +4,7 @@ interface Props {
   unit: number;
   progress: number;
   isSelected: boolean;
+  topicsCovered: string[];
   onClick: () => void;
 }
 
@@ -11,9 +12,22 @@ export default function Unitbox({
   unit,
   progress,
   isSelected,
+  topicsCovered,
   onClick,
 }: Props) {
-  const progressIndicatorStyle = {};
+  // Function to determine the correct style based on progress
+  function findStyle(index: number): string {
+    const totalTopics = topicsCovered.length;
+    const progressPerTopic = 100 / totalTopics;
+    const topicProgress = progress >= progressPerTopic * index;
+
+    if (topicProgress) {
+      return styles.completedTopic;
+    } else if (progress > progressPerTopic * (index - 1)) {
+      return styles.inprogressTopic;
+    }
+    return styles.notStartedTopic;
+  }
 
   return (
     <div
@@ -23,7 +37,7 @@ export default function Unitbox({
       onClick={onClick}
     >
       <div
-        className={`${
+        className={`${styles.topIndicator} ${
           progress === 0
             ? styles.notstarted
             : progress < 100 && progress > 0
@@ -43,22 +57,16 @@ export default function Unitbox({
         </div>
         <p className={styles.topicsCoveredText}>Topics Covered</p>
         <div className={styles.line}></div>
-        <div className={`${styles.complete} ${styles.topic}`}>
-          <img src="/assets/status/complete.svg" width={17} />
-          Value of Money
-        </div>
-        <div className={`${styles.complete} ${styles.topic}`}>
-          <img src="/assets/status/complete.svg" width={17} />
-          Value of Money
-        </div>
-        <div className={`${styles.complete} ${styles.topic}`}>
-          <img src="/assets/status/complete.svg" width={17} />
-          Value of Money
-        </div>
-        <div className={`${styles.complete} ${styles.topic}`}>
-          <img src="/assets/status/complete.svg" width={17} />
-          Value of Money
-        </div>
+        <ul className={styles.list}>
+          {topicsCovered.map((_, index) => (
+            <li
+              key={index}
+              className={`${findStyle(index + 1)} ${styles.topicDefault}`}
+            >
+              {topicsCovered[index]}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className={styles.progressPOS}>
         <ProgressBar progress={progress} />

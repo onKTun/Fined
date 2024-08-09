@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Unitbox from "../unitbox/Unitbox";
 import Swipebutton from "../swipebutton/Swipebutton";
 import styles from "./parentcomponent.module.css";
+import unitsData from "src/data/info.json";
+
 interface Props {
   percent: number[];
 }
@@ -23,13 +25,14 @@ export default function ParentComponent({ percent }: Props) {
   return (
     <>
       <div className={styles.untiselection}>
-        {[1, 2, 3, 4].map((unit) => (
+        {unitsData.map((unitData) => (
           <Unitbox
-            key={unit}
-            unit={unit}
-            progress={percent[unit - 1]}
-            isSelected={selectedUnit === unit}
-            onClick={() => handleUnitClick(unit)}
+            key={unitData.unit}
+            unit={unitData.unit}
+            progress={unitData.progress}
+            isSelected={selectedUnit === unitData.unit}
+            onClick={() => handleUnitClick(unitData.unit)}
+            topicsCovered={unitData.topicsCovered}
           />
         ))}
       </div>

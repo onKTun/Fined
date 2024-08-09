@@ -61,7 +61,7 @@ export default function Sidebar() {
             leftvalue={20}
             topvalue={13}
             src="/assets/sidebar/profile.svg"
-            link=""
+            link="/education/profile"
           />
           <Item
             text="Settings"
@@ -73,12 +73,7 @@ export default function Sidebar() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <Profile
-          name="Adam Darzidan"
-          role="Student"
-          profile="/assets/profilepictures/spacepfp.png"
-          xp={2089}
-        />
+        <Profile />
       </div>
     </aside>
   );

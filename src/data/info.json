@@ -1,0 +1,26 @@
+[
+    {
+      "unit": 1,
+      "progress": 100,
+      "title": "Unit 1",
+      "topicsCovered": ["Value of Money", "Wants vs. Needs", "Scams and Tricks", "Importance of Finance", "Comparison Shopping"]
+    },
+    {
+      "unit": 2,
+      "progress": 100,
+      "title": "Unit 2",
+      "topicsCovered": ["Credit vs. Debit", "Credit Score", "Borrowing Money", "Common Methods", "Bills and Taxes"]
+    },
+    {
+      "unit": 3,
+      "progress": 23,
+      "title": "Unit 3",
+      "topicsCovered": ["Value of Money", "Wants vs. Needs", "Scams and Tricks", "Importance of Finance", "Comparison Shopping"]
+    },
+    {
+      "unit": 4,
+      "progress": 0,
+      "title": "Unit 4",
+      "topicsCovered": ["Credit vs. Debit", "Credit Score", "Borrowing Money", "Common Methods", "End of FIN'ED"]
+    }
+  ]
