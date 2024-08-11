@@ -2,7 +2,7 @@
 import styles from "./Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Checkbox from "src/components/checkbox/Checkbox";
-import Button from "src/components/button/Button";
+import Button from "src/components/buttonPL/Button";
 import Link from "next/link";
 
 export default function Login() {

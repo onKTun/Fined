@@ -1,44 +1,38 @@
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 8px;
-    position: relative;
-    padding: 18px;
-    width: 100%;
-    background: linear-gradient(45deg, #4A92FF, #1C77FF);
-    border: none;
-    border-radius: 5px;
-    overflow: hidden;
-    .button_text {
-        z-index: 10;
-        font-size: 18px;
-        color: white;
-    }
-    .svg {
-        z-index: 10;
-  }
-}
-  
-  .button::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #7AC3FF, #1C77FF);
-    left: 0;
-    top: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .button:hover::after {
-    opacity: 1;
-  }
-  
-  .button:hover {
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  &:hover {
     cursor: pointer;
   }
-  .link {
-    width: 1fr;
+}
+.blue {
+  background-color: var(--finedblue);
+  &:hover {
+    opacity: 0.8;
   }
+}
+.gray {
+  background-color: white;
+  color: var(--black4);
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  &:hover {
+    color: var(--black1);
+  }
+}
+.bluefill {
+  background-color: var(--finedblue);
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  &:hover {
+    opacity: 0.8;
+  }
+}

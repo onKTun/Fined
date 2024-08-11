@@ -3,9 +3,10 @@ import styles from "./swipebutton.module.css";
 
 interface Props {
   isSelected: boolean;
+  selectedUnit: null;
 }
 
-export default function Swipebutton({ isSelected }: Props) {
+export default function Swipebutton({ isSelected, selectedUnit }: Props) {
   //prevents link from being used if not selected
   const handleClick = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -16,9 +17,8 @@ export default function Swipebutton({ isSelected }: Props) {
   };
 
   return (
-    <Link href="/education/lesson" onClick={handleClick}>
-      <button
-        type="button"
+    <Link href={`/education/units/${selectedUnit}`} onClick={handleClick}>
+      <div
         className={`${styles.button} ${
           isSelected ? styles.selected : styles.unselected
         }`}
@@ -39,7 +39,7 @@ export default function Swipebutton({ isSelected }: Props) {
           ></path>
         </svg>
         Select Unit
-      </button>
+      </div>
     </Link>
   );
 }

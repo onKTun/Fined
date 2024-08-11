@@ -1,46 +1,60 @@
 .letterboxWrapper {
-    width: 20em;
-    height: 20em;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 1em;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+  width: 20em;
+  height: 20em;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 .letterContainer {
-   display: flex;
-   flex-grow: 1 0;
-   height: fit-content;
-   padding: 10px 15px;
-   box-sizing: border-box;
-   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+  display: flex;
+  flex-grow: 1 0;
+  height: fit-content;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 }
 .letter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 40px;
-    height: 40px;
-    background-color: var(--finedblue);
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: 550;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 40px;
+  height: 40px;
+  background-color: var(--finedblue);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 550;
 }
 .wordWrapper {
-    padding: 10px;
-    box-sizing: border-box;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: min-content;
-    box-sizing: border-box;
-    row-gap: 15px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: min-content;
+  box-sizing: border-box;
+  row-gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.termItem {
+  &:hover {
+    cursor: pointer;
+    color: gray;
+  }
+}
+.open {
+  opacity: 1;
+  z-index: 10;
+}
+.closed {
+  opacity: 0;
+  z-index: 10;
 }

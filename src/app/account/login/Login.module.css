@@ -1,131 +1,130 @@
 .left {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 30em; /* Fixed width of 40em */
-    height: 1fr; /* Full height */
-    background-color: white;
-    padding: 8vh 70px 0px 70px;
-    gap: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 30em; /* Fixed width of 40em */
+  height: 1fr; /* Full height */
+  background-color: white;
+  padding: 8vh 70px 0px 70px;
+  gap: 60px;
 }
 .right {
-    flex: 1; /* Take up remaining space */
-    height: 1fr; /* Full height */
-    background-color: #5190f4;
-    background-repeat: repeat;
-    background-size: 20em;
+  flex: 1; /* Take up remaining space */
+  height: 1fr; /* Full height */
+  background: url(/assets/backgrounds/image.png);
+  background-repeat: repeat;
+  background-size: 20em;
 }
 .contentWrapper {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    margin: auto;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
 }
 .logoSVGwrapper {
-    z-index: 0;
-    position: absolute;
-    left: 22px;
-    background-color: var(--finedblue);
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
+  z-index: 0;
+  position: absolute;
+  left: 22px;
+  background-color: var(--finedblue);
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
 }
 .logoWrapper {
-    position: relative;
-    width: fit-content;
-    padding: 13px 25px 13px 25px;
-    background-color: white;
-    border: 1px solid var(--finedblue);
-    border-radius: 5px;
-    display: flex;
-    column-gap: 20px;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: fit-content;
+  padding: 13px 25px 13px 25px;
+  background-color: white;
+  border: 1px solid var(--finedblue);
+  border-radius: 5px;
+  display: flex;
+  column-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  .logoText {
+    color: var(--finedblue);
+    font-size: 1.7rem;
+    font-weight: 550;
+    z-index: 1;
+    margin: 0;
+  }
+  .logosvg {
+    z-index: 10;
+  }
+  &:hover {
+    cursor: pointer;
+    color: white;
     .logoText {
-        color: var(--finedblue);
-        font-size: 1.7rem;
-        font-weight: 550;
-        z-index: 1;
-        margin: 0;
+      color: white;
     }
-    .logosvg {
-        z-index: 10;
+    .logoSVGwrapper {
+      width: 100%;
+      height: 100%;
+      left: 0;
     }
-    &:hover {
-        cursor: pointer;
-        color: white;
-        .logoText {
-            color: white;
-        }
-        .logoSVGwrapper {
-            width: 100%;
-            height: 100%;
-            left:0;
-        }
-    }
+  }
 }
 .leftContent {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    row-gap: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
 }
 .title {
-    display: flex;
-    flex-direction: column;
-    row-gap: 3px;
-    .titleHeader {
-        font-size: 25pt;
-        color: var(--black1);
-    }
-    .titleSubheader {
-        color: gray;
-    }
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+  .titleHeader {
+    font-size: 25pt;
+    color: var(--black1);
+  }
+  .titleSubheader {
+    color: gray;
+  }
 }
 
 .inputWrapper {
-    display: flex;
-    flex-direction: column;
-    row-gap: 12px;
-    position: relative;
-    color: var(--black2)
-
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  position: relative;
+  color: var(--black2);
 }
 .extraContent {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    .forgotPasswordText {
-        color: var(--finedblue);
-        font-size: 16px;
-        height: fit-content;
-    }
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  .forgotPasswordText {
+    color: var(--finedblue);
+    font-size: 16px;
+    height: fit-content;
+  }
 }
 .rememberMeWrapper {
-    display: flex;
-    align-items: start;
-    column-gap: 6px;
-    width: fit-content;
-    font-size: 16px;
-    height: 30px;
+  display: flex;
+  align-items: start;
+  column-gap: 6px;
+  width: fit-content;
+  font-size: 16px;
+  height: 30px;
 }
 .requirements {
-    height: fit-content;
+  height: fit-content;
 }
 .bottomLinkWrapper {
-    position: absolute;
-    width: 100%; /* Ensure it takes the full width of the container */
-    justify-content: center;
-    bottom: 1.5em;
-    display: flex;
-    left: 50%;
-    transform: translateX(-50%);
-    .bottomLink {
-        color: gray;
-    }
-    .bottomLinkSpan {
-        color: var(--finedblue);
-        text-decoration: none;
-    }
+  position: absolute;
+  width: 100%; /* Ensure it takes the full width of the container */
+  justify-content: center;
+  bottom: 1.5em;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+  .bottomLink {
+    color: gray;
+  }
+  .bottomLinkSpan {
+    color: var(--finedblue);
+    text-decoration: none;
+  }
 }

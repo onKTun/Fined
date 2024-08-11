@@ -2,7 +2,7 @@
 
 import styles from "../login/Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Button from "src/components/button/Button";
+import Button from "src/components/buttonPL/Button";
 import Link from "next/link";
 
 export default function ForgotPassword() {

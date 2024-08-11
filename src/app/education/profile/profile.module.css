@@ -64,7 +64,7 @@
 }
 .profileContainer {
   width: 420px;
-  height: 40em;
+  height: fit-content;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
@@ -77,10 +77,12 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  height: fit-content;
   background-color: white;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 25px;
+  row-gap: 25px;
 }
 
 .headerWrapper {
@@ -131,11 +133,13 @@
   justify-content: center;
   align-items: center;
   column-gap: 8px;
+  row-gap: 3px;
 }
 .pfp {
   width: 3em;
   height: 2em;
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(240, 238, 238);
+  border: 1px solid rgba(0, 0, 0, 0.03);
   border-radius: 5px;
 }
 .profilePicture {
@@ -156,29 +160,70 @@
 .level_xpTillNext {
   color: var(--finedblue);
 }
-.bio_Container {
+.profileItem_Container {
   background-color: #f8f8f8;
   height: fit-content;
   padding: 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
+  row-gap: 10px;
 }
-.bio_top_Container {
+.profileItem_top_Container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.bio_top_header {
+.profileItem_top_header {
   display: flex;
   align-items: center;
   column-gap: 6px;
 }
 
-.bio_text_Container {
+.profileItem_item_Container {
   background-color: white;
   height: fit-content;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
+  display: flex;
+  column-gap: 10px;
+}
+.info_input_Container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-size: 1rem;
+}
+.info_input_subtext {
+  color: rgb(145, 145, 145);
+}
+.guidelines {
+  color: var(--finedblue);
+  text-decoration: underline;
+}
+.geo_info_Container {
+  display: flex;
+  column-gap: 10px;
+  width: 35em;
+}
+.geo_info_part {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  flex-grow: 1;
+}
+.geo_text_Container {
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-grow: 1;
+  border-radius: 5px;
+  padding: 15px;
+  justify-content: space-between;
+}
+.info_button_Container {
+  display: flex;
+  flex-grow: 1 0;
+  justify-content: end;
+  column-gap: 10px;
 }

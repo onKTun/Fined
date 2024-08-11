@@ -10,13 +10,29 @@ body {
   --black1: rgba(0, 0, 0, 0.9);
   --black2: rgba(0, 0, 0, 0.8);
   --black3: rgba(0, 0, 0, 0.6);
+  --black4: rgba(0, 0, 0, 0.4);
 }
 
-p {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   width: fit-content;
   height: fit-content;
   color: var(--black1);
+}
+
+li,
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style: none;
 }
 
 * {

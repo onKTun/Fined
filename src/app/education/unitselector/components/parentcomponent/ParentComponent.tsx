@@ -17,6 +17,7 @@ export default function ParentComponent({ percent }: Props) {
       setSelectedUnit(null);
       setIsSwipeButtonSelected(false);
     } else {
+      console.log(unit);
       setSelectedUnit(unit);
       setIsSwipeButtonSelected(true);
     }
@@ -37,7 +38,10 @@ export default function ParentComponent({ percent }: Props) {
         ))}
       </div>
       <div className={styles.buttonSection}>
-        <Swipebutton isSelected={isSwipeButtonSelected} />
+        <Swipebutton
+          isSelected={isSwipeButtonSelected}
+          selectedUnit={selectedUnit}
+        />
       </div>
     </>
   );
