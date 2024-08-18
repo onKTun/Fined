@@ -4,7 +4,7 @@ function SecurityIndicator() {
   return (
     <div className={styles.wrapper}>
       <p className={styles.item}>
-        Password must be atleast 8 characters in length
+        Password must be at least 8 characters in length
       </p>
       <p className={styles.item}>
         Password must include at least one capital and lowercase letter

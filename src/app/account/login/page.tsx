@@ -6,6 +6,8 @@ import Checkbox from "src/components/checkbox/Checkbox";
 import Button from "src/components/button/Button";
 import Link from "next/link";
 
+import LoginForm from "src/app/account/login/login";
+
 export default function Login() {
   return (
     <div className={styles.contentWrapper}>
@@ -37,29 +39,8 @@ export default function Login() {
               Please enter your details below
             </p>
           </div>
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your username</p>
-            <InputFieldPL type="email" />
-          </div>
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your password</p>
-            <InputFieldPL type="password" />
-            <div className={styles.extraContent}>
-              <div className={styles.rememberMeWrapper}>
-                <Checkbox />
-                Remember me
-              </div>
-              <div className={styles.forgotPasswordText}>
-                <Link
-                  href="/account/forgotpassword"
-                  className="highlightedText"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
-            </div>
-          </div>
-          <Button text="Sign in" />
+
+          <LoginForm />
         </div>
         <div className={styles.bottomLinkWrapper}>
           <p className={styles.bottomLink}>
