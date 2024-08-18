@@ -5,8 +5,9 @@ import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Button from "src/components/button/Button";
 import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 import Link from "next/link";
+import SignUpForm from "./signup";
 
-export default function Signup() {
+export default function SignUpPage() {
   return (
     <div className={styles.contentWrapper}>
       <div className={styles.left}>
@@ -37,19 +38,9 @@ export default function Signup() {
               Please enter your details below
             </p>
           </div>
-          <TypeSelector />
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your email</p>
-            <InputFieldPL type="email" />
-          </div>
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your password</p>
-            <InputFieldPL type="password" />
-          </div>
-          <div className={styles.requirements}>
-            <SecurityIndicator />
-          </div>
-          <Button text="Sign up" />
+
+          <SignUpForm/>
+          
         </div>
         <div className={styles.bottomLinkWrapper}>
           <p className={styles.bottomLink}>

@@ -1,6 +1,13 @@
 import { ReactNode } from "react";
 import "src/app/global.css";
 
+
+import { Amplify } from "aws-amplify";
+
+import outputs from "amplify_outputs.json"; //if file is not here, run ampx sandbox
+Amplify.configure(outputs) //configure amplify
+
+
 interface RootLayoutProps {
   children: ReactNode;
 }

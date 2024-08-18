@@ -2,12 +2,13 @@ import Link from "next/link";
 import styles from "./button.module.css";
 interface Props {
   text: string;
+  type: string;
 }
-function Button({ text }: Props) {
+function Button(Props) {
   return (
     <>
-      <Link className={styles.link} href="/education/dashboard">
-        <button className={styles.button}>
+      
+        <button className={styles.button} type={Props.type}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -19,9 +20,9 @@ function Button({ text }: Props) {
               fill="rgb(255,255,255)"
             ></path>
           </svg>
-          <p className={styles.button_text}>{text}</p>
+          <p className={styles.button_text}>{Props.text}</p>
         </button>
-      </Link>
+      
     </>
   );
 }
