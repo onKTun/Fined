@@ -1,0 +1,84 @@
+.activity_Container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: white;
+  border: 1px var(--bb) solid;
+  width: 25em;
+  row-gap: 20px;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+}
+.headerWrapper {
+  height: fit-content;
+  display: flex;
+  flex-grow: 1 0;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 1.2rem;
+}
+.infoButton {
+  background-color: #f3f3f3;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+.header_text {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.header_subtext {
+  color: var(--subtext);
+  font-size: 1rem;
+}
+.activity_Progress {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  top: 0;
+  left: 0;
+}
+
+.activitys_Wrapper {
+  position: relative;
+  border: 1px solid var(--bb);
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5em;
+  align-items: center;
+  height: fit-content;
+  padding: 20px 0px;
+  z-index: 1;
+}
+.activity_Path {
+  position: absolute;
+  display: flex;
+  flex-grow: 1 0;
+  height: calc(100% - 40px);
+  width: 2px;
+  top: 20px;
+  left: 121px;
+  background-color: rgb(216, 216, 216);
+}

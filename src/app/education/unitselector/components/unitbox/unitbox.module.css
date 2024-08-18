@@ -96,7 +96,7 @@
 }
 .notstarted {
   &::before {
-    background-image: url(/assets/status/notstarted.png);
+    background-image: url(/assets/status/notstarted.svg);
   }
   &::after {
     content: "Not Started";
@@ -157,6 +157,6 @@
 .notStartedTopic {
   color: gray;
   &::before {
-    background-image: url(/assets/status/notstarted.png);
+    background-image: url(/assets/status/notstarted.svg);
   }
 }

@@ -67,16 +67,15 @@
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  width: 30em;
+  width: 27em;
   height: fit-content;
-  padding: 25px 25px 35px 25px;
+  padding: 25px 20px 20px 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
 .headerWrapper {
-  padding-left: 10px;
   height: fit-content;
   display: flex;
   flex-grow: 1;
@@ -103,9 +102,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px 15px;
+  padding: 6px 10px;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .video_tags {
   display: flex;
@@ -116,6 +115,7 @@
   column-gap: 8px;
   align-items: center;
   padding: 10px;
+  font-size: 1.1rem;
   background-color: #f2f8ff;
   border-radius: 5px;
   color: var(--finedblue);
@@ -134,10 +134,9 @@
   justify-content: center;
   align-items: center;
   column-gap: 6px;
-  color: gray;
   font-size: 1.1rem;
   background-color: rgba(0, 0, 0, 0.05);
-  padding: 10px 14px;
+  padding: 12px 15px;
   border-radius: 10px;
   width: fit-content;
 }
@@ -147,13 +146,13 @@
   row-gap: 3px;
 }
 .title {
-  font-weight: 550;
-  font-size: 1.3rem;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 .subtitle {
   font-weight: 500;
   font-size: 1.1rem;
-  color: #8f8f8f;
+  color: var(--subtext);
 }
 .button_Container {
   display: flex;
@@ -161,15 +160,27 @@
 }
 .activity_Container {
   display: flex;
+  flex-direction: column;
+  row-gap: 10px;
   flex-grow: 1;
   border-radius: 10px;
 }
 .header_Container {
-  padding: 18px 25px;
+  padding: 15px 20px;
   border-radius: 10px;
   display: flex;
-  flex-grow: 1;
+  flex-grow: 1 0;
   height: fit-content;
   background-color: white;
   border: rgba(0, 0, 0, 0.1) solid 1px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .bottomContainer {
+    flex-direction: column;
+  }
+  .video_Container {
+    flex-grow: 1;
+    width: 100%;
+  }
 }

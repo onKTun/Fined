@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.item {
+  padding: 12px 20px;
+  width: fit-content;
+  background-color: var(--inputcolor);
+  color: gray;
+  display: flex;
+  column-gap: 7px;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: var(--inputborder);
+    cursor: pointer;
+    color: var(--black1);
+  }
+}

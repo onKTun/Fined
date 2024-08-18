@@ -6,11 +6,17 @@ body {
 }
 :root {
   --finedblue: #3385ff;
+  --finedblueRGB: 51, 133, 255;
   --finedgreen: #00c421;
   --black1: rgba(0, 0, 0, 0.9);
   --black2: rgba(0, 0, 0, 0.8);
   --black3: rgba(0, 0, 0, 0.6);
   --black4: rgba(0, 0, 0, 0.4);
+  --black5: rgba(0, 0, 0, 0.3);
+  --bb: rgba(0, 0, 0, 0.1);
+  --inputcolor: #f8f8f8;
+  --inputborder: rgba(0, 0, 0, 0.05);
+  --subtext: rgb(165, 165, 165);
 }
 
 p,

@@ -1,0 +1,34 @@
+[
+    {
+        "activity": 1,
+        "type": "Crossword Puzzle",
+        "desc": "Complete the following crossword to move onto the next activity",
+        "svgPath": "/assets/activity/crossword.svg",
+        "progress": 100, 
+        "estTime": 12
+    },
+    {
+        "activity": 2,
+        "type": "Vocabulary Match",
+        "desc": "Match the correct vocab terms with the corresponding image",
+        "svgPath": "/assets/activity/card.svg",
+        "progress": 100, 
+        "estTime": 10
+    },
+    {
+        "activity": 1,
+        "type": "Crossword Puzzle",
+        "desc": "Complete the following crossword to move onto the next activity",
+        "svgPath": "/assets/activity/crossword.svg",
+        "progress": 20, 
+        "estTime": 12
+    },
+    {
+        "activity": 2,
+        "type": "Vocabulary Match",
+        "desc": "Match the correct vocab terms with the corresponding image",
+        "svgPath": "/assets/activity/card.svg",
+        "progress": 0, 
+        "estTime": 10
+    }
+]

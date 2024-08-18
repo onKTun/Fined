@@ -3,8 +3,13 @@ import Search from "src/components/search/Search";
 import styles from "../units.module.css";
 import Image from "next/image";
 import Button from "src/components/button/Button";
+import Activity from "../components/activity/Activity";
+import activityData from "src/data/video.json";
 
 export default function Unit1() {
+  const completed = activityData.filter(
+    (activity) => activity.progress == 100
+  ).length;
   const handleClick = () => {};
   return (
     <div className={styles.bodyDash}>
@@ -103,18 +108,18 @@ export default function Unit1() {
           </div>
           <div className={styles.button_Container}>
             <Button
-              ftSize={1.15}
+              ftSize={1.05}
               style="blue"
               text={"Watch"}
               onClick={handleClick}
-              heightWidth={{ height: "50px", width: "150px" }}
+              heightWidth={{ height: "45px", width: "150px" }}
             />
             <Button
-              ftSize={1.15}
+              ftSize={1.1}
               style="gray"
               text={"Restart"}
               onClick={handleClick}
-              heightWidth={{ height: "50px", width: "130px" }}
+              heightWidth={{ height: "45px", width: "130px" }}
             />
           </div>
         </div>
@@ -134,13 +139,23 @@ export default function Unit1() {
                     ></path>
                   </svg>
                 </div>
-                Lesson Video
+                Activities
               </div>
               <button className={styles.infoButton} type="button">
-                1/6
+                {completed}/{activityData.length}
               </button>
             </div>
           </div>
+          {activityData.map((activity, index) => (
+            <Activity
+              title={activity.type}
+              desc={activity.desc}
+              svgPath={activity.svgPath}
+              estTime={activity.estTime}
+              key={index}
+              progress={activity.progress}
+            />
+          ))}
         </div>
       </div>
     </div>

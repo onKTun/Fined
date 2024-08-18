@@ -6,9 +6,11 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
 .noSidebar {
   width: 100vw;
 }
+
 .bannerContainer {
   width: 100%;
   background-image: url(/assets/backgrounds/image.png);
@@ -22,48 +24,61 @@
   align-items: center;
   flex-shrink: 0;
 }
+
 .pageIndicator {
+  width: -moz-fit-content;
   width: fit-content;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: 10px 17px;
   display: flex;
+  -moz-column-gap: 8px;
   column-gap: 8px;
   justify-content: center;
   align-items: center;
   color: white;
   font-size: 1.1rem;
 }
+
 .bannerTitle {
   color: white;
   font-size: 2.2rem;
   font-weight: 550;
 }
+
 .bannerText {
   width: 28em;
   text-align: center;
   color: white;
 }
+
 .bannerTop {
   row-gap: 10px;
+  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .underlinedText {
   text-decoration: underline;
   color: white;
 }
+
 .bottomContainer {
   display: flex;
+  justify-content: center;
   flex-grow: 1;
   padding: 3em;
   background-color: #fafafa;
+  -moz-column-gap: 2em;
   column-gap: 2em;
 }
+
 .profileContainer {
   width: 420px;
+  height: -moz-fit-content;
   height: fit-content;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -73,10 +88,12 @@
   flex-direction: column;
   row-gap: 20px;
 }
+
 .infoContainer {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  height: -moz-fit-content;
   height: fit-content;
   background-color: white;
   border-radius: 10px;
@@ -87,27 +104,31 @@
 
 .headerWrapper {
   padding-left: 10px;
+  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   justify-content: space-between;
-  .svgWrapper {
-    width: 36px;
-    height: 36px;
-    background-color: var(--finedblue);
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 }
+.headerWrapper .svgWrapper {
+  width: 36px;
+  height: 36px;
+  background-color: var(--finedblue);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .headerLeft {
   display: flex;
   align-items: center;
+  -moz-column-gap: 10px;
   column-gap: 10px;
   font-size: 1.3rem;
 }
+
 .infoButton {
-  background-color: #3385ff15;
+  background-color: rgba(51, 133, 255, 0.0823529412);
   border: none;
   display: flex;
   justify-content: center;
@@ -117,12 +138,15 @@
 }
 
 .profilePicture_container {
+  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  -moz-column-gap: 20px;
   column-gap: 20px;
 }
+
 .profileSelector {
   display: flex;
   flex-grow: 1;
@@ -132,9 +156,11 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  -moz-column-gap: 8px;
   column-gap: 8px;
   row-gap: 3px;
 }
+
 .pfp {
   width: 3em;
   height: 2em;
@@ -142,26 +168,33 @@
   border: 1px solid rgba(0, 0, 0, 0.03);
   border-radius: 5px;
 }
+
 .profilePicture {
   border-radius: 100%;
   width: 10em;
   height: 10em;
 }
+
 .level_Container {
   display: flex;
   flex-direction: column;
   row-gap: 6px;
 }
+
 .level_top_Container {
   display: flex;
   justify-content: space-between;
   font-size: 1rem;
 }
+
 .level_xpTillNext {
   color: var(--finedblue);
 }
+
 .profileItem_Container {
-  background-color: #f8f8f8;
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
+  height: -moz-fit-content;
   height: fit-content;
   padding: 20px;
   border-radius: 20px;
@@ -169,49 +202,62 @@
   flex-direction: column;
   row-gap: 10px;
 }
+
 .profileItem_top_Container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .profileItem_top_header {
   display: flex;
   align-items: center;
+  -moz-column-gap: 6px;
   column-gap: 6px;
 }
 
 .profileItem_item_Container {
   background-color: white;
+  border: 1px solid var(--inputborder);
+  height: -moz-fit-content;
   height: fit-content;
   border-radius: 10px;
   padding: 15px;
   display: flex;
+  -moz-column-gap: 10px;
   column-gap: 10px;
 }
+
 .info_input_Container {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
   font-size: 1rem;
 }
+
 .info_input_subtext {
   color: rgb(145, 145, 145);
 }
+
 .guidelines {
   color: var(--finedblue);
   text-decoration: underline;
 }
+
 .geo_info_Container {
   display: flex;
+  -moz-column-gap: 10px;
   column-gap: 10px;
   width: 35em;
 }
+
 .geo_info_part {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
   flex-grow: 1;
 }
+
 .geo_text_Container {
   background-color: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.03);
@@ -221,9 +267,11 @@
   padding: 15px;
   justify-content: space-between;
 }
+
 .info_button_Container {
   display: flex;
   flex-grow: 1 0;
   justify-content: end;
+  -moz-column-gap: 10px;
   column-gap: 10px;
 }

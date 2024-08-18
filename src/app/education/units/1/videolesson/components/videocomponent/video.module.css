@@ -1,0 +1,78 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.videoHotbar_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5em;
+  height: 100%;
+  background-color: white;
+  border: none;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+    background-color: var(--inputcolor);
+
+    .svgFill {
+      fill: var(--black3);
+    }
+  }
+}
+.ccEnabled {
+  background-color: var(--finedblue);
+  .svgFill {
+    fill: white;
+  }
+  &:hover {
+    background-color: rgba(var(--finedblueRGB), 0.8);
+    .svgFill {
+      fill: white;
+    }
+  }
+}
+.rightAlignedButton {
+  border-right: 1px solid var(--bb);
+}
+.leftAlignedButton {
+  border-left: 1px solid var(--bb);
+}
+.progress_Wrapper {
+  display: flex;
+  flex-grow: 1;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.videoHotbar {
+  display: flex;
+  width: 100%;
+  height: 2.8em;
+  box-sizing: border-box;
+  border-top: 1px solid var(--bb);
+}
+.playVideo_wrapper {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1em;
+  color: gray;
+}
+.progressBarContainer {
+  display: flex;
+  flex-grow: 1;
+  height: 3px;
+  background-color: var(--inputcolor);
+}
+.progressBarContainer {
+  display: flex;
+}
+.currentProgress {
+  width: 50%;
+  height: 100%;
+  background-color: var(--finedblue);
+}

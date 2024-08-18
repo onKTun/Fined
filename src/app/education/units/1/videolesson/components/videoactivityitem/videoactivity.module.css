@@ -1,0 +1,43 @@
+.wrapper {
+  box-sizing: border-box;
+  background-color: white;
+  width: 100%;
+  padding: 0px 2em;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 1em;
+  height: fit-content;
+  font-size: 1.1rem;
+  color: var(--finedblue);
+  z-index: 2;
+}
+.text {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+  color: gray;
+}
+.time {
+  padding: 4px 11px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--finedblue);
+  color: white;
+}
+.icon {
+  width: 23px;
+  height: 23px;
+  background-size: cover;
+  background-repeat: repeat;
+}
+.completed {
+  .text {
+    color: var(--finedgreen);
+  }
+  .icon {
+    background-image: url(/assets/status/complete.svg);
+  }
+}

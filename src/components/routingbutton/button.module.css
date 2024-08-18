@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.blue {
+  background-color: var(--finedblue);
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.gray {
+  background-color: white;
+  color: var(--black4);
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  &:hover {
+    color: var(--black1);
+  }
+}
+.bluefill {
+  background-color: var(--finedblue);
+  color: white;
+  width: 100%;
+  padding: 12px;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  &:hover {
+    opacity: 0.8;
+  }
+}

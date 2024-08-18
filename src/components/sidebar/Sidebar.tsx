@@ -68,7 +68,7 @@ export default function Sidebar() {
             leftvalue={19}
             topvalue={12}
             src="/assets/sidebar/settings.svg"
-            link=""
+            link="/education/settings"
           />
         </div>
       </div>
