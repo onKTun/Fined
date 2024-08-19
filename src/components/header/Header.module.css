@@ -60,7 +60,7 @@
     justify-content: end;
     flex-direction: row;
     column-gap: 2em;
-    width: 35em;
+    width: 10em;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -72,7 +72,7 @@
     }
 }
 .search {
-    width: 1fr;
+    width: 10em;
 }
 
 .hamburgerPart {
@@ -102,5 +102,20 @@
     width: 60px;
     .hamburgerPart {
         background-color: var(--black3);
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .headerWrapper {
+        width: 95%;
+        padding-left: 5em;
+        box-sizing: border-box;
+        justify-content: space-between;
+    }
+    .list {
+        display: none;
+    }
+    .search {
+        width: 30em;
     }
 }

@@ -1,45 +1,70 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 :root {
-    --finedblue: #3385FF;
-    --finedgreen: #00C421;
-    --black1: rgba(0, 0, 0, 0.9);
-    --black2: rgba(0, 0, 0, 0.8);
-    --black3: rgba(0, 0, 0, 0.6);
+  --finedblue: #3385ff;
+  --finedblueRGB: 51, 133, 255;
+  --finedgreen: #00c421;
+  --black1: rgba(0, 0, 0, 0.9);
+  --black2: rgba(0, 0, 0, 0.8);
+  --black3: rgba(0, 0, 0, 0.6);
+  --black4: rgba(0, 0, 0, 0.4);
+  --black5: rgba(0, 0, 0, 0.3);
+  --bb: rgba(0, 0, 0, 0.1);
+  --inputcolor: #f8f8f8;
+  --inputborder: rgba(0, 0, 0, 0.05);
+  --subtext: rgb(165, 165, 165);
 }
 
-p {
-    margin: 0;
-    width: fit-content;
-    height: fit-content;
-    color: var(--black1)
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  font-weight: 550;
+  margin: 0;
+  width: fit-content;
+  height: fit-content;
+  color: var(--black1);
+}
+
+li,
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style: none;
 }
 
 * {
-    transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
-    font-family: "Inter Tight", sans-serif;
-    text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  font-family: "Inter Tight", sans-serif;
+  text-decoration: none;
 }
 
 .highlightedText {
-    color: var(--finedblue);
-    height: fit-content;
+  color: var(--finedblue);
+  height: fit-content;
 }
 
 .contentWithSidebar {
-    display: flex;
-    height: calc(100vh - 71px);
-    background-color: #FAFAFA;
+  display: flex;
+  height: calc(100vh - 71px);
+  background-color: #fafafa;
 }
 
 .viewport {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 .content {
-    display: flex;
-    flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
 }

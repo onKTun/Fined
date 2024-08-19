@@ -1,0 +1,128 @@
+.bodyDash {
+  overflow: scroll;
+  height: 100%;
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.bannerContainer {
+  width: 100%;
+  background-image: url(/assets/backgrounds/image.png);
+  background-repeat: repeat;
+  background-size: 15em;
+  height: 20em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.pageIndicator {
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 10px 17px;
+  display: flex;
+  column-gap: 8px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.1rem;
+}
+.bannerTitle {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 550;
+}
+.bannerText {
+  width: 28em;
+  text-align: center;
+  color: white;
+}
+.bannerTop {
+  row-gap: 10px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.underlinedText {
+  text-decoration: underline;
+  color: white;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 2em;
+  background-color: #fafafa;
+  column-gap: 2em;
+}
+
+.profileContainer {
+  width: 420px;
+  height: fit-content;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  row-gap: 25px;
+}
+
+.headerWrapper {
+  padding-left: 10px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 1.3rem;
+}
+.infoButton {
+  background-color: #3385ff15;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 15px;
+  border-radius: 20px;
+}
+.settingContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  padding: 30px;
+  height: 50em;
+  width: 60em;
+  background-color: white;
+  border: 1px solid var(--bb);
+  border-radius: 10px;
+}

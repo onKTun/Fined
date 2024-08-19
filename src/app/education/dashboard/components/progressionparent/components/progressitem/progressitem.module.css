@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: fit-content;
+  row-gap: 0.3em;
+}
+.top {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  font-size: 1.1rem;
+}
+.completed {
+  .top {
+    color: var(--finedgreen);
+  }
+}
+.notStarted {
+  .top {
+    color: gray;
+  }
+}
+.inprogress {
+  .top {
+    color: var(--finedblue);
+  }
+  .progressContainer {
+    background-color: rgba(var(--finedblueRGB), 0.2);
+  }
+  .progress {
+    background-color: var(--finedblue);
+  }
+}
+.progressContainer {
+  display: flex;
+  flex-grow: 1 0;
+  height: 5px;
+  background-color: var(--inputcolor);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: var(--finedgreen);
+}

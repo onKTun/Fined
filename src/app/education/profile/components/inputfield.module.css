@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
+}

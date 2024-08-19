@@ -1,0 +1,77 @@
+.container {
+  width: 45em;
+  padding: 20px;
+  background-color: white;
+  border: 1px var(--bb) solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  row-gap: 1em;
+}
+.headerWrapper {
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 1.3rem;
+}
+.progress {
+  background-color: var(--finedblue);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  color: white;
+}
+.progressContainer {
+  display: flex;
+  column-gap: 10px;
+  flex-grow: 1 0;
+}
+
+/* Recent activity Section */
+
+.recentActivityContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.RA_Header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+.recentActivityWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  row-gap: 10px;
+  height: fit-content;
+  flex-grow: 1 0;
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
+  border-radius: 10px;
+}
+.buttonWrapper {
+  display: flex;
+  flex-grow: 1 0;
+  height: fit-content;
+  column-gap: 10px;
+}

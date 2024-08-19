@@ -1,0 +1,91 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 25em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.2),
+    inset 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.boxWrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: start;
+  font-size: 1.2rem;
+}
+.modalText {
+  width: 1fr;
+  font-size: 1.1rem;
+  color: rgb(103, 103, 103);
+  text-align: start;
+  padding: 12px 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.modalDefinition {
+  text-align: start;
+}
+
+.headerWrapper {
+  padding-left: 10px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 1.3rem;
+}
+.infoButton {
+  background-color: #3385ff15;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 15px;
+  border-radius: 20px;
+}
+.termPicture {
+  width: 100%;
+  height: 12em;
+  border-radius: 10px;
+}
+
+.termsAndDef {
+  display: flex;
+  column-gap: 10px;
+}

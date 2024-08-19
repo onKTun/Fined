@@ -1,0 +1,162 @@
+.container {
+  width: 18em;
+  height: fit-content;
+  background-color: rebeccapurple;
+}
+.wrapper {
+  position: relative;
+  background-color: white;
+  width: 18em;
+  height: 25em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 50px 20px 20px 20px;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05),
+    0 0 20px rgba(255, 255, 255, 0.3);
+  &:hover {
+    cursor: pointer;
+  }
+}
+.unselected {
+  height: 23em;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.unitTitle {
+  background-color: var(--finedblue);
+  padding: 10px 17px;
+  display: flex;
+  width: fit-content;
+  border-radius: 20px;
+  align-items: center;
+  column-gap: 7px;
+  color: white;
+  font-weight: 550;
+  font-size: 1.1rem;
+}
+.topicsCoveredText {
+  color: var(--black1);
+  font-size: 1.2rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: fit-content;
+}
+.line {
+  width: 175px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 1px;
+}
+.topic {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+/* This is for the top indicator which indicates where they are on that unit (not the individual lessons) */
+
+.topIndicator {
+  position: absolute;
+  right: -1.5em;
+  top: 1.6em;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  width: 10em;
+  height: 1em;
+  &::before {
+    position: relative;
+    content: "";
+    width: 1.3em;
+    height: 1.3em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &::after {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.completed {
+  &::before {
+    background-image: url(/assets/status/complete.svg);
+  }
+  &::after {
+    content: "Completed";
+    color: var(--finedgreen);
+  }
+}
+.notstarted {
+  &::before {
+    background-image: url(/assets/status/notstarted.svg);
+  }
+  &::after {
+    content: "Not Started";
+    color: gray;
+  }
+}
+.inprogress {
+  &::before {
+    background-image: url(/assets/status/inprogress.svg);
+  }
+  &::after {
+    content: "In Progress";
+    color: var(--finedblue);
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  row-gap: 12px;
+}
+/* These are for the topics that are displayed in the content section (not top right) */
+.topicDefault {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 10em;
+  height: 1em;
+  font-weight: 550;
+  font-size: 1.1rem;
+  padding-left: 1.5em;
+  &:before {
+    left: 0;
+    position: absolute;
+    content: "";
+    width: 1.2em;
+    height: 1.2em;
+    background: url(/assets/status/notstarted.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.completedTopic {
+  color: var(--finedgreen);
+  &::before {
+    background-image: url(/assets/status/complete.svg);
+  }
+}
+.inprogressTopic {
+  color: var(--finedblue);
+  &::before {
+    background-image: url(/assets/status/inprogress.svg);
+  }
+}
+.notStartedTopic {
+  color: gray;
+  &::before {
+    background-image: url(/assets/status/notstarted.svg);
+  }
+}

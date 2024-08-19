@@ -1,0 +1,11 @@
+.untiselection {
+  display: flex;
+  column-gap: 20px;
+  box-sizing: border-box;
+  align-items: center;
+  height: 25em;
+}
+.buttonSection {
+  display: flex;
+  justify-content: center;
+}

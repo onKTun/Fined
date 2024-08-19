@@ -1,0 +1,29 @@
+.wrapper {
+  width: 4.4em;
+  height: 2.6em;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgb(229, 229, 229);
+  border: none;
+  border-radius: 3em;
+  padding: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.circle {
+  position: absolute;
+  left: 5px;
+  width: 1.9em;
+  height: 1.9em;
+  align-items: center;
+  background-color: white;
+  border-radius: 3em;
+}
+.toggled {
+  .circle {
+    left: 28px;
+  }
+  background-color: var(--finedblue);
+}
