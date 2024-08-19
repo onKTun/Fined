@@ -1,13 +1,83 @@
 .bodyDash {
-    width: calc(100vw - 20.5em);
-    height: 100%;
-    background-color: rgb(250, 250, 250);
+  overflow: scroll;
+  height: 100%;
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
-.noSidebar {
-    width: 100vw;
+.bannerContainer {
+  width: 100%;
+  background-image: url(/assets/backgrounds/image.png);
+  background-repeat: repeat;
+  background-size: 15em;
+  height: 16em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: start;
+  flex-shrink: 0;
+  padding: 50px;
 }
-.banner {
-    width: 100%;
-    background-color: var(--finedblue);
-    height: 5em;
+.pageIndicator {
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 10px 17px;
+  display: flex;
+  column-gap: 8px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.1rem;
+}
+.bannerTitle {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 550;
+}
+.bannerText {
+  width: 28em;
+  text-align: start;
+  color: white;
+}
+.bannerTop {
+  row-gap: 10px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.underlinedText {
+  text-decoration: underline;
+  color: white;
+}
+.svgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--finedblue);
+  border-radius: 5px;
+}
+.lessonShortcut {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 550;
+  column-gap: 7px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 7px 13px;
+  border-radius: 10px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.bottomContainer {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  column-gap: 1em;
 }

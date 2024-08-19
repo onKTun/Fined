@@ -49,10 +49,27 @@ export default function Settings() {
               </svg>
             </button>
           </div>
-          <SettingItem />
-          <SettingItem />
-          <SettingItem />
-          <SettingItem />
+          <SettingItem
+            svgPath={"/assets/settingIcons/contrast.svg"}
+            title={"High Contrast Mode"}
+            desc={
+              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
+            }
+          />{" "}
+          <SettingItem
+            svgPath={"/assets/settingIcons/contrast.svg"}
+            title={"High Contrast Mode"}
+            desc={
+              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
+            }
+          />{" "}
+          <SettingItem
+            svgPath={"/assets/settingIcons/contrast.svg"}
+            title={"High Contrast Mode"}
+            desc={
+              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
+            }
+          />
         </div>
       </div>
     </div>

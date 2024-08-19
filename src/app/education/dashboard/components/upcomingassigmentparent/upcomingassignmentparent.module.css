@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 25em;
+  height: 40em;
+  background-color: white;
+  border: 1px var(--bb) solid;
+  border-radius: 10px;
+  padding: 20px;
+}
+.headerWrapper {
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 1.3rem;
+}
