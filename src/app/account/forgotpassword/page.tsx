@@ -42,7 +42,7 @@ export default function ForgotPassword() {
             </p>
             <InputFieldPL type="email" />
           </div>
-          <Button text="Send Confirmaiton Email" />
+          <Button text="Send Confirmation Email" />
         </div>
         <div className={styles.bottomLinkWrapper}>
           <p className={styles.bottomLink}>

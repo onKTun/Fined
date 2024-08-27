@@ -49,6 +49,7 @@ export default function SignUpForm(){
           <div className={styles.requirements}>
             <SecurityIndicator />
           </div>
-          <Button text="Sign up" type="submit" />
+          <Button text="Sign up" type="submit" style={"blue"} ftSize={1}
+                heightWidth={{}}/>
           </form>)
 }

@@ -56,7 +56,8 @@ export default function LoginForm() {
           </div>
         </div>
 
-        <Button text="Sign in" type="submit" />
+        <Button text="Sign in" type="submit" style={"blue"} ftSize={1}
+                heightWidth={{}}/>
       </form>
     </div>
   );
