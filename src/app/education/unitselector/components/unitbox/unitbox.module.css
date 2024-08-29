@@ -65,13 +65,14 @@
 
 .topIndicator {
   position: absolute;
-  right: -1.5em;
-  top: 1.6em;
+  right: 1.5em;
+  top: 1.3em;
   display: flex;
   align-items: center;
   column-gap: 6px;
-  width: 10em;
-  height: 1em;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.1rem;
   &::before {
     position: relative;
     content: "";
@@ -79,9 +80,6 @@
     height: 1.3em;
     background-repeat: no-repeat;
     background-size: cover;
-    &::after {
-      font-size: 1.1rem;
-    }
   }
 }
 
