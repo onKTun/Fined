@@ -1,4 +1,8 @@
+import Button from "src/components/button/Button";
 import styles from "./upcomingassignmentparent.module.css";
+import RoutingButton from "src/components/routingbutton/RoutingButton";
+import assignmentData from "src/data/video.json";
+import UAItem from "./components/uaitem/UAItem";
 
 export default function UpcomingAssignmentParent() {
   return (
@@ -21,6 +25,23 @@ export default function UpcomingAssignmentParent() {
           Upcoming Assignments
         </div>
       </div>
+      <div className={styles.activityItemWrapper}>
+        {assignmentData.map((data, index) => (
+          <UAItem
+            key={index}
+            svgPath={data.altSVGPath}
+            title={data.type}
+            unit={data.unit}
+          />
+        ))}
+      </div>
+      <RoutingButton
+        style={"gray"}
+        text={"View All"}
+        ftSize={1.1}
+        additonalStyles={{}}
+        url={"/education/units/1"}
+      />
     </div>
   );
 }

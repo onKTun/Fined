@@ -1,17 +1,54 @@
+import React, { act } from "react";
 import Button from "src/components/button/Button";
 import ProgressBar from "src/components/progress/ProgressBar";
 import VideoActivityItem from "../videoactivityitem/VideoActivityItem";
 import activityData from "src/data/videoactivity.json";
 import styles from "./activitybox.module.css";
+import { useVideoContext } from "src/app/education/units/1/videolesson/hooks/VideoContext";
+
 export default function ActivityBox() {
-  const test = () => {
-    console.log("hi");
+  const { currentTime, setCurrentActivity } = useVideoContext();
+
+  const findInProgressActivity = (activities, currentTime) => {
+    let inProgressIndex = -1;
+
+    for (let i = 0; i < activities.length; i++) {
+      const activityTime = new Date(activities[i].timestamp).getTime();
+
+      if (activityTime > currentTime) {
+        inProgressIndex = i;
+        break;
+      }
+    }
+    setCurrentActivity(inProgressIndex);
+    return inProgressIndex;
   };
+  const findCompletedActivites = (activities, currentTime) => {
+    let completed = 0;
+
+    for (let i = 0; i < activities.length; i++) {
+      const activityTime = new Date(activities[i].timestamp).getTime();
+
+      if (activityTime < currentTime + 1) {
+        completed++;
+      }
+    }
+
+    return completed;
+  };
+
+  const inProgressIndex = findInProgressActivity(activityData, currentTime);
+
   return (
     <div className={styles.activity_Container}>
-      {" "}
       <div className={styles.activity_Progress}>
-        <ProgressBar progress={(2 / 6) * 100} />
+        <ProgressBar
+          progress={
+            (findCompletedActivites(activityData, currentTime) /
+              activityData.length) *
+            100
+          }
+        />
       </div>
       <div className={styles.headerWrapper}>
         <div className={styles.headerLeft}>
@@ -29,7 +66,9 @@ export default function ActivityBox() {
           </div>
         </div>
         <button className={styles.infoButton} type="button">
-          2/6
+          {findCompletedActivites(activityData, currentTime) +
+            "/" +
+            activityData.length}
         </button>
       </div>
       <ul className={styles.activitys_Wrapper}>
@@ -39,6 +78,7 @@ export default function ActivityBox() {
             timeStamp={activity.timestamp}
             svgPath={activity.svgPath}
             text={activity.text}
+            inprogress={index === inProgressIndex}
           />
         ))}
         <div className={styles.activity_Path}></div>
@@ -48,7 +88,7 @@ export default function ActivityBox() {
         text={"Instructions"}
         ftSize={1.1}
         heightWidth={{ height: "2.5em" }}
-        onClick={test}
+        onClick={() => {}}
       />
     </div>
   );

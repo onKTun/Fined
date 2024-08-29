@@ -2,14 +2,28 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./video.module.css";
 import { useVideoContext } from "../../hooks/VideoContext";
+import AudioModal from "./components/audiomodal/AudioModal";
+import VideoActivity from "./components/videoactivity/VideoActivity";
+import SeekBar from "./components/seekbar/SeekBar";
 
 export default function Video() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const { currentTime, setCurrentTime } = useVideoContext();
+  const {
+    isPlaying,
+    setIsPlaying,
+    currentTime,
+    setCurrentTime,
+    audio,
+    activityLock,
+    setActivityLock,
+    isDragging,
+    maxProgress,
+  } = useVideoContext();
   const [isCCEnabled, setCCEnable] = useState(false);
-  const videoDuration = Math.floor(videoRef.current?.duration || 0);
+  const [isAudioModalOpen, setAudioModal] = useState(false);
+  const videoDuration = videoRef.current?.duration || 0;
 
+  // Formats the time for the bar at the bottom
   const formatTime = (timeInSeconds: number): string => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
@@ -17,76 +31,126 @@ export default function Video() {
   };
 
   const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-    if (videoRef.current && !isPlaying) {
-      videoRef.current.play();
-    } else if (videoRef.current && isPlaying) {
-      videoRef.current.pause();
+    if (!activityLock && videoRef.current) {
+      setIsPlaying(!isPlaying);
+      if (!isPlaying) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
     }
   };
 
-  const toggleCC = () => {
-    setCCEnable(!isCCEnabled);
+  const closeVideoActivity = () => {
+    console.log("function");
+    setActivityLock(false);
+    setIsPlaying(true);
+    videoRef.current?.play();
   };
-  const toggleFullscreen = () => {
-    if (videoRef.current) {
-      videoRef.current.requestFullscreen();
-    }
-  };
+
+  const toggleCC = () => setCCEnable(!isCCEnabled);
+
+  const toggleFullscreen = () => videoRef.current?.requestFullscreen();
+
   useEffect(() => {
     const videoElement = videoRef.current;
 
-    const handleEnded = () => {
-      setIsPlaying(false);
+    const handleEnded = () => setIsPlaying(false);
+    const handleActivityPause = () => {
+      if (activityLock && videoElement) {
+        videoElement.pause();
+        setIsPlaying(false);
+      }
+    };
+    const onTimeUpdate = () => {
+      const current = Math.floor(videoElement?.currentTime || 0);
+      setCurrentTime(current);
+    };
+
+    const preventUnpause = (event: Event) => {
+      if (activityLock) {
+        event.preventDefault();
+        videoElement?.pause();
+        setIsPlaying(false);
+      }
+    };
+    const checkForDrag = () => {
+      if (isDragging) {
+        videoRef.current?.pause();
+      }
     };
 
     if (videoElement) {
       videoElement.addEventListener("ended", handleEnded);
+      videoElement.addEventListener("timeupdate", handleActivityPause);
+      videoElement.addEventListener("timeupdate", onTimeUpdate);
+      videoElement.addEventListener("play", preventUnpause);
+      videoElement.addEventListener("drag", checkForDrag);
     }
 
     return () => {
       if (videoElement) {
         videoElement.removeEventListener("ended", handleEnded);
+        videoElement.removeEventListener("timeupdate", handleActivityPause);
+        videoElement.removeEventListener("timeupdate", onTimeUpdate);
+        videoElement.removeEventListener("play", preventUnpause);
+        videoElement.removeEventListener("drag", checkForDrag);
       }
     };
-  }, []);
+  }, [activityLock, isDragging, setCurrentTime]);
 
   useEffect(() => {
-    if (videoRef.current) {
-      // Update the current time immediately when the video plays
-      const onTimeUpdate = () => {
-        const current = Math.floor(videoRef.current?.currentTime || 0);
-        setCurrentTime(current);
-      };
-
-      videoRef.current.addEventListener("timeupdate", onTimeUpdate);
-
-      return () => {
-        videoRef.current?.removeEventListener("timeupdate", onTimeUpdate);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    // Start the interval to update the time every second when the video is playing
-    let interval: NodeJS.Timeout;
     if (isPlaying && videoRef.current) {
-      interval = setInterval(() => {
-        const current = Math.floor(videoRef.current?.currentTime || 0);
-        setCurrentTime(current);
+      const interval = setInterval(() => {
+        setCurrentTime(Math.floor(videoRef.current?.currentTime || 0));
       }, 1000);
+      return () => clearInterval(interval);
     }
+  }, [isPlaying, setCurrentTime]);
 
-    // Cleanup the interval when the component unmounts or the video pauses
-    return () => clearInterval(interval);
-  }, [isPlaying]);
+  const handleVolumeChange = (audio: number) => {
+    if (videoRef.current) {
+      videoRef.current.volume = audio;
+    }
+  };
+  const handleTimeChange = (time) => {
+    if (videoRef.current && !videoRef.current.seeking) {
+      videoRef.current.currentTime = time;
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
+  const pauseWhileDragging = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
   return (
     <div className={styles.wrapper} style={{ display: "flex", width: "100%" }}>
-      <video src="/videos/test2.mov" ref={videoRef} width="100%" height="100%">
-        Your browser does not support the video tag.
-      </video>
+      <div className={styles.videoWrapper}>
+        <video
+          src="/videos/test2.mp4"
+          ref={videoRef}
+          width="100%"
+          height="100%"
+        >
+          Your browser does not support the video tag.
+        </video>
+        <div
+          className={`${styles.activityWrapper} ${
+            activityLock ? styles.open : styles.closed
+          }`}
+        >
+          <VideoActivity onClick={closeVideoActivity} />
+        </div>
+      </div>
+
       <ul className={styles.videoHotbar}>
+        <div className={styles.audioModalWrapper}>
+          <AudioModal isOpen={isAudioModalOpen} onChange={handleVolumeChange} />
+        </div>
         {/* Options button */}
         <button
           className={`${styles.videoHotbar_button} ${styles.rightAlignedButton}`}
@@ -101,18 +165,32 @@ export default function Video() {
         </button>
         {/* Audio button */}
         <button
+          onClick={() => setAudioModal((prev) => !prev)}
           className={`${styles.videoHotbar_button} ${styles.rightAlignedButton}`}
         >
-          <svg
-            fill="var(--black5)"
-            width="34px"
-            height="34px"
-            viewBox="-1.5 0 19 19"
-            xmlns="http://www.w3.org/2000/svg"
-            className={styles.svgFill}
-          >
-            <path d="M7.098 4.769v9.63c0 .61-.353.756-.784.325L3.42 11.828H1.442A1.112 1.112 0 0 1 .333 10.72V8.448A1.112 1.112 0 0 1 1.442 7.34h1.977l2.895-2.896c.431-.43.784-.285.784.325zm2.076 7.474a.553.553 0 0 0 .392-.163 3.53 3.53 0 0 0 0-4.992.554.554 0 1 0-.784.784 2.422 2.422 0 0 1 0 3.425.554.554 0 0 0 .392.946zm2.184 1.629a6.059 6.059 0 0 0 0-8.575.554.554 0 0 0-.784.783 4.955 4.955 0 0 1 0 7.008.554.554 0 0 0 .784.784zm1.79 1.79a8.59 8.59 0 0 0 0-12.157.554.554 0 0 0-.783.784 7.481 7.481 0 0 1 0 10.59.554.554 0 1 0 .784.784z" />
-          </svg>
+          {audio != 0 && (
+            <svg
+              fill="var(--black5)"
+              width="34px"
+              height="34px"
+              viewBox="-1.5 0 19 19"
+              xmlns="http://www.w3.org/2000/svg"
+              className={styles.svgFill}
+            >
+              <path d="M7.098 4.769v9.63c0 .61-.353.756-.784.325L3.42 11.828H1.442A1.112 1.112 0 0 1 .333 10.72V8.448A1.112 1.112 0 0 1 1.442 7.34h1.977l2.895-2.896c.431-.43.784-.285.784.325zm2.076 7.474a.553.553 0 0 0 .392-.163 3.53 3.53 0 0 0 0-4.992.554.554 0 1 0-.784.784 2.422 2.422 0 0 1 0 3.425.554.554 0 0 0 .392.946zm2.184 1.629a6.059 6.059 0 0 0 0-8.575.554.554 0 0 0-.784.783 4.955 4.955 0 0 1 0 7.008.554.554 0 0 0 .784.784zm1.79 1.79a8.59 8.59 0 0 0 0-12.157.554.554 0 0 0-.783.784 7.481 7.481 0 0 1 0 10.59.554.554 0 1 0 .784.784z" />
+            </svg>
+          )}
+          {audio == 0 && (
+            <svg
+              fill="var(--black5)"
+              width="34px"
+              height="34px"
+              viewBox="-1.5 0 19 19"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M7.676 4.938v9.63c0 .61-.353.756-.784.325l-2.896-2.896H2.02A1.111 1.111 0 0 1 .911 10.89V8.618a1.112 1.112 0 0 1 1.108-1.109h1.977l2.896-2.896c.43-.43.784-.284.784.325zm7.251 6.888a.554.554 0 1 1-.784.784l-2.072-2.073-2.073 2.073a.554.554 0 1 1-.784-.784l2.073-2.073L9.214 7.68a.554.554 0 0 1 .784-.783L12.07 8.97l2.072-2.073a.554.554 0 0 1 .784.783l-2.072 2.073z" />
+            </svg>
+          )}
         </button>
         {/* CC button */}
         <button
@@ -201,12 +279,11 @@ export default function Video() {
               {formatTime(currentTime)}
             </div>
             <div className={styles.progressBarContainer}>
-              <div
-                className={styles.currentProgress}
-                style={{
-                  width: `${(currentTime / videoDuration) * 100}%`,
-                }}
-              ></div>
+              <SeekBar
+                onChange={handleTimeChange}
+                whileDragging={pauseWhileDragging}
+                duration={videoDuration}
+              />
             </div>
             <div className={styles.timeContainer}>
               -{formatTime(videoDuration - currentTime)}

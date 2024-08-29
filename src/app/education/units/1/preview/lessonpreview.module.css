@@ -111,3 +111,9 @@
   background-repeat: repeat;
   background-size: 20em;
 }
+.lesson {
+  display: flex;
+  flex-grow: 1;
+  column-gap: 2em;
+  height: fit-content;
+}

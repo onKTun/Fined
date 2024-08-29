@@ -1,0 +1,37 @@
+.progressWrapper {
+  transition: none;
+  display: flex;
+  width: 10em;
+  height: fit-content;
+  border-radius: 5px;
+  align-items: center;
+  background-color: var(--inputborder);
+  border: 1px solid rgba(var(--bb));
+}
+.progress {
+  transition: none;
+  height: 4px;
+  border-radius: 10px;
+  position: relative;
+  background-color: var(--finedblue);
+}
+.handle {
+  transition: none;
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2;
+}
+.wrapper {
+  transition: none;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 5px;
+}
