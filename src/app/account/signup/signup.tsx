@@ -4,13 +4,9 @@ import styles from "../login/Login.module.css";
 import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 import TypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
 
-import { signUp } from "aws-amplify/auth"
+
 import type { FormEvent } from "react"
 
-import { Amplify } from "aws-amplify";
-
-import outputs from "amplify_outputs.json"; //if file is not here, run ampx sandbox
-Amplify.configure(outputs) //configure amplify
 
 interface SignUpFormElements extends HTMLFormControlsCollection {
     email: HTMLInputElement
@@ -24,6 +20,7 @@ interface SignUpForm extends HTMLFormElement {
 export default function SignUpForm(){
 
     async function handleSubmit(event: FormEvent<SignUpForm>) {
+      /*
         event.preventDefault()
         const form = event.currentTarget
         // ... validate inputs
@@ -32,7 +29,7 @@ export default function SignUpForm(){
           username: form.elements.email.value,
           password: form.elements.password.value,
         })
-        
+        */
       }
 
     return(

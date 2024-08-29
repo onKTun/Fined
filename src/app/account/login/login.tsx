@@ -4,13 +4,7 @@ import Checkbox from "src/components/checkbox/Checkbox";
 import Button from "src/components/button/Button";
 import Link from "next/link";
 
-import { signIn } from "aws-amplify/auth";
 import type { FormEvent } from "react";
-
-import { Amplify } from "aws-amplify";
-
-import outputs from "amplify_outputs.json"; //if file is not here, run ampx sandbox
-Amplify.configure(outputs); //configure amplify
 
 interface SignInFormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -22,7 +16,9 @@ interface SignInForm extends HTMLFormElement {
 }
 
 export default function LoginForm() {
+  
   async function handleSubmit(event: FormEvent<SignInForm>) {
+    /*
     event.preventDefault();
     const form = event.currentTarget;
     // ... validate inputs
@@ -31,7 +27,9 @@ export default function LoginForm() {
       username: form.elements.email.value,
       password: form.elements.password.value,
     });
+    */
   }
+ 
 
   return (
     <div className={styles.inputWrapper}>

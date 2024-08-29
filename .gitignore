@@ -49,7 +49,3 @@ dist
 next-env.d.tss
 
 
-# amplify
-.amplify
-amplify_outputs*
-amplifyconfiguration*
