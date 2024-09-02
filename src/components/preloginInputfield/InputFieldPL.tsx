@@ -3,6 +3,7 @@ import styles from "./InputFieldPL.module.css";
 
 interface Props {
   type: string;
+  name?: string;
   id: string;
 }
 
@@ -19,6 +20,7 @@ function InputFieldPL( Props) {
         <input
           type={isPasswordVisible ? "text" : "password"}
           placeholder="Enter your password"
+          name={Props.name}
           className={styles.wrapper}
           id={Props.id}
         />
@@ -48,6 +50,7 @@ function InputFieldPL( Props) {
         <input
           type="email"
           id={Props.id}
+          name={Props.name}
           placeholder="Enter your email or username"
           className={styles.wrapper}
         />
