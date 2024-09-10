@@ -36,6 +36,8 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
+
+  /*
   if (
     !user &&
     !request.nextUrl.pathname.startsWith('/account/login') 
@@ -46,6 +48,7 @@ export async function updateSession(request: NextRequest) {
     url.pathname = '/account/login'
     return NextResponse.redirect(url)
   }
+*/
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
   // creating a new response object with NextResponse.next() make sure to:
