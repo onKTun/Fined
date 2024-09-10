@@ -5,9 +5,9 @@ import SecurityIndicator from "./components/securityIndicator/SecurityIndicator"
 import TypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
 
 
-import type { FormEvent } from "react"
+//import type { FormEvent } from "react"
 
-
+/*
 interface SignUpFormElements extends HTMLFormControlsCollection {
     email: HTMLInputElement
     password: HTMLInputElement
@@ -16,11 +16,11 @@ interface SignUpFormElements extends HTMLFormControlsCollection {
 interface SignUpForm extends HTMLFormElement {
     readonly elements: SignUpFormElements
   }
-
+*/
 export default function SignUpForm(){
-
+    /*
     async function handleSubmit(event: FormEvent<SignUpForm>) {
-      /*
+      
         event.preventDefault()
         const form = event.currentTarget
         // ... validate inputs
@@ -29,11 +29,11 @@ export default function SignUpForm(){
           username: form.elements.email.value,
           password: form.elements.password.value,
         })
-        */
+        
       }
-
+    */
     return(
-    <form onSubmit={handleSubmit}>
+    <form >
             <TypeSelector />
           <div className={styles.inputWrapper}>
             <p className={styles.subtitle}>Enter your email</p>

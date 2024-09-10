@@ -4,25 +4,29 @@ import styles from "./InputFieldPL.module.css";
 interface Props {
   type: string;
   name?: string;
-  id: string;
+  id?: string;
 }
 
-function InputFieldPL( Props) {
+function InputFieldPL( {
+  type,
+  name ,
+  id,
+}: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-  if (Props.type === "password") {
+  if (type === "password") {
     return (
       <div className={styles.container}>
         <input
           type={isPasswordVisible ? "text" : "password"}
           placeholder="Enter your password"
-          name={Props.name}
+          name={name}
           className={styles.wrapper}
-          id={Props.id}
+          id={id}
         />
         <button
           type="button"
@@ -49,8 +53,8 @@ function InputFieldPL( Props) {
       <>
         <input
           type="email"
-          id={Props.id}
-          name={Props.name}
+          id={id}
+          name={name}
           placeholder="Enter your email or username"
           className={styles.wrapper}
         />

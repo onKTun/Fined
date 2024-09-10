@@ -1,5 +1,5 @@
 "use client";
-import ProgressBar from "src/components/progress/ProgressBar";
+//import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./lessonpreview.module.css";
 import Breadcrumb from "src/components/breadcrumb/Breadcrumb";
 import Button from "src/components/button/Button";

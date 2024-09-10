@@ -5,7 +5,7 @@ import Button from "src/components/button/Button";
 import Link from "next/link";
 
 import  { login } from "src/app/account/login/actions";
-
+/*
 //check if this is needed
 interface SignInFormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -16,6 +16,7 @@ interface SignInFormElements extends HTMLFormControlsCollection {
 interface SignInForm extends HTMLFormElement {
   readonly elements: SignInFormElements;
 }
+  */
 
 export default function LoginForm() {
   /*

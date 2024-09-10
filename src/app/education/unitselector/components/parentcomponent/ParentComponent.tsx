@@ -4,11 +4,12 @@ import Swipebutton from "../swipebutton/Swipebutton";
 import styles from "./parentcomponent.module.css";
 import unitsData from "src/data/info.json";
 
+/*
 interface Props {
   percent: number[];
 }
-
-export default function ParentComponent({ percent }: Props) {
+*/
+export default function ParentComponent(/*{ percent }: Props*/) {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [isSwipeButtonSelected, setIsSwipeButtonSelected] = useState(false);
 

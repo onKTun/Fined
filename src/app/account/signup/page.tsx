@@ -1,9 +1,9 @@
 "use client";
-import TypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
+//import TypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
 import styles from "../login/Login.module.css";
-import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Button from "src/components/buttonPL/Button";
-import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
+//import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
+//import Button from "src/components/buttonPL/Button";
+//import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 import Link from "next/link";
 import SignUpForm from "./signup";
 

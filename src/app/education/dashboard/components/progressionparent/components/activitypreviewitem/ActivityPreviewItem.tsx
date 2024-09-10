@@ -17,7 +17,7 @@ export default function ActivityPreviewItem({
   svgPath,
   attempts,
   score,
-  linkTo,
+  //linkTo,
 }: Props) {
   return (
     <div className={styles.wrapper}>

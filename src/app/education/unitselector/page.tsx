@@ -23,7 +23,7 @@ export default function UnitSelector() {
           </p>
         </div>
         <div className={styles.bannerBottom}>
-          <ParentComponent percent={[100, 24, 0, 0]} />
+          <ParentComponent /*percent={[100, 24, 0, 0]}*/ />
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ interface Props {
   text: string;
 }
 
-export default function VideoActivityItem({ timeStamp, svgPath, text }: Props) {
+export default function VideoActivityItem({ timeStamp, /*svgPath, text*/ }: Props) {
   const { currentTime } = useVideoContext();
   const formatTime = (timeInSeconds: number): string => {
     const minutes = Math.floor(timeInSeconds / 60);
