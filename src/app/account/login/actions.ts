@@ -43,7 +43,7 @@ export async function login(formData: FormData) {
     */
 
   if (error) {
-    redirect('/account/signup')
+    redirect('/error')
   }
 
   revalidatePath('/', 'layout')
