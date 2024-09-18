@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./account/login/Login.module.css";
-
+import SignOutButton from "src/app/signouttest";
 export default function SiteMap() {
   return (
     <div className={styles.left}>
@@ -17,6 +17,8 @@ export default function SiteMap() {
       <Link href="/education/dashboard" className="highlightedText">
         Dashboard
       </Link>
+      <SignOutButton></SignOutButton>
+       
     </div>
   );
 }

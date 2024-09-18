@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
+"use client"
+//import { ButtonHTMLAttributes } from "react";
 import styles from "./button.module.css";
 interface Props {
   style: string;

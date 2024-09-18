@@ -6,32 +6,10 @@ import Link from "next/link";
 
 import  { login } from "src/app/account/login/actions";
 
-//check if this is needed
-interface SignInFormElements extends HTMLFormControlsCollection {
-  email: HTMLInputElement;
-  password: HTMLInputElement;
-}
 
-//check if this is needed
-interface SignInForm extends HTMLFormElement {
-  readonly elements: SignInFormElements;
-}
 
 export default function LoginForm() {
-  /*
-  async function handleSubmit(event: FormEvent<SignInForm>) {
-    
-    event.preventDefault();
-    const form = event.currentTarget;
-    // ... validate inputs
-    console.log("submitted");
-    await signIn({
-      username: form.elements.email.value,
-      password: form.elements.password.value,
-    });
-    
-  }
- */
+  
 
   return (
     <div className={styles.inputWrapper}>
