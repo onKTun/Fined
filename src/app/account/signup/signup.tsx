@@ -4,40 +4,32 @@ import styles from "../login/Login.module.css";
 import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 import TypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
 
-import  { signup } from "src/app/account/login/actions";
+import { signup } from "src/app/account/login/actions";
 
+export default function SignUpForm() {
 
-
-export default function SignUpForm(){
-/*
-    async function handleSubmit(event: FormEvent<SignUpForm>) {
-      
-        event.preventDefault()
-        const form = event.currentTarget
-        // ... validate inputs
-        console.log("submitted");
-        const {nextStep} = await signUp({
-          username: form.elements.email.value,
-          password: form.elements.password.value,
-        })
-        
-      }
-*/
-    return(
-    <form >
-            <TypeSelector />
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your email</p>
-            <InputFieldPL type="email" id="email" name="email"/>
-          </div>
-          <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>Enter your password</p>
-            <InputFieldPL type="password" id="password" name="password"/>
-          </div>
-          <div className={styles.requirements}>
-            <SecurityIndicator />
-          </div>
-          <Button formAction={signup} text="Sign up" type="submit" style={"blue"} ftSize={1}
-                heightWidth={{}}/>
-          </form>)
+  return (
+    <form>
+      <TypeSelector />
+      <div className={styles.inputWrapper}>
+        <p className={styles.subtitle}>Enter your email</p>
+        <InputFieldPL type="email" id="email" name="email" />
+      </div>
+      <div className={styles.inputWrapper}>
+        <p className={styles.subtitle}>Enter your password</p>
+        <InputFieldPL type="password" id="password" name="password" />
+      </div>
+      <div className={styles.requirements}>
+        <SecurityIndicator />
+      </div>
+      <Button
+        formAction={signup}
+        text="Sign up"
+        type="submit"
+        style={"blue"}
+        ftSize={1}
+        heightWidth={{}}
+      />
+    </form>
+  );
 }
