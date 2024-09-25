@@ -1,8 +1,5 @@
 "use client";
 import styles from "./Login.module.css";
-//import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-//import Checkbox from "src/components/checkbox/Checkbox";
-//import Button from "src/components/buttonPL/Button";
 import Link from "next/link";
 
 import LoginForm from "src/app/account/login/login";
@@ -38,7 +35,6 @@ export default function Login() {
               Please enter your details below
             </p>
           </div>
-
           <LoginForm />
         </div>
         <div className={styles.bottomLinkWrapper}>
