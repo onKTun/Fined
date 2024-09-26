@@ -20,7 +20,9 @@ export default function VideoActivityItem({
   const { currentTime } = useVideoContext();
   const { setActivityLock } = useVideoContext();
   const offset = 1;
-
+  //print statemnts so variables arent unused adam pls implement
+  console.log(svgPath);
+  console.log(text);
   const formatTime = (timeInSeconds: number): string => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./additionalinformation.module.css";
 
 export default function AdditionalInformation() {
-  const [selectedSection, setSelectedSeciton] = useState(-1);
+  //const [selectedSection, setSelectedSeciton] = useState(-1);
 
   return (
     <section className={styles.wrapper}>
