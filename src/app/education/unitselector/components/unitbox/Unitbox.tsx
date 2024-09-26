@@ -6,6 +6,7 @@ interface Props {
   isSelected: boolean;
   topicsCovered: string[];
   onClick: () => void;
+  isLocked: boolean;
 }
 
 export default function Unitbox({
@@ -14,6 +15,7 @@ export default function Unitbox({
   isSelected,
   topicsCovered,
   onClick,
+  isLocked,
 }: Props) {
   // Function to determine the correct style based on progress
   function findStyle(index: number): string {
@@ -31,14 +33,16 @@ export default function Unitbox({
 
   return (
     <div
-      className={`${styles.wrapper} ${
+      className={`${styles.wrapper} ${isLocked ? styles.lockedWrapper : {}} ${
         isSelected ? styles.selected : styles.unselected
       }`}
-      onClick={onClick}
+      onClick={() => (!isLocked ? onClick() : {})}
     >
       <div
         className={`${styles.topIndicator} ${
-          progress === 0
+          isLocked
+            ? styles.locked
+            : progress === 0
             ? styles.notstarted
             : progress < 100 && progress > 0
             ? styles.inprogress

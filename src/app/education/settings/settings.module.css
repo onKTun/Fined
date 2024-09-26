@@ -73,17 +73,6 @@
   flex-direction: column;
   row-gap: 20px;
 }
-.infoContainer {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: fit-content;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 25px;
-  row-gap: 25px;
-}
 
 .headerWrapper {
   padding-left: 10px;
@@ -125,4 +114,9 @@
   background-color: white;
   border: 1px solid var(--bb);
   border-radius: 10px;
+}
+@media only screen and (max-width: 1000px) {
+  .settingContainer {
+    width: 40em;
+  }
 }

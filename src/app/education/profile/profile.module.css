@@ -26,7 +26,6 @@
 }
 
 .pageIndicator {
-  width: -moz-fit-content;
   width: fit-content;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
@@ -78,7 +77,6 @@
 
 .profileContainer {
   width: 420px;
-  height: -moz-fit-content;
   height: fit-content;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -92,7 +90,6 @@
 .infoContainer {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   height: -moz-fit-content;
   height: fit-content;
   background-color: white;
@@ -104,7 +101,6 @@
 
 .headerWrapper {
   padding-left: 10px;
-  height: -moz-fit-content;
   height: fit-content;
   display: flex;
   justify-content: space-between;
@@ -149,16 +145,17 @@
 
 .profileSelector {
   display: flex;
-  flex-grow: 1;
+  width: fit-content;
+  height: fit-content;
   background-color: #f8f8f8;
   border-radius: 20px;
   padding: 10px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  -moz-column-gap: 8px;
-  column-gap: 8px;
-  row-gap: 3px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  row-gap: 8px;
 }
 
 .pfp {
@@ -237,8 +234,10 @@
 
 .info_input_subtext {
   color: rgb(145, 145, 145);
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
-
 .guidelines {
   color: var(--finedblue);
   text-decoration: underline;
@@ -248,7 +247,7 @@
   display: flex;
   -moz-column-gap: 10px;
   column-gap: 10px;
-  width: 35em;
+  flex-grow: 1 0;
 }
 
 .geo_info_part {
@@ -271,7 +270,12 @@
 .info_button_Container {
   display: flex;
   flex-grow: 1 0;
-  justify-content: end;
+  justify-content: flex-end;
   -moz-column-gap: 10px;
   column-gap: 10px;
+}
+@media only screen and (max-width: 1000px) {
+  .settingContainer {
+    width: 40em;
+  }
 }

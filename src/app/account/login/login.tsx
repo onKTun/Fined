@@ -8,8 +8,8 @@ import { login } from "src/app/account/login/actions";
 
 export default function LoginForm() {
   return (
-    <div className={styles.inputWrapper}>
-      <form>
+    <div>
+      <form className={styles.inputWrapper}>
         <div className={styles.inputWrapper}>
           <p className={styles.subtitle}>Enter your username</p>
           <InputFieldPL type="email" name="email" id="email" />

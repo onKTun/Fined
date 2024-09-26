@@ -18,7 +18,6 @@ export default function ParentComponent(/*{ percent }: Props*/) {
       setSelectedUnit(null);
       setIsSwipeButtonSelected(false);
     } else {
-      console.log(unit);
       setSelectedUnit(unit);
       setIsSwipeButtonSelected(true);
     }
@@ -35,6 +34,7 @@ export default function ParentComponent(/*{ percent }: Props*/) {
             isSelected={selectedUnit === unitData.unit}
             onClick={() => handleUnitClick(unitData.unit)}
             topicsCovered={unitData.topicsCovered}
+            isLocked={unitData.isLocked}
           />
         ))}
       </div>

@@ -34,10 +34,13 @@
   background-repeat: repeat;
 }
 .completed {
+  transition: none;
   .text {
     color: var(--finedgreen);
   }
-  .icon {
-    background-image: url(/assets/status/complete.svg);
+}
+.inprogress {
+  .text {
+    color: var(--finedblue);
   }
 }

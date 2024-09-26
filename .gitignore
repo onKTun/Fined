@@ -47,5 +47,7 @@ dist
 # typescript
 *.tsbuildinfo
 next-env.d.tss
+.mp4
 
 
+public/videos/test2.mp4
