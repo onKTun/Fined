@@ -1,4 +1,5 @@
 .continueButton {
+  transition: all 0.3s var(--transition);
   background-color: rgba(255, 255, 255, 0.8);
   border: none;
   width: 8em;
@@ -18,6 +19,7 @@
   right: 1em;
 }
 .input {
+  transition: all 0.3s var(--transition);
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -32,21 +34,26 @@
     color: var(--black1);
   }
   &:focus {
+    transition: all 0.3s var(--transition);
     outline: none;
     background-color: rgba(255, 255, 255, 1);
   }
 }
 .offScreen {
+  transition: all 0.3s var(--transition);
   transform: translateX(-50em);
 }
 .onScreen {
+  transition: all 0.3s var(--transition);
   transform: translateX(0);
 }
 
 .offScreenOther {
+  transition: all 0.3s var(--transition);
   transform: translateX(50em);
 }
 .onScreenOther {
+  transition: all 0.3s var(--transition);
   transform: translateX(0);
 }
 .otherInput {

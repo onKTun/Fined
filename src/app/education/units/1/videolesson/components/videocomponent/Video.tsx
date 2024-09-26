@@ -128,7 +128,7 @@ export default function Video() {
     }
   };
   return (
-    <div className={styles.wrapper} style={{ display: "flex", width: "100%" }}>
+    <div className={styles.wrapper} style={{ display: "flex" }}>
       <div className={styles.videoWrapper}>
         <video
           src="/videos/test2.mp4"
@@ -253,9 +253,9 @@ export default function Video() {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   className={styles.svgFill}

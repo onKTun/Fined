@@ -7,9 +7,8 @@ import TypeSelector from "src/app/account/signup/components/typeSelection/TypeSe
 import { signup } from "src/app/account/login/actions";
 
 export default function SignUpForm() {
-
   return (
-    <form>
+    <form className={styles.inputWrapper}>
       <TypeSelector />
       <div className={styles.inputWrapper}>
         <p className={styles.subtitle}>Enter your email</p>

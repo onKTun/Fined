@@ -8,7 +8,7 @@ interface RootLayoutProps {
 }
 
 export const metadata = {
-  title: "Fin'ed",
+  title: "FIN'ED: Dashboard",
   description: "Web site created with Next.js.",
 };
 

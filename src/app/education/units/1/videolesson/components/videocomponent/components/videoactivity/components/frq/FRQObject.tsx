@@ -18,20 +18,12 @@ export default function FRQObject({ data, onClick }: Props) {
   };
 
   const handleSubmitAnim = () => {
-    console.log(isAnimating);
     setIsAnimating(true); // Trigger animation
   };
 
   useEffect(() => {
     if (isAnimating) {
       setDisplayOther(true);
-      const timer = setTimeout(() => {
-        setIsAnimating(false);
-        setDisplayOther(false);
-        onClick();
-      }, 5000);
-
-      return () => clearTimeout(timer); // Cleanup the timer if component unmounts
     }
   }, [isAnimating, onClick]);
   return (
@@ -114,6 +106,14 @@ export default function FRQObject({ data, onClick }: Props) {
             </div>
           ))}
         </div>
+        <button
+          className={`${styles.continueButton} ${
+            displayOther ? styles.submitted : ""
+          }`}
+          onClick={onClick}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );

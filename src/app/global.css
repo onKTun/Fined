@@ -17,6 +17,7 @@ body {
   --inputcolor: #f8f8f8;
   --inputborder: rgba(0, 0, 0, 0.05);
   --subtext: rgb(165, 165, 165);
+  --transition: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 p,
@@ -44,7 +45,6 @@ ul {
 }
 
 * {
-  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   font-family: "Inter Tight", sans-serif;
   text-decoration: none;
 }

@@ -1,19 +1,25 @@
 "use client";
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 // Define the shape of the context's value
 const SidebarContext = createContext({
-  isSidebarActive: true,
+  isSidebarActive: false,
   toggleSidebar: () => {},
 });
 
 // Provider component
 export const SidebarProvider = ({ children }) => {
-  const [isSidebarActive, setIsSidebarActive] = useState(true);
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
+  const pathname = usePathname();
 
   const toggleSidebar = () => {
     setIsSidebarActive((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    !isSidebarActive ? toggleSidebar() : {};
+  }, [pathname]);
 
   return (
     <SidebarContext.Provider value={{ isSidebarActive, toggleSidebar }}>

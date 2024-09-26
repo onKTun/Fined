@@ -1,6 +1,9 @@
+import { useState } from "react";
 import styles from "./additionalinformation.module.css";
 
 export default function AdditionalInformation() {
+  const [selectedSection, setSelectedSeciton] = useState(-1);
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.topHeader}>
@@ -15,27 +18,49 @@ export default function AdditionalInformation() {
               </svg>
             </div>
             <div className="header_text">
-              Summary and Transcript
+              Overview
               <div className={styles.header_subtext}>
                 Finish watching the video
               </div>
             </div>
           </div>
-          <button className={styles.infoButton} type="button">
-            2/6
-          </button>
         </div>
       </div>
-      <div className={styles.summaryWrapper}>
-        <p className={styles.p}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus,
-          corporis. Nemo maxime quasi, iste aliquid culpa in veritatis aliquam
-          ducimus. Ex dicta et recusandae sunt, voluptatibus itaque nostrum eius
-          enim deserunt, a quibusdam suscipit similique assumenda quod fuga
-          consequatur necessitatibus. Eius voluptatum, perferendis quod odit
-          repellendus hic incidunt consectetur, cupiditate, veritatis inventore
-          deleniti?
-        </p>
+      <div className={styles.content}>
+        <div className={styles.vocabContainer}>
+          <div className={styles.vocabContainer_top}>
+            <div className={styles.vocabContainer_topSVGWrapper}>
+              <img src="/assets/header/terms.svg" />
+            </div>
+            Terms in Video
+          </div>
+          <ul className={styles.termList}>
+            <h6 className={styles.term}>Finance</h6>
+            <h6 className={styles.term}>Taxes</h6>
+            <h6 className={styles.term}>Props</h6>
+            <h6 className={styles.term}>Money</h6>
+            <h6 className={styles.term}>Bills</h6>
+          </ul>
+        </div>
+        <div className={styles.vocabContainer}>
+          <div className={styles.vocabContainer_top}>
+            <div className={styles.vocabContainer_topSVGWrapper}>
+              <img src="/assets/header/terms.svg" />
+            </div>
+            Summary
+          </div>
+          <div className={styles.summaryWrapper}>
+            <p className={styles.p}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Accusamus, corporis. Nemo maxime quasi, iste aliquid culpa in
+              veritatis aliquam ducimus. Ex dicta et recusandae sunt,
+              voluptatibus itaque nostrum eius enim deserunt, a quibusdam
+              suscipit similique assumenda quod fuga consequatur necessitatibus.
+              Eius voluptatum, perferendis quod odit repellendus hic incidunt
+              consectetur, cupiditate, veritatis inventore deleniti?
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -9,3 +9,13 @@
   display: flex;
   justify-content: center;
 }
+@media only screen and (max-width: 1800px) {
+  .untiselection {
+    justify-content: center;
+    height: fit-content;
+  }
+  .svgC {
+    width: 19px;
+    height: 10z;
+  }
+}

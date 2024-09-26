@@ -84,12 +84,19 @@
 }
 
 .open {
+  transition: all 0.3s var(--transition);
   opacity: 1;
 }
 .closed {
+  transition: all 0.3s var(--transition);
   opacity: 0;
 }
 .videoWrapper {
   position: relative;
   height: 450px;
+}
+@media only screen and (max-width: 1280px) {
+  .wrapper {
+    width: 40em;
+  }
 }

@@ -1,37 +1,38 @@
 .checkboxContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxInput {
+  display: none;
+}
+
+.checkboxLabel {
+  transition: all 0.3s var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; /*Checkbox needs fixing */
+  height: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: relative;
+  &:hover {
     cursor: pointer;
-    user-select: none;
+  }
 }
-  
-.checkboxInput { 
-    display: none;
+
+.checkboxInput:checked + .checkboxLabel {
+  transition: all 0.3s var(--transition);
+  background-color: #3385ff;
+  border-color: transparent;
+  background-image: url(/assets/seen.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
-  
-  .checkboxLabel {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;  /*Checkbox needs fixing */
-    height: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px; 
-    position: relative; 
-    &:hover {
-        cursor: pointer;
-    }
-  }
-  
-  .checkboxInput:checked + .checkboxLabel {
-    background-color: #3385FF;
-    border-color: transparent;
-    background-image: url(/assets/seen.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  
-  .checkboxInput:checked + .checkboxLabel::after {
-    visibility: visible;
-  }
+
+.checkboxInput:checked + .checkboxLabel::after {
+  visibility: visible;
+}
