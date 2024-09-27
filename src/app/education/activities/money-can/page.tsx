@@ -1,37 +1,36 @@
-'use client'
+"use client";
 
-import { Stage,  Sprite } from '@pixi/react';
-import '@pixi/events';
-import ReactDOM from 'react-dom';
+import { useEffect, useRef } from "react";
+import { Application } from "pixi.js";
+import "@pixi/events";
 
+export default function MoneyCanActivity() {
+  //use ref used to maintain pure function and still persist value throughout multiple renders
+  const pixiApp = useRef<Application>(null);
 
-export default function MoneyCanActivity(){
-    const bunny = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/693612/IaUrttj.png";
-    let scale = { x: 1, y: 1 };
-    
-    return (
-    <Stage options={{ backgroundColor: 0x012b30 }}>
-    <Sprite
-      x={250}
-      y={250}
-      anchor={[0.5, 0.5]}
-      scale={scale}
-      image={bunny}
-      interactive={true}
-      pointerdown={() => {
-        console.log("click");
-        scale.x *= 1.25;
-        scale.y *= 1.25;
-
-        //render();
-      }}
-    />
-  </Stage>
-    );
-}
-
-function render() {
-    ReactDOM.render(<MoneyCanActivity/>, document.body);
+  if (pixiApp.current === null) {
+    pixiApp.current = new Application({
+      width: 800,
+      height: 600,
+      backgroundColor: 0x5bba6f,
+    });
   }
-  
-  render();
+
+  //reference to div
+  const pixiRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // On first render add app to DOM
+    pixiRef.current!.appendChild(pixiApp.current!.view as HTMLCanvasElement);
+
+    // Start the PixiJS app
+    pixiApp.current!.start();
+
+    return () => {
+      // On unload stop the application
+      pixiApp.current!.stop();
+    };
+  }, []);
+
+  return <div ref={pixiRef}></div>;
+}
