@@ -1,4 +1,4 @@
-"use client"
+"use client";
 //import { ButtonHTMLAttributes } from "react";
 import styles from "./button.module.css";
 interface Props {
@@ -19,11 +19,9 @@ export default function Button({
   ftSize = 1,
   heightWidth = { width: "fit-content", height: "fit-content" },
 }: Props) {
-  
-
-    if(type === "submit"){
-
-      return( <button 
+  if (type === "submit") {
+    return (
+      <button
         onClick={onClick}
         type="submit"
         formAction={formAction}
@@ -35,21 +33,22 @@ export default function Button({
         }}
       >
         {text}
-      </button>);
-    }
+      </button>
+    );
+  }
 
-return( <button 
-  onClick={onClick}
-  type={type}
-  className={`${styles.wrapper} ${styles[style]}`}
-  style={{
-    fontSize: `${ftSize}rem`,
-    width: heightWidth.width,
-    height: heightWidth.height,
-  }}
->
-  {text}
-</button>);
-   
-  
+  return (
+    <button
+      onClick={onClick}
+      type={type}
+      className={`${styles.wrapper} ${styles[style]}`}
+      style={{
+        fontSize: `${ftSize}rem`,
+        width: heightWidth.width,
+        height: heightWidth.height,
+      }}
+    >
+      {text}
+    </button>
+  );
 }

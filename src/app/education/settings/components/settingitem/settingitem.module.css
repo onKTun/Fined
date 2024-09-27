@@ -26,3 +26,8 @@
   width: 40em;
   color: var(--subtext);
 }
+@media only screen and (max-width: 1000px) {
+  .description {
+    width: 30em;
+  }
+}

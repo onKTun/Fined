@@ -11,6 +11,7 @@ export default function InputField({ placeholder, isSensitive }: Props) {
         type={isSensitive ? "password" : "text"}
         className={styles.wrapper}
         value={placeholder}
+        onChange={() => {}}
       />
     </>
   );

@@ -57,15 +57,29 @@ export default function Settings() {
             }
           />{" "}
           <SettingItem
-            svgPath={"/assets/settingIcons/contrast.svg"}
-            title={"High Contrast Mode"}
+            svgPath={"/assets/settingIcons/animation.svg"}
+            title={"Stop Playing Animations"}
             desc={
-              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
+              "Great for those who have motion sickness; Makes all the animations static"
             }
           />{" "}
           <SettingItem
+            svgPath={"/assets/settingIcons/mute.svg"}
+            title={"Mute Video in Videos"}
+            desc={
+              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
+            }
+          />
+          <SettingItem
+            svgPath={"/assets/settingIcons/cc.svg"}
+            title={"Show Caption in Videos"}
+            desc={
+              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
+            }
+          />
+          <SettingItem
             svgPath={"/assets/settingIcons/contrast.svg"}
-            title={"High Contrast Mode"}
+            title={"Remove Colors From Videos"}
             desc={
               "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
             }

@@ -1,9 +1,5 @@
-.container {
-  width: 18em;
-  height: fit-content;
-  background-color: rebeccapurple;
-}
 .wrapper {
+  transition: all 0.3s var(--transition);
   position: relative;
   background-color: white;
   width: 18em;
@@ -12,7 +8,7 @@
   justify-content: space-between;
   flex-direction: column;
   border-radius: 10px;
-  padding: 50px 20px 20px 20px;
+  padding: 55px 20px 20px 20px;
   box-sizing: border-box;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05),
     0 0 20px rgba(255, 255, 255, 0.3);
@@ -21,10 +17,11 @@
   }
 }
 .unselected {
+  transition: all 0.3s var(--transition);
   height: 23em;
-  opacity: 0.5;
+  opacity: 0.8;
   &:hover {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 }
 .unitTitle {
@@ -65,13 +62,14 @@
 
 .topIndicator {
   position: absolute;
-  right: -1.5em;
-  top: 1.6em;
+  right: 1.5em;
+  top: 1.3em;
   display: flex;
   align-items: center;
   column-gap: 6px;
-  width: 10em;
-  height: 1em;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.1rem;
   &::before {
     position: relative;
     content: "";
@@ -79,9 +77,6 @@
     height: 1.3em;
     background-repeat: no-repeat;
     background-size: cover;
-    &::after {
-      font-size: 1.1rem;
-    }
   }
 }
 
@@ -110,6 +105,26 @@
   &::after {
     content: "In Progress";
     color: var(--finedblue);
+  }
+}
+.locked {
+  column-gap: 4px;
+  &::before {
+    background-image: url(/assets/status/locked.svg);
+  }
+  &::after {
+    content: "Not Released";
+    color: gray;
+  }
+}
+.lockedWrapper {
+  opacity: 0.4;
+  &:hover {
+    cursor: default;
+    opacity: 0.4;
+  }
+  .unitTitle {
+    background-color: rgb(168, 168, 168);
   }
 }
 
@@ -158,5 +173,34 @@
   color: gray;
   &::before {
     background-image: url(/assets/status/notstarted.svg);
+  }
+}
+@media only screen and (max-width: 1200px), (max-height: 800px) {
+  .wrapper {
+    height: 21em;
+    width: 15em;
+  }
+  .unselected {
+    height: 20em;
+  }
+  .unitTitle {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+  .topIndicator {
+    font-size: 1rem;
+  }
+  .topic {
+    font-size: 0.3rem;
+  }
+  .topicDefault {
+    font-size: 1rem;
+  }
+  .topicsCovered {
+    font-size: 0.3rem;
+    &::before {
+      width: 0.9em;
+      height: 0.9em;
+    }
   }
 }
