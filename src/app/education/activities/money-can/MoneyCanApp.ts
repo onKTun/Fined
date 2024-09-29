@@ -89,28 +89,32 @@ function propagateCards(jsonData: object) {
 
   for (const card in cardsArray) {
     //container for whole card
-    const container = new Container();
-    container.x = (pixiApp.screen.width - cardDimensions.width) / 2;
-    container.y = 80;
-    pixiApp.stage.addChild(container);
+    const cardContainer = new Container();
+    cardContainer.pivot.set(
+      cardDimensions.width / 2,
+      cardDimensions.height / 2
+    );
+    cardContainer.x = pixiApp.screen.width / 2;
+    cardContainer.y = 217.5;
+    pixiApp.stage.addChild(cardContainer);
 
     //card graphics
-    const card = new Graphics();
-    card.beginFill("ffffff");
-    card.drawShape(cardShape);
-    container.addChild(card);
+    const cardGraphics = new Graphics();
+    cardGraphics.beginFill("ffffff");
+    cardGraphics.drawShape(cardShape);
+    cardContainer.addChild(cardGraphics);
 
     //description text
-    const text = new Text(cardsArray[0]["description"], fontStyle);
+    const text = new Text(cardsArray[card]["description"], fontStyle);
     text.anchor.set(0.5);
     text.x = cardDimensions.width / 2;
     text.y = cardDimensions.height / 2;
-    container.addChild(text);
+    cardContainer.addChild(text);
 
-    card.eventMode = "static";
-    card.on("pointerdown", onDragStart, card);
-
-    console.log(card.isInteractive());
+    //card interactivity
+    cardContainer.eventMode = "static";
+    cardContainer.on("pointerdown", onDragStart, cardContainer);
+    cardContainer.cursor = "pointer";
   }
 }
 
@@ -132,65 +136,92 @@ function onDragStart() {
 function onDragEnd() {
   if (dragTarget) {
     pixiApp.stage.off("pointermove", onDragMove);
-    dragTarget.alpha = 1;
+    dragTarget.alpha = 1; //opacity
     //dragTarget = null;
   }
 }
 
 /*
+import * as PIXI from 'pixi.js';
 
-    function createBunny(x, y)
+const app = new PIXI.Application({ background: '#1099bb', resizeTo: window });
+
+document.body.appendChild(app.view);
+
+// create a texture from an image path
+const texture = PIXI.Texture.from('https://pixijs.com/assets/bunny.png');
+
+// Scale mode for pixelation
+texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+
+for (let i = 0; i < 10; i++)
+{
+    createBunny(Math.floor(Math.random() * app.screen.width), Math.floor(Math.random() * app.screen.height));
+}
+
+function createBunny(x, y)
+{
+    // create our little bunny friend..
+    const bunny = new PIXI.Sprite(texture);
+
+    // enable the bunny to be interactive... this will allow it to respond to mouse and touch events
+    bunny.eventMode = 'static';
+
+    // this button mode will mean the hand cursor appears when you roll over the bunny with your mouse
+    bunny.cursor = 'pointer';
+
+    // center the bunny's anchor point
+    bunny.anchor.set(0.5);
+
+    // make it a bit bigger, so it's easier to grab
+    bunny.scale.set(3);
+
+    // setup events for mouse + touch using
+    // the pointer events
+    bunny.on('pointerdown', onDragStart, bunny);
+
+    // move the sprite to its designated position
+    bunny.x = x;
+    bunny.y = y;
+
+    // add it to the stage
+    app.stage.addChild(bunny);
+}
+
+let dragTarget = null;
+
+app.stage.eventMode = 'static';
+app.stage.hitArea = app.screen;
+app.stage.on('pointerup', onDragEnd);
+app.stage.on('pointerupoutside', onDragEnd);
+
+function onDragMove(event)
+{
+    if (dragTarget)
     {
-        // Create our little bunny friend..
-        const bunny = new Sprite(texture);
-
-        // Enable the bunny to be interactive... this will allow it to respond to mouse and touch events
-        bunny.eventMode = 'static';
-
-        // This button mode will mean the hand cursor appears when you roll over the bunny with your mouse
-        bunny.cursor = 'pointer';
-
-        // Center the bunny's anchor point
-        bunny.anchor.set(0.5);
-
-        // Setup events for mouse + touch using the pointer events
-        bunny.on('pointerdown', onDragStart, bunny);
+        dragTarget.parent.toLocal(event.global, null, dragTarget.position);
     }
+}
 
-    let dragTarget = null;
+function onDragStart()
+{
+    // store a reference to the data
+    // the reason for this is because of multitouch
+    // we want to track the movement of this particular touch
+    // this.data = event.data;
+    this.alpha = 0.5;
+    dragTarget = this;
+    app.stage.on('pointermove', onDragMove);
+}
 
-    app.stage.eventMode = 'static';
-    app.stage.hitArea = app.screen;
-    app.stage.on('pointerup', onDragEnd);
-    app.stage.on('pointerupoutside', onDragEnd);
-
-    function onDragMove(event)
+function onDragEnd()
+{
+    if (dragTarget)
     {
-        if (dragTarget)
-        {
-            dragTarget.parent.toLocal(event.global, null, dragTarget.position);
-        }
+        app.stage.off('pointermove', onDragMove);
+        dragTarget.alpha = 1;
+        dragTarget = null;
     }
-
-    function onDragStart()
-    {
-        // Store a reference to the data
-        // * The reason for this is because of multitouch *
-        // * We want to track the movement of this particular touch *
-        this.alpha = 0.5;
-        dragTarget = this;
-        app.stage.on('pointermove', onDragMove);
-    }
-
-    function onDragEnd()
-    {
-        if (dragTarget)
-        {
-            app.stage.off('pointermove', onDragMove);
-            dragTarget.alpha = 1;
-            dragTarget = null;
-        }
-    }
-})();
+}
 
 */
