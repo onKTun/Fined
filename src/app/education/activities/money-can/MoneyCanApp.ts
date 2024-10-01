@@ -13,9 +13,13 @@ import {
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
-
-let dragTarget: DisplayObject;
+let dragTarget: DisplayObject | null;
 let pixiApp: Application;
+
+let cardBankContainer: Container;
+let correctContainer: Container;
+let wrongContainer: Container;
+
 const fontStyle = new TextStyle({
   fontFamily: "Helvetica",
   fontSize: 16,
@@ -40,35 +44,64 @@ function setup() {
   background.height = pixiApp.screen.height;
   pixiApp.stage.addChild(background);
 
+  //initialize containers
+  cardBankContainer = new Container();
+  cardBankContainer.pivot.set(
+    cardDimensions.width / 2,
+    cardDimensions.height / 2
+  );
+  cardBankContainer.x = pixiApp.screen.width / 2;
+  cardBankContainer.y = 217.5;
+  correctContainer = new Container();
+  correctContainer.pivot.set(
+    cardDimensions.width / 2,
+    cardDimensions.height / 2
+  );
+  correctContainer.x = pixiApp.screen.width / 4;
+  correctContainer.y = 487.5;
+  wrongContainer = new Container();
+  wrongContainer.pivot.set(cardDimensions.width / 2, cardDimensions.height / 2);
+  wrongContainer.x = pixiApp.screen.width - pixiApp.screen.width / 4;
+  wrongContainer.y = 487.5;
+
   //graphics for card regions
-  let cardRegion = new Graphics();
-  cardRegion.lineStyle(2, "ffffff");
-  cardRegion.drawRoundedRect(
-    (pixiApp.screen.width - cardDimensions.width) / 2,
-    80,
+  let cardBankGraphics = new Graphics();
+  cardBankGraphics.lineStyle(2, "ffffff");
+  cardBankGraphics.drawRoundedRect(
+    0,
+    0,
     cardDimensions.width,
     cardDimensions.height,
     cardDimensions.radius
   ); //card bank
-  cardRegion.drawRoundedRect(
-    (pixiApp.screen.width - 2 * cardDimensions.width) / 4,
-    350,
-    cardDimensions.width,
-    cardDimensions.height,
-    cardDimensions.radius
-  ); //left
-  cardRegion.drawRoundedRect(
-    pixiApp.screen.width -
-      ((pixiApp.screen.width - 2 * cardDimensions.width) / 4 +
-        cardDimensions.width),
-    350,
+
+  let cardAnswerGraphicsRight = new Graphics();
+  cardAnswerGraphicsRight.lineStyle(2, "ffffff");
+  cardAnswerGraphicsRight.drawRoundedRect(
+    0,
+    0,
     cardDimensions.width,
     cardDimensions.height,
     cardDimensions.radius
   ); //right
 
+  let cardAnswerGraphicsWrong = new Graphics();
+  cardAnswerGraphicsWrong.lineStyle(2, "ffffff");
+  cardAnswerGraphicsWrong.drawRoundedRect(
+    0,
+    0,
+    cardDimensions.width,
+    cardDimensions.height,
+    cardDimensions.radius
+  ); //left
+
+  // Add card graphics to containers
+  cardBankContainer.addChild(cardBankGraphics);
+  correctContainer.addChild(cardAnswerGraphicsRight);
+  wrongContainer.addChild(cardAnswerGraphicsWrong);
+
   // Add it to the stage to render
-  pixiApp.stage.addChild(cardRegion);
+  pixiApp.stage.addChild(cardBankContainer, correctContainer, wrongContainer);
 
   pixiApp.stage.eventMode = "static";
   pixiApp.stage.hitArea = pixiApp.screen;
@@ -137,91 +170,43 @@ function onDragEnd() {
   if (dragTarget) {
     pixiApp.stage.off("pointermove", onDragMove);
     dragTarget.alpha = 1; //opacity
-    //dragTarget = null;
+
+    if (
+      !isOverlapping(dragTarget, correctContainer) &&
+      !isOverlapping(dragTarget, wrongContainer)
+    ) {
+      dragTarget.x = pixiApp.screen.width / 2;
+      dragTarget.y = 217.5;
+    }
+
+    console.log(isOverlapping(dragTarget, correctContainer));
+    dragTarget = null;
   }
 }
 
-/*
-import * as PIXI from 'pixi.js';
+function isOverlapping(
+  object1: DisplayObject,
+  object2: DisplayObject
+): boolean {
+  /*
+  Recalculates the bounds of the container.
+  This implementation will automatically fit the children's bounds into the calculation. Each child's bounds is limited to its mask's bounds or filterArea, if any is applied.
+  */
+  object1.calculateBounds();
+  object2.calculateBounds();
 
-const app = new PIXI.Application({ background: '#1099bb', resizeTo: window });
+  if (
+    object1._bounds.maxX < object2._bounds.minX ||
+    object2._bounds.maxX < object1._bounds.minX
+  ) {
+    return false;
+  }
+  if (
+    object1._bounds.maxY < object2._bounds.minY ||
+    object2._bounds.maxY < object1._bounds.minY
+  ) {
+    return false;
+  }
 
-document.body.appendChild(app.view);
-
-// create a texture from an image path
-const texture = PIXI.Texture.from('https://pixijs.com/assets/bunny.png');
-
-// Scale mode for pixelation
-texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
-
-for (let i = 0; i < 10; i++)
-{
-    createBunny(Math.floor(Math.random() * app.screen.width), Math.floor(Math.random() * app.screen.height));
+  return true;
 }
-
-function createBunny(x, y)
-{
-    // create our little bunny friend..
-    const bunny = new PIXI.Sprite(texture);
-
-    // enable the bunny to be interactive... this will allow it to respond to mouse and touch events
-    bunny.eventMode = 'static';
-
-    // this button mode will mean the hand cursor appears when you roll over the bunny with your mouse
-    bunny.cursor = 'pointer';
-
-    // center the bunny's anchor point
-    bunny.anchor.set(0.5);
-
-    // make it a bit bigger, so it's easier to grab
-    bunny.scale.set(3);
-
-    // setup events for mouse + touch using
-    // the pointer events
-    bunny.on('pointerdown', onDragStart, bunny);
-
-    // move the sprite to its designated position
-    bunny.x = x;
-    bunny.y = y;
-
-    // add it to the stage
-    app.stage.addChild(bunny);
-}
-
-let dragTarget = null;
-
-app.stage.eventMode = 'static';
-app.stage.hitArea = app.screen;
-app.stage.on('pointerup', onDragEnd);
-app.stage.on('pointerupoutside', onDragEnd);
-
-function onDragMove(event)
-{
-    if (dragTarget)
-    {
-        dragTarget.parent.toLocal(event.global, null, dragTarget.position);
-    }
-}
-
-function onDragStart()
-{
-    // store a reference to the data
-    // the reason for this is because of multitouch
-    // we want to track the movement of this particular touch
-    // this.data = event.data;
-    this.alpha = 0.5;
-    dragTarget = this;
-    app.stage.on('pointermove', onDragMove);
-}
-
-function onDragEnd()
-{
-    if (dragTarget)
-    {
-        app.stage.off('pointermove', onDragMove);
-        dragTarget.alpha = 1;
-        dragTarget = null;
-    }
-}
-
-*/
