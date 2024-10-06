@@ -11,17 +11,19 @@ import {
   DisplayObject,
 } from "pixi.js";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
+import CardObject from "utils/pixiJS/CardObject";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
-let dragTarget: DisplayObject | null;
+let dragTarget: CardObject | null;
 let pixiApp: Application;
 
 let cardBankContainer: Container;
 let correctContainer: Container;
 let wrongContainer: Container;
 
-const fontStyle = new TextStyle({
+const whiteTextStyle = new TextStyle({
   fontFamily: "Helvetica",
+  fill: "#ffffff",
   fontSize: 16,
   wordWrap: true,
   wordWrapWidth: cardDimensions.width - 10,
@@ -67,6 +69,7 @@ function setup() {
   //graphics for card regions
   let cardBankGraphics = new Graphics();
   cardBankGraphics.lineStyle(2, "ffffff");
+  cardBankGraphics.beginFill("63A4FF");
   cardBankGraphics.drawRoundedRect(
     0,
     0,
@@ -75,9 +78,10 @@ function setup() {
     cardDimensions.radius
   ); //card bank
 
-  let cardAnswerGraphicsRight = new Graphics();
-  cardAnswerGraphicsRight.lineStyle(2, "ffffff");
-  cardAnswerGraphicsRight.drawRoundedRect(
+  let cardAnswerGraphicsTrue = new Graphics();
+  cardAnswerGraphicsTrue.lineStyle(2, "ffffff");
+  cardAnswerGraphicsTrue.beginFill("63A4FF");
+  cardAnswerGraphicsTrue.drawRoundedRect(
     0,
     0,
     cardDimensions.width,
@@ -87,6 +91,7 @@ function setup() {
 
   let cardAnswerGraphicsWrong = new Graphics();
   cardAnswerGraphicsWrong.lineStyle(2, "ffffff");
+  cardAnswerGraphicsWrong.beginFill("63A4FF");
   cardAnswerGraphicsWrong.drawRoundedRect(
     0,
     0,
@@ -95,10 +100,21 @@ function setup() {
     cardDimensions.radius
   ); //left
 
-  // Add card graphics to containers
+  //container texts
+  const containerTrueText = new Text("Money Can", whiteTextStyle);
+  containerTrueText.anchor.set(0.5);
+  containerTrueText.x = cardDimensions.width / 2;
+  containerTrueText.y = cardDimensions.height / 2;
+
+  const containerWrongText = new Text("Money Can Not", whiteTextStyle);
+  containerWrongText.anchor.set(0.5);
+  containerWrongText.x = cardDimensions.width / 2;
+  containerWrongText.y = cardDimensions.height / 2;
+
+  // Add card components to containers
   cardBankContainer.addChild(cardBankGraphics);
-  correctContainer.addChild(cardAnswerGraphicsRight);
-  wrongContainer.addChild(cardAnswerGraphicsWrong);
+  correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText);
+  wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText);
 
   // Add it to the stage to render
   pixiApp.stage.addChild(cardBankContainer, correctContainer, wrongContainer);
@@ -110,50 +126,29 @@ function setup() {
 }
 
 function propagateCards(jsonData: object) {
-  const cardShape = new RoundedRectangle(
-    0,
-    0,
-    cardDimensions.width,
-    cardDimensions.height,
-    cardDimensions.radius
-  );
-
   const cardsArray = jsonData["cardsArray"];
 
   for (const card in cardsArray) {
-    //container for whole card
-    const cardContainer = new Container();
-    cardContainer.pivot.set(
-      cardDimensions.width / 2,
-      cardDimensions.height / 2
+    const cardObject = new CardObject(
+      cardsArray[card]["description"],
+      cardsArray[card]["answer"],
+      cardDimensions
     );
-    cardContainer.x = pixiApp.screen.width / 2;
-    cardContainer.y = 217.5;
-    pixiApp.stage.addChild(cardContainer);
+    cardObject.cardContainer.x = pixiApp.screen.width / 2;
+    cardObject.cardContainer.y = 217.5;
+    pixiApp.stage.addChild(cardObject.cardContainer);
 
-    //card graphics
-    const cardGraphics = new Graphics();
-    cardGraphics.beginFill("ffffff");
-    cardGraphics.drawShape(cardShape);
-    cardContainer.addChild(cardGraphics);
-
-    //description text
-    const text = new Text(cardsArray[card]["description"], fontStyle);
-    text.anchor.set(0.5);
-    text.x = cardDimensions.width / 2;
-    text.y = cardDimensions.height / 2;
-    cardContainer.addChild(text);
-
-    //card interactivity
-    cardContainer.eventMode = "static";
-    cardContainer.on("pointerdown", onDragStart, cardContainer);
-    cardContainer.cursor = "pointer";
+    cardObject.cardContainer.on("pointerdown", onDragStart, cardObject);
   }
 }
 
 function onDragMove(event) {
   if (dragTarget) {
-    dragTarget.parent.toLocal(event.global, pixiApp.stage, dragTarget.position);
+    dragTarget.cardContainer.parent.toLocal(
+      event.global,
+      pixiApp.stage,
+      dragTarget.cardContainer.position
+    );
   }
 }
 
@@ -169,17 +164,38 @@ function onDragStart() {
 function onDragEnd() {
   if (dragTarget) {
     pixiApp.stage.off("pointermove", onDragMove);
-    dragTarget.alpha = 1; //opacity
+    dragTarget.cardContainer.alpha = 1; //opacity
 
-    if (
-      getOverlapPercent(dragTarget, correctContainer) < 0.5 &&
-      getOverlapPercent(dragTarget, wrongContainer) < 0.5
+    //check answer + detect overlap
+    //correct container scenario
+    if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
+      if (dragTarget.answer) {
+        dragTarget.cardContainer.off("pointerdown", onDragStart);
+        dragTarget.cardContainer.x = pixiApp.screen.width / 4;
+        dragTarget.cardContainer.y = 487.5;
+      } else {
+        dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+        dragTarget.cardContainer.y = 217.5;
+      }
+    }
+    //wrong container scenario
+    else if (
+      getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3
     ) {
-      dragTarget.x = pixiApp.screen.width / 2;
-      dragTarget.y = 217.5;
+      if (!dragTarget.answer) {
+        dragTarget.cardContainer.off("pointerdown", onDragStart);
+        dragTarget.cardContainer.x =
+          pixiApp.screen.width - pixiApp.screen.width / 4;
+        dragTarget.cardContainer.y = 487.5;
+      } else {
+        dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+        dragTarget.cardContainer.y = 217.5;
+      }
+    } else {
+      dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+      dragTarget.cardContainer.y = 217.5;
     }
 
-    console.log(isColliding(dragTarget, correctContainer));
     dragTarget = null;
   }
 }
