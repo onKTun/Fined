@@ -1,11 +1,11 @@
 // UnitSelector.tsx
 "use client";
-import { useMemo } from "react";
+//import { useMemo } from "react";
 import ParentComponent from "./components/parentcomponent/ParentComponent";
 import styles from "./unitselector.module.css";
 
 export default function UnitSelector() {
-  const percentValues = useMemo(() => [100, 24, 0, 0], []);
+  //const percentValues = useMemo(() => [100, 24, 0, 0], []);
   return (
     <div className={styles.wrapper}>
       <div className={styles.bannerContainer}>
@@ -25,7 +25,7 @@ export default function UnitSelector() {
           </p>
         </div>
         <div className={styles.bannerBottom}>
-          <ParentComponent percent={percentValues} />
+          <ParentComponent />
         </div>
       </div>
     </div>
