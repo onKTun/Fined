@@ -1,4 +1,4 @@
-import React, { act, useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "src/components/button/Button";
 import ProgressBar from "src/components/progress/ProgressBar";
 import VideoActivityItem from "../videoactivityitem/VideoActivityItem";

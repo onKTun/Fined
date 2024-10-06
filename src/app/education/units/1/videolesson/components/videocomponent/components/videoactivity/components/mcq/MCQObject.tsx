@@ -1,10 +1,17 @@
-import styles from "./mcq.module.css";
+/*import styles from "./mcq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useState } from "react";
 //import ProgressBar from "src/components/progress/ProgressBar";
 
+type JSONValue =
+    | string
+    | number
+    | boolean
+    | { [x: string]: JSONValue }
+    | Array<JSONValue>;
+
 interface Props {
-  data: any;
+  data: JSONValue;
   onClick: () => void;
 }
 
@@ -129,7 +136,7 @@ export default function MCQObject({ data, onClick }: Props) {
             </button>
           ))}
         </div>
-        {/*Selected Button */}
+        {/*Selected Button }
         <button
           className={`${otherStyles.continueButton} ${
             (selectedOption === -1 || cooldown) && !isCorrect
@@ -230,3 +237,4 @@ export default function MCQObject({ data, onClick }: Props) {
     </div>
   );
 }
+*/

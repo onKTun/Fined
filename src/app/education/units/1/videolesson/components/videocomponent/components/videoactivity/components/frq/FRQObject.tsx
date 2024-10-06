@@ -1,9 +1,16 @@
-import styles from "./frq.module.css";
+/*import styles from "./frq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useState } from "react";
 
+type JSONValue =
+    | string
+    | number
+    | boolean
+    | { [x: string]: JSONValue }
+    | Array<JSONValue>;
+
 interface Props {
-  data: any;
+  data: JSONValue;
   onClick: () => void;
 }
 
@@ -118,3 +125,4 @@ export default function FRQObject({ data, onClick }: Props) {
     </div>
   );
 }
+*/

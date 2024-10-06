@@ -1,4 +1,4 @@
-import { useState } from "react";
+//import { useState } from "react";
 import styles from "./additionalinformation.module.css";
 
 export default function AdditionalInformation() {
