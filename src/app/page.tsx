@@ -5,7 +5,7 @@ import SignOutButton from "src/app/signouttest";
 export default function SiteMap() {
   return (
     <div className={styles.left}>
-      <p>Temp Sitemap</p>
+      <p>Temporary Sitemap for Development...</p>
       <Link href="/account/login" className="highlightedText">
         Login
       </Link>
@@ -18,8 +18,10 @@ export default function SiteMap() {
       <Link href="/education/dashboard" className="highlightedText">
         Dashboard
       </Link>
+      <Link href="/education/activities/money-can" className="highlightedText">
+        Money-can activity
+      </Link>
       <SignOutButton></SignOutButton>
-       
     </div>
   );
 }
