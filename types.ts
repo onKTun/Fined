@@ -8,7 +8,7 @@ type JSONArray = Array<JSONValue>;
 
 /*
 example implementation:
-function printJSON(jsonData: object) {
+function printJSON(jsonData: JSONValue) {
   for (let key in jsonData) {
     console.log(key);
     console.log(jsonData[key]);

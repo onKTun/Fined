@@ -1,10 +1,8 @@
-import testData from "src/data/moneycan.json";
 import {
   Application,
   Sprite,
   Texture,
   Graphics,
-  RoundedRectangle,
   Container,
   Text,
   TextStyle,
@@ -21,6 +19,10 @@ let cardBankContainer: Container;
 let correctContainer: Container;
 let wrongContainer: Container;
 
+let cardsRemainingText: Text;
+
+let cardsLeft: number;
+
 const whiteTextStyle = new TextStyle({
   fontFamily: "Helvetica",
   fill: "#ffffff",
@@ -30,10 +32,13 @@ const whiteTextStyle = new TextStyle({
   align: "center",
 });
 
-export default function moneyCanScript(app: Application) {
+export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp = app;
   setup();
-  propagateCards(testData);
+
+  //TODO implement data loading
+  propagateCards(data);
+
   //main update loop
   pixiApp.ticker.add(() => {});
 }
@@ -45,6 +50,47 @@ function setup() {
   background.width = pixiApp.screen.width;
   background.height = pixiApp.screen.height;
   pixiApp.stage.addChild(background);
+
+  //cards left
+  const scoreBoxDimensions = {
+    width: 170,
+    height: 30,
+    x: 100,
+    y: 50,
+    radius: 15,
+  };
+  const cardsRemainingContainer = new Container();
+  const cardsRemainingGraphics = new Graphics();
+  cardsRemainingGraphics.pivot.set(
+    scoreBoxDimensions.width / 2,
+    scoreBoxDimensions.height / 2
+  );
+  cardsRemainingGraphics.beginFill("ffffff");
+  cardsRemainingGraphics.drawRoundedRect(
+    scoreBoxDimensions.x,
+    scoreBoxDimensions.y,
+    scoreBoxDimensions.width,
+    scoreBoxDimensions.height,
+    scoreBoxDimensions.radius
+  );
+  cardsRemainingText = new Text(
+    "0 Cards Remaining",
+    new TextStyle({
+      fontFamily: "Helvetica",
+      fontSize: 16,
+      wordWrap: true,
+      wordWrapWidth: scoreBoxDimensions.width,
+      align: "right",
+    })
+  );
+
+  cardsRemainingText.pivot.set(
+    scoreBoxDimensions.width / 2,
+    scoreBoxDimensions.height / 2
+  );
+  cardsRemainingText.x = scoreBoxDimensions.x + 7;
+  cardsRemainingText.y = scoreBoxDimensions.y + 5;
+  cardsRemainingContainer.addChild(cardsRemainingGraphics, cardsRemainingText);
 
   //initialize containers
   cardBankContainer = new Container();
@@ -117,7 +163,12 @@ function setup() {
   wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText);
 
   // Add it to the stage to render
-  pixiApp.stage.addChild(cardBankContainer, correctContainer, wrongContainer);
+  pixiApp.stage.addChild(
+    cardBankContainer,
+    correctContainer,
+    wrongContainer,
+    cardsRemainingContainer
+  );
 
   pixiApp.stage.eventMode = "static";
   pixiApp.stage.hitArea = pixiApp.screen;
@@ -125,9 +176,10 @@ function setup() {
   pixiApp.stage.on("pointerupoutside", onDragEnd);
 }
 
-function propagateCards(jsonData: object) {
-  const cardsArray = jsonData["cardsArray"];
-
+function propagateCards(jsonData: JSONValue) {
+  const cardsArray: JSONArray = jsonData["cardsArray"];
+  cardsLeft = cardsArray.length;
+  cardsRemainingText.text = cardsLeft + " Cards Remaining";
   for (const card in cardsArray) {
     const cardObject = new CardObject(
       cardsArray[card]["description"],
@@ -165,7 +217,8 @@ function onDragEnd() {
   if (dragTarget) {
     pixiApp.stage.off("pointermove", onDragMove);
     dragTarget.cardContainer.alpha = 1; //opacity
-
+    cardsLeft--;
+    cardsRemainingText.text = cardsLeft + " Cards Remaining";
     //check answer + detect overlap
     //correct container scenario
     if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {

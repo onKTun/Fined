@@ -4,15 +4,16 @@ import { useEffect } from "react";
 import { Application, ICanvas } from "pixi.js";
 
 interface Props {
-  run: (app: Application) => void;
+  run: (app: Application, data?: JSONValue) => void;
+  data?: JSONValue;
 }
 
-export default function PixiApp({ run }: Props) {
+export default function PixiApp({ run, data }: Props) {
   let app = useApp();
 
   useEffect(() => {
     app.stage.removeChildren();
-    run(app);
+    run(app, data);
   }, [app]);
 
   return <></>;
