@@ -86,7 +86,6 @@ export default class Timer extends PIXI.utils.EventEmitter {
       this._elapsedTime = ended ? this.time : t;
       this.emit("update", this._elapsedTime, delta);
 
-      //console.log(t);
       if (ended) {
         if (this.loop || this.repeat > this._repeat) {
           this._repeat++;

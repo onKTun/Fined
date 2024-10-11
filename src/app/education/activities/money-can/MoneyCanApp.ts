@@ -50,7 +50,7 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   timer.loop = true;
 
   timer.on("start", function (elapsed) {
-    console.log("start timer");
+    console.log("timer started");
   });
   timer.on("repeat", function (elapsed, repeat) {
     updateTime(repeat);
@@ -286,8 +286,6 @@ function onDragEnd() {
         dragTarget.cardContainer.y = 487.5;
 
         const card = cardBank.pop();
-
-        console.log(card?.description);
       } else {
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
@@ -307,7 +305,6 @@ function onDragEnd() {
         dragTarget.cardContainer.y = 487.5;
 
         const card = cardBank.pop();
-        console.log(card?.description);
       } else {
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
@@ -384,6 +381,6 @@ function updateTime(timeElapsed) {
 }
 
 function endGame() {
-  console.log("end game called");
+  console.log("End game called");
   timer.stop();
 }
