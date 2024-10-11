@@ -8,6 +8,8 @@ import {
   TextStyle,
   DisplayObject,
 } from "pixi.js";
+import TimerManager from "utils/pixiJS/time utils/TimerManager";
+import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "utils/pixiJS/CardObject";
 
@@ -15,13 +17,16 @@ const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
 let pixiApp: Application;
 
+let cardBank: CardObject[];
+
 let cardBankContainer: Container;
 let correctContainer: Container;
 let wrongContainer: Container;
 
 let cardsRemainingText: Text;
-
 let cardsLeft: number;
+let timeText: Text;
+let timer: Timer;
 
 const whiteTextStyle = new TextStyle({
   fontFamily: "Helvetica",
@@ -39,8 +44,24 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   //TODO implement data loading
   propagateCards(data);
 
+  const timerManager = new TimerManager();
+  timer = timerManager.createTimer(1000);
+
+  timer.loop = true;
+
+  timer.on("start", function (elapsed) {
+    console.log("start timer");
+  });
+  timer.on("repeat", function (elapsed, repeat) {
+    updateTime(repeat);
+  });
+
+  timer.start();
+
   //main update loop
-  pixiApp.ticker.add(() => {});
+  pixiApp.ticker.add(() => {
+    timerManager.update();
+  });
 }
 
 function setup() {
@@ -91,6 +112,40 @@ function setup() {
   cardsRemainingText.x = scoreBoxDimensions.x + 7;
   cardsRemainingText.y = scoreBoxDimensions.y + 5;
   cardsRemainingContainer.addChild(cardsRemainingGraphics, cardsRemainingText);
+
+  //timer
+  const timeContainer = new Container();
+  const timeBoxGraphics = new Graphics();
+  timeBoxGraphics.pivot.set(
+    scoreBoxDimensions.width / 2,
+    scoreBoxDimensions.height / 2
+  );
+  timeBoxGraphics.beginFill("ffffff");
+  timeBoxGraphics.drawRoundedRect(
+    pixiApp.screen.width - scoreBoxDimensions.x,
+    scoreBoxDimensions.y,
+    scoreBoxDimensions.width,
+    scoreBoxDimensions.height,
+    scoreBoxDimensions.radius
+  );
+  timeText = new Text(
+    "Time Elapsed: ",
+    new TextStyle({
+      fontFamily: "Helvetica",
+      fontSize: 16,
+      wordWrap: true,
+      wordWrapWidth: scoreBoxDimensions.width,
+      align: "right",
+    })
+  );
+
+  timeText.pivot.set(
+    scoreBoxDimensions.width / 2,
+    scoreBoxDimensions.height / 2
+  );
+  timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 7);
+  timeText.y = scoreBoxDimensions.y + 5;
+  cardsRemainingContainer.addChild(timeBoxGraphics, timeText);
 
   //initialize containers
   cardBankContainer = new Container();
@@ -180,6 +235,7 @@ function propagateCards(jsonData: JSONValue) {
   const cardsArray: JSONArray = jsonData["cardsArray"];
   cardsLeft = cardsArray.length;
   cardsRemainingText.text = cardsLeft + " Cards Remaining";
+  cardBank = [];
   for (const card in cardsArray) {
     const cardObject = new CardObject(
       cardsArray[card]["description"],
@@ -188,6 +244,7 @@ function propagateCards(jsonData: JSONValue) {
     );
     cardObject.cardContainer.x = pixiApp.screen.width / 2;
     cardObject.cardContainer.y = 217.5;
+    cardBank.push(cardObject);
     pixiApp.stage.addChild(cardObject.cardContainer);
 
     cardObject.cardContainer.on("pointerdown", onDragStart, cardObject);
@@ -217,15 +274,20 @@ function onDragEnd() {
   if (dragTarget) {
     pixiApp.stage.off("pointermove", onDragMove);
     dragTarget.cardContainer.alpha = 1; //opacity
-    cardsLeft--;
-    cardsRemainingText.text = cardsLeft + " Cards Remaining";
     //check answer + detect overlap
     //correct container scenario
     if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
       if (dragTarget.answer) {
+        cardsLeft--;
+        cardsRemainingText.text = cardsLeft + " Cards Remaining";
+
         dragTarget.cardContainer.off("pointerdown", onDragStart);
         dragTarget.cardContainer.x = pixiApp.screen.width / 4;
         dragTarget.cardContainer.y = 487.5;
+
+        const card = cardBank.pop();
+
+        console.log(card?.description);
       } else {
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
@@ -236,10 +298,16 @@ function onDragEnd() {
       getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3
     ) {
       if (!dragTarget.answer) {
+        cardsLeft--;
+        cardsRemainingText.text = cardsLeft + " Cards Remaining";
+
         dragTarget.cardContainer.off("pointerdown", onDragStart);
         dragTarget.cardContainer.x =
           pixiApp.screen.width - pixiApp.screen.width / 4;
         dragTarget.cardContainer.y = 487.5;
+
+        const card = cardBank.pop();
+        console.log(card?.description);
       } else {
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
@@ -247,6 +315,10 @@ function onDragEnd() {
     } else {
       dragTarget.cardContainer.x = pixiApp.screen.width / 2;
       dragTarget.cardContainer.y = 217.5;
+    }
+
+    if (cardsLeft == 0) {
+      endGame();
     }
 
     dragTarget = null;
@@ -305,4 +377,13 @@ function getOverlapPercent(object1: DisplayObject, object2: DisplayObject) {
   const overlapPercent = overlapArea / totalArea;
 
   return overlapPercent;
+}
+
+function updateTime(timeElapsed) {
+  timeText.text = "Time Elapsed: " + timeElapsed;
+}
+
+function endGame() {
+  console.log("end game called");
+  timer.stop();
 }

@@ -1,7 +1,7 @@
 //component that contains the actual game, required parameter of a function housing game logic
 import { useApp } from "@pixi/react";
 import { useEffect } from "react";
-import { Application, ICanvas } from "pixi.js";
+import { Application } from "pixi.js";
 
 interface Props {
   run: (app: Application, data?: JSONValue) => void;
