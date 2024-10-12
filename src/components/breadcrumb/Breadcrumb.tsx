@@ -6,7 +6,7 @@ interface Props {
 
 export default function Breadcrumb({ unit, lesson }: Props) {
   const limit = 13;
-  const stringConvert = (word: String) => {
+  const stringConvert = (word: string) => {
     if (word.length > limit) return word.substring(0, limit - 3) + "...";
     else return word;
   };

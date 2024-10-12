@@ -1,5 +1,5 @@
 "use client";
-import { Stage, Container, Text } from "@pixi/react";
+import { Stage } from "@pixi/react";
 import PixiApp from "../../../../components/pixigame/PixiApp";
 import script from "./MoneyCanApp";
 import styles from "src/app/education/activities/money-can/activity.module.css";

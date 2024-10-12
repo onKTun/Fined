@@ -7,12 +7,11 @@ import ProgressBar from "src/components/progress/ProgressBar";
 import InputField from "./components/InputField";
 import Button from "src/components/button/Button";
 import ProfilePicture from "src/components/profilePicture/ProfilePicture";
-import Image from "next/image";
-import profilePic from "public/assets/profilepictures/profile1.jpg"
+import profilePic from "public/assets/profilepictures/profile1.jpg";
 
 export default function Profile() {
   const fun = () => {
-    console.log("fun");
+    console.log("fun"); //wtf?
   };
   return (
     <>
@@ -74,8 +73,11 @@ export default function Profile() {
               </button>
             </div>
             <div className={styles.profilePicture_container}>
-
-<ProfilePicture className={styles.profilePicture} src={profilePic} alt = "profile picture"/>
+              <ProfilePicture
+                className={styles.profilePicture}
+                src={profilePic}
+                alt="profile picture"
+              />
 
               <div className={styles.profileSelector}>
                 {[...Array(9)].map((_, index) => (

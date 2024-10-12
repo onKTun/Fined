@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function PixiApp({ run, data }: Props) {
-  let app = useApp();
+  const app = useApp();
 
   useEffect(() => {
     app.stage.removeChildren();

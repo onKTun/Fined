@@ -49,10 +49,12 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
 
   timer.loop = true;
 
-  timer.on("start", function (elapsed) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  timer.on("start", function (_elapsed) {
     console.log("timer started");
   });
-  timer.on("repeat", function (elapsed, repeat) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  timer.on("repeat", function (_elapsed, repeat) {
     updateTime(repeat);
   });
 
@@ -129,7 +131,7 @@ function setup() {
     scoreBoxDimensions.radius
   );
   timeText = new Text(
-    "Time Elapsed: ",
+    "Time Elapsed: 0",
     new TextStyle({
       fontFamily: "Helvetica",
       fontSize: 16,
@@ -145,7 +147,7 @@ function setup() {
   );
   timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 7);
   timeText.y = scoreBoxDimensions.y + 5;
-  cardsRemainingContainer.addChild(timeBoxGraphics, timeText);
+  timeContainer.addChild(timeBoxGraphics, timeText);
 
   //initialize containers
   cardBankContainer = new Container();
@@ -168,7 +170,7 @@ function setup() {
   wrongContainer.y = 487.5;
 
   //graphics for card regions
-  let cardBankGraphics = new Graphics();
+  const cardBankGraphics = new Graphics();
   cardBankGraphics.lineStyle(2, "ffffff");
   cardBankGraphics.beginFill("63A4FF");
   cardBankGraphics.drawRoundedRect(
@@ -179,7 +181,7 @@ function setup() {
     cardDimensions.radius
   ); //card bank
 
-  let cardAnswerGraphicsTrue = new Graphics();
+  const cardAnswerGraphicsTrue = new Graphics();
   cardAnswerGraphicsTrue.lineStyle(2, "ffffff");
   cardAnswerGraphicsTrue.beginFill("63A4FF");
   cardAnswerGraphicsTrue.drawRoundedRect(
@@ -190,7 +192,7 @@ function setup() {
     cardDimensions.radius
   ); //right
 
-  let cardAnswerGraphicsWrong = new Graphics();
+  const cardAnswerGraphicsWrong = new Graphics();
   cardAnswerGraphicsWrong.lineStyle(2, "ffffff");
   cardAnswerGraphicsWrong.beginFill("63A4FF");
   cardAnswerGraphicsWrong.drawRoundedRect(
@@ -222,7 +224,8 @@ function setup() {
     cardBankContainer,
     correctContainer,
     wrongContainer,
-    cardsRemainingContainer
+    cardsRemainingContainer,
+    timeContainer
   );
 
   pixiApp.stage.eventMode = "static";
@@ -265,8 +268,12 @@ function onDragStart() {
   // Store a reference to the data
   // * The reason for this is because of multitouch *
   // * We want to track the movement of this particular touch *
-  this.alpha = 0.5;
+
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
   dragTarget = this;
+  if (dragTarget) {
+    dragTarget.cardContainer.alpha = 0.5;
+  }
   pixiApp.stage.on("pointermove", onDragMove);
 }
 
@@ -285,7 +292,7 @@ function onDragEnd() {
         dragTarget.cardContainer.x = pixiApp.screen.width / 4;
         dragTarget.cardContainer.y = 487.5;
 
-        const card = cardBank.pop();
+        cardBank.pop();
       } else {
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
@@ -303,8 +310,7 @@ function onDragEnd() {
         dragTarget.cardContainer.x =
           pixiApp.screen.width - pixiApp.screen.width / 4;
         dragTarget.cardContainer.y = 487.5;
-
-        const card = cardBank.pop();
+        cardBank.pop();
       } else {
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;

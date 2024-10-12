@@ -1,13 +1,9 @@
 import {
-  Application,
-  Sprite,
-  Texture,
   Graphics,
   RoundedRectangle,
   Container,
   Text,
   TextStyle,
-  DisplayObject,
 } from "pixi.js";
 
 export default class CardObject {
