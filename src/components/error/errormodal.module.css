@@ -1,0 +1,27 @@
+.wrapper {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+  display: flex;
+  column-gap: 7px;
+  background-color: #ff4040;
+  border-radius: 10px;
+  width: fit-content;
+  height: fit-content;
+  padding: 15px 20px;
+  justify-content: center;
+  align-items: center;
+}
+.message {
+  color: white;
+}
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
