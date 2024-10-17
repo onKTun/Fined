@@ -3,6 +3,9 @@
 import { useMemo } from "react";
 import ParentComponent from "./components/parentcomponent/ParentComponent";
 import styles from "./unitselector.module.css";
+import ErrorModal from "src/components/error/ErrorModal";
+import LoadingModal from "src/components/loading/LoadingModal";
+import UpdatesModal from "src/components/updates/UpdatesModal";
 
 export default function UnitSelector() {
   const percentValues = useMemo(() => [100, 24, 0, 0], []);
@@ -28,6 +31,7 @@ export default function UnitSelector() {
           <ParentComponent percent={percentValues} />
         </div>
       </div>
+      <ErrorModal errorMessage="Look sucks and he sucks bc he sucks" />
     </div>
   );
 }

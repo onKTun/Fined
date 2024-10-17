@@ -19,7 +19,6 @@ body {
   --subtext: rgb(165, 165, 165);
   --transition: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-
 p,
 h1,
 h2,
@@ -34,7 +33,6 @@ h6 {
   height: fit-content;
   color: var(--black1);
 }
-
 li,
 ul {
   padding: 0;
@@ -43,23 +41,19 @@ ul {
 ul {
   list-style: none;
 }
-
 * {
   font-family: "Inter Tight", sans-serif;
   text-decoration: none;
 }
-
 .highlightedText {
   color: var(--finedblue);
   height: fit-content;
 }
-
 .contentWithSidebar {
   display: flex;
   height: calc(100vh - 71px);
   background-color: #fafafa;
 }
-
 .viewport {
   height: 100vh;
   width: 100vw;

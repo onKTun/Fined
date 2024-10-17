@@ -1,9 +1,9 @@
 "use client";
 import Search from "src/components/search/Search";
 import styles from "../units.module.css";
-import Button from "src/components/button/Button";
 import Activity from "../components/activity/Activity";
 import activityData from "src/data/video.json";
+import RoutingButton from "src/components/routingbutton/RoutingButton";
 
 export default function Unit1() {
   const completed = activityData.filter(
@@ -106,19 +106,19 @@ export default function Unit1() {
             </h2>
           </div>
           <div className={styles.button_Container}>
-            <Button
-              ftSize={1.05}
-              style="blue"
+            <RoutingButton
+              style={"blue"}
               text={"Watch"}
-              onClick={() => {}}
-              heightWidth={{ height: "45px", width: "150px" }}
-            />
-            <Button
               ftSize={1.1}
-              style="gray"
+              additonalStyles={{ width: "8em", height: "2.7em" }}
+              url={"/education/units/1/preview"}
+            />
+            <RoutingButton
+              style={"gray"}
               text={"Restart"}
-              onClick={() => {}}
-              heightWidth={{ height: "45px", width: "130px" }}
+              ftSize={1.1}
+              additonalStyles={{ width: "6em", height: "2.7em" }}
+              url={"/education/units/1/preview"}
             />
           </div>
         </div>

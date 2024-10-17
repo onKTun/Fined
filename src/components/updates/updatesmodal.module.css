@@ -1,0 +1,9 @@
+.wrapper {
+  position: absolute;
+  width: 25em;
+  height: 30em;
+  right: 2em;
+  border-radius: 10px;
+  top: 10em;
+  background-color: white;
+}

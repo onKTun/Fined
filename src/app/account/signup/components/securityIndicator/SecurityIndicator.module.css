@@ -1,25 +1,24 @@
 .wrapper {
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 13px;
-    row-gap: 5px;
-    font-size: 14px;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 13px;
+  row-gap: 5px;
+  font-size: 14px;
 }
 .item {
-    position: relative;
-    color: gray;
+  position: relative;
+  color: gray;
 }
-
 .item::before {
-    position: absolute;
-    content: '';
-    background-color: lightgray;
-    width: 8px;
-    height: 8px;
-    left: -15px;
-    top: 5px;
-    border-radius: 5px;
+  position: absolute;
+  content: "";
+  background-color: lightgray;
+  width: 8px;
+  height: 8px;
+  left: -15px;
+  top: 5px;
+  border-radius: 5px;
 }
