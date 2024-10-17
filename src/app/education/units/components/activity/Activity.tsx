@@ -1,6 +1,5 @@
 import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./activity.module.css";
-import router from "next/router";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 interface Props {
   title: string;

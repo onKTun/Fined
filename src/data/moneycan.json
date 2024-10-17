@@ -1,0 +1,12 @@
+{
+  "cardsArray": [
+    {
+      "description": "Grow in value if you save it",
+      "answer": true
+    },
+    {
+      "description": "Be lost by giving it to Ishaan",
+      "answer": false
+    }
+  ]
+}

@@ -1,10 +1,9 @@
 import styles from "./mcq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useState } from "react";
-import ProgressBar from "src/components/progress/ProgressBar";
 
 interface Props {
-  data: any;
+  data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
   onClick: () => void;
 }
 

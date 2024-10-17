@@ -1,4 +1,4 @@
-import React, { act, useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "src/components/button/Button";
 import ProgressBar from "src/components/progress/ProgressBar";
 import VideoActivityItem from "../videoactivityitem/VideoActivityItem";
@@ -44,13 +44,6 @@ export default function ActivityBox() {
   return (
     <div className={styles.activity_Container}>
       <div className={styles.activity_Progress}>
-        <ProgressBar
-          progress={
-            (findCompletedActivites(activityData, currentTime) /
-              activityData.length) *
-            100
-          }
-        />
         <ProgressBar
           progress={
             (findCompletedActivites(activityData, currentTime) /

@@ -6,7 +6,7 @@ interface Props {
   desc: string;
 }
 
-export default function SettingItem({ svgPath, title, desc }) {
+export default function SettingItem({ svgPath, title, desc }: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.left}>

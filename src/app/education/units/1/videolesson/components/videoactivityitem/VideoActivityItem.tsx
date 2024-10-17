@@ -13,8 +13,8 @@ interface Props {
 
 export default function VideoActivityItem({
   timeStamp,
-  svgPath,
-  text,
+  //svgPath,
+  //text,
   inprogress,
 }: Props) {
   const { currentTime } = useVideoContext();

@@ -18,19 +18,17 @@ export default function SignUpForm() {
         <p className={styles.subtitle}>Enter your password</p>
         <InputFieldPL type="password" id="password" name="password" />
       </div>
-      <div className={styles.bottomContainer}>
-        <div className={styles.requirements}>
-          <SecurityIndicator />
-        </div>
-        <Button
-          formAction={signup}
-          text="Sign up"
-          type="submit"
-          style={"blue"}
-          ftSize={1}
-          heightWidth={{}}
-        />
+      <div className={styles.requirements}>
+        <SecurityIndicator />
       </div>
+      <Button
+        formAction={signup}
+        text="Sign up"
+        type="submit"
+        style={"blue"}
+        ftSize={1}
+        heightWidth={{}}
+      />
     </form>
   );
 }

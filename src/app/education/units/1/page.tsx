@@ -1,7 +1,6 @@
 "use client";
 import Search from "src/components/search/Search";
 import styles from "../units.module.css";
-import Button from "src/components/button/Button";
 import Activity from "../components/activity/Activity";
 import activityData from "src/data/video.json";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
