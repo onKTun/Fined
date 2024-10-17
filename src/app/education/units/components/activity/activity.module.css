@@ -24,8 +24,9 @@
   justify-content: center;
   align-items: center;
   padding: 12px 15px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
+  border-radius: 5px;
   column-gap: 7px;
   font-size: 1.1rem;
 }
@@ -58,7 +59,7 @@
 .topIndicator {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   column-gap: 6px;
   width: 10em;
   height: 1em;
@@ -86,7 +87,7 @@
 }
 .notstarted {
   &::before {
-    background-image: url(/assets/status/notstarted.png);
+    background-image: url(/assets/status/notstarted.svg);
   }
   &::after {
     content: "Not Started";

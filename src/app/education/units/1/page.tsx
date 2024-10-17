@@ -1,16 +1,16 @@
 "use client";
 import Search from "src/components/search/Search";
 import styles from "../units.module.css";
-import Image from "next/image";
 import Button from "src/components/button/Button";
 import Activity from "../components/activity/Activity";
 import activityData from "src/data/video.json";
+import RoutingButton from "src/components/routingbutton/RoutingButton";
 
 export default function Unit1() {
   const completed = activityData.filter(
     (activity) => activity.progress == 100
   ).length;
-  const handleClick = () => {};
+
   return (
     <div className={styles.bodyDash}>
       <div className={styles.bannerContainer}>
@@ -91,10 +91,10 @@ export default function Unit1() {
               <path
                 d="M 2.653 4.925 C 0.555 8.065 0.863 12.23 3.399 15.028 C 5.935 17.825 10.049 18.539 13.379 16.759 C 16.71 14.979 18.402 11.162 17.485 7.499 C 16.568 3.836 13.276 1.266 9.5 1.266 L 9.5 4.01 M 9.5 9.5 L 5.84 5.84"
                 fill="transparent"
-                stroke-width="1.46"
+                strokeWidth="1.46"
                 stroke="rgb(179, 179, 179)"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
             </svg>
             10 Minutes
@@ -107,19 +107,19 @@ export default function Unit1() {
             </h2>
           </div>
           <div className={styles.button_Container}>
-            <Button
-              ftSize={1.05}
-              style="blue"
+            <RoutingButton
+              style={"blue"}
               text={"Watch"}
-              onClick={handleClick}
-              heightWidth={{ height: "45px", width: "150px" }}
-            />
-            <Button
               ftSize={1.1}
-              style="gray"
+              additonalStyles={{ width: "8em", height: "2.7em" }}
+              url={"/education/units/1/preview"}
+            />
+            <RoutingButton
+              style={"gray"}
               text={"Restart"}
-              onClick={handleClick}
-              heightWidth={{ height: "45px", width: "130px" }}
+              ftSize={1.1}
+              additonalStyles={{ width: "6em", height: "2.7em" }}
+              url={"/education/units/1/preview"}
             />
           </div>
         </div>

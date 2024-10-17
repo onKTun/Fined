@@ -19,6 +19,7 @@ export default function MCQObject({ data, onClick }: Props) {
   const FLASH_DURATION = 300; // Flash duration in ms
   const COOLDOWN_DURATION = 3000; // Cooldown duration in ms
   const TIMER_UPDATE_INTERVAL = 100; // Timer update interval in ms
+  const CORRECT_ANSWER_INDEX = data.type.answer;
 
   const handleSubmit = (index) => {
     if (cooldown) return; // Prevent action if in cooldown
@@ -36,9 +37,6 @@ export default function MCQObject({ data, onClick }: Props) {
     }, FLASH_DURATION);
 
     const timerCooldown = setTimeout(() => {
-      if (isAnswerCorrect) {
-        onClick();
-      }
       setCooldown(false); // End cooldown
     }, COOLDOWN_DURATION);
 
@@ -115,25 +113,38 @@ export default function MCQObject({ data, onClick }: Props) {
               key={index}
               className={`${styles.mcqButton} ${styles[`class${index}`]} ${
                 selectedOption === index ? styles.selectedButton : ""
-              } ${flashRed && !isCorrect ? styles.shake : ""}`}
-              onClick={() => handleButtonClick(index)}
-              disabled={cooldown} // Disable button if in cooldown
+              } ${flashRed && !isCorrect ? styles.shake : ""} ${
+                isCorrect && CORRECT_ANSWER_INDEX === index
+                  ? styles.correctButton
+                  : isCorrect && CORRECT_ANSWER_INDEX !== index
+                  ? styles.incorrectButton
+                  : {}
+              }`}
+              onClick={() => {
+                handleButtonClick(index);
+              }}
+              disabled={cooldown || isCorrect} // Disable button if in cooldown
             >
               {data}
             </button>
           ))}
         </div>
+        {/*Selected Button */}
         <button
           className={`${otherStyles.continueButton} ${
-            selectedOption === -1 || cooldown ? styles.offContinueButton : ""
-          }`}
+            (selectedOption === -1 || cooldown) && !isCorrect
+              ? styles.offContinueButton
+              : ""
+          } ${isCorrect ? styles.correctAfter : {}}`}
           onClick={() => {
-            if (selectedOption !== -1 && !cooldown) {
-              handleSubmit(selectedOption);
-            }
+            selectedOption != -1 && !cooldown && !isCorrect
+              ? handleSubmit(selectedOption)
+              : isCorrect
+              ? onClick()
+              : "";
           }}
         >
-          Submit
+          {!isCorrect ? "Submit" : "Continue"}
         </button>
       </div>
       <div
@@ -163,6 +174,7 @@ export default function MCQObject({ data, onClick }: Props) {
         <div className={styles.progressBar}>
           <div
             style={{
+              transition: "all 0.3s var(--transition)",
               width: `${(elapsedTime / COOLDOWN_DURATION) * 100}%`,
               height: "100%",
               backgroundColor: "var(--finedblue)",
@@ -191,7 +203,7 @@ export default function MCQObject({ data, onClick }: Props) {
               width="10px"
               height="10px"
               viewBox="0 0 122.877 101.052"
-              enable-background="new 0 0 122.877 101.052"
+              enableBackground="new 0 0 122.877 101.052"
             >
               <g>
                 <path
@@ -206,6 +218,7 @@ export default function MCQObject({ data, onClick }: Props) {
         <div className={styles.progressBar}>
           <div
             style={{
+              transition: "all 0.3s var(--transition)",
               width: `${(elapsedTime / COOLDOWN_DURATION) * 100}%`,
               height: "100%",
               backgroundColor: "var(--finedblue)",

@@ -3,24 +3,28 @@
       "unit": 1,
       "progress": 100,
       "title": "Unit 1",
-      "topicsCovered": ["Value of Money", "Wants vs. Needs", "Scams and Tricks", "Importance of Finance", "Comparison Shopping"]
+      "topicsCovered": ["Value of Money", "Wants vs. Needs", "Scams and Tricks", "Importance of Finance", "Comparison Shopping"],
+      "isLocked": false
     },
     {
       "unit": 2,
-      "progress": 25,
+      "progress": 0,
       "title": "Unit 2",
-      "topicsCovered": ["Credit vs. Debit", "Credit Score", "Borrowing Money", "Common Methods", "Bills and Taxes"]
+      "topicsCovered": ["Credit vs. Debit", "Credit Score", "Borrowing Money", "Common Methods", "Bills and Taxes"],
+      "isLocked": true
     },
     {
       "unit": 3,
-      "progress": 30,
+      "progress": 0,
       "title": "Unit 3",
-      "topicsCovered": ["Value of Money", "Wants vs. Needs", "Scams and Tricks", "Importance of Finance", "Comparison Shopping"]
+      "topicsCovered": ["Value of Money", "Wants vs. Needs", "Scams and Tricks", "Importance of Finance", "Comparison Shopping"],
+      "isLocked": true
     },
     {
       "unit": 4,
       "progress": 0,
       "title": "Unit 4",
-      "topicsCovered": ["Credit vs. Debit", "Credit Score", "Borrowing Money", "Common Methods", "End of FIN'ED"]
+      "topicsCovered": ["Credit vs. Debit", "Credit Score", "Borrowing Money", "Common Methods", "End of FIN'ED"],
+      "isLocked": true
     }
   ]

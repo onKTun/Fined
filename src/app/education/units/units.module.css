@@ -128,16 +128,16 @@
   background-image: url(/assets/backgrounds/back.JPG);
   background-size: contain;
 }
-
 .completionTime {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 6px;
   font-size: 1.1rem;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
   padding: 12px 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   width: fit-content;
 }
 .video_titleDesc {
@@ -162,7 +162,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  flex-grow: 1;
+  width: 45em;
   border-radius: 10px;
 }
 .header_Container {
@@ -178,9 +178,9 @@
 @media only screen and (max-width: 1280px) {
   .bottomContainer {
     flex-direction: column;
+    align-items: center;
   }
   .video_Container {
-    flex-grow: 1;
-    width: 100%;
+    width: 40em;
   }
 }

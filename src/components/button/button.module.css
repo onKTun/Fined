@@ -1,4 +1,5 @@
 .wrapper {
+  transition: all 0.3s var(--transition);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,24 +10,30 @@
   color: white;
   font-size: 1rem;
   &:hover {
+    transition: all 0.3s var(--transition);
     cursor: pointer;
   }
 }
 .blue {
+  transition: all 0.3s var(--transition);
   background-color: var(--finedblue);
   &:hover {
+    transition: all 0.3s var(--transition);
     opacity: 0.8;
   }
 }
 .gray {
+  transition: all 0.3s var(--transition);
   background-color: white;
   color: var(--black4);
   border: 1px rgba(0, 0, 0, 0.1) solid;
   &:hover {
+    transition: all 0.3s var(--transition);
     color: var(--black1);
   }
 }
 .bluefill {
+  transition: all 0.3s var(--transition);
   background-color: var(--finedblue);
   color: white;
   width: 100%;

@@ -121,6 +121,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
       >
         {activityData.map((data, index) => (
           <div
+            key={index}
             className={styles.dataPoint}
             style={{
               left: `${(data.timestamp / duration) * 100 - 2.5}%`,

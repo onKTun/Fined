@@ -1,12 +1,14 @@
 import { ReactNode } from "react";
 import "src/app/global.css";
 
+
+
 interface RootLayoutProps {
   children: ReactNode;
 }
 
 export const metadata = {
-  title: "Fin'ed",
+  title: "FIN'ED: Dashboard",
   description: "Web site created with Next.js.",
 };
 

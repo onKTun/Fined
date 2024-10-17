@@ -16,6 +16,7 @@
   }
 }
 .unselected {
+  transition: all 0.3s var(--transition);
   box-sizing: border-box;
   width: 40em;
   height: 47px;
