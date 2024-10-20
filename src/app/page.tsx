@@ -21,6 +21,9 @@ export default function SiteMap() {
       <Link href="/education/activities/money-can" className="highlightedText">
         Money-can activity
       </Link>
+      <Link href="/education/activities/crossword" className="highlightedText">
+        Crossword activity
+      </Link>
       <SignOutButton></SignOutButton>
     </div>
   );

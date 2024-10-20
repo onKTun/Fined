@@ -1,0 +1,11 @@
+.activitycontainer {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  flex-grow: 1; /*grows height and width*/
+}
+
+.gamediv {
+  background: lightblue;
+  padding: 20px;
+}
