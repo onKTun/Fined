@@ -248,8 +248,6 @@ export default function DefaultHeader() {
           />
         </div>
       </div>
-
-      <ContactModal />
     </>
   );
 }
