@@ -1,5 +1,7 @@
+import { Input } from "@pixi/ui";
 import { Cell } from "./Cell";
-import { Container } from "pixi.js";
+import { Bounds, Container, Graphics, TextStyle } from "pixi.js";
+import { Crossword } from "./Crossword";
 
 export class Row {
   cells: Cell[];
@@ -7,18 +9,24 @@ export class Row {
   localy: number;
   orientation: "across" | "down";
   container: Container;
+  answer: string;
+  input: Input;
+  parentCrossword: Crossword;
 
   constructor(
     word: string,
     orientation: "across" | "down",
     localx: number,
-    localy: number
+    localy: number,
+    crossword: Crossword
   ) {
     this.cells = [];
     this.localx = localx; // localx starts on the provided value
     this.localy = localy; // localy starts on the provided value
     this.orientation = orientation; // set the orientation
-    this.container = new Container(); // create a new PixiJS container
+    this.container = new Container();
+    this.answer = word;
+    this.parentCrossword = crossword;
 
     // Initialize the cells array with a Cell for each letter in the word
     for (let i = 0; i < word.length; i++) {
@@ -33,6 +41,58 @@ export class Row {
         cell.setPositionGlobal(this.localx, this.localy + i);
       }
     }
+
+    this.container.calculateBounds();
+    const boundsRect = this.container.getBounds();
+
+    const graphics = new Graphics();
+    graphics.beginFill(0xff0000);
+    graphics.alpha = 0;
+    graphics.drawRect(0, 0, 1000, 1000);
+    this.input = new Input({
+      bg: graphics,
+      placeholder: "",
+      padding: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      },
+      maxLength: this.answer.length,
+      textStyle: new TextStyle({ fontSize: 0 }),
+    });
+    this.input.x = boundsRect.x;
+    this.input.y = boundsRect.y;
+    this.input.width = boundsRect.width;
+    this.input.height = boundsRect.height;
+
+    this.input.onChange.connect(() => this.changeValue(this.input.value));
+    this.input.onEnter.connect(() => this.exitInput());
+
+    this.container.addChild(this.input);
+  }
+
+  changeValue(text: string) {
+    console.log("change value called");
+    for (let i = 0; i < this.cells.length; i++) {
+      if (i <= text.length) {
+        this.cells[i].text.text = text[i];
+      } else {
+        this.cells[i].text.text = "";
+      }
+    }
+  }
+
+  focusRow() {}
+
+  exitInput() {
+    console.log("input exited");
+    console.log(this.parentCrossword.checkCrossword());
+  }
+
+  isCorrect(): boolean {
+    const currentAnswer = this.cells.map((cell) => cell.text.text).join("");
+    return currentAnswer === this.answer;
   }
 
   // Method to get the cell at a specific index
@@ -41,5 +101,14 @@ export class Row {
       return this.cells[index];
     }
     return null;
+  }
+
+  //utility function to draw red bounding box
+  getBoundingBox(): Graphics {
+    this.container.calculateBounds();
+    const bounding = new Graphics();
+    bounding.lineStyle(2, 0xff0000);
+    bounding.drawShape(this.container.getBounds());
+    return bounding;
   }
 }

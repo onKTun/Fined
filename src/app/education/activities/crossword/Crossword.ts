@@ -1,5 +1,6 @@
 import { Container, Graphics } from "pixi.js";
 import { Row } from "./Row";
+import { Input } from "@pixi/ui";
 
 export class Crossword {
   acrossRows: Row[];
@@ -29,9 +30,15 @@ export class Crossword {
       this._container.addChild(row.container);
     }
 
+    //set container pivot
     this._container.calculateBounds();
     const boundRect = this._container.getBounds();
     this._container.pivot.set(boundRect.width / 2, boundRect.height / 2);
+  }
+  checkCrossword(): boolean {
+    const allAcrossCorrect = this.acrossRows.every((row) => row.isCorrect());
+    const allDownCorrect = this.downRows.every((row) => row.isCorrect());
+    return allAcrossCorrect && allDownCorrect;
   }
 
   private loadData(
@@ -56,7 +63,8 @@ export class Crossword {
           acrossTerms[term]["word"],
           "across",
           acrossTerms[term]["x"],
-          acrossTerms[term]["y"]
+          acrossTerms[term]["y"],
+          this
         )
       );
     }
@@ -68,7 +76,8 @@ export class Crossword {
           downTerms[term]["word"],
           "down",
           downTerms[term]["x"],
-          downTerms[term]["y"]
+          downTerms[term]["y"],
+          this
         )
       );
     }

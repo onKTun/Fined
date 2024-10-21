@@ -42,9 +42,7 @@ export class Cell {
   }
 
   setPositionGlobal(localx: number, localy: number) {
-    console.log("Before setting position, x:", this.container.x);
     this.container.x = localx * this.size.length;
     this.container.y = localy * this.size.length;
-    console.log("After setting position, x:", this.container.x);
   }
 }
