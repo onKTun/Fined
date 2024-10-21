@@ -1,8 +1,9 @@
-import { Container } from "pixi.js";
+import { Container, Graphics } from "pixi.js";
 import { Row } from "./Row";
 
 export class Crossword {
-  rows: Row[];
+  acrossRows: Row[];
+  downRows: Row[];
   private _container: Container;
   acrossWords: string[];
   acrossDefinitions: string[];
@@ -15,19 +16,27 @@ export class Crossword {
       this.acrossDefinitions,
       this.downWords,
       this.downDefinitions,
-      this.rows,
+      this.acrossRows,
+      this.downRows,
     ] = this.loadData(crosswordData);
 
     this._container = new Container();
 
-    for (const row of this.rows) {
+    for (const row of this.acrossRows) {
       this._container.addChild(row.container);
     }
+    for (const row of this.downRows) {
+      this._container.addChild(row.container);
+    }
+
+    this._container.calculateBounds();
+    const boundRect = this._container.getBounds();
+    this._container.pivot.set(boundRect.width / 2, boundRect.height / 2);
   }
 
   private loadData(
     crosswordData: JSONValue
-  ): [string[], string[], string[], string[], Row[]] {
+  ): [string[], string[], string[], string[], Row[], Row[]] {
     const acrossTerms = crosswordData["acrossWords"];
     const downTerms = crosswordData["downWords"];
 
@@ -36,12 +45,13 @@ export class Crossword {
     const downWords: string[] = [];
     const downDefinitions: string[] = [];
 
-    const rows: Row[] = [];
+    const acrossRows: Row[] = [];
+    const downRows: Row[] = [];
 
     for (const term in acrossTerms) {
       acrossWords.push(acrossTerms[term]["word"]);
       acrossDefinitions.push(acrossTerms[term]["definition"]);
-      rows.push(
+      acrossRows.push(
         new Row(
           acrossTerms[term]["word"],
           "across",
@@ -53,20 +63,46 @@ export class Crossword {
     for (const term in downTerms) {
       downWords.push(downTerms[term]["word"]);
       downDefinitions.push(downTerms[term]["definition"]);
-      rows.push(
+      downRows.push(
         new Row(
-          acrossTerms[term]["word"],
+          downTerms[term]["word"],
           "down",
-          acrossTerms[term]["x"],
-          acrossTerms[term]["y"]
+          downTerms[term]["x"],
+          downTerms[term]["y"]
         )
       );
     }
 
-    return [acrossWords, acrossDefinitions, downWords, downDefinitions, rows];
+    return [
+      acrossWords,
+      acrossDefinitions,
+      downWords,
+      downDefinitions,
+      acrossRows,
+      downRows,
+    ];
   }
 
   get container(): Container {
     return this._container;
+  }
+
+  get position(): { x: number; y: number } {
+    const x = this._container.x;
+    const y = this._container.y;
+    return { x, y };
+  }
+
+  set position({ x, y }: { x: number; y: number }) {
+    this._container.x = x;
+    this._container.y = y;
+  }
+
+  //utility function to draw red bounding box
+  getBoundingBox(): Graphics {
+    const bounding = new Graphics();
+    bounding.lineStyle(2, 0xff0000);
+    bounding.drawShape(this._container.getBounds());
+    return bounding;
   }
 }
