@@ -21,6 +21,10 @@ export default function FRQObject({ data, onClick }: Props) {
     setIsAnimating(true); // Trigger animation
   };
 
+  const whenClicked = () => {
+    onClick;
+    setIsAnimating(false);
+  };
   useEffect(() => {
     if (isAnimating) {
       setDisplayOther(true);
@@ -110,7 +114,7 @@ export default function FRQObject({ data, onClick }: Props) {
           className={`${styles.continueButton} ${
             displayOther ? styles.submitted : ""
           }`}
-          onClick={onClick}
+          onClick={() => whenClicked}
         >
           Submit
         </button>
