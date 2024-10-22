@@ -32,7 +32,7 @@ export default function LandingPage() {
     <>
       <div className={styles.fullPage}>
         <div className={styles.viewport}>
-          <DefaultHeader />
+          {loggedIn ? <Header /> : <DefaultHeader />}
           <div className={styles.heroContainer}>
             <div className={styles.left}>
               <img src="/assets/finedSolid.png" width={70} />
