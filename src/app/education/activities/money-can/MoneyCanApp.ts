@@ -11,7 +11,7 @@ import {
 import TimerManager from "utils/pixiJS/time utils/TimerManager";
 import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
-import CardObject from "utils/pixiJS/CardObject";
+import CardObject from "src/app/education/activities/money-can/CardObject";
 import markComplete from "utils/supabase/lessonProgressService";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
@@ -38,11 +38,30 @@ const whiteTextStyle = new TextStyle({
   align: "center",
 });
 
+const whiteTextStyleBold = new TextStyle({
+  fontFamily: "Helvetica",
+  fill: "#ffffff",
+  fontSize: 16,
+  wordWrap: true,
+  wordWrapWidth: cardDimensions.width - 10,
+  align: "center",
+  fontWeight: "600"
+});
+
+const subTextCard = new TextStyle({
+  fontFamily: "Helvetica",
+  fill: "#CCE0FF",
+  fontSize: 14,
+  wordWrap: true,
+  wordWrapWidth: cardDimensions.width - 10,
+  align: "center",
+  fontWeight: "500"
+})
+
 export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp = app;
   setup();
 
-  //TODO implement data loading
   propagateCards(data);
 
   const timerManager = new TimerManager();
@@ -77,11 +96,11 @@ function setup() {
 
   //cards left
   const scoreBoxDimensions = {
-    width: 170,
-    height: 30,
-    x: 100,
+    width: 190,
+    height: 50,
+    x: 120,
     y: 50,
-    radius: 15,
+    radius: 10,
   };
   const cardsRemainingContainer = new Container();
   const cardsRemainingGraphics = new Graphics();
@@ -193,6 +212,11 @@ function setup() {
     cardDimensions.radius
   ); //right
 
+//square contianers around the text
+  cardAnswerGraphicsTrue.beginFill("#3385FF");
+  cardAnswerGraphicsTrue.drawRoundedRect((cardDimensions.width-150)/2, (cardDimensions.height-70)/2, 150, 70, 8);
+  cardAnswerGraphicsTrue.endFill();
+
   const cardAnswerGraphicsWrong = new Graphics();
   cardAnswerGraphicsWrong.lineStyle(2, "ffffff");
   cardAnswerGraphicsWrong.beginFill("63A4FF");
@@ -204,21 +228,35 @@ function setup() {
     cardDimensions.radius
   ); //left
 
+  cardAnswerGraphicsWrong.beginFill("#3385FF");
+  cardAnswerGraphicsWrong.drawRoundedRect((cardDimensions.width-150)/2, (cardDimensions.height-70)/2, 150, 70, 8);
+  cardAnswerGraphicsWrong.endFill();
   //container texts
-  const containerTrueText = new Text("Money Can", whiteTextStyle);
+  const containerTrueText = new Text("Money Can", whiteTextStyleBold);
   containerTrueText.anchor.set(0.5);
   containerTrueText.x = cardDimensions.width / 2;
-  containerTrueText.y = cardDimensions.height / 2;
+  containerTrueText.y = (cardDimensions.height / 2) - 10;
 
-  const containerWrongText = new Text("Money Can Not", whiteTextStyle);
+  const containerDragTrue = new Text("(Drag Card Here)", subTextCard);
+  containerDragTrue.anchor.set(0.5);
+  containerDragTrue.x = cardDimensions.width / 2;
+  containerDragTrue.y = (cardDimensions.height/ 2) + 10;
+
+  const containerDragFalse = new Text("(Drag Card Here)", subTextCard);
+  containerDragFalse.anchor.set(0.5);
+  containerDragFalse.x = cardDimensions.width / 2;
+  containerDragFalse.y = (cardDimensions.height/ 2) + 10;
+
+  const containerWrongText = new Text("Money Can Not", whiteTextStyleBold);
   containerWrongText.anchor.set(0.5);
   containerWrongText.x = cardDimensions.width / 2;
-  containerWrongText.y = cardDimensions.height / 2;
+  containerWrongText.y = (cardDimensions.height / 2) - 10;
+
 
   // Add card components to containers
   cardBankContainer.addChild(cardBankGraphics);
-  correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText);
-  wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText);
+  correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText, containerDragTrue);
+  wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText, containerDragFalse);
 
   // Add it to the stage to render
   pixiApp.stage.addChild(
