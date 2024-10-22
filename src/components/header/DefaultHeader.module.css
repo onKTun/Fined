@@ -9,6 +9,7 @@
   box-sizing: border-box;
   padding: 0px 20px;
   flex-shrink: 0;
+  z-index: 5;
 }
 
 .logoSVGwrapper {
@@ -71,11 +72,12 @@
   margin: 0;
   padding: 0;
 }
-.link {
+.listItem {
   transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   color: var(--black1);
   opacity: 0.6;
   &:hover {
+    cursor: pointer;
     transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
     opacity: 1;
   }

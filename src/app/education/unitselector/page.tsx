@@ -31,7 +31,6 @@ export default function UnitSelector() {
           <ParentComponent percent={percentValues} />
         </div>
       </div>
-      <ErrorModal errorMessage="Look sucks and he sucks bc he sucks" />
     </div>
   );
 }

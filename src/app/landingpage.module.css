@@ -13,7 +13,6 @@
   flex-grow: 1;
 }
 .left {
-  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 35px;
@@ -131,4 +130,11 @@
 .offerContainer_left {
   display: flex;
   flex-direction: column;
+}
+@media only screen and (max-height: 700px) {
+  .heroNote {
+    position: absolute;
+    right: 2em;
+    left: unset;
+  }
 }

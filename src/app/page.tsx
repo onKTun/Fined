@@ -1,10 +1,33 @@
+"use client";
 import Header from "src/components/header/Header";
 import styles from "./landingpage.module.css";
 import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 import ErrorModal from "src/components/error/ErrorModal";
+import { createClient } from "../../utils/supabase/client";
+import { useEffect, useState } from "react";
+export default function LandingPage() {
+  const supabase = createClient(); // Initialize Supabase client
+  const [loggedIn, setLoggedIn] = useState(false); // Track login status
+  useEffect(() => {
+    const checkSession = async () => {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession(); // Ensure to use getSession()
 
-export default function SiteMap() {
+      if (error) {
+        console.error("Error fetching user session:", error.message);
+      }
+
+      if (session) {
+        setLoggedIn(true);
+      }
+    };
+
+    checkSession();
+  }, [supabase]); // Add su
+
   return (
     <>
       <div className={styles.fullPage}>
@@ -14,7 +37,7 @@ export default function SiteMap() {
             <div className={styles.left}>
               <img src="/assets/finedSolid.png" width={70} />
               <div className={styles.title}>
-                <h6 className={styles.onTitle}>Education</h6>
+                <h6 className={styles.onTitle}>CAS</h6>
                 Learn Finance
                 <br /> With <span className={styles.logoSpan}>FIN'ED</span>
               </div>
@@ -40,7 +63,7 @@ export default function SiteMap() {
                     text={"Try Now"}
                     ftSize={1}
                     additonalStyles={{ width: "7em" }}
-                    url={"/account/signup"}
+                    url={loggedIn ? "/education/dashboard" : "/account/login"}
                   />
                 </div>
               </section>

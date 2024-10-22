@@ -4,8 +4,30 @@ import styles from "./DefaultHeader.module.css";
 import Search from "../search/Search";
 import RoutingButton from "../routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
+import { useState } from "react";
+import Sitemap from "./components/sitemap/Sitemap";
 
 export default function DefaultHeader() {
+  const [activeModal, setActiveModal] = useState(null);
+  const [isCooldownActive, setIsCooldownActive] = useState(false);
+  const cooldownTime = 100;
+
+  // Open the modal when the user hovers
+  const handleMouseEnter = (modalName) => {
+    setActiveModal(modalName);
+  };
+
+  // Close the modal when the user leaves the hover area
+  const handleMouseLeave = () => {
+    if (!isCooldownActive) {
+      setActiveModal(null);
+      setIsCooldownActive(true);
+
+      setTimeout(() => {
+        setIsCooldownActive(false);
+      }, cooldownTime);
+    }
+  };
   return (
     <>
       <div className={styles.headerContainer}>
@@ -212,22 +234,25 @@ export default function DefaultHeader() {
             </div>
           </Link>
           <ul className={styles.list}>
-            <li className={styles.listItem}>
-              <Link className={styles.link} href="">
-                Contact
-              </Link>
+            <li
+              onMouseEnter={() => handleMouseEnter("contact")}
+              onMouseLeave={handleMouseLeave}
+              className={styles.listItem}
+            >
+              Contact
             </li>
-            <li className={styles.listItem}>
-              <Link className={styles.link} href="">
-                Sitemap
-              </Link>
+            <li
+              className={styles.listItem}
+              onMouseEnter={() => handleMouseEnter("sitemap")}
+              onMouseLeave={handleMouseLeave}
+            >
+              Sitemap
             </li>
+            <Link className={styles.listItem} href="/education/unitselector">
+              Lessons
+            </Link>
 
-            <li className={styles.listItem}>
-              <Link className={styles.link} href="">
-                Feedback
-              </Link>
-            </li>
+            <li className={styles.listItem}>Feedback</li>
           </ul>
         </div>
         <div className={styles.buttonContainer}>
@@ -247,6 +272,16 @@ export default function DefaultHeader() {
             url={"/account/signup"}
           />
         </div>
+        <ContactModal
+          isEnabled={activeModal == "contact"}
+          onMouseEnter={() => handleMouseEnter("contact")}
+          onMouseLeave={handleMouseLeave}
+        />
+        <Sitemap
+          isEnabled={activeModal == "sitemap"}
+          onMouseEnter={() => handleMouseEnter("sitemap")}
+          onMouseLeave={handleMouseLeave}
+        />
       </div>
     </>
   );
