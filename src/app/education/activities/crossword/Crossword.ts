@@ -55,33 +55,75 @@ export class Crossword {
     const acrossRows: Row[] = [];
     const downRows: Row[] = [];
 
+    //initialize all rows
+    let acrossCount = 1;
     for (const term in acrossTerms) {
       acrossWords.push(acrossTerms[term]["word"]);
       acrossDefinitions.push(acrossTerms[term]["definition"]);
       acrossRows.push(
         new Row(
           acrossTerms[term]["word"],
-          5,
+          acrossCount,
           "across",
           acrossTerms[term]["x"],
           acrossTerms[term]["y"],
           this
         )
       );
+      acrossCount++;
     }
+    let downCount = 1;
     for (const term in downTerms) {
       downWords.push(downTerms[term]["word"]);
       downDefinitions.push(downTerms[term]["definition"]);
       downRows.push(
         new Row(
           downTerms[term]["word"],
-          6,
+          downCount,
           "down",
           downTerms[term]["x"],
           downTerms[term]["y"],
           this
         )
       );
+      downCount++;
+    }
+
+    //VERY optimised iterations
+    for (let i = 0; i < acrossRows.length; i++) {
+      const acrossRow = acrossRows[i];
+
+      for (let j = 0; j < downRows.length; j++) {
+        const downRow = downRows[j];
+
+        for (let k = 0; k < acrossRow.cells.length; k++) {
+          const acrossCell = acrossRow.cells[k];
+
+          for (let l = 0; l < downRow.cells.length; l++) {
+            const downCell = downRow.cells[l];
+
+            //compares x,y,and correct letter
+            if (
+              acrossCell.container.x === downCell.container.x &&
+              acrossCell.container.y === downCell.container.y &&
+              acrossCell.correctLetter === downCell.correctLetter
+            ) {
+              console.log(
+                "duplicate cell at " +
+                  acrossCell.container.x +
+                  acrossCell.container.y
+              );
+              //remove cell from acrossRows container and array, and replace with the downRow cell
+              const index = acrossRow.container.getChildIndex(
+                acrossCell.container
+              );
+              acrossRow.container.addChildAt(downCell.container, index);
+              acrossRow.container.removeChild(acrossCell.container);
+              acrossRow.cells.splice(k, 1, downCell);
+            }
+          }
+        }
+      }
     }
 
     return [
