@@ -1,7 +1,7 @@
 .container {
   position: absolute;
   left: 14em;
-  top: 1.8em;
+  top: 1.5em;
   width: 3em;
   height: 16em;
   z-index: 9;
@@ -23,7 +23,7 @@
   border: 1px var(--bb) solid;
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
+  row-gap: 10px;
 }
 .show {
   visibility: visible;

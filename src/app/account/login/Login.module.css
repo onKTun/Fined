@@ -126,3 +126,7 @@
     text-decoration: none;
   }
 }
+.videoContainer {
+  position: absolute;
+  left: 0;
+}

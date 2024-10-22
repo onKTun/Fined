@@ -5,7 +5,6 @@ import Search from "../search/Search";
 import RoutingButton from "../routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
 import { useState } from "react";
-import Sitemap from "./components/sitemap/Sitemap";
 
 export default function DefaultHeader() {
   const [activeModal, setActiveModal] = useState(null);
@@ -241,13 +240,7 @@ export default function DefaultHeader() {
             >
               Contact
             </li>
-            <li
-              className={styles.listItem}
-              onMouseEnter={() => handleMouseEnter("sitemap")}
-              onMouseLeave={handleMouseLeave}
-            >
-              Sitemap
-            </li>
+
             <Link className={styles.listItem} href="/education/unitselector">
               Lessons
             </Link>
@@ -275,11 +268,6 @@ export default function DefaultHeader() {
         <ContactModal
           isEnabled={activeModal == "contact"}
           onMouseEnter={() => handleMouseEnter("contact")}
-          onMouseLeave={handleMouseLeave}
-        />
-        <Sitemap
-          isEnabled={activeModal == "sitemap"}
-          onMouseEnter={() => handleMouseEnter("sitemap")}
           onMouseLeave={handleMouseLeave}
         />
       </div>

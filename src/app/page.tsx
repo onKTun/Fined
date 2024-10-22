@@ -3,7 +3,6 @@ import Header from "src/components/header/Header";
 import styles from "./landingpage.module.css";
 import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
-import ErrorModal from "src/components/error/ErrorModal";
 import { createClient } from "../../utils/supabase/client";
 import { useEffect, useState } from "react";
 export default function LandingPage() {
