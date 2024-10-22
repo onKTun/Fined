@@ -191,7 +191,7 @@ function setup() {
 
   //graphics for card regions
   const cardBankGraphics = new Graphics();
-  cardBankGraphics.lineStyle(2, "ffffff");
+  cardBankGraphics.lineStyle(1, "ffffff");
   cardBankGraphics.beginFill("63A4FF");
   cardBankGraphics.drawRoundedRect(
     0,
@@ -200,9 +200,12 @@ function setup() {
     cardDimensions.height,
     cardDimensions.radius
   ); //card bank
+  cardBankGraphics.beginFill("#3385FF");
+  cardBankGraphics.drawRoundedRect((cardDimensions.width-100)/2, (cardDimensions.height-180)/2, 100, 180, 8);
+  cardBankGraphics.endFill();
 
   const cardAnswerGraphicsTrue = new Graphics();
-  cardAnswerGraphicsTrue.lineStyle(2, "ffffff");
+  cardAnswerGraphicsTrue.lineStyle(1, "ADCEFF");
   cardAnswerGraphicsTrue.beginFill("63A4FF");
   cardAnswerGraphicsTrue.drawRoundedRect(
     0,
@@ -218,7 +221,7 @@ function setup() {
   cardAnswerGraphicsTrue.endFill();
 
   const cardAnswerGraphicsWrong = new Graphics();
-  cardAnswerGraphicsWrong.lineStyle(2, "ffffff");
+  cardAnswerGraphicsWrong.lineStyle(1, "#ADCEFF");
   cardAnswerGraphicsWrong.beginFill("63A4FF");
   cardAnswerGraphicsWrong.drawRoundedRect(
     0,
@@ -244,6 +247,7 @@ function setup() {
 
   const containerDragFalse = new Text("(Drag Card Here)", subTextCard);
   containerDragFalse.anchor.set(0.5);
+  
   containerDragFalse.x = cardDimensions.width / 2;
   containerDragFalse.y = (cardDimensions.height/ 2) + 10;
 
