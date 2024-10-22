@@ -1,6 +1,6 @@
 import { Input } from "@pixi/ui";
 import { Cell } from "./Cell";
-import { Bounds, Container, Graphics, TextStyle } from "pixi.js";
+import { Bounds, Container, Graphics, Text, TextStyle } from "pixi.js";
 import { Crossword } from "./Crossword";
 
 export class Row {
@@ -12,9 +12,11 @@ export class Row {
   answer: string;
   input: Input;
   parentCrossword: Crossword;
+  rowNumber: number;
 
   constructor(
     word: string,
+    rowNumber: number,
     orientation: "across" | "down",
     localx: number,
     localy: number,
@@ -27,6 +29,7 @@ export class Row {
     this.container = new Container();
     this.answer = word;
     this.parentCrossword = crossword;
+    this.rowNumber = rowNumber;
 
     // Initialize the cells array with a Cell for each letter in the word
     for (let i = 0; i < word.length; i++) {
@@ -45,6 +48,7 @@ export class Row {
     this.container.calculateBounds();
     const boundsRect = this.container.getBounds();
 
+    //input
     const graphics = new Graphics();
     graphics.beginFill(0xff0000);
     graphics.alpha = 0;
@@ -69,7 +73,17 @@ export class Row {
     this.input.onChange.connect(() => this.changeValue(this.input.value));
     this.input.onEnter.connect(() => this.exitInput());
 
-    this.container.addChild(this.input);
+    //rowNumber textbox
+    const rowNumberText = new Text(
+      rowNumber.toString(),
+      new TextStyle({
+        fontSize: 10,
+      })
+    );
+    rowNumberText.x = boundsRect.x + 2;
+    rowNumberText.y = boundsRect.y + 1;
+
+    this.container.addChild(this.input, rowNumberText);
   }
 
   changeValue(text: string) {

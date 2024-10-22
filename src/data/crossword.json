@@ -1,42 +1,72 @@
 {
   "acrossWords": [
     {
-      "word": "APPLE",
+      "word": "SPEND",
       "definition": "A fruit that is typically red, green, or yellow.",
-      "x": 1,
-      "y": 1
+      "x": 3,
+      "y": 5
     },
     {
-      "word": "BANANA",
+      "word": "WALLET",
       "definition": "A long curved fruit that grows in clusters and has soft pulpy flesh and yellow skin when ripe.",
-      "x": 1,
-      "y": 2
+      "x": 4,
+      "y": 7
     },
     {
-      "word": "CHERRY",
+      "word": "EFFORT",
+      "definition": "A small, round stone fruit that is typically bright or dark red.",
+      "x": 3,
+      "y": 10
+    },
+    {
+      "word": "BUY",
+      "definition": "A small, round stone fruit that is typically bright or dark red.",
+      "x": 4,
+      "y": 13
+    },
+    {
+      "word": "VALUE",
       "definition": "A small, round stone fruit that is typically bright or dark red.",
       "x": 1,
-      "y": 3
+      "y": 15
     }
   ],
   "downWords": [
     {
-      "word": "ORANGE",
+      "word": "CHORE",
       "definition": "A large round juicy citrus fruit with a tough bright reddish-yellow rind.",
       "x": 5,
-      "y": 5
+      "y": 1
     },
     {
-      "word": "MANGO",
+      "word": "DOLLAR",
       "definition": "A fleshy yellowish-red tropical fruit that is eaten ripe or used green for pickles or chutneys.",
-      "x": 4,
+      "x": 7,
       "y": 5
     },
     {
-      "word": "PEAR",
+      "word": "GIFT",
+      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
+      "x": 9,
+      "y": 4
+    },
+    {
+      "word": "DREAM",
       "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
       "x": 3,
-      "y": 5
+      "y": 8
+    },
+    {
+      "word": "FUTURE",
+      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
+      "x": 5,
+      "y": 10
+    },
+    {
+      "word": "SAVE",
+      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
+      "x": 1,
+      "y": 13
     }
   ]
 }

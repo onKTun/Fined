@@ -61,6 +61,7 @@ export class Crossword {
       acrossRows.push(
         new Row(
           acrossTerms[term]["word"],
+          5,
           "across",
           acrossTerms[term]["x"],
           acrossTerms[term]["y"],
@@ -74,6 +75,7 @@ export class Crossword {
       downRows.push(
         new Row(
           downTerms[term]["word"],
+          6,
           "down",
           downTerms[term]["x"],
           downTerms[term]["y"],
@@ -105,6 +107,16 @@ export class Crossword {
   set position({ x, y }: { x: number; y: number }) {
     this._container.x = x;
     this._container.y = y;
+  }
+
+  get definitions(): {
+    acrossDefinitions: string[];
+    downDefinitions: string[];
+  } {
+    return {
+      acrossDefinitions: this.acrossDefinitions,
+      downDefinitions: this.downDefinitions,
+    };
   }
 
   //utility function to draw red bounding box
