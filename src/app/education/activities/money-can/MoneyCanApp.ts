@@ -165,8 +165,8 @@ function setup() {
     scoreBoxDimensions.width / 2,
     scoreBoxDimensions.height / 2
   );
-  timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 7);
-  timeText.y = scoreBoxDimensions.y + 5;
+  timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 40);
+  timeText.y = scoreBoxDimensions.y + 15;
   timeContainer.addChild(timeBoxGraphics, timeText);
 
   //initialize containers
