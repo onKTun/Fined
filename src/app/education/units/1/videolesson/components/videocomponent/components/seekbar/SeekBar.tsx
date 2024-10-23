@@ -16,12 +16,13 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
     isDragging,
     setIsDragging,
     isActivityActive: isActivityActive,
+    maxProgress,
+    setMaxProgress,
   } = useVideoContext();
   const [tempProgress, setTempProgress] = useState<number>(
     (currentTime / duration) * 100
   ); // Initialize tempProgress from currentTime
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const [maxProgress, setMaxProgress] = useState(0);
 
   const calcPointColor = (timeStamp: number) => {
     return timeStamp < currentTime + 1 ? "var(--finedgreen)" : "lightgray";
@@ -43,6 +44,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
   }, [currentTime, duration, maxProgress]);
 
   useEffect(() => {
+    // Update tempProgress based on mouse position if dragging + update the sliding bar
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging && progressBarRef.current) {
         const rect = progressBarRef.current.getBoundingClientRect();
@@ -51,7 +53,8 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
           100,
           Math.max(0, (offsetX / rect.width) * 100)
         );
-        if (newProgress <= maxProgress && !isActivityActive) {
+        if (!isActivityActive) {
+          //newProgress <= maxProgress &&
           setTempProgress(newProgress);
           whileDragging();
         }
@@ -62,7 +65,8 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
       if (isDragging) {
         setIsDragging(false);
         const newTime = (tempProgress / 100) * duration;
-        if (newTime <= maxProgress && !isActivityActive) {
+        if (!isActivityActive) {
+          //newTime <= maxProgress
           setCurrentTime(newTime);
           onChange(newTime);
         }
@@ -99,7 +103,8 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
         100,
         Math.max(0, (offsetX / rect.width) * 100)
       );
-      if (newProgress <= maxProgress && !isActivityActive) {
+      if (!isActivityActive) {
+        //newProgress <= maxProgress
         setTempProgress(newProgress);
       }
     }
