@@ -6,7 +6,6 @@ import RoutingButton from "src/components/routingbutton/RoutingButton";
 import { createClient } from "../../utils/supabase/client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { error } from "console";
 export default function LandingPage() {
   const supabase = createClient(); // Initialize Supabase client
   const [loggedIn, setLoggedIn] = useState(false); // Track login status

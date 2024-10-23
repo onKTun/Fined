@@ -1,10 +1,10 @@
 import styles from "./inputmodal.module.css";
 
 interface Props {
-  onClick: () => {};
+  onClick: () => { void };
   typeInput: string;
 }
-export default function InputModal({ onClick, typeInput }) {
+export default function InputModal({ onClick, typeInput }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

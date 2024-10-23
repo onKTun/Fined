@@ -1,7 +1,6 @@
 "use client";
 import styles from "./Login.module.css";
 import Link from "next/link";
-import Image from "next/image";
 
 import LoginForm from "src/app/account/login/login";
 
