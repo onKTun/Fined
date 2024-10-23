@@ -6,6 +6,26 @@ import AudioModal from "./components/audiomodal/AudioModal";
 import VideoActivity from "./components/videoactivity/VideoActivity";
 import SeekBar from "./components/seekbar/SeekBar";
 
+/*
+video logic
+on render
+  fetch activity data
+  store all the activities data in an array
+onActivityStart 
+  stop video
+  find current activity
+  clear current activity data
+  pass data to videoactivity component
+  start/render the activity
+  when activity finished call activity end
+onActivityend
+  write current activitty data to supabase
+  handle error
+  resume video 
+onVideoEnd
+  mark as complete
+*/
+
 export default function Video() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const {
@@ -13,9 +33,9 @@ export default function Video() {
     setIsPlaying,
     currentTime,
     setCurrentTime,
-    audio,
-    activityLock,
-    setActivityLock,
+    volume,
+    isActivityActive: isActivityActive,
+    setIsActivityActive: setIsActivityActive,
     isDragging,
     maxProgress /* eslint-disable-line no-unused-vars */,
   } = useVideoContext();
@@ -31,7 +51,7 @@ export default function Video() {
   };
 
   const togglePlay = () => {
-    if (!activityLock && videoRef.current) {
+    if (!isActivityActive && videoRef.current) {
       setIsPlaying(!isPlaying);
       if (!isPlaying) {
         videoRef.current.play();
@@ -42,8 +62,8 @@ export default function Video() {
   };
 
   const closeVideoActivity = () => {
-    console.log("function");
-    setActivityLock(false);
+    console.log("close video activity");
+    setIsActivityActive(false);
     setIsPlaying(true);
     videoRef.current?.play();
   };
@@ -57,7 +77,7 @@ export default function Video() {
 
     const handleEnded = () => setIsPlaying(false);
     const handleActivityPause = () => {
-      if (activityLock && videoElement) {
+      if (isActivityActive && videoElement) {
         videoElement.pause();
         setIsPlaying(false);
       }
@@ -68,7 +88,7 @@ export default function Video() {
     };
 
     const preventUnpause = (event: Event) => {
-      if (activityLock) {
+      if (isActivityActive) {
         event.preventDefault();
         videoElement?.pause();
         setIsPlaying(false);
@@ -97,7 +117,7 @@ export default function Video() {
         videoElement.removeEventListener("drag", checkForDrag);
       }
     };
-  }, [activityLock, isDragging, setCurrentTime]);
+  }, [isActivityActive, isDragging, setCurrentTime]);
 
   useEffect(() => {
     if (isPlaying && videoRef.current) {
@@ -131,7 +151,7 @@ export default function Video() {
     <div className={styles.wrapper} style={{ display: "flex" }}>
       <div className={styles.videoWrapper}>
         <video
-          src="/videos/test2.mp4"
+          src="https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_1_720p.mp4?t=2024-10-23T17%3A49%3A25.308Z"
           ref={videoRef}
           width="100%"
           height="100%"
@@ -140,7 +160,7 @@ export default function Video() {
         </video>
         <div
           className={`${styles.activityWrapper} ${
-            activityLock ? styles.open : styles.closed
+            isActivityActive ? styles.open : styles.closed
           }`}
         >
           <VideoActivity onClick={closeVideoActivity} />
@@ -168,7 +188,7 @@ export default function Video() {
           onClick={() => setAudioModal((prev) => !prev)}
           className={`${styles.videoHotbar_button} ${styles.rightAlignedButton}`}
         >
-          {audio != 0 && (
+          {volume != 0 && (
             <svg
               fill="var(--black5)"
               width="34px"
@@ -180,7 +200,7 @@ export default function Video() {
               <path d="M7.098 4.769v9.63c0 .61-.353.756-.784.325L3.42 11.828H1.442A1.112 1.112 0 0 1 .333 10.72V8.448A1.112 1.112 0 0 1 1.442 7.34h1.977l2.895-2.896c.431-.43.784-.285.784.325zm2.076 7.474a.553.553 0 0 0 .392-.163 3.53 3.53 0 0 0 0-4.992.554.554 0 1 0-.784.784 2.422 2.422 0 0 1 0 3.425.554.554 0 0 0 .392.946zm2.184 1.629a6.059 6.059 0 0 0 0-8.575.554.554 0 0 0-.784.783 4.955 4.955 0 0 1 0 7.008.554.554 0 0 0 .784.784zm1.79 1.79a8.59 8.59 0 0 0 0-12.157.554.554 0 0 0-.783.784 7.481 7.481 0 0 1 0 10.59.554.554 0 1 0 .784.784z" />
             </svg>
           )}
-          {audio == 0 && (
+          {volume == 0 && (
             <svg
               fill="var(--black5)"
               width="34px"

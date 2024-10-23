@@ -22,12 +22,13 @@ export default function FRQObject({ data, onClick }: Props) {
   };
 
   const whenClicked = () => {
-    onClick;
+    onClick();
     setIsAnimating(false);
   };
   useEffect(() => {
     if (isAnimating) {
       setDisplayOther(true);
+      console.log("display other is set to " + displayOther);
     }
   }, [isAnimating, onClick]);
   return (

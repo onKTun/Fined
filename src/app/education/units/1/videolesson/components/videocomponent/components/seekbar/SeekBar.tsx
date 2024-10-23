@@ -15,7 +15,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
     setCurrentTime,
     isDragging,
     setIsDragging,
-    activityLock,
+    isActivityActive: isActivityActive,
   } = useVideoContext();
   const [tempProgress, setTempProgress] = useState<number>(
     (currentTime / duration) * 100
@@ -30,7 +30,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
   useEffect(() => {
     const updateMaxProgress = () => {
       const newMaxProgress = (currentTime / duration) * 100;
-      if (newMaxProgress > maxProgress && !activityLock) {
+      if (newMaxProgress > maxProgress && !isActivityActive) {
         setMaxProgress(newMaxProgress);
       }
     };
@@ -51,7 +51,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
           100,
           Math.max(0, (offsetX / rect.width) * 100)
         );
-        if (newProgress <= maxProgress && !activityLock) {
+        if (newProgress <= maxProgress && !isActivityActive) {
           setTempProgress(newProgress);
           whileDragging();
         }
@@ -62,7 +62,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
       if (isDragging) {
         setIsDragging(false);
         const newTime = (tempProgress / 100) * duration;
-        if (newTime <= maxProgress && !activityLock) {
+        if (newTime <= maxProgress && !isActivityActive) {
           setCurrentTime(newTime);
           onChange(newTime);
         }
@@ -99,7 +99,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
         100,
         Math.max(0, (offsetX / rect.width) * 100)
       );
-      if (newProgress <= maxProgress && !activityLock) {
+      if (newProgress <= maxProgress && !isActivityActive) {
         setTempProgress(newProgress);
       }
     }

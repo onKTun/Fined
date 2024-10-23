@@ -18,7 +18,7 @@ export default function VideoActivityItem({
   inprogress,
 }: Props) {
   const { currentTime } = useVideoContext();
-  const { setActivityLock } = useVideoContext();
+  const { setIsActivityActive: setIsActivityActive } = useVideoContext();
   const offset = 1;
 
   const formatTime = (timeInSeconds: number): string => {
@@ -32,7 +32,7 @@ export default function VideoActivityItem({
 
   useEffect(() => {
     if (currentTime === timeStamp - offset) {
-      setActivityLock(true);
+      setIsActivityActive(true);
     }
   }, [currentTime, timeStamp]);
 

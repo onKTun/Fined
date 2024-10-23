@@ -8,11 +8,15 @@ interface Props {
 }
 
 export default function VideoActivity({ onClick }: Props) {
-  const { currentActivity } = useVideoContext();
+  const { currentActivity, currentTime } = useVideoContext();
 
-  if (activityData[currentActivity].type["activity"] === "mcq")
+  console.log("new activiity");
+
+  if (activityData[currentActivity].type["activity"] === "mcq") {
     return <MCQObject data={activityData[currentActivity]} onClick={onClick} />;
+  }
 
-  if (activityData[currentActivity].type["activity"] === "frq")
+  if (activityData[currentActivity].type["activity"] === "frq") {
     return <FRQObject data={activityData[currentActivity]} onClick={onClick} />;
+  }
 }
