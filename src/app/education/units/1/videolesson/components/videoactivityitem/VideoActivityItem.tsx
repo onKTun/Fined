@@ -6,15 +6,13 @@ import { useEffect } from "react";
 
 interface Props {
   timeStamp: number;
-  svgPath: string;
   text: string;
   inprogress: boolean;
 }
 
 export default function VideoActivityItem({
   timeStamp,
-  //svgPath,
-  //text,
+  text,
   inprogress,
 }: Props) {
   const { currentTime } = useVideoContext();
@@ -64,7 +62,7 @@ export default function VideoActivityItem({
               : "gray"
           }
         />
-        Matching Cards
+        <span>{text}</span>
       </div>
     </div>
   );

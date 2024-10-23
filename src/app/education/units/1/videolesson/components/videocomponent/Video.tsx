@@ -147,6 +147,7 @@ export default function Video() {
       setIsPlaying(false);
     }
   };
+
   return (
     <div className={styles.wrapper} style={{ display: "flex" }}>
       <div className={styles.videoWrapper}>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import Button from "src/components/button/Button";
 import ProgressBar from "src/components/progress/ProgressBar";
@@ -80,7 +81,6 @@ export default function ActivityBox() {
           <VideoActivityItem
             key={index}
             timeStamp={activity.timestamp}
-            svgPath={activity.svgPath}
             text={activity.text}
             inprogress={index === inProgressIndex}
           />
