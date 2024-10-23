@@ -1,7 +1,7 @@
 [
   {
     "timestamp": 3,
-    "text": "Card Sorting",
+    "name": "Card Sorting",
     "type": {
       "activity": "mcq",
       "title": "Which of the following is a method of saving",
@@ -17,7 +17,7 @@
   },
   {
     "timestamp": 22,
-    "text": "Card Sorting",
+    "name": "Card Sorting",
     "type": {
       "activity": "frq",
       "title": "If you had a million dollars, what would you spend it on?",
@@ -33,7 +33,7 @@
   },
   {
     "timestamp": 32,
-    "text": "Card Sorting",
+    "name": "Card Sorting",
     "type": {
       "activity": "frq",
       "title": "What does money mean to you",
@@ -49,7 +49,7 @@
   },
   {
     "timestamp": 53,
-    "text": "Card Sorting",
+    "name": "Card Sorting",
     "type": {
       "activity": "frq",
       "title": "What does money mean to you",
@@ -65,7 +65,7 @@
   },
   {
     "timestamp": 63,
-    "text": "Card Sorting",
+    "name": "Card Sorting",
     "type": {
       "activity": "frq",
       "title": "What does money mean to you",
