@@ -1,7 +1,7 @@
 import styles from "./inputmodal.module.css";
 
 interface Props {
-  onClick: () => { void };
+  onClick: () => void;
   typeInput: string;
 }
 export default function InputModal({ onClick, typeInput }: Props) {
