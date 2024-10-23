@@ -62,3 +62,24 @@ ul {
   display: flex;
   flex-grow: 1;
 }
+.high-contrast {
+  --background-color: #000000;
+  --text-color: red;
+  --link-color: lime;
+  --border-color: #ffffff;
+  color: var(--text-color);
+}
+
+.high-contrast a {
+  text-decoration: underline;
+  color: red;
+  background-color: yewhillow;
+}
+
+.high-contrast button,
+.high-contrast input,
+.high-contrast textarea {
+  border-color: var(--border-color);
+  background-color: "yellow";
+  color: green;
+}

@@ -1,9 +1,18 @@
+"use client";
 import Link from "next/link";
 import styles from "./settings.module.css";
 import Search from "src/components/search/Search";
 import SettingItem from "./components/settingitem/SettingItem";
+import { useState } from "react";
 
 export default function Settings() {
+  const [highContrast, setHighContrast] = useState(false);
+
+  const toggleHighContrast = () => {
+    setHighContrast(!highContrast);
+    document.body.classList.toggle("high-contrast", !highContrast);
+  };
+
   return (
     <div className={styles.bodyDash}>
       <div className={styles.bannerContainer}>
@@ -50,6 +59,7 @@ export default function Settings() {
             </button>
           </div>
           <SettingItem
+            onToggle={toggleHighContrast}
             svgPath={"/assets/settingIcons/contrast.svg"}
             title={"High Contrast Mode"}
             desc={
@@ -57,6 +67,7 @@ export default function Settings() {
             }
           />{" "}
           <SettingItem
+            onToggle={() => {}}
             svgPath={"/assets/settingIcons/animation.svg"}
             title={"Stop Playing Animations"}
             desc={
@@ -64,6 +75,7 @@ export default function Settings() {
             }
           />{" "}
           <SettingItem
+            onToggle={() => {}}
             svgPath={"/assets/settingIcons/mute.svg"}
             title={"Mute Video in Videos"}
             desc={
@@ -71,6 +83,7 @@ export default function Settings() {
             }
           />
           <SettingItem
+            onToggle={() => {}}
             svgPath={"/assets/settingIcons/cc.svg"}
             title={"Show Caption in Videos"}
             desc={
@@ -78,6 +91,7 @@ export default function Settings() {
             }
           />
           <SettingItem
+            onToggle={() => {}}
             svgPath={"/assets/settingIcons/contrast.svg"}
             title={"Remove Colors From Videos"}
             desc={
