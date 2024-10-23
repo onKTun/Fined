@@ -1,6 +1,6 @@
 import styles from "./frq.module.css";
 import otherStyles from "../../videoactivity.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
@@ -9,6 +9,7 @@ interface Props {
 
 export default function FRQObject({ data, onClick }: Props) {
   const [text, setText] = useState(""); // State to hold the current input value
+  const textValue = useRef<HTMLTextAreaElement | null>(null);
   const [isAnimating, setIsAnimating] = useState(false); // State for handling animation
   const [displayOther, setDisplayOther] = useState(false);
   const textLimit = 200;
@@ -21,14 +22,20 @@ export default function FRQObject({ data, onClick }: Props) {
     setIsAnimating(true); // Trigger animation
   };
 
-  const whenClicked = () => {
+  const closeFRQ = () => {
+    setDisplayOther(false); // reset frq object to first slide
+    setText("");
+    if (textValue.current) {
+      textValue.current.value = "";
+    }
+
     onClick();
     setIsAnimating(false);
   };
+
   useEffect(() => {
     if (isAnimating) {
       setDisplayOther(true);
-      console.log("display other is set to " + displayOther);
     }
   }, [isAnimating, onClick]);
   return (
@@ -63,6 +70,7 @@ export default function FRQObject({ data, onClick }: Props) {
             placeholder="Enter your response here."
             maxLength={textLimit}
             rows={2}
+            ref={textValue}
             onChange={handleTextChange}
           />
           <h6 className={styles.inputSub}>
@@ -115,7 +123,7 @@ export default function FRQObject({ data, onClick }: Props) {
           className={`${styles.continueButton} ${
             displayOther ? styles.submitted : ""
           }`}
-          onClick={() => whenClicked}
+          onClick={closeFRQ}
         >
           Submit
         </button>

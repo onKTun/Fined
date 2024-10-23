@@ -37,7 +37,6 @@ export default function Video() {
     isActivityActive: isActivityActive,
     setIsActivityActive: setIsActivityActive,
     isDragging,
-    maxProgress /* eslint-disable-line no-unused-vars */,
   } = useVideoContext();
   const [isCCEnabled, setCCEnable] = useState(false);
   const [isAudioModalOpen, setAudioModal] = useState(false);
@@ -82,6 +81,7 @@ export default function Video() {
         setIsPlaying(false);
       }
     };
+
     const onTimeUpdate = () => {
       const current = Math.floor(videoElement?.currentTime || 0);
       setCurrentTime(current);
@@ -158,6 +158,7 @@ export default function Video() {
         >
           Your browser does not support the video tag.
         </video>
+        {/*toggles video activity visibility*/}
         <div
           className={`${styles.activityWrapper} ${
             isActivityActive ? styles.open : styles.closed

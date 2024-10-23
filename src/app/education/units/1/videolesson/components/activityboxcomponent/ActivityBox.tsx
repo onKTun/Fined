@@ -22,7 +22,8 @@ export default function ActivityBox() {
     }
     return inProgressIndex;
   };
-  const findCompletedActivites = (activities, currentTime) => {
+
+  const getCompletedActivitiesCount = (activities, currentTime) => {
     let completed = 0;
 
     for (let i = 0; i < activities.length; i++) {
@@ -37,6 +38,7 @@ export default function ActivityBox() {
   };
 
   const inProgressIndex = findInProgressActivity(activityData, currentTime);
+
   useEffect(() => {
     setCurrentActivity(inProgressIndex);
   }, [inProgressIndex, setCurrentActivity]);
@@ -46,7 +48,7 @@ export default function ActivityBox() {
       <div className={styles.activity_Progress}>
         <ProgressBar
           progress={
-            (findCompletedActivites(activityData, currentTime) /
+            (getCompletedActivitiesCount(activityData, currentTime) /
               activityData.length) *
             100
           }
@@ -68,7 +70,7 @@ export default function ActivityBox() {
           </div>
         </div>
         <button className={styles.infoButton} type="button">
-          {findCompletedActivites(activityData, currentTime) +
+          {getCompletedActivitiesCount(activityData, currentTime) +
             "/" +
             activityData.length}
         </button>
