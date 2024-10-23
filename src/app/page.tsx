@@ -5,6 +5,7 @@ import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 import { createClient } from "../../utils/supabase/client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 export default function LandingPage() {
   const supabase = createClient(); // Initialize Supabase client
   const [loggedIn, setLoggedIn] = useState(false); // Track login status
@@ -27,11 +28,16 @@ export default function LandingPage() {
     checkSession();
   }, [supabase]); // Add su
 
+  const [videoError, setVideoError] = useState(false);
+
+  const videoErrorToggle = () => {
+    setVideoError(!videoError);
+  };
   return (
     <>
       <div className={styles.fullPage}>
         <div className={styles.viewport}>
-          <DefaultHeader />
+          {loggedIn ? <Header /> : <DefaultHeader />}
           <div className={styles.heroContainer}>
             <div className={styles.left}>
               <img src="/assets/finedSolid.png" width={70} />
@@ -77,13 +83,23 @@ export default function LandingPage() {
               </div>
             </div>
             <div className={styles.right}>
-              <video
-                src="/videos/hero.mp4"
-                autoPlay
-                muted
-                loop
-                className={styles.videoContainer}
-              />
+              {!videoError ? (
+                <video
+                  src="/videos/her.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  className={styles.videoContainer}
+                  onError={videoErrorToggle}
+                />
+              ) : (
+                <Image
+                  alt=""
+                  src="/assets/backgrounds/MAINBACKGROUND.png"
+                  layout="fill" // Make the image responsive to the div's size
+                  objectFit="cover" // Ensure the image fills the div without stretching
+                />
+              )}
             </div>
           </div>
         </div>
