@@ -4,19 +4,39 @@ import styles from "./profile.module.css";
 import Link from "next/link";
 import data from "src/data/profile.json";
 import ProgressBar from "src/components/progress/ProgressBar";
-import InputField from "./components/InputField";
 import Button from "src/components/button/Button";
 import ProfilePicture from "src/components/profilePicture/ProfilePicture";
-//import Image from "next/image";
-import profilePic from "public/assets/profilepictures/profile1.jpg"
+import profilePic from "public/assets/profilepictures/profile1.jpg";
+import InputModal from "src/components/inputmodal/InputModal";
+import { useState } from "react";
+import PasswordInputModal from "src/components/passwordinputmodal/PasswordInputModal";
 
 export default function Profile() {
-  const fun = () => {
-    console.log("fun");
+  const [isUsernameModalOpen, toggleUsername] = useState(false);
+  const [isNameModalOpen, toggleName] = useState(false);
+  const [isPasswordModalOpen, togglePassword] = useState(false);
+
+  const toggleUsernameModal = () => {
+    toggleUsername(!isUsernameModalOpen);
+  };
+  const toggleNameModal = () => {
+    toggleName(!isNameModalOpen);
+  };
+  const togglePasswordModal = () => {
+    togglePassword(!isPasswordModalOpen);
   };
   return (
     <>
       <div className={styles.bodyDash}>
+        {isUsernameModalOpen && (
+          <InputModal onClick={toggleUsernameModal} typeInput={"Username"} />
+        )}
+        {isNameModalOpen && (
+          <InputModal onClick={toggleNameModal} typeInput={"Name"} />
+        )}
+        {isPasswordModalOpen && (
+          <PasswordInputModal onClick={togglePasswordModal} />
+        )}
         <div className={styles.bannerContainer}>
           <div className={styles.bannerTop}>
             <div className={styles.pageIndicator}>
@@ -74,8 +94,11 @@ export default function Profile() {
               </button>
             </div>
             <div className={styles.profilePicture_container}>
-
-<ProfilePicture className={styles.profilePicture} src={profilePic} alt = "profile picture"/>
+              <ProfilePicture
+                className={styles.profilePicture}
+                src={profilePic}
+                alt="profile picture"
+              />
 
               <div className={styles.profileSelector}>
                 {[...Array(9)].map((_, index) => (
@@ -141,12 +164,6 @@ export default function Profile() {
                   </svg>
                   Awards
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-                  <path
-                    d="M 19.361 2.481 C 18.287 1.408 16.546 1.408 15.472 2.481 L 13.932 4.021 L 6.685 11.269 C 6.568 11.386 6.485 11.533 6.444 11.694 L 5.528 15.361 C 5.449 15.673 5.541 16.004 5.769 16.231 C 5.996 16.459 6.327 16.551 6.639 16.473 L 10.306 15.556 C 10.467 15.515 10.614 15.432 10.731 15.315 L 17.926 8.121 L 19.519 6.528 C 20.592 5.454 20.592 3.713 19.519 2.639 Z M 16.769 3.778 C 17.127 3.42 17.707 3.42 18.065 3.778 L 18.222 3.935 C 18.58 4.293 18.58 4.873 18.222 5.231 L 17.29 6.164 L 15.865 4.681 Z M 14.569 5.978 L 15.994 7.46 L 9.614 13.839 L 7.676 14.324 L 8.161 12.385 Z M 3.667 7.333 C 3.667 6.827 4.077 6.417 4.583 6.417 L 9.167 6.417 C 9.673 6.417 10.083 6.006 10.083 5.5 C 10.083 4.994 9.673 4.583 9.167 4.583 L 4.583 4.583 C 3.065 4.583 1.833 5.815 1.833 7.333 L 1.833 17.417 C 1.833 18.935 3.065 20.167 4.583 20.167 L 14.667 20.167 C 16.185 20.167 17.417 18.935 17.417 17.417 L 17.417 12.833 C 17.417 12.327 17.006 11.917 16.5 11.917 C 15.994 11.917 15.583 12.327 15.583 12.833 L 15.583 17.417 C 15.583 17.923 15.173 18.333 14.667 18.333 L 4.583 18.333 C 4.077 18.333 3.667 17.923 3.667 17.417 Z"
-                    fill="rgb(166, 166, 166)"
-                  ></path>
-                </svg>
               </div>
               <div className={styles.profileItem_item_Container}>
                 <svg
@@ -492,7 +509,22 @@ export default function Profile() {
             </div>
             <div className={styles.info_input_Container}>
               Name
-              <InputField isSensitive={false} placeholder={data.name} />
+              <div className={styles.inputFieldWraper}>
+                <button className={styles.editButton} onClick={toggleNameModal}>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.1719 0C15.4481 0 14.7244 0.275625 14.1719 0.828125L13 2L17 6L18.1719 4.82812C19.2759 3.72413 19.2759 1.93313 18.1719 0.828125C17.6194 0.275625 16.8956 0 16.1719 0ZM11.5 3.5L0 15V19H4L15.5 7.5L11.5 3.5Z"
+                      fill="#BBBBBB"
+                    />
+                  </svg>
+                </button>
+              </div>
               <p className={styles.info_input_subtext}>
                 Please enter your legal name here. This is not the same as your
                 custom username.
@@ -500,7 +532,25 @@ export default function Profile() {
             </div>
             <div className={styles.info_input_Container}>
               Username
-              <InputField isSensitive={false} placeholder={data.username} />
+              <div className={styles.inputFieldWraper}>
+                <button
+                  className={styles.editButton}
+                  onClick={toggleUsernameModal}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.1719 0C15.4481 0 14.7244 0.275625 14.1719 0.828125L13 2L17 6L18.1719 4.82812C19.2759 3.72413 19.2759 1.93313 18.1719 0.828125C17.6194 0.275625 16.8956 0 16.1719 0ZM11.5 3.5L0 15V19H4L15.5 7.5L11.5 3.5Z"
+                      fill="#BBBBBB"
+                    />
+                  </svg>
+                </button>
+              </div>
               <p className={styles.info_input_subtext}>
                 This could be whatever you like as long as its appropriate and
                 follows our{" "}
@@ -509,7 +559,25 @@ export default function Profile() {
             </div>
             <div className={styles.info_input_Container}>
               Password
-              <InputField isSensitive={true} placeholder={data.password} />
+              <div className={styles.inputFieldWraper}>
+                <button
+                  className={styles.editButton}
+                  onClick={togglePasswordModal}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 19 19"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.1719 0C15.4481 0 14.7244 0.275625 14.1719 0.828125L13 2L17 6L18.1719 4.82812C19.2759 3.72413 19.2759 1.93313 18.1719 0.828125C17.6194 0.275625 16.8956 0 16.1719 0ZM11.5 3.5L0 15V19H4L15.5 7.5L11.5 3.5Z"
+                      fill="#BBBBBB"
+                    />
+                  </svg>
+                </button>
+              </div>
               <span className={styles.info_input_subtext}>
                 This could be whatever you like as long as its appropriate and
                 follows our{" "}
@@ -570,14 +638,14 @@ export default function Profile() {
               <Button
                 style={"gray"}
                 text={"Cancel"}
-                onClick={fun}
+                onClick={() => {}}
                 ftSize={1}
                 heightWidth={{}}
               />
               <Button
                 style={"blue"}
                 text={"Save Changes"}
-                onClick={fun}
+                onClick={() => {}}
                 ftSize={1}
                 heightWidth={{}}
               />

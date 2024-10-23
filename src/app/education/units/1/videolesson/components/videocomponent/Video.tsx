@@ -17,7 +17,7 @@ export default function Video() {
     activityLock,
     setActivityLock,
     isDragging,
-//    maxProgress,
+    maxProgress /* eslint-disable-line @typescript-eslint/no-unused-vars */,
   } = useVideoContext();
   const [isCCEnabled, setCCEnable] = useState(false);
   const [isAudioModalOpen, setAudioModal] = useState(false);

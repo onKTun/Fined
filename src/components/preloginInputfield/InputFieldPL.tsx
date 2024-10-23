@@ -7,13 +7,9 @@ interface Props {
   id?: string;
 }
 
-function InputFieldPL( {
-  type,
-  name ,
-  id,
-}: Props) {
+function InputFieldPL({ type, name, id }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  
+
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };

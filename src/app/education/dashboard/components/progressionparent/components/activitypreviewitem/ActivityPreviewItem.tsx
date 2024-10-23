@@ -17,7 +17,7 @@ export default function ActivityPreviewItem({
   svgPath,
   attempts,
   score,
-  //linkTo,
+  linkTo /* eslint-disable-line @typescript-eslint/no-unused-vars */,
 }: Props) {
   return (
     <div className={styles.wrapper}>

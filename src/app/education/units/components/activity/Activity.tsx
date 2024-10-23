@@ -1,6 +1,5 @@
 import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./activity.module.css";
-//import router from "next/router";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 interface Props {
   title: string;
@@ -71,14 +70,14 @@ export default function Activity({
           additonalStyles={{ height: "45px", width: "9em" }}
           ftSize={1}
           text={titleText}
-          url={"/education/units/1/preview"}
+          url={"/education/units/1/activity"}
         />
         <RoutingButton
           style="gray"
           additonalStyles={{ height: "45px", width: "9em" }}
           ftSize={1}
           text="Tutorial"
-          url={"/education/units/1/preview"}
+          url={"/education/units/1/activity"}
         />
       </div>
     </div>

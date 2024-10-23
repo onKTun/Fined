@@ -137,3 +137,9 @@
     width: 50em;
   }
 }
+.lesson {
+  display: flex;
+  flex-grow: 1;
+  column-gap: 2em;
+  height: fit-content;
+}

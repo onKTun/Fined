@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import Search from "../search/Search";
@@ -31,7 +30,7 @@ export default function Header() {
             </Link>
           </li>
         </ul>
-        <Link href="/account/login">
+        <Link href="/">
           <div className={styles.logoWrapper}>
             <div className={styles.logoSVGwrapper}></div>
             <svg

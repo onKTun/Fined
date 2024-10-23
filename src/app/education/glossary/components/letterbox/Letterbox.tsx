@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./letterbox.module.css";
-//import Button from "src/components/button/Button";
 import Modal from "../modal/Modal";
 
 interface Term {

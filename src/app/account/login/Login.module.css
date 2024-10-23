@@ -81,7 +81,6 @@
     color: gray;
   }
 }
-
 .inputWrapper {
   display: flex;
   flex-direction: column;
@@ -126,4 +125,8 @@
     color: var(--finedblue);
     text-decoration: none;
   }
+}
+.videoContainer {
+  position: absolute;
+  left: 0;
 }

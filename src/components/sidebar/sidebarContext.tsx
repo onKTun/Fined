@@ -10,7 +10,8 @@ const SidebarContext = createContext({
 
 // Provider component
 export const SidebarProvider = ({ children }) => {
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
+  //when useState(true) the side bar does not display on initial load
+  const [isSidebarActive, setIsSidebarActive] = useState(true);
   const pathname = usePathname();
 
   const toggleSidebar = () => {
