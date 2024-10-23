@@ -2,31 +2,31 @@
   "acrossWords": [
     {
       "word": "SPEND",
-      "definition": "A fruit that is typically red, green, or yellow.",
+      "definition": "Use money to obtain something.",
       "x": 3,
       "y": 5
     },
     {
       "word": "WALLET",
-      "definition": "A long curved fruit that grows in clusters and has soft pulpy flesh and yellow skin when ripe.",
+      "definition": "A small container for holding money and cards.",
       "x": 4,
       "y": 7
     },
     {
       "word": "EFFORT",
-      "definition": "A small, round stone fruit that is typically bright or dark red.",
+      "definition": "Physical or mental exertion.",
       "x": 3,
       "y": 10
     },
     {
       "word": "BUY",
-      "definition": "A small, round stone fruit that is typically bright or dark red.",
+      "definition": "Obtain in exchange for payment.",
       "x": 4,
       "y": 13
     },
     {
       "word": "VALUE",
-      "definition": "A small, round stone fruit that is typically bright or dark red.",
+      "definition": "Importance or worth.",
       "x": 1,
       "y": 15
     }
@@ -34,37 +34,31 @@
   "downWords": [
     {
       "word": "CHORE",
-      "definition": "A large round juicy citrus fruit with a tough bright reddish-yellow rind.",
+      "definition": "A household task.",
       "x": 5,
       "y": 1
     },
     {
       "word": "DOLLAR",
-      "definition": "A fleshy yellowish-red tropical fruit that is eaten ripe or used green for pickles or chutneys.",
+      "definition": "A unit of currency.",
       "x": 7,
       "y": 5
     },
     {
-      "word": "GIFT",
-      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
-      "x": 9,
-      "y": 4
-    },
-    {
       "word": "DREAM",
-      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
+      "definition": "A future aspiration.",
       "x": 3,
       "y": 8
     },
     {
       "word": "FUTURE",
-      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
+      "definition": "A time yet to come.",
       "x": 5,
       "y": 10
     },
     {
       "word": "SAVE",
-      "definition": "A sweet yellowish- or brownish-green edible fruit that is typically narrow at the stalk and wider towards the base.",
+      "definition": "Set aside for later use.",
       "x": 1,
       "y": 13
     }

@@ -1,6 +1,5 @@
 import { Container, Graphics } from "pixi.js";
 import { Row } from "./Row";
-import { Input } from "@pixi/ui";
 
 export class Crossword {
   acrossRows: Row[];
@@ -34,6 +33,12 @@ export class Crossword {
     this._container.calculateBounds();
     const boundRect = this._container.getBounds();
     this._container.pivot.set(boundRect.width / 2, boundRect.height / 2);
+    console.log(
+      `Bound Width: ${boundRect.width}, Bound Height: ${boundRect.height}`
+    );
+    console.log(
+      `Pivot: (${this._container.pivot.x}, ${this._container.pivot.y})`
+    );
   }
   checkCrossword(): boolean {
     const allAcrossCorrect = this.acrossRows.every((row) => row.isCorrect());
@@ -59,7 +64,9 @@ export class Crossword {
     let acrossCount = 1;
     for (const term in acrossTerms) {
       acrossWords.push(acrossTerms[term]["word"]);
-      acrossDefinitions.push(acrossTerms[term]["definition"]);
+      acrossDefinitions.push(
+        acrossCount.toString() + ". " + acrossTerms[term]["definition"]
+      );
       acrossRows.push(
         new Row(
           acrossTerms[term]["word"],
@@ -75,7 +82,9 @@ export class Crossword {
     let downCount = 1;
     for (const term in downTerms) {
       downWords.push(downTerms[term]["word"]);
-      downDefinitions.push(downTerms[term]["definition"]);
+      downDefinitions.push(
+        downCount.toString() + ". " + downTerms[term]["definition"]
+      );
       downRows.push(
         new Row(
           downTerms[term]["word"],
@@ -108,11 +117,6 @@ export class Crossword {
               acrossCell.container.y === downCell.container.y &&
               acrossCell.correctLetter === downCell.correctLetter
             ) {
-              console.log(
-                "duplicate cell at " +
-                  acrossCell.container.x +
-                  acrossCell.container.y
-              );
               //remove cell from acrossRows container and array, and replace with the downRow cell
               const index = acrossRow.container.getChildIndex(
                 acrossCell.container
@@ -166,6 +170,12 @@ export class Crossword {
     const bounding = new Graphics();
     bounding.lineStyle(2, 0xff0000);
     bounding.drawShape(this._container.getBounds());
+    const bounds = this._container.getBounds();
+    bounding.drawCircle(
+      bounds.x + bounds.width / 2,
+      bounds.y + bounds.height / 2,
+      10
+    );
     return bounding;
   }
 }

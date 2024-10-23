@@ -8,7 +8,7 @@ import crosswordData from "src/data/crossword.json";
 export default function CrosswordActivityPage() {
   return (
     <div className={styles.activitycontainer}>
-      <Stage width={900} height={700} options={{ background: "3385FF" }}>
+      <Stage width={1118} height={730} options={{ background: "3385FF" }}>
         <PixiApp run={script} data={crosswordData}></PixiApp>
       </Stage>
     </div>
