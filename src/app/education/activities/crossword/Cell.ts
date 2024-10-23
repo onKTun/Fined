@@ -17,7 +17,7 @@ export class Cell {
 
     this.graphics = new Graphics();
     this.text = new Text(
-      correctLetter,
+      "",
       new TextStyle({
         align: "center",
         fontSize: 0.65 * this.size.length,

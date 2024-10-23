@@ -89,8 +89,9 @@ export class Row {
   changeValue(text: string) {
     console.log("change value called");
     for (let i = 0; i < this.cells.length; i++) {
-      if (i <= text.length) {
-        this.cells[i].text.text = text[i];
+      if (i <= text.length && text[i]) {
+        const uppercaseText = text[i].toUpperCase();
+        this.cells[i].text.text = uppercaseText;
       } else {
         this.cells[i].text.text = "";
       }
@@ -106,6 +107,14 @@ export class Row {
 
   isCorrect(): boolean {
     const currentAnswer = this.cells.map((cell) => cell.text.text).join("");
+    console.log(
+      "Compared " +
+        currentAnswer +
+        " to " +
+        this.answer +
+        " result is " +
+        (currentAnswer === this.answer)
+    );
     return currentAnswer === this.answer;
   }
 
