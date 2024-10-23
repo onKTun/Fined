@@ -6,9 +6,18 @@ import RoutingButton from "src/components/routingbutton/RoutingButton";
 import { createClient } from "../../utils/supabase/client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { error } from "console";
 export default function LandingPage() {
   const supabase = createClient(); // Initialize Supabase client
   const [loggedIn, setLoggedIn] = useState(false); // Track login status
+  const [videoError, setVideoError] = useState(false);
+
+  const onVideoError = () => {
+    setVideoError(true);
+  };
+
+  const videoUrl =
+    "https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/landing_page_video_720p.mp4?t=2024-10-23T05%3A26%3A12.795Z";
   useEffect(() => {
     const checkSession = async () => {
       const {
@@ -24,15 +33,23 @@ export default function LandingPage() {
         setLoggedIn(true);
       }
     };
-
     checkSession();
-  }, [supabase]); // Add su
 
-  const [videoError, setVideoError] = useState(false);
+    const fetchVideo = async () => {
+      try {
+        const response = await fetch(videoUrl);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        } else {
+          setVideoError(false);
+        }
+      } catch (err) {
+        setVideoError(true);
+      }
+    };
+    fetchVideo();
+  }, [supabase]); // Add supabase
 
-  const videoErrorToggle = () => {
-    setVideoError(!videoError);
-  };
   return (
     <>
       <div className={styles.fullPage}>
@@ -85,16 +102,17 @@ export default function LandingPage() {
             <div className={styles.right}>
               {!videoError ? (
                 <video
-                  src="/videos/her.mp4"
                   autoPlay
                   muted
                   loop
                   className={styles.videoContainer}
-                  onError={videoErrorToggle}
-                />
+                  onError={onVideoError}
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                </video>
               ) : (
                 <Image
-                  alt=""
+                  alt="fallback image"
                   src="/assets/backgrounds/MAINBACKGROUND.png"
                   layout="fill" // Make the image responsive to the div's size
                   objectFit="cover" // Ensure the image fills the div without stretching
