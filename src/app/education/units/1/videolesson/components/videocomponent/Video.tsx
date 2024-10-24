@@ -5,6 +5,7 @@ import { useVideoContext } from "../../hooks/VideoContext";
 import AudioModal from "./components/audiomodal/AudioModal";
 import VideoActivity from "./components/videoactivity/VideoActivity";
 import SeekBar from "./components/seekbar/SeekBar";
+import { updateProgress } from "../../actions";
 
 /*
 video logic
@@ -82,9 +83,14 @@ export default function Video() {
       }
     };
 
-    const onTimeUpdate = () => {
+    const onTimeUpdate = async () => {
       const current = Math.floor(videoElement?.currentTime || 0);
       setCurrentTime(current);
+
+      if (current === videoDuration) {
+        console.log("video finished");
+        await updateProgress(100, "completed");
+      }
     };
 
     const preventUnpause = (event: Event) => {
