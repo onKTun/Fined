@@ -69,10 +69,11 @@ export default function LessonPreview() {
               </div>
               <div className={styles.description_textBox}>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur. Pellentesque platea
-                  ornare aliquet fermentum feugiat vitae facilisis massa lectus.
-                  Risus eget ullamcorper velit malesuada urna et. Faucibus
-                  faucibus dapibus egestas vel diam purus in tortor.
+                  In this lesson, you'll discover the importance of money and
+                  its many uses. We'll explore how money represents effort,
+                  unlocks opportunities, and helps you achieve goals. You'll
+                  also learn smart ways to manage, store, and save it for the
+                  future—preparing you for real-world financial adventures!
                 </p>
               </div>
               <div className={styles.description_question}>

@@ -50,13 +50,11 @@ export default function AdditionalInformation() {
           </div>
           <div className={styles.summaryWrapper}>
             <p className={styles.p}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusamus, corporis. Nemo maxime quasi, iste aliquid culpa in
-              veritatis aliquam ducimus. Ex dicta et recusandae sunt,
-              voluptatibus itaque nostrum eius enim deserunt, a quibusdam
-              suscipit similique assumenda quod fuga consequatur necessitatibus.
-              Eius voluptatum, perferendis quod odit repellendus hic incidunt
-              consectetur, cupiditate, veritatis inventore deleniti?
+              In this lesson, you'll discover the importance of money and its
+              many uses. We'll explore how money represents effort, unlocks
+              opportunities, and helps you achieve goals. You'll also learn
+              smart ways to manage, store, and save it for the future—preparing
+              you for real-world financial adventures!
             </p>
           </div>
         </div>
