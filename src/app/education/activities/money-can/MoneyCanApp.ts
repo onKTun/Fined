@@ -39,11 +39,30 @@ const whiteTextStyle = new TextStyle({
   align: "center",
 });
 
+const whiteTextStyleBold = new TextStyle({
+  fontFamily: "Helvetica",
+  fill: "#ffffff",
+  fontSize: 16,
+  wordWrap: true,
+  wordWrapWidth: cardDimensions.width - 10,
+  align: "center",
+  fontWeight: "600"
+});
+
+const subTextCard = new TextStyle({
+  fontFamily: "Helvetica",
+  fill: "#CCE0FF",
+  fontSize: 14,
+  wordWrap: true,
+  wordWrapWidth: cardDimensions.width - 10,
+  align: "center",
+  fontWeight: "500"
+})
+
 export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp = app;
   setup();
 
-  //TODO implement data loading
   propagateCards(data);
 
   const timerManager = new TimerManager();
@@ -78,11 +97,11 @@ function setup() {
 
   //cards left
   const scoreBoxDimensions = {
-    width: 170,
-    height: 30,
-    x: 100,
+    width: 190,
+    height: 50,
+    x: 120,
     y: 50,
-    radius: 15,
+    radius: 10,
   };
   const cardsRemainingContainer = new Container();
   const cardsRemainingGraphics = new Graphics();
@@ -147,8 +166,8 @@ function setup() {
     scoreBoxDimensions.width / 2,
     scoreBoxDimensions.height / 2
   );
-  timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 7);
-  timeText.y = scoreBoxDimensions.y + 5;
+  timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 40);
+  timeText.y = scoreBoxDimensions.y + 15;
   timeContainer.addChild(timeBoxGraphics, timeText);
 
   //initialize containers
@@ -173,7 +192,7 @@ function setup() {
 
   //graphics for card regions
   const cardBankGraphics = new Graphics();
-  cardBankGraphics.lineStyle(2, "ffffff");
+  cardBankGraphics.lineStyle(1, "ffffff");
   cardBankGraphics.beginFill("63A4FF");
   cardBankGraphics.drawRoundedRect(
     0,
@@ -182,9 +201,12 @@ function setup() {
     cardDimensions.height,
     cardDimensions.radius
   ); //card bank
+  cardBankGraphics.beginFill("#3385FF");
+  cardBankGraphics.drawRoundedRect((cardDimensions.width-100)/2, (cardDimensions.height-180)/2, 100, 180, 8);
+  cardBankGraphics.endFill();
 
   const cardAnswerGraphicsTrue = new Graphics();
-  cardAnswerGraphicsTrue.lineStyle(2, "ffffff");
+  cardAnswerGraphicsTrue.lineStyle(1, "ADCEFF");
   cardAnswerGraphicsTrue.beginFill("63A4FF");
   cardAnswerGraphicsTrue.drawRoundedRect(
     0,
@@ -194,8 +216,13 @@ function setup() {
     cardDimensions.radius
   ); //right
 
+//square contianers around the text
+  cardAnswerGraphicsTrue.beginFill("#3385FF");
+  cardAnswerGraphicsTrue.drawRoundedRect((cardDimensions.width-150)/2, (cardDimensions.height-70)/2, 150, 70, 8);
+  cardAnswerGraphicsTrue.endFill();
+
   const cardAnswerGraphicsWrong = new Graphics();
-  cardAnswerGraphicsWrong.lineStyle(2, "ffffff");
+  cardAnswerGraphicsWrong.lineStyle(1, "#ADCEFF");
   cardAnswerGraphicsWrong.beginFill("63A4FF");
   cardAnswerGraphicsWrong.drawRoundedRect(
     0,
@@ -205,21 +232,36 @@ function setup() {
     cardDimensions.radius
   ); //left
 
+  cardAnswerGraphicsWrong.beginFill("#3385FF");
+  cardAnswerGraphicsWrong.drawRoundedRect((cardDimensions.width-150)/2, (cardDimensions.height-70)/2, 150, 70, 8);
+  cardAnswerGraphicsWrong.endFill();
   //container texts
-  const containerTrueText = new Text("Money Can", whiteTextStyle);
+  const containerTrueText = new Text("Money Can", whiteTextStyleBold);
   containerTrueText.anchor.set(0.5);
   containerTrueText.x = cardDimensions.width / 2;
-  containerTrueText.y = cardDimensions.height / 2;
+  containerTrueText.y = (cardDimensions.height / 2) - 10;
 
-  const containerWrongText = new Text("Money Can Not", whiteTextStyle);
+  const containerDragTrue = new Text("(Drag Card Here)", subTextCard);
+  containerDragTrue.anchor.set(0.5);
+  containerDragTrue.x = cardDimensions.width / 2;
+  containerDragTrue.y = (cardDimensions.height/ 2) + 10;
+
+  const containerDragFalse = new Text("(Drag Card Here)", subTextCard);
+  containerDragFalse.anchor.set(0.5);
+  
+  containerDragFalse.x = cardDimensions.width / 2;
+  containerDragFalse.y = (cardDimensions.height/ 2) + 10;
+
+  const containerWrongText = new Text("Money Can Not", whiteTextStyleBold);
   containerWrongText.anchor.set(0.5);
   containerWrongText.x = cardDimensions.width / 2;
-  containerWrongText.y = cardDimensions.height / 2;
+  containerWrongText.y = (cardDimensions.height / 2) - 10;
+
 
   // Add card components to containers
   cardBankContainer.addChild(cardBankGraphics);
-  correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText);
-  wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText);
+  correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText, containerDragTrue);
+  wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText, containerDragFalse);
 
   const instruction = new InstructionModal("hihihi", "ji kevin", 100, 100);
   instruction.container.position.set(
