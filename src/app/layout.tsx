@@ -1,15 +1,13 @@
 import { ReactNode } from "react";
 import "src/app/global.css";
 
-
-
 interface RootLayoutProps {
   children: ReactNode;
 }
 
 export const metadata = {
-  title: "FIN'ED: Dashboard",
-  description: "Web site created with Next.js.",
+  title: "FIN'ED",
+  description: "Financial literacy for all.",
 };
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {

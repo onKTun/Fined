@@ -1,0 +1,66 @@
+{
+  "acrossWords": [
+    {
+      "word": "SPEND",
+      "definition": "Use money to obtain something.",
+      "x": 3,
+      "y": 5
+    },
+    {
+      "word": "WALLET",
+      "definition": "A small container for holding money and cards.",
+      "x": 4,
+      "y": 7
+    },
+    {
+      "word": "EFFORT",
+      "definition": "Physical or mental exertion.",
+      "x": 3,
+      "y": 10
+    },
+    {
+      "word": "BUY",
+      "definition": "Obtain in exchange for payment.",
+      "x": 4,
+      "y": 13
+    },
+    {
+      "word": "VALUE",
+      "definition": "Importance or worth.",
+      "x": 1,
+      "y": 15
+    }
+  ],
+  "downWords": [
+    {
+      "word": "CHORE",
+      "definition": "A household task.",
+      "x": 5,
+      "y": 1
+    },
+    {
+      "word": "DOLLAR",
+      "definition": "A unit of currency.",
+      "x": 7,
+      "y": 5
+    },
+    {
+      "word": "DREAM",
+      "definition": "A future aspiration.",
+      "x": 3,
+      "y": 8
+    },
+    {
+      "word": "FUTURE",
+      "definition": "A time yet to come.",
+      "x": 5,
+      "y": 10
+    },
+    {
+      "word": "SAVE",
+      "definition": "Set aside for later use.",
+      "x": 1,
+      "y": 13
+    }
+  ]
+}
