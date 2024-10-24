@@ -4,8 +4,6 @@ import {
   Container,
   Text,
   TextStyle,
-  Sprite,
-  Texture,
 } from "pixi.js";
 
 export default class CardObject {
@@ -19,14 +17,6 @@ export default class CardObject {
     answer: boolean,
     cardDimensions: { width: number; height: number; radius: number }
   ) {
-    const whiteTextStyle = new TextStyle({
-      fontFamily: "Helvetica",
-      fill: "#000000",
-      fontSize: 16,
-      wordWrap: true,
-      wordWrapWidth: cardDimensions.width - 10,
-      align: "center",
-    });
     this.description = description;
     this.answer = answer;
     this.cardDimensions = cardDimensions;

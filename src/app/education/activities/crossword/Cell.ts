@@ -8,7 +8,7 @@ export class Cell {
   text: Text;
   size: { length: number };
 
-  constructor(correctLetter: string, textStyle?: TextStyle) {
+  constructor(correctLetter: string) {
     this.size = { length: 40 };
     this.correctLetter = correctLetter;
     this.currentLetter = "";

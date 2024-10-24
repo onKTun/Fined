@@ -32,14 +32,6 @@ let timeText: Text;
 let timer: Timer;
 
 let onStart: () => void;
-const whiteTextStyle = new TextStyle({
-  fontFamily: "Helvetica",
-  fill: "#ffffff",
-  fontSize: 16,
-  wordWrap: true,
-  wordWrapWidth: cardDimensions.width - 10,
-  align: "center",
-});
 
 const whiteTextStyleBold = new TextStyle({
   fontFamily: "Helvetica",

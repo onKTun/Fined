@@ -1,6 +1,6 @@
 import { Input } from "@pixi/ui";
 import { Cell } from "./Cell";
-import { Bounds, Container, Graphics, Text, TextStyle } from "pixi.js";
+import { Container, Graphics, Text, TextStyle } from "pixi.js";
 import { Crossword } from "./Crossword";
 
 export class Row {

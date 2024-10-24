@@ -6,7 +6,6 @@ import {
   TextStyle,
   Texture,
 } from "pixi.js";
-import { Input } from "@pixi/ui";
 import { Crossword } from "./Crossword";
 import { Graphics } from "pixi.js";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
