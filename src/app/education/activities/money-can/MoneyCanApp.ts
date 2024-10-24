@@ -13,6 +13,7 @@ import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
 import markComplete from "utils/supabase/lessonProgressService";
+import { InstructionModal } from "../ActivityModals";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -220,13 +221,20 @@ function setup() {
   correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText);
   wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText);
 
+  const instruction = new InstructionModal("hihihi", "ji kevin", 100, 100);
+  instruction.container.position.set(
+    pixiApp.screen.width / 2,
+    pixiApp.screen.height / 2
+  );
+
   // Add it to the stage to render
   pixiApp.stage.addChild(
     cardBankContainer,
     correctContainer,
     wrongContainer,
     cardsRemainingContainer,
-    timeContainer
+    timeContainer,
+    instruction.container
   );
 
   pixiApp.stage.eventMode = "static";
