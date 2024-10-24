@@ -1,6 +1,5 @@
 "use server";
 
-import { UserResponse } from "@supabase/supabase-js";
 import { createClient } from "utils/supabase/server";
 
 export async function updateProgress(
