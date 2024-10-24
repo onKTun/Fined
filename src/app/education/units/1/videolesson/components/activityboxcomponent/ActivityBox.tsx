@@ -81,7 +81,7 @@ export default function ActivityBox() {
           <VideoActivityItem
             key={index}
             timeStamp={activity.timestamp}
-            text={activity.text}
+            text={activity.name}
             inprogress={index === inProgressIndex}
           />
         ))}

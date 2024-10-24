@@ -1,7 +1,7 @@
 import styles from "./frq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useRef, useState } from "react";
-
+import { updateProgress } from "src/app/education/units/1/videolesson/actions";
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
   onClick: () => void;
@@ -18,8 +18,9 @@ export default function FRQObject({ data, onClick }: Props) {
     setText(e.target.value); // Update the state with the current textarea value
   };
 
-  const handleSubmitAnim = () => {
+  const onSubmitFRQ = async () => {
     setIsAnimating(true); // Trigger animation
+    await updateProgress(data.id, "completed", text);
   };
 
   const closeFRQ = () => {
@@ -81,7 +82,7 @@ export default function FRQObject({ data, onClick }: Props) {
           className={`${styles.continueButton} ${
             displayOther ? styles.submitted : ""
           }`}
-          onClick={handleSubmitAnim}
+          onClick={onSubmitFRQ}
         >
           Submit
         </button>

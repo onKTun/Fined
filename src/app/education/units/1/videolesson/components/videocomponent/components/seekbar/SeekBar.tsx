@@ -53,8 +53,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
           100,
           Math.max(0, (offsetX / rect.width) * 100)
         );
-        if (!isActivityActive) {
-          //newProgress <= maxProgress &&
+        if (newProgress <= maxProgress && !isActivityActive) {
           setTempProgress(newProgress);
           whileDragging();
         }
@@ -65,8 +64,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
       if (isDragging) {
         setIsDragging(false);
         const newTime = (tempProgress / 100) * duration;
-        if (!isActivityActive) {
-          //newTime <= maxProgress
+        if (newTime <= maxProgress && !isActivityActive) {
           setCurrentTime(newTime);
           onChange(newTime);
         }
@@ -103,8 +101,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
         100,
         Math.max(0, (offsetX / rect.width) * 100)
       );
-      if (!isActivityActive) {
-        //newProgress <= maxProgress
+      if (newProgress <= maxProgress && !isActivityActive) {
         setTempProgress(newProgress);
       }
     }
