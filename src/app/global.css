@@ -79,7 +79,12 @@ ul {
 .high-contrast button,
 .high-contrast input,
 .high-contrast textarea {
-  border-color: var(--border-color);
+  border-color: red;
   background-color: "yellow";
   color: green;
+}
+.no-animation * {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
 }

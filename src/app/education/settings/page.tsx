@@ -7,10 +7,15 @@ import { useState } from "react";
 
 export default function Settings() {
   const [highContrast, setHighContrast] = useState(false);
+  const [animations, setAnimations] = useState(false);
 
   const toggleHighContrast = () => {
     setHighContrast(!highContrast);
     document.body.classList.toggle("high-contrast", !highContrast);
+  };
+  const toggleAnimations = () => {
+    setAnimations(!animations);
+    document.body.classList.toggle("no-animation", !animations);
   };
 
   return (
@@ -67,7 +72,7 @@ export default function Settings() {
             }
           />{" "}
           <SettingItem
-            onToggle={() => {}}
+            onToggle={toggleAnimations}
             svgPath={"/assets/settingIcons/animation.svg"}
             title={"Stop Playing Animations"}
             desc={
