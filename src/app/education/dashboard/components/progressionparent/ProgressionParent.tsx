@@ -7,6 +7,7 @@ import RoutingButton from "src/components/routingbutton/RoutingButton";
 //import ActivityPreviewItem from "./components/activitypreviewitem/ActivityPreviewItem";
 //import activityData from "src/data/video.json";
 // Function to calculate cumulative progress
+/*
 const calculateCumulativeProgress = (units) => {
   if (units.length === 0) return 0;
 
@@ -16,14 +17,14 @@ const calculateCumulativeProgress = (units) => {
 
   const averageProgress = totalProgress / units.length;
   return averageProgress;
-};
+};*/
 
 export default function ProgressionParent() {
   const [cumulativeProgress, setCumulativeProgress] = useState(0);
 
   useEffect(() => {
     // Calculate progress once when the component mounts
-    const progress = calculateCumulativeProgress(progressData);
+    //const progress = calculateCumulativeProgress(progressData);
     setCumulativeProgress(0);
   }, []);
 

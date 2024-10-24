@@ -2,7 +2,7 @@
 import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./profile.module.css";
 import profileData from "../../../../data/profile.json";
-import { getUser, createClient } from "utils/supabase/client";
+import { getUser } from "utils/supabase/client";
 import { useEffect, useState } from "react";
 
 export default function Profile() {

@@ -2,13 +2,13 @@
 import Search from "src/components/search/Search";
 import styles from "../units.module.css";
 import Activity from "../components/activity/Activity";
-import activityData from "src/data/video.json";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 
 export default function Unit1() {
+  /*
   const completed = activityData.filter(
     (activity) => activity.progress == 100
-  ).length;
+  ).length;*/
 
   return (
     <div className={styles.bodyDash}>
