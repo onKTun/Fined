@@ -6,19 +6,17 @@ import { useEffect } from "react";
 
 interface Props {
   timeStamp: number;
-  svgPath: string;
   text: string;
   inprogress: boolean;
 }
 
 export default function VideoActivityItem({
   timeStamp,
-  //svgPath,
-  //text,
+  text,
   inprogress,
 }: Props) {
   const { currentTime } = useVideoContext();
-  const { setActivityLock } = useVideoContext();
+  const { setIsActivityActive: setIsActivityActive } = useVideoContext();
   const offset = 1;
 
   const formatTime = (timeInSeconds: number): string => {
@@ -32,7 +30,7 @@ export default function VideoActivityItem({
 
   useEffect(() => {
     if (currentTime === timeStamp - offset) {
-      setActivityLock(true);
+      setIsActivityActive(true);
     }
   }, [currentTime, timeStamp]);
 
@@ -64,7 +62,7 @@ export default function VideoActivityItem({
               : "gray"
           }
         />
-        Matching Cards
+        <span>{text}</span>
       </div>
     </div>
   );
