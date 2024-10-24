@@ -3,9 +3,6 @@
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   flex-grow: 1; /*grows height and width*/
-  height: fit-content;
-  padding: 30px 20px;
-  box-sizing: border-box;
 }
 
 .gamediv {
