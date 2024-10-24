@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import Search from "../search/Search";
 import { useSidebar } from "../sidebar/sidebarContext";
+import { signOut } from "utils/supabase/signout";
 
 export default function Header() {
   const { toggleSidebar } = useSidebar();
@@ -20,7 +21,7 @@ export default function Header() {
             </Link>
           </li>
           <li className={styles.listItem}>
-            <Link className={styles.link} href="">
+            <Link className={styles.link} href="" onClick={signOut}>
               Signout
             </Link>
           </li>
