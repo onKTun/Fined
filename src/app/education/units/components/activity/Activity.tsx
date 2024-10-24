@@ -1,12 +1,14 @@
 import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./activity.module.css";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
+
 interface Props {
   title: string;
   desc: string;
   svgPath: string;
   progress: number;
   estTime: number;
+  redirect: string;
 }
 
 export default function Activity({
@@ -15,6 +17,7 @@ export default function Activity({
   svgPath,
   progress,
   estTime,
+  redirect,
 }: Props) {
   const statusStyle = (() => {
     if (progress === 100) {
@@ -70,14 +73,7 @@ export default function Activity({
           additonalStyles={{ height: "45px", width: "9em" }}
           ftSize={1}
           text={titleText}
-          url={"/education/units/1/activity"}
-        />
-        <RoutingButton
-          style="gray"
-          additonalStyles={{ height: "45px", width: "9em" }}
-          ftSize={1}
-          text="Tutorial"
-          url={"/education/units/1/activity"}
+          url={redirect}
         />
       </div>
     </div>

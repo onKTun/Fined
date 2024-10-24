@@ -31,7 +31,7 @@ export default function DefaultHeader() {
     <>
       <div className={styles.headerContainer}>
         <div className={styles.leftContainer}>
-          <Link href="/account/login">
+          <Link href="/">
             <div className={styles.logoWrapper}>
               <div className={styles.logoSVGwrapper}></div>
               <svg

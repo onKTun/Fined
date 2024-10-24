@@ -141,11 +141,31 @@ export default function Unit1() {
                 Activities
               </div>
               <button className={styles.infoButton} type="button">
-                {completed}/{activityData.length}
+                {0}/{2}
               </button>
             </div>
           </div>
-          {activityData.map((activity, index) => (
+          <Activity
+            title={"Crossword Puzzle"}
+            desc={
+              "Complete the following crossword to move onto the next activity"
+            }
+            svgPath={"/assets/activity/crossword.svg"}
+            estTime={5}
+            key={1}
+            progress={0}
+            redirect="/education/activities/crossword"
+          />
+          <Activity
+            title={"Vocabulary Match"}
+            desc={"Match the correct vocab terms with the corresponding image"}
+            svgPath={"/assets/activity/card.svg"}
+            estTime={5}
+            key={1}
+            progress={0}
+            redirect="/education/activities/money-can"
+          />
+          {/* {activityData.map((activity, index) => (
             <Activity
               title={activity.type}
               desc={activity.desc}
@@ -154,7 +174,7 @@ export default function Unit1() {
               key={index}
               progress={activity.progress}
             />
-          ))}
+          ))}*/}
         </div>
       </div>
     </div>

@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import ProgressItem from "./components/progressitem/ProgressItem";
 import styles from "./progressionparent.module.css";
 import progressData from "src/data/info.json";
-import activityData from "src/data/video.json";
-import RoutingButton from "src/components/routingbutton/RoutingButton";
-import ActivityPreviewItem from "./components/activitypreviewitem/ActivityPreviewItem";
 
+import RoutingButton from "src/components/routingbutton/RoutingButton";
+//import ActivityPreviewItem from "./components/activitypreviewitem/ActivityPreviewItem";
+//import activityData from "src/data/video.json";
 // Function to calculate cumulative progress
 const calculateCumulativeProgress = (units) => {
   if (units.length === 0) return 0;
@@ -24,7 +24,7 @@ export default function ProgressionParent() {
   useEffect(() => {
     // Calculate progress once when the component mounts
     const progress = calculateCumulativeProgress(progressData);
-    setCumulativeProgress(progress);
+    setCumulativeProgress(0);
   }, []);
 
   return (
@@ -45,13 +45,13 @@ export default function ProgressionParent() {
       </div>
       <div className={styles.progressContainer}>
         {progressData.map((data, index) => (
-          <ProgressItem key={index} progress={data.progress} unit={data.unit} />
+          <ProgressItem key={index} progress={0} unit={data.unit} />
         ))}
       </div>
       <div className={styles.recentActivityContainer}>
         <div className={styles.RA_Header}>Recent Activity</div>
         <div className={styles.recentActivityWrapper}>
-          {activityData.map((data, index) => (
+          {/* {activityData.map((data, index) => (
             <ActivityPreviewItem
               key={index}
               unit={data.unit}
@@ -62,7 +62,7 @@ export default function ProgressionParent() {
               score={data.score}
               linkTo={data.linkTo}
             />
-          ))}
+          ))} */}
         </div>
       </div>
       <div className={styles.buttonWrapper}>
@@ -71,14 +71,14 @@ export default function ProgressionParent() {
           text={"Go to Progress"}
           ftSize={1.1}
           additonalStyles={{}}
-          url={""}
+          url={"education/units/1"}
         />
         <RoutingButton
           style={"gray"}
           text={"Go to Unit"}
           ftSize={1.1}
           additonalStyles={{}}
-          url={""}
+          url={"/education/units/1"}
         />
       </div>
     </div>
