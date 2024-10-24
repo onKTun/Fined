@@ -6,9 +6,11 @@
   height: fit-content;
   padding: 30px 20px;
   box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.gamediv {
-  background: lightblue;
-  padding: 20px;
+.container {
+  border-radius: 20px;
+  overflow: none;
 }

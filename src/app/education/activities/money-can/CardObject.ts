@@ -7,7 +7,6 @@ import {
   Sprite,
   Texture,
 } from "pixi.js";
-import questionSVG  from "../../../../../public/assets/activity/questionmark.svg";
 
 export default class CardObject {
   readonly description: string;
@@ -15,10 +14,7 @@ export default class CardObject {
   readonly cardDimensions: { width: number; height: number; radius: number };
   readonly cardContainer: Container;
 
-  
-
   constructor(
-    
     description: string,
     answer: boolean,
     cardDimensions: { width: number; height: number; radius: number }
@@ -56,15 +52,20 @@ export default class CardObject {
     this.cardContainer.addChild(cardGraphics);
 
     const cardHeader = new Graphics();
-    cardHeader.beginFill("#F7F7F7")
-    cardHeader.drawRoundedRect((cardDimensions.width - 150)/2, 20, 150, 40, 8);
-
+    cardHeader.beginFill("#F7F7F7");
+    cardHeader.drawRoundedRect(
+      (cardDimensions.width - 150) / 2,
+      20,
+      150,
+      40,
+      8
+    );
 
     const cardTextStyle = new TextStyle({
       fontFamily: "Helvetica",
       fontSize: 16,
       wordWrap: true,
-      wordWrapWidth: this.cardDimensions.width - 10,
+      wordWrapWidth: this.cardDimensions.width - 20,
       align: "center",
     });
     const cardTextStyleGray = new TextStyle({
@@ -73,26 +74,20 @@ export default class CardObject {
       wordWrap: true,
       wordWrapWidth: this.cardDimensions.width - 10,
       align: "center",
-      fill: "rgba(0,0,0,0.5)"
+      fill: "rgba(0,0,0,0.5)",
     });
 
     const flipText = new Text("(Hold and Drag)", cardTextStyleGray);
     flipText.anchor.set(0.5);
     flipText.x = cardDimensions.width / 2;
     flipText.y = 230;
-//header for stuff
-  const headerText = new Text("Money Can/Cannot", cardTextStyle);
-  headerText.anchor.set(0.5);
-  headerText.x = cardDimensions.width / 2;
-  headerText.y = 40;
+    //header for stuff
+    const headerText = new Text("Money Can/Cannot", cardTextStyle);
+    headerText.anchor.set(0.5);
+    headerText.x = cardDimensions.width / 2;
+    headerText.y = 40;
 
-  const questionSVGTexture = Texture.from(questionSVG.src);
-  const questionMark = new Sprite(questionSVGTexture);
-  questionMark.width = 20;
-  questionMark.height = 20;
-  this.cardContainer.addChild(questionMark);
-
-    this.cardContainer.addChild(cardHeader, headerText, flipText)
+    this.cardContainer.addChild(cardHeader, headerText, flipText);
     //description text
     const text = new Text(this.description, cardTextStyle);
     text.anchor.set(0.5);
@@ -103,7 +98,6 @@ export default class CardObject {
     //card interactivity
     this.cardContainer.eventMode = "static";
     this.cardContainer.cursor = "pointer";
-
   }
 
   setPosition(x: number, y: number) {

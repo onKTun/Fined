@@ -14,6 +14,7 @@ import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
 import markComplete from "utils/supabase/lessonProgressService";
 import { InstructionModal } from "../ActivityModals";
+import clock from "public/assets/activity/clock.svg";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -30,6 +31,7 @@ let cardsLeft: number;
 let timeText: Text;
 let timer: Timer;
 
+let onStart: () => void;
 const whiteTextStyle = new TextStyle({
   fontFamily: "Helvetica",
   fill: "#ffffff",
@@ -46,7 +48,7 @@ const whiteTextStyleBold = new TextStyle({
   wordWrap: true,
   wordWrapWidth: cardDimensions.width - 10,
   align: "center",
-  fontWeight: "600"
+  fontWeight: "600",
 });
 
 const subTextCard = new TextStyle({
@@ -56,8 +58,8 @@ const subTextCard = new TextStyle({
   wordWrap: true,
   wordWrapWidth: cardDimensions.width - 10,
   align: "center",
-  fontWeight: "500"
-})
+  fontWeight: "500",
+});
 
 export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp = app;
@@ -79,8 +81,31 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
     updateTime(repeat);
   });
 
-  timer.start();
+  const blurGraphics = new Graphics();
+  blurGraphics.beginFill(0x000000);
+  blurGraphics.drawRect(0, 0, pixiApp.screen.width, pixiApp.screen.height);
+  blurGraphics.alpha = 0.5;
 
+  onStart = () => {
+    timer.start();
+    blurGraphics.renderable = false;
+  };
+
+  const instruction = new InstructionModal(
+    "Welcome to Money Can. This activity will help you understand the ways that Money can help you, and the ways that Money can't help you. ",
+    "When the game starts, you'll see cards with different actions written on them. Read each card and think: Can money do this? If yes, put the card in the Money Can pile. If no, put it in the Money Cannot pile.",
+    10,
+    onStart
+  );
+
+  instruction.container.position.set(pixiApp.screen.width / 2, 200);
+
+  pixiApp.stage.addChild(
+    correctContainer,
+    wrongContainer,
+    blurGraphics,
+    instruction.container
+  );
   //main update loop
   pixiApp.ticker.add(() => {
     timerManager.update();
@@ -91,6 +116,10 @@ function setup() {
   //setup background
   const backgroundTexture = Texture.from(backgroundImage.src);
   const background = new Sprite(backgroundTexture);
+
+  const svgImage = Texture.from(clock.src);
+  const svgClock = new Sprite(svgImage);
+
   background.width = pixiApp.screen.width;
   background.height = pixiApp.screen.height;
   pixiApp.stage.addChild(background);
@@ -104,15 +133,20 @@ function setup() {
     radius: 10,
   };
   const cardsRemainingContainer = new Container();
+  cardsRemainingContainer.position.set(
+    scoreBoxDimensions.x,
+    scoreBoxDimensions.y
+  );
   const cardsRemainingGraphics = new Graphics();
+
   cardsRemainingGraphics.pivot.set(
     scoreBoxDimensions.width / 2,
     scoreBoxDimensions.height / 2
   );
   cardsRemainingGraphics.beginFill("ffffff");
   cardsRemainingGraphics.drawRoundedRect(
-    scoreBoxDimensions.x,
-    scoreBoxDimensions.y,
+    0,
+    0,
     scoreBoxDimensions.width,
     scoreBoxDimensions.height,
     scoreBoxDimensions.radius
@@ -128,26 +162,31 @@ function setup() {
     })
   );
 
-  cardsRemainingText.pivot.set(
-    scoreBoxDimensions.width / 2,
-    scoreBoxDimensions.height / 2
-  );
-  cardsRemainingText.x = scoreBoxDimensions.x + 7;
-  cardsRemainingText.y = scoreBoxDimensions.y + 5;
+  cardsRemainingText.anchor.set(0.5);
+
   cardsRemainingContainer.addChild(cardsRemainingGraphics, cardsRemainingText);
 
   //timer
   const timeContainer = new Container();
+  timeContainer.position.set(
+    pixiApp.screen.width - scoreBoxDimensions.x,
+    scoreBoxDimensions.y
+  );
   const timeBoxGraphics = new Graphics();
+
+  const timeBoxSVGContainerGraphic = new Graphics();
+  timeBoxSVGContainerGraphic.beginFill("#3385FF");
+  timeBoxSVGContainerGraphic.drawRoundedRect(-90, -15, 30, 30, 4);
+
   timeBoxGraphics.pivot.set(
     scoreBoxDimensions.width / 2,
     scoreBoxDimensions.height / 2
   );
   timeBoxGraphics.beginFill("ffffff");
   timeBoxGraphics.drawRoundedRect(
-    pixiApp.screen.width - scoreBoxDimensions.x,
-    scoreBoxDimensions.y,
-    scoreBoxDimensions.width,
+    -10,
+    0,
+    scoreBoxDimensions.width + 10,
     scoreBoxDimensions.height,
     scoreBoxDimensions.radius
   );
@@ -157,18 +196,25 @@ function setup() {
       fontFamily: "Helvetica",
       fontSize: 16,
       wordWrap: true,
-      wordWrapWidth: scoreBoxDimensions.width,
-      align: "right",
+      wordWrapWidth: scoreBoxDimensions.width + 10,
+      align: "left",
     })
   );
 
-  timeText.pivot.set(
-    scoreBoxDimensions.width / 2,
-    scoreBoxDimensions.height / 2
+  timeText.anchor.set(0.5);
+  timeText.x = 9;
+  timeText.y = -1;
+
+  svgClock.width = timeBoxSVGContainerGraphic.width - 10;
+  svgClock.height = timeBoxSVGContainerGraphic.height - 10;
+  svgClock.position.set(-85, -10);
+
+  timeContainer.addChild(
+    timeBoxGraphics,
+    timeText,
+    timeBoxSVGContainerGraphic,
+    svgClock
   );
-  timeText.x = pixiApp.screen.width - (scoreBoxDimensions.x - 40);
-  timeText.y = scoreBoxDimensions.y + 15;
-  timeContainer.addChild(timeBoxGraphics, timeText);
 
   //initialize containers
   cardBankContainer = new Container();
@@ -202,7 +248,13 @@ function setup() {
     cardDimensions.radius
   ); //card bank
   cardBankGraphics.beginFill("#3385FF");
-  cardBankGraphics.drawRoundedRect((cardDimensions.width-100)/2, (cardDimensions.height-180)/2, 100, 180, 8);
+  cardBankGraphics.drawRoundedRect(
+    (cardDimensions.width - 100) / 2,
+    (cardDimensions.height - 180) / 2,
+    100,
+    180,
+    8
+  );
   cardBankGraphics.endFill();
 
   const cardAnswerGraphicsTrue = new Graphics();
@@ -216,9 +268,15 @@ function setup() {
     cardDimensions.radius
   ); //right
 
-//square contianers around the text
+  //square contianers around the text
   cardAnswerGraphicsTrue.beginFill("#3385FF");
-  cardAnswerGraphicsTrue.drawRoundedRect((cardDimensions.width-150)/2, (cardDimensions.height-70)/2, 150, 70, 8);
+  cardAnswerGraphicsTrue.drawRoundedRect(
+    (cardDimensions.width - 150) / 2,
+    (cardDimensions.height - 70) / 2,
+    150,
+    70,
+    8
+  );
   cardAnswerGraphicsTrue.endFill();
 
   const cardAnswerGraphicsWrong = new Graphics();
@@ -233,50 +291,55 @@ function setup() {
   ); //left
 
   cardAnswerGraphicsWrong.beginFill("#3385FF");
-  cardAnswerGraphicsWrong.drawRoundedRect((cardDimensions.width-150)/2, (cardDimensions.height-70)/2, 150, 70, 8);
+  cardAnswerGraphicsWrong.drawRoundedRect(
+    (cardDimensions.width - 150) / 2,
+    (cardDimensions.height - 70) / 2,
+    150,
+    70,
+    8
+  );
   cardAnswerGraphicsWrong.endFill();
   //container texts
   const containerTrueText = new Text("Money Can", whiteTextStyleBold);
   containerTrueText.anchor.set(0.5);
   containerTrueText.x = cardDimensions.width / 2;
-  containerTrueText.y = (cardDimensions.height / 2) - 10;
+  containerTrueText.y = cardDimensions.height / 2 - 10;
 
   const containerDragTrue = new Text("(Drag Card Here)", subTextCard);
   containerDragTrue.anchor.set(0.5);
   containerDragTrue.x = cardDimensions.width / 2;
-  containerDragTrue.y = (cardDimensions.height/ 2) + 10;
+  containerDragTrue.y = cardDimensions.height / 2 + 10;
 
   const containerDragFalse = new Text("(Drag Card Here)", subTextCard);
   containerDragFalse.anchor.set(0.5);
-  
+
   containerDragFalse.x = cardDimensions.width / 2;
-  containerDragFalse.y = (cardDimensions.height/ 2) + 10;
+  containerDragFalse.y = cardDimensions.height / 2 + 10;
 
   const containerWrongText = new Text("Money Can Not", whiteTextStyleBold);
   containerWrongText.anchor.set(0.5);
   containerWrongText.x = cardDimensions.width / 2;
-  containerWrongText.y = (cardDimensions.height / 2) - 10;
-
+  containerWrongText.y = cardDimensions.height / 2 - 10;
 
   // Add card components to containers
   cardBankContainer.addChild(cardBankGraphics);
-  correctContainer.addChild(cardAnswerGraphicsTrue, containerTrueText, containerDragTrue);
-  wrongContainer.addChild(cardAnswerGraphicsWrong, containerWrongText, containerDragFalse);
-
-  const instruction = new InstructionModal("hihihi", "ji kevin", 100, 100);
-  instruction.container.position.set(
-    pixiApp.screen.width / 2,
-    pixiApp.screen.height / 2
+  correctContainer.addChild(
+    cardAnswerGraphicsTrue,
+    containerTrueText,
+    containerDragTrue
+  );
+  wrongContainer.addChild(
+    cardAnswerGraphicsWrong,
+    containerWrongText,
+    containerDragFalse
   );
 
   // Add it to the stage to render
   pixiApp.stage.addChild(
     cardBankContainer,
-    correctContainer,
-    wrongContainer,
+
     cardsRemainingContainer,
-    timeContainer,
-    instruction.container
+    timeContainer
   );
 
   pixiApp.stage.eventMode = "static";
@@ -299,7 +362,7 @@ function propagateCards(jsonData: JSONValue) {
     cardObject.cardContainer.x = pixiApp.screen.width / 2;
     cardObject.cardContainer.y = 217.5;
     cardBank.push(cardObject);
-    pixiApp.stage.addChild(cardObject.cardContainer);
+    pixiApp.stage.addChildAt(cardObject.cardContainer, 3);
 
     cardObject.cardContainer.on("pointerdown", onDragStart, cardObject);
   }
