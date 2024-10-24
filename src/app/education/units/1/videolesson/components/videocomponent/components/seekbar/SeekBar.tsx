@@ -15,13 +15,14 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
     setCurrentTime,
     isDragging,
     setIsDragging,
-    activityLock,
+    isActivityActive: isActivityActive,
+    maxProgress,
+    setMaxProgress,
   } = useVideoContext();
   const [tempProgress, setTempProgress] = useState<number>(
     (currentTime / duration) * 100
   ); // Initialize tempProgress from currentTime
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const [maxProgress, setMaxProgress] = useState(0);
 
   const calcPointColor = (timeStamp: number) => {
     return timeStamp < currentTime + 1 ? "var(--finedgreen)" : "lightgray";
@@ -30,7 +31,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
   useEffect(() => {
     const updateMaxProgress = () => {
       const newMaxProgress = (currentTime / duration) * 100;
-      if (newMaxProgress > maxProgress && !activityLock) {
+      if (newMaxProgress > maxProgress && !isActivityActive) {
         setMaxProgress(newMaxProgress);
       }
     };
@@ -43,6 +44,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
   }, [currentTime, duration, maxProgress]);
 
   useEffect(() => {
+    // Update tempProgress based on mouse position if dragging + update the sliding bar
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging && progressBarRef.current) {
         const rect = progressBarRef.current.getBoundingClientRect();
@@ -51,7 +53,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
           100,
           Math.max(0, (offsetX / rect.width) * 100)
         );
-        if (newProgress <= maxProgress && !activityLock) {
+        if (newProgress <= maxProgress && !isActivityActive) {
           setTempProgress(newProgress);
           whileDragging();
         }
@@ -62,7 +64,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
       if (isDragging) {
         setIsDragging(false);
         const newTime = (tempProgress / 100) * duration;
-        if (newTime <= maxProgress && !activityLock) {
+        if (newTime <= maxProgress && !isActivityActive) {
           setCurrentTime(newTime);
           onChange(newTime);
         }
@@ -99,7 +101,7 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
         100,
         Math.max(0, (offsetX / rect.width) * 100)
       );
-      if (newProgress <= maxProgress && !activityLock) {
+      if (newProgress <= maxProgress && !isActivityActive) {
         setTempProgress(newProgress);
       }
     }

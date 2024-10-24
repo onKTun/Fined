@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function AudioModal({ isOpen, onChange }: Props) {
-  const { audio, setAudio } = useVideoContext();
+  const { volume: audio, setVolume: setAudio } = useVideoContext();
   const [isDragging, setIsDragging] = useState(false);
   const progressBarRef = useRef<HTMLDivElement>(null);
 

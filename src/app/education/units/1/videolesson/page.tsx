@@ -1,10 +1,10 @@
-"use client";
 import styles from "./lessonvideo.module.css";
 import Video from "./components/videocomponent/Video";
 import { VideoProvider } from "./hooks/VideoContext";
 import ActivityBox from "./components/activityboxcomponent/ActivityBox";
 import AdditionalInformation from "./components/additional/AdditonalInformation";
 
+//static page generated at build
 export default function LessonVideo() {
   return (
     <VideoProvider>

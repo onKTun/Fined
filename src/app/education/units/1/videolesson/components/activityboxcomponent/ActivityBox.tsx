@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import Button from "src/components/button/Button";
 import ProgressBar from "src/components/progress/ProgressBar";
@@ -22,7 +23,8 @@ export default function ActivityBox() {
     }
     return inProgressIndex;
   };
-  const findCompletedActivites = (activities, currentTime) => {
+
+  const getCompletedActivitiesCount = (activities, currentTime) => {
     let completed = 0;
 
     for (let i = 0; i < activities.length; i++) {
@@ -37,6 +39,7 @@ export default function ActivityBox() {
   };
 
   const inProgressIndex = findInProgressActivity(activityData, currentTime);
+
   useEffect(() => {
     setCurrentActivity(inProgressIndex);
   }, [inProgressIndex, setCurrentActivity]);
@@ -46,7 +49,7 @@ export default function ActivityBox() {
       <div className={styles.activity_Progress}>
         <ProgressBar
           progress={
-            (findCompletedActivites(activityData, currentTime) /
+            (getCompletedActivitiesCount(activityData, currentTime) /
               activityData.length) *
             100
           }
@@ -68,7 +71,7 @@ export default function ActivityBox() {
           </div>
         </div>
         <button className={styles.infoButton} type="button">
-          {findCompletedActivites(activityData, currentTime) +
+          {getCompletedActivitiesCount(activityData, currentTime) +
             "/" +
             activityData.length}
         </button>
@@ -78,8 +81,7 @@ export default function ActivityBox() {
           <VideoActivityItem
             key={index}
             timeStamp={activity.timestamp}
-            svgPath={activity.svgPath}
-            text={activity.text}
+            text={activity.name}
             inprogress={index === inProgressIndex}
           />
         ))}
