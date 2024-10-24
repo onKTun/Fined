@@ -1,7 +1,6 @@
 "use client";
 import styles from "./Login.module.css";
 import Link from "next/link";
-import Image from "next/image";
 
 import LoginForm from "src/app/account/login/login";
 
@@ -227,11 +226,12 @@ export default function Login() {
         </div>
       </div>
       <div className={styles.right}>
-        <Image
-          alt=""
-          src="/assets/backgrounds/MAINBACKGROUND.png"
-          layout="fill" // Make the image responsive to the div's size
-          objectFit="cover" // Ensure the image fills the div without stretching
+        <video
+          src="/videos/hero.mp4"
+          autoPlay
+          muted
+          loop
+          className={styles.videoContainer}
         />
       </div>
     </div>

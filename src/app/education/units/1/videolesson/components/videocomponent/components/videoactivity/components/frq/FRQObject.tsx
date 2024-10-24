@@ -1,7 +1,7 @@
 import styles from "./frq.module.css";
 import otherStyles from "../../videoactivity.module.css";
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+import { updateProgress } from "src/app/education/units/1/videolesson/actions";
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
   onClick: () => void;
@@ -9,6 +9,7 @@ interface Props {
 
 export default function FRQObject({ data, onClick }: Props) {
   const [text, setText] = useState(""); // State to hold the current input value
+  const textValue = useRef<HTMLTextAreaElement | null>(null);
   const [isAnimating, setIsAnimating] = useState(false); // State for handling animation
   const [displayOther, setDisplayOther] = useState(false);
   const textLimit = 200;
@@ -17,8 +18,20 @@ export default function FRQObject({ data, onClick }: Props) {
     setText(e.target.value); // Update the state with the current textarea value
   };
 
-  const handleSubmitAnim = () => {
+  const onSubmitFRQ = async () => {
     setIsAnimating(true); // Trigger animation
+    await updateProgress(data.id, "completed", text);
+  };
+
+  const closeFRQ = () => {
+    setDisplayOther(false); // reset frq object to first slide
+    setText("");
+    if (textValue.current) {
+      textValue.current.value = "";
+    }
+
+    onClick();
+    setIsAnimating(false);
   };
 
   useEffect(() => {
@@ -58,6 +71,7 @@ export default function FRQObject({ data, onClick }: Props) {
             placeholder="Enter your response here."
             maxLength={textLimit}
             rows={2}
+            ref={textValue}
             onChange={handleTextChange}
           />
           <h6 className={styles.inputSub}>
@@ -68,7 +82,7 @@ export default function FRQObject({ data, onClick }: Props) {
           className={`${styles.continueButton} ${
             displayOther ? styles.submitted : ""
           }`}
-          onClick={handleSubmitAnim}
+          onClick={onSubmitFRQ}
         >
           Submit
         </button>
@@ -110,7 +124,7 @@ export default function FRQObject({ data, onClick }: Props) {
           className={`${styles.continueButton} ${
             displayOther ? styles.submitted : ""
           }`}
-          onClick={onClick}
+          onClick={closeFRQ}
         >
           Submit
         </button>

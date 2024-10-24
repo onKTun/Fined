@@ -1,6 +1,7 @@
 import styles from "./mcq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useState } from "react";
+import { updateProgress } from "src/app/education/units/1/videolesson/actions";
 
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
@@ -20,10 +21,15 @@ export default function MCQObject({ data, onClick }: Props) {
   const TIMER_UPDATE_INTERVAL = 100; // Timer update interval in ms
   const CORRECT_ANSWER_INDEX = data.type.answer;
 
-  const handleSubmit = (index) => {
+  const handleSubmit = async (index) => {
     if (cooldown) return; // Prevent action if in cooldown
 
     const isAnswerCorrect = data.type.answer === index;
+
+    if (isAnswerCorrect) {
+      await updateProgress(data.id, "completed", undefined, index);
+    }
+
     setIsCorrect(isAnswerCorrect);
     setFlash(true);
     setSelectedOption(-1);
