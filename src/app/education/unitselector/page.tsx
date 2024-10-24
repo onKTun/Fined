@@ -17,7 +17,7 @@ export default function UnitSelector() {
                 fill="rgb(255, 255, 255)"
               ></path>
             </svg>
-            Glossary
+            Units
           </div>
           <p className={styles.bannerTitle}>FIN'ED© Introduction to Finance</p>
           <p className={styles.bannerText}>
