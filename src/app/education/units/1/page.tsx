@@ -153,6 +153,7 @@ export default function Unit1() {
               estTime={activity.estTime}
               key={index}
               progress={activity.progress}
+              href={activity.linkTo}
             />
           ))}
         </div>
