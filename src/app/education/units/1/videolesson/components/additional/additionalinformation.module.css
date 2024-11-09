@@ -150,3 +150,8 @@
   padding: 25px 20px;
   border-radius: 10px;
 }
+@media only screen and (max-width: 1280px) {
+  .summaryWrapper {
+    width: calc(40em - 50px);
+  }
+}

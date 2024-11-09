@@ -81,6 +81,9 @@
 }
 @media only screen and (max-width: 1280px) {
   .videoContainer {
-    width: 50em;
+    width: 40em;
+  }
+  .rightColumn {
+    width: 42.5em;
   }
 }

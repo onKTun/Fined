@@ -96,6 +96,10 @@
   height: 450px;
 }
 @media only screen and (max-width: 1280px) {
+  .videoWrapper {
+    width: 40em;
+    height: fit-content;
+  }
   .wrapper {
     width: 40em;
   }
