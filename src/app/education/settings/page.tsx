@@ -2,11 +2,19 @@ import Link from "next/link";
 import styles from "./settings.module.css";
 import Search from "src/components/search/Search";
 import SettingItem from "./components/settingitem/SettingItem";
+import Image from "next/image";
 
 export default function Settings() {
   return (
     <div className={styles.bodyDash}>
       <div className={styles.bannerContainer}>
+        <Image
+          src="/assets/backgrounds/MAINBACKGROUND.png" // replace with your image path
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          className={styles.backgroundImage}
+        />
         <div className={styles.bannerTop}>
           <div className={styles.pageIndicator}>
             <img src="/assets/sidebar/settings.svg" />

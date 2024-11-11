@@ -3,12 +3,20 @@
 import { useMemo } from "react";
 import ParentComponent from "./components/parentcomponent/ParentComponent";
 import styles from "./unitselector.module.css";
+import Image from "next/image";
 
 export default function UnitSelector() {
   const percentValues = useMemo(() => [100, 24, 0, 0], []);
   return (
     <div className={styles.wrapper}>
       <div className={styles.bannerContainer}>
+        <Image
+          src="/assets/backgrounds/MAINBACKGROUND.png" // replace with your image path
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          className={styles.backgroundImage}
+        />
         <div className={styles.bannerTop}>
           <div className={styles.pageIndicator}>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">

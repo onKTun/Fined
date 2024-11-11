@@ -6,9 +6,10 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
 .bannerContainer {
+  position: relative;
   width: 100%;
-  background-image: url(/assets/backgrounds/image.png);
   background-repeat: repeat;
   background-size: 15em;
   height: 20em;
@@ -18,8 +19,12 @@
   justify-content: center;
   align-items: start;
   flex-shrink: 0;
-  padding: 50px;
+  padding: 80px;
   box-sizing: border-box;
+  overflow: hidden;
+}
+.backgroundImage {
+  z-index: 0;
 }
 .pageIndicator {
   width: fit-content;
@@ -44,11 +49,15 @@
   color: white;
 }
 .bannerTop {
+  z-index: 1;
   row-gap: 10px;
   height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: start;
+}
+.searchWrapper {
+  z-index: 1;
 }
 .underlinedText {
   text-decoration: underline;

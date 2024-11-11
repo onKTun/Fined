@@ -1,16 +1,19 @@
 .wrapper {
-  background-image: url(/assets/backgrounds/image.png);
   background-size: 23em;
   display: flex;
   flex-grow: 1;
+  overflow: hidden;
 }
 .bannerContainer {
+  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
   row-gap: 20px;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  overflow: hidden;
 }
 .pageIndicator {
   width: fit-content;
@@ -48,6 +51,10 @@
   height: 30em;
   justify-content: center;
   row-gap: 25px;
+}
+
+.backgroundImage {
+  z-index: 0;
 }
 @media only screen and (max-width: 1200px), (max-height: 800px) {
   .wrapper {
