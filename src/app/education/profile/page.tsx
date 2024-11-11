@@ -10,6 +10,7 @@ import profilePic from "public/assets/profilepictures/profile1.jpg";
 import InputModal from "src/components/inputmodal/InputModal";
 import { useState } from "react";
 import PasswordInputModal from "src/components/passwordinputmodal/PasswordInputModal";
+import Image from "next/image";
 
 export default function Profile() {
   const [isUsernameModalOpen, toggleUsername] = useState(false);
@@ -38,6 +39,13 @@ export default function Profile() {
           <PasswordInputModal onClick={togglePasswordModal} />
         )}
         <div className={styles.bannerContainer}>
+          <Image
+            src="/assets/backgrounds/MAINBACKGROUND.png" // replace with your image path
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+            className={styles.backgroundImage}
+          />
           <div className={styles.bannerTop}>
             <div className={styles.pageIndicator}>
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
