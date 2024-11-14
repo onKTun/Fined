@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import styles from "./TypeSelector.module.css";
 
-function TypeSelector() {
-  const [selectedType, setSelectedType] = useState<
-    "student" | "educator" | null
-  >(null);
+interface AccountTypeSelectorProps {
+  selectedType: AccountType;
+  setSelectedType: (arg0: AccountType) => void;
+}
 
+export default function AccountTypeSelector({
+  selectedType,
+  setSelectedType,
+}: AccountTypeSelectorProps) {
   return (
     <div className={styles.wrapper}>
       <button
@@ -27,5 +31,3 @@ function TypeSelector() {
     </div>
   );
 }
-
-export default TypeSelector;

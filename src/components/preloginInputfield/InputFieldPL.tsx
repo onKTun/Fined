@@ -5,9 +5,10 @@ interface Props {
   type: string;
   name?: string;
   id?: string;
+  placeholder?: string;
 }
 
-function InputFieldPL({ type, name, id }: Props) {
+function InputFieldPL({ type, name, id, placeholder }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -19,7 +20,7 @@ function InputFieldPL({ type, name, id }: Props) {
       <div className={styles.container}>
         <input
           type={isPasswordVisible ? "text" : "password"}
-          placeholder="Enter your password"
+          placeholder={placeholder}
           name={name}
           className={styles.wrapper}
           id={id}
@@ -48,10 +49,10 @@ function InputFieldPL({ type, name, id }: Props) {
     return (
       <>
         <input
-          type="email"
+          type={type}
           id={id}
           name={name}
-          placeholder="Enter your email or username"
+          placeholder={placeholder}
           className={styles.wrapper}
         />
       </>

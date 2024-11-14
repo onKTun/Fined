@@ -216,14 +216,14 @@ export default function SignUpPage() {
             </p>
           </div>
           <SignUpForm />
-        </div>
-        <div className={styles.bottomLinkWrapper}>
-          <p className={styles.bottomLink}>
-            Already have an account?&nbsp;
-            <Link href="/account/login" className="highlightedText">
-              Sign in.
-            </Link>
-          </p>
+          <div className={styles.bottomLinkWrapper}>
+            <p className={styles.bottomLink}>
+              Already have an account?&nbsp;
+              <Link href="/account/login" className="highlightedText">
+                Sign in.
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
       <div className={styles.right}>

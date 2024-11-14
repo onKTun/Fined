@@ -5,7 +5,7 @@
   flex: 0 0 30em; /* Fixed width of 40em */
   height: 1fr; /* Full height */
   background-color: white;
-  padding: 8vh 70px 0px 70px;
+  padding: 8vh 70px 0px 200px;
   gap: 60px;
 }
 .right {
@@ -87,6 +87,11 @@
   row-gap: 12px;
   position: relative;
   color: var(--black2);
+}
+.nameWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
 }
 .extraContent {
   width: 100%;
