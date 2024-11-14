@@ -1,7 +1,7 @@
 import styles from "./upcomingassignmentparent.module.css";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
-import assignmentData from "src/data/video.json";
-import UAItem from "./components/uaitem/UAItem";
+//import assignmentData from "src/data/video.json";
+//import UAItem from "./components/uaitem/UAItem";
 
 export default function UpcomingAssignmentParent() {
   return (
@@ -25,14 +25,14 @@ export default function UpcomingAssignmentParent() {
         </div>
       </div>
       <div className={styles.activityItemWrapper}>
-        {assignmentData.map((data, index) => (
+        {/*{assignmentData.map((data, index) => (
           <UAItem
             key={index}
             svgPath={data.altSVGPath}
             title={data.type}
             unit={data.unit}
           />
-        ))}
+        ))} */}
       </div>
       <RoutingButton
         style={"gray"}

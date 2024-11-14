@@ -58,7 +58,7 @@ export default function LandingPage() {
             <div className={styles.left}>
               <img src="/assets/finedSolid.png" width={70} />
               <div className={styles.title}>
-                <h6 className={styles.onTitle}>CAS</h6>
+                <h6 className={styles.onTitle}>Finance</h6>
                 Learn Finance
                 <br /> With <span className={styles.logoSpan}>FIN'ED</span>
               </div>
