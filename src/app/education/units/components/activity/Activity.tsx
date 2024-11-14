@@ -8,7 +8,7 @@ interface Props {
   svgPath: string;
   progress: number;
   estTime: number;
-  redirect: string;
+  href: string;
 }
 
 export default function Activity({
@@ -17,7 +17,7 @@ export default function Activity({
   svgPath,
   progress,
   estTime,
-  redirect,
+  href,
 }: Props) {
   const statusStyle = (() => {
     if (progress === 100) {
@@ -73,7 +73,14 @@ export default function Activity({
           additonalStyles={{ height: "45px", width: "9em" }}
           ftSize={1}
           text={titleText}
-          url={redirect}
+          url={href}
+        />
+        <RoutingButton
+          style="gray"
+          additonalStyles={{ height: "45px", width: "9em" }}
+          ftSize={1}
+          text="Tutorial"
+          url={href}
         />
       </div>
     </div>
