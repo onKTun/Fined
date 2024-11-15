@@ -33,6 +33,13 @@ alter table student_enrollments
 alter table educator_enrollments
     enable row level security;
 
+create policy "Users can view classes that they are in" on classes
+    for select to authenticated using ((select auth.uid()) = (select student_id
+                                                              from student_enrollments
+                                                                       join classes c on student_enrollments.class_id = c.class_id) or
+                                       (select auth.uid()) = (select educator_id
+                                                              from educator_enrollments
+                                                                       join classes c on educator_enrollments.class_id = c.class_id));
 create policy "Students can view own enrollments" on student_enrollments
     for select to authenticated using ((select auth.uid()) = student_id);
 create policy "Educators can view own enrollments" on educator_enrollments
