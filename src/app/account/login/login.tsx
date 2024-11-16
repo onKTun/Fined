@@ -15,8 +15,15 @@ export default function LoginForm() {
           <InputFieldPL type="email" name="email" id="email" />
         </div>
         <div className={styles.inputWrapper}>
-          <p className={styles.subtitle}>Enter your password</p>
-          <InputFieldPL type="password" name="password" id="password" />
+          <label htmlFor="password" className={styles.subtitle}>
+            Enter your password
+          </label>
+          <InputFieldPL
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+          />
         </div>
         <div className={styles.extraContent}>
           <div className={styles.rememberMeWrapper}>
