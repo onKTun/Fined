@@ -210,20 +210,20 @@ export default function SignUpPage() {
         </div>
         <div className={styles.leftContent}>
           <div className={styles.title}>
-            <p className={styles.titleHeader}>Hello, Sign up!</p>
+            <p className={styles.titleHeader}>Hello, Sign Up!</p>
             <p className={styles.titleSubheader}>
               Please enter your details below
             </p>
           </div>
           <SignUpForm />
-          <div className={styles.bottomLinkWrapper}>
-            <p className={styles.bottomLink}>
-              Already have an account?&nbsp;
-              <Link href="/account/login" className="highlightedText">
-                Sign in.
-              </Link>
-            </p>
-          </div>
+        </div>
+        <div className={styles.bottomLinkWrapper}>
+          <p className={styles.bottomLink}>
+            Already have an account?&nbsp;
+            <Link href="/account/login" className="highlightedText">
+              Sign in.
+            </Link>
+          </p>
         </div>
       </div>
       <div className={styles.right}>

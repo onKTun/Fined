@@ -6,9 +6,11 @@ interface Props {
   name?: string;
   id?: string;
   placeholder?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function InputFieldPL({ type, name, id, placeholder }: Props) {
+function InputFieldPL({ type, name, id, placeholder, value, onChange }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -24,6 +26,8 @@ function InputFieldPL({ type, name, id, placeholder }: Props) {
           name={name}
           className={styles.wrapper}
           id={id}
+          value={value}
+          onChange={onChange}
         />
         <button
           type="button"
@@ -54,6 +58,8 @@ function InputFieldPL({ type, name, id, placeholder }: Props) {
           name={name}
           placeholder={placeholder}
           className={styles.wrapper}
+          value={value}
+          onChange={onChange}
         />
       </>
     );

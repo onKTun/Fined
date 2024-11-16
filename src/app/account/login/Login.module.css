@@ -5,7 +5,7 @@
   flex: 0 0 30em; /* Fixed width of 40em */
   height: 1fr; /* Full height */
   background-color: white;
-  padding: 8vh 70px 0px 200px;
+  padding: 8vh 70px 0px 100px;
   gap: 60px;
 }
 .right {
@@ -67,24 +67,26 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  row-gap: 25px;
+  row-gap: 15px;
 }
 .title {
   display: flex;
   flex-direction: column;
   row-gap: 3px;
   .titleHeader {
-    font-size: 25pt;
+    font-size: 2rem;
     color: var(--black1);
+    font-weight: 400;
   }
   .titleSubheader {
-    color: gray;
+    color: var(--subtext);
+    font-weight: 400;
   }
 }
 .inputWrapper {
   display: flex;
   flex-direction: column;
-  row-gap: 12px;
+  row-gap: 6px;
   position: relative;
   color: var(--black2);
 }
@@ -119,10 +121,10 @@
   position: absolute;
   width: 100%; /* Ensure it takes the full width of the container */
   justify-content: center;
-  bottom: 1.5em;
   display: flex;
   left: 50%;
   transform: translateX(-50%);
+  bottom: 1.5em;
   .bottomLink {
     color: gray;
   }
@@ -134,4 +136,46 @@
 .videoContainer {
   position: absolute;
   left: 0;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 13px;
+}
+.input {
+  transition: 0.3s var(--transition);
+  position: absolute;
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.start {
+  transition: 0.3s var(--transition);
+  transform: translateX(0);
+}
+.end {
+  transition: 0.3s var(--transition);
+  transform: translateX(-40em);
+}
+.backButton {
+  position: absolute;
+  transition: 0.3s var(--transition);
+  top: -5em;
+  right: 0;
+  width: 3em;
+  height: 3em;
+  background-color: white;
+  border: 1px solid var(--bb);
+  border-radius: 5px;
+  &:hover {
+    transition: 0.3s var(--transition);
+    cursor: pointer;
+    background-color: var(--inputcolor);
+  }
 }
