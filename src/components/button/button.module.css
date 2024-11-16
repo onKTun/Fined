@@ -1,6 +1,7 @@
 .wrapper {
   transition: all 0.3s var(--transition);
   display: flex;
+  column-gap: 6px;
   justify-content: center;
   align-items: center;
   padding: 15px 25px;

@@ -9,27 +9,42 @@ import { login } from "src/app/account/login/actions";
 export default function LoginForm() {
   return (
     <div>
-      <form className={styles.inputWrapper}>
+      <form className={styles.formContainer}>
         <div className={styles.inputWrapper}>
-          <p className={styles.subtitle}>Enter your username</p>
-          <InputFieldPL type="email" name="email" id="email" />
+          <label htmlFor="username" className={styles.subtitle}>
+            Enter your username or password
+          </label>
+          <InputFieldPL
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your username or email"
+          />
         </div>
         <div className={styles.inputWrapper}>
-          <p className={styles.subtitle}>Enter your password</p>
-          <InputFieldPL type="password" name="password" id="password" />
-        </div>
-        <div className={styles.extraContent}>
-          <div className={styles.rememberMeWrapper}>
-            <Checkbox />
-            Remember me
-          </div>
-          <div className={styles.forgotPasswordText}>
-            <Link href="/account/forgotpassword" className="highlightedText">
-              Forgot your password?
-            </Link>
+          <label htmlFor="password" className={styles.subtitle}>
+            Enter your password
+          </label>
+          <InputFieldPL
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+          />
+          <div className={styles.extraContent}>
+            <div className={styles.rememberMeWrapper}>
+              <Checkbox />
+              Remember me
+            </div>
+            <div className={styles.forgotPasswordText}>
+              <Link href="/account/forgotpassword" className="highlightedText">
+                Forgot your password?
+              </Link>
+            </div>
           </div>
         </div>
         <Button
+          arrow={true}
           formAction={login}
           text="Sign in"
           type="submit"

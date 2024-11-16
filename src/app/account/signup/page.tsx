@@ -210,7 +210,7 @@ export default function SignUpPage() {
         </div>
         <div className={styles.leftContent}>
           <div className={styles.title}>
-            <p className={styles.titleHeader}>Hello, Sign Up!</p>
+            <p className={styles.titleHeader}>Hello, Sign up!</p>
             <p className={styles.titleSubheader}>
               Please enter your details below
             </p>

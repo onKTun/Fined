@@ -1,0 +1,29 @@
+.modalContent {
+  transition: 0.5s var(--transition);
+  z-index: 100;
+  position: absolute;
+  top: -9em;
+  right: -2em;
+  width: 20em;
+  height: fit-content;
+  background-color: rgb(255, 232, 232);
+  border: 1px solid rgb(255, 99, 99);
+  padding: 10px 20px 10px 43px;
+  border-radius: 10px;
+  color: rgb(255, 99, 99);
+}
+.paragraph {
+  color: rgb(255, 99, 99);
+  white-space-collapse: preserve-breaks;
+}
+.svg {
+  position: absolute;
+  left: 1em;
+  top: 0.65em;
+}
+.shown {
+  top: -9em;
+}
+.hidden {
+  top: -30em;
+}

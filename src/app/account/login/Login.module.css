@@ -5,8 +5,10 @@
   flex: 0 0 30em; /* Fixed width of 40em */
   height: 1fr; /* Full height */
   background-color: white;
-  padding: 8vh 70px 0px 100px;
+  padding: 8vh 70px 20px 100px;
   gap: 60px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .right {
   flex: 1; /* Take up remaining space */
@@ -74,9 +76,9 @@
   flex-direction: column;
   row-gap: 3px;
   .titleHeader {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--black1);
-    font-weight: 400;
+    font-weight: 500;
   }
   .titleSubheader {
     color: var(--subtext);
@@ -120,6 +122,7 @@
 .bottomLinkWrapper {
   position: absolute;
   width: 100%; /* Ensure it takes the full width of the container */
+  height: fit-content;
   justify-content: center;
   display: flex;
   left: 50%;
@@ -154,6 +157,7 @@
   width: 90%;
   flex-direction: column;
   row-gap: 30px;
+  padding-bottom: 1em;
 }
 .start {
   transition: 0.3s var(--transition);
@@ -177,5 +181,16 @@
     transition: 0.3s var(--transition);
     cursor: pointer;
     background-color: var(--inputcolor);
+  }
+}
+@media screen and (max-height: 650px) {
+  .bottomLinkWrapper {
+    left: 30em;
+    top: 2.3em;
+    width: 18em;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid var(--bb);
   }
 }
