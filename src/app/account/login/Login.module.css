@@ -74,9 +74,9 @@
   flex-direction: column;
   row-gap: 3px;
   .titleHeader {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--black1);
-    font-weight: 400;
+    font-weight: 500;
   }
   .titleSubheader {
     color: var(--subtext);
