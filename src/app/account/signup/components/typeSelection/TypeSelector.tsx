@@ -16,6 +16,7 @@ export default function AccountTypeSelector({
         className={`${styles.button} ${
           selectedType === "student" ? styles.selected : styles.unselected
         }`}
+        type="button"
         onClick={() => setSelectedType("student")}
       >
         Student
@@ -24,6 +25,7 @@ export default function AccountTypeSelector({
         className={`${styles.button} ${
           selectedType === "educator" ? styles.selected : styles.unselected
         }`}
+        type="button"
         onClick={() => setSelectedType("educator")}
       >
         Educator
