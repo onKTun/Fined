@@ -120,7 +120,7 @@
 .lockedWrapper {
   opacity: 0.4;
   &:hover {
-    cursor: default;
+    cursor: not-allowed;
     opacity: 0.4;
   }
   .unitTitle {

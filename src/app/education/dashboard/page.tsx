@@ -3,11 +3,19 @@ import ProgressionParent from "./components/progressionparent/ProgressionParent"
 import UpcomingAssignmentParent from "./components/upcomingassigmentparent/UpcomingAssignmentParent";
 import styles from "./dashboard.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Dashboard() {
   return (
     <div className={styles.bodyDash}>
       <div className={styles.bannerContainer}>
+        <Image
+          src="/assets/backgrounds/MAINBACKGROUND.png" // replace with your image path
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          className={styles.backgroundImage}
+        />
         <div className={styles.bannerTop}>
           <div className={styles.pageIndicator}>
             <img src="/assets/sidebar/dashboard.svg" />
