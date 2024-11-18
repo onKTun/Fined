@@ -2,7 +2,7 @@
 
 import styles from "../login/Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Button from "src/components/buttonPL/Button";
+import Button from "../../../components/button/Button";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -217,12 +217,25 @@ export default function ForgotPassword() {
             </p>
           </div>
           <div className={styles.inputWrapper}>
-            <p className={styles.subtitle}>
-              Enter your account's email or username
-            </p>
-            <InputFieldPL type="email" />
+            <label htmlFor="email" className={styles.subtitle}>
+              Enter your account's corresponding email
+            </label>
+            <InputFieldPL
+              type="email"
+              id="email"
+              placeholder="Please enter email"
+            />
           </div>
-          <Button text="Send Confirmation Email" />
+          {/* do ur magic here kevin */}
+          <Button
+            arrow={true}
+            formAction={undefined}
+            text="Send Confirmation Email"
+            type="submit"
+            style={"blue"}
+            ftSize={1}
+            heightWidth={{}}
+          />
         </div>
         <div className={styles.bottomLinkWrapper}>
           <p className={styles.bottomLink}>
