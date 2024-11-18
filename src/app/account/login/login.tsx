@@ -41,6 +41,7 @@ export default function LoginForm() {
                 Forgot your password?
               </Link>
             </div>
+          </div>
         </div>
         <Button
           arrow={true}

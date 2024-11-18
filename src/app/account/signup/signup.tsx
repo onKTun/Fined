@@ -1,11 +1,9 @@
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Button from "src/components/button/Button";
 import styles from "../login/Login.module.css";
-import SecurityIndicator from "./components/securityIndicator/SecurityIndicator";
 import AccountTypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
 import { signup } from "src/app/account/login/actions";
 import { useRef, useState } from "react";
-import { c } from "vite/dist/node/types.d-aGj9QkWt";
 import Modal from "src/components/preloginmodal/Modal";
 
 export default function SignUpForm() {
