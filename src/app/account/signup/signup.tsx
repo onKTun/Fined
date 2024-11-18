@@ -211,10 +211,10 @@ export default function SignUpForm() {
               </label>
               <InputFieldPL
                 type="password"
-                id="password"
-                name="password"
+                id="confirmPassword"
+                name="confirmPassword"
                 placeholder="Enter your password"
-                value={formValues.password}
+                value={formValues.confirmPassword}
                 onChange={handleInputChange}
               />
             </div>
