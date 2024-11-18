@@ -73,13 +73,16 @@ create policy "Users can view own data." on private_user_data
 create policy "Users can update own data." on private_user_data
     for update using ((select auth.uid()) = user_id);
 
+
+
+
 create policy "Related educators can view private student data." on private_user_data
     for select to authenticated using (
     (select auth.uid()) = any (select student_enrollments.student_id
                                from student_enrollments
                                         join educator_enrollments
                                              on student_enrollments.class_id =
-                                                educator_enrollments.class_id & student_enrollments.student_id =
+                                                educator_enrollments.class_id and student_enrollments.student_id =
                                                 user_id));
 
 
@@ -93,27 +96,23 @@ $$
 begin
     if new.raw_user_meta_data ->> 'account_type' = 'educator' then
 
-        insert into public.educators (educator_id, username, first_name, last_name, avatar_url, birthday)
+        insert into public.educators (educator_id, username, first_name, last_name)
         values (new.id, new.raw_user_meta_data ->> 'username', new.raw_user_meta_data ->> 'first_name',
-                new.raw_user_meta_data ->> 'last_name', new.raw_user_meta_data ->> 'avatar_url',
-                new.raw_user_meta_data ->> 'birthday');
+                new.raw_user_meta_data ->> 'last_name');
 
-        insert into public.private_user_data(user_id, district, state, city)
-        values (new.id, new.raw_user_meta_data ->> 'district', new.raw_user_meta_data ->> 'state',
-                new.raw_user_meta_data ->> 'city');
+        insert into public.private_user_data(user_id)
+        values (new.id);
 
     elsif new.raw_user_meta_data ->> 'account_type' = 'student' then
 
-        insert into public.students (student_id, associated_email, is_child_account, username, first_name, last_name,
-                                     avatar_url, birthday, grade_level)
-        values (new.id, new.email, new.raw_user_meta_data ->> 'is_child_account', new.raw_user_meta_data ->> 'username',
-                new.raw_user_meta_data ->> 'first_name', new.raw_user_meta_data ->> 'last_name',
-                new.raw_user_meta_data ->> 'avatar_url', new.raw_user_meta_data ->> 'birthday',
-                new.raw_user_meta_data ->> 'grade_level');
+        insert into public.students (student_id, associated_email, username, first_name, last_name)
+        values (new.id, new.email, new.raw_user_meta_data ->> 'username',
+                new.raw_user_meta_data ->> 'first_name', new.raw_user_meta_data ->> 'last_name'
+              );
 
-        insert into public.private_user_data(user_id, district, state, city)
-        values (new.id, new.raw_user_meta_data ->> 'district', new.raw_user_meta_data ->> 'state',
-                new.raw_user_meta_data ->> 'city');
+      insert into public.private_user_data(user_id)
+        values (new.id);
+
     else
         insert into public.students (student_id, associated_email, first_name, last_name)
         values (new.id, new.email, new.raw_user_meta_data ->> 'first_name', new.raw_user_meta_data ->> 'last_name');
