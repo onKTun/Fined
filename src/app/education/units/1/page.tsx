@@ -3,12 +3,21 @@ import Search from "src/components/search/Search";
 import styles from "../units.module.css";
 import Activity from "../components/activity/Activity";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
+import ProgressBar from "src/components/progress/ProgressBar";
+import Image from "next/image";
+import ActivitySelectorButton from "../components/ActivitySelectorButton/ActivitySelectorButton";
+import { useState } from "react";
 
 export default function Unit1() {
   /*
   const completed = activityData.filter(
     (activity) => activity.progress == 100
   ).length;*/
+  const [currentLesson, setCurrentLesson] = useState(1);
+
+  const changeCurrentLesson = (lNum: number) => {
+    setCurrentLesson(lNum);
+  };
 
   return (
     <div className={styles.bodyDash}>
@@ -31,6 +40,30 @@ export default function Unit1() {
         </div>
         <div className={styles.searchWrapper}>
           <Search rad={30} wid="45em" color="white" />
+        </div>
+      </div>
+      <div className={styles.lessonSelectorContainer}>
+        <div className={styles.buttonRow}>
+          <ActivitySelectorButton
+            isSelected={currentLesson === 1}
+            onClick={() => changeCurrentLesson(1)}
+            lessonNum={1}
+          />
+          <ActivitySelectorButton
+            isSelected={currentLesson === 2}
+            onClick={() => changeCurrentLesson(2)}
+            lessonNum={2}
+          />
+          <ActivitySelectorButton
+            isSelected={currentLesson === 3}
+            onClick={() => changeCurrentLesson(3)}
+            lessonNum={3}
+          />
+          <ActivitySelectorButton
+            isSelected={currentLesson === 4}
+            onClick={() => changeCurrentLesson(4)}
+            lessonNum={4}
+          />
         </div>
       </div>
       <div className={styles.bottomContainer}>
@@ -84,7 +117,15 @@ export default function Unit1() {
               Lesson 2
             </li>
           </ul>
-          <div className={styles.imagePreview}></div>
+          <div className={styles.imagePreview}>
+            <Image
+              src="/assets/backgrounds/back.JPG"
+              layout="fill"
+              objectFit="cover"
+              alt=""
+            />
+          </div>
+          <ProgressBar progress={20} />
           <div className={styles.completionTime}>
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19">
               <path
@@ -99,25 +140,25 @@ export default function Unit1() {
             10 Minutes
           </div>
           <div className={styles.video_titleDesc}>
-            <h1 className={styles.title}>What does money mean?</h1>
-            <h2 className={styles.subtitle}>
+            <label className={styles.title}>What does money mean?</label>
+            <label className={styles.subtitle}>
               In this video, we will learn what money actually is and some basic
               finance terms.
-            </h2>
+            </label>
           </div>
           <div className={styles.button_Container}>
             <RoutingButton
               style={"blue"}
               text={"Watch"}
-              ftSize={1.1}
-              additonalStyles={{ width: "8em", height: "2.7em" }}
+              ftSize={1}
+              additonalStyles={{ width: "9em", height: "45px" }}
               url={"/education/units/1/preview"}
             />
             <RoutingButton
               style={"gray"}
               text={"Restart"}
-              ftSize={1.1}
-              additonalStyles={{ width: "6em", height: "2.7em" }}
+              ftSize={1}
+              additonalStyles={{ width: "6em", height: "45px" }}
               url={"/education/units/1/preview"}
             />
           </div>
@@ -154,7 +195,7 @@ export default function Unit1() {
             estTime={5}
             key={1}
             progress={0}
-            redirect="/education/activities/crossword"
+            href="/education/activities/crossword"
           />
           <Activity
             title={"Vocabulary Match"}
@@ -163,7 +204,7 @@ export default function Unit1() {
             estTime={5}
             key={1}
             progress={0}
-            redirect="/education/activities/money-can"
+            href="/education/activities/money-can"
           />
           {/* {activityData.map((activity, index) => (
             <Activity

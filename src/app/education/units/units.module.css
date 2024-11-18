@@ -94,16 +94,16 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .infoButton {
-  background-color: #f3f3f3;
-  border: none;
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6px 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 1.1rem;
 }
 .video_tags {
@@ -117,17 +117,19 @@
   padding: 10px;
   font-size: 1.1rem;
   background-color: #f2f8ff;
+  border: 1px solid rgba(var(--finedblueRGB), 0.1);
   border-radius: 5px;
   color: var(--finedblue);
 }
 .imagePreview {
+  position: relative;
   display: flex;
   flex-grow: 1 0;
   height: 13em;
   border-radius: 10px;
-  background-image: url(/assets/backgrounds/back.JPG);
-  background-size: contain;
+  overflow: hidden;
 }
+
 .completionTime {
   display: flex;
   justify-content: center;
@@ -143,16 +145,18 @@
 .video_titleDesc {
   display: flex;
   flex-direction: column;
-  row-gap: 3px;
+  row-gap: 2px;
 }
 .title {
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1.1rem;
 }
 .subtitle {
-  font-weight: 500;
-  font-size: 1.1rem;
   color: var(--subtext);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  font-size: 1rem;
 }
 .button_Container {
   display: flex;
@@ -174,13 +178,28 @@
   background-color: white;
   border: rgba(0, 0, 0, 0.1) solid 1px;
 }
-
+.lessonSelectorContainer {
+  display: flex;
+  flex-shrink: 0;
+  height: 4.3em;
+  flex-direction: column;
+  background-color: white;
+  border-bottom: 1px solid var(--bb);
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  font-size: 1.1rem;
+}
+.buttonRow {
+  display: flex;
+  column-gap: 10px;
+}
 @media only screen and (max-width: 1248px) {
   .bottomContainer {
     flex-direction: column;
     align-items: center;
   }
   .video_Container {
-    width: 40em;
+    width: 45em;
   }
 }

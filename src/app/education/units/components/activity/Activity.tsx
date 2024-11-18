@@ -1,6 +1,7 @@
 import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./activity.module.css";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
+import Image from "next/image";
 
 interface Props {
   title: string;
@@ -60,7 +61,7 @@ export default function Activity({
         </div>
         <div className={styles.textualDetails}>
           <div className={styles.titleContainer}>
-            <img src={svgPath} height={24} width={24}></img>
+            <Image src={svgPath} height={24} width={24} alt={"Icon"} />
             {title}
           </div>
           {desc}
