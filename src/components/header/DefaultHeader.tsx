@@ -4,8 +4,8 @@ import styles from "./DefaultHeader.module.css";
 import Search from "../search/Search";
 import RoutingButton from "../routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
-import { useEffect, useState } from "react";
-import { createClient } from "../../../utils/supabase/client";
+import { useState } from "react";
+
 import Logo from "../logo/logo";
 
 interface DefaultHeaderProps {
