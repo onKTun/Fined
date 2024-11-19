@@ -1,25 +1,20 @@
-// RootLayout.js
 "use client";
-import React, { useEffect, useState } from "react";
-import { SidebarProvider } from "../sidebar/sidebarContext";
-import Header from "../header/Header";
-import Sidebar from "src/components/sidebar/Sidebar";
 
+import React from "react";
+import { SidebarProvider } from "../../components/sidebar/sidebarContext";
+import Header from "../../components/header/Header";
+import Sidebar from "../../components/sidebar/Sidebar";
 import DefaultHeader from "src/components/header/DefaultHeader";
-import { getUser } from "utils/supabase/client";
 
 interface RootLayoutProps {
   children: React.ReactNode;
+  loggedIn: boolean;
 }
 
-export default function ClientSideEducationLayout({
+export default function ClientsideEducationLayout({
   children,
+  loggedIn = false,
 }: RootLayoutProps) {
-  const [loggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    setLoggedIn(getUser());
-  });
-
   return (
     <SidebarProvider>
       <div className="viewport">

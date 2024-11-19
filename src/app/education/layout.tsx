@@ -1,46 +1,25 @@
 // RootLayout.js
-"use client";
+
 import React from "react";
-import { SidebarProvider } from "../../components/sidebar/sidebarContext";
-import Header from "../../components/header/Header";
-import Sidebar from "src/components/sidebar/Sidebar";
-import { createClient } from "../../../utils/supabase/client";
-import { useEffect, useState } from "react";
+
+import { getUserAndCache } from "utils/supabase/user";
+import ClientsideEducationLayout from "src/components/layouts/ClientsideEducationLayout";
 import DefaultHeader from "src/components/header/DefaultHeader";
+import Header from "src/components/header/Header";
+import Sidebar from "src/components/sidebar/Sidebar";
+import { SidebarProvider } from "src/components/sidebar/sidebarContext";
 
-export default function RootLayout({ children }) {
-  const supabase = createClient(); // Initialize Supabase client
-  const [loggedIn, setLoggedIn] = useState(false); // Track login status
-  useEffect(() => {
-    const checkSession = async () => {
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.getSession(); // Ensure to use getSession()
+export default async function RootLayout({ children }) {
+  const user = await getUserAndCache();
 
-      if (error) {
-        console.error("Error fetching user session:", error.message);
-      }
-
-      if (session) {
-        setLoggedIn(true);
-      }
-    };
-
-    checkSession();
-  }, [supabase]); // Add su
+  let isLoggedIn = false;
+  if (user != null) {
+    isLoggedIn = true;
+  }
 
   return (
-    <SidebarProvider>
-      <div className="viewport">
-        {loggedIn ? <Header /> : <DefaultHeader />}
-        <div className="contentWithSidebar">
-          <Sidebar />
-          <div className="content" id="root">
-            {children}
-          </div>
-        </div>
-      </div>
-    </SidebarProvider>
+    <ClientsideEducationLayout loggedIn={isLoggedIn}>
+      {children}
+    </ClientsideEducationLayout>
   );
 }

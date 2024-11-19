@@ -12,12 +12,12 @@ export default function Header() {
       <div className={styles.headerWrapper}>
         <ul className={styles.list}>
           <li className={styles.listItem}>
-            <Link className={styles.link} href="">
+            <Link className={styles.link} href="/">
               Contact
             </Link>
           </li>
           <li className={styles.listItem}>
-            <Link className={styles.link} href="">
+            <Link className={styles.link} href="/">
               Sitemap
             </Link>
           </li>
@@ -29,7 +29,7 @@ export default function Header() {
             </form>
           </li>
           <li className={styles.listItem}>
-            <Link className={styles.link} href="">
+            <Link className={styles.link} href="/">
               Feedback
             </Link>
           </li>
