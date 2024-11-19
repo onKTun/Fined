@@ -3,6 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "utils/supabase/server";
+import {
+  isEmailValid,
+  isPasswordValid,
+  isUsernameValid,
+} from "utils/verification";
 
 export async function login(formData: FormData) {
   console.log("login function called");
@@ -26,16 +31,42 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const username = formData.get("username") as string;
+  const firstName = formData.get("firstName") as string;
+  const lastName = formData.get("lastName") as string;
+  const accountType = formData.get("account-type") as string;
+
+  if (
+    !isEmailValid(email) ||
+    !isPasswordValid(password) ||
+    !isUsernameValid(username) ||
+    firstName === "" ||
+    lastName === "" ||
+    !accountType
+  ) {
+    console.log("form data error");
+    console.log("Email valid:", isEmailValid(email));
+    console.log("Password valid:", isPasswordValid(password));
+    console.log("Username valid:", isUsernameValid(username));
+    console.log("First name provided:", !!firstName);
+    console.log("Last name provided:", !!lastName);
+    console.log("Account type provided:", !!accountType);
+    redirect("/error");
+  }
+
   // type-casting here for convenience
   // in practice, you should validate your inputs
   const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
+    email,
+    password,
     options: {
       data: {
-        first_name: formData.get("first-name") as string,
-        last_name: formData.get("last-name") as string,
-        account_type: formData.get("account-type") as string,
+        username: username,
+        first_name: firstName,
+        last_name: lastName,
+        account_type: accountType,
       },
     },
   };

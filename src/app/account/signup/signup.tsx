@@ -5,6 +5,11 @@ import AccountTypeSelector from "src/app/account/signup/components/typeSelection
 import { signup } from "src/app/account/login/actions";
 import { useRef, useState } from "react";
 import Modal from "src/components/preloginmodal/Modal";
+import {
+  isPasswordValid,
+  isEmailValid,
+  isUsernameValid,
+} from "utils/verification";
 
 export default function SignUpForm() {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -12,11 +17,6 @@ export default function SignUpForm() {
   const [isFirstPanel, setFirstPanel] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
-
-  async function handleSubmit(formData: FormData) {
-    formData.append("account-type", accountType);
-    signup(formData);
-  }
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -25,6 +25,61 @@ export default function SignUpForm() {
     password: "",
     confirmPassword: "",
   });
+
+  async function handleSubmit(formData: FormData) {
+    if (isFirstPanel) {
+      toggleFirstPanel();
+      return;
+    }
+    // Check if password is valid
+    const passwordValid = isPasswordValid(formData.get("password") as string);
+    const passwordsMatch =
+      (formData.get("password") as string) ===
+      (formData.get("confirmPassword") as string);
+
+    let errorMessage = "";
+
+    // Password validation
+    if (!passwordValid) {
+      if (formValues.password.length < 8) {
+        errorMessage += "Password must be at least 8 characters long.\n";
+      }
+      if (!/[A-Z]/.test(formValues.password)) {
+        errorMessage +=
+          "Password must contain at least one uppercase letter.\n";
+      }
+      if (!/\d/.test(formValues.password)) {
+        errorMessage += "Password must contain at least one number.\n";
+      }
+      if (!/[!_.-]/.test(formValues.password)) {
+        errorMessage +=
+          "Password must contain at least one special character (! , _ , . , -).\n";
+      }
+    }
+
+    // Confirm password validation
+    if (!passwordsMatch) {
+      errorMessage += "Passwords do not match.\n";
+    }
+
+    // If there are any errors, show modal with the message
+    if (errorMessage) {
+      setModalMessage(errorMessage);
+      setShowModal(true);
+
+      // Clear the previous timeout if it's still running
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      // Automatically close modal after 8 seconds
+      timeoutRef.current = setTimeout(() => setShowModal(false), 8000);
+    } else {
+      formData.append("account-type", accountType);
+      signup(formData);
+    }
+  }
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues((prevValues) => ({
@@ -62,23 +117,6 @@ export default function SignUpForm() {
     } else {
       setFirstPanel(true); // Go back to the first panel
     }
-  };
-  const isEmailValid = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-  const isUsernameValid = (username: string): boolean => {
-    return username.length >= 5 && username.length <= 14;
-  };
-  const isPasswordValid = (password: string) => {
-    const minLength = 8;
-    const hasSpecialChar = /[!_.-]/.test(password); // Check for special characters
-    const hasNumber = /\d/.test(password); // Check for numbers
-    const hasUppercase = /[A-Z]/.test(password); // Check for uppercase letters
-
-    return (
-      password.length > minLength && hasSpecialChar && hasNumber && hasUppercase
-    );
   };
 
   return (
@@ -221,63 +259,10 @@ export default function SignUpForm() {
             arrow={true}
             text="Sign up"
             style={"blue"}
-            type="button"
+            type="submit"
             ftSize={1}
             heightWidth={{}}
-            onClick={() => {
-              // Check if password is valid
-              const passwordValid = isPasswordValid(formValues.password);
-              const passwordsMatch =
-                formValues.password === formValues.confirmPassword;
-
-              let errorMessage = "";
-
-              // Password validation
-              if (!passwordValid) {
-                if (formValues.password.length < 8) {
-                  errorMessage +=
-                    "Password must be at least 8 characters long.\n";
-                }
-                if (!/[A-Z]/.test(formValues.password)) {
-                  errorMessage +=
-                    "Password must contain at least one uppercase letter.\n";
-                }
-                if (!/\d/.test(formValues.password)) {
-                  errorMessage +=
-                    "Password must contain at least one number.\n";
-                }
-                if (!/[!_.-]/.test(formValues.password)) {
-                  errorMessage +=
-                    "Password must contain at least one special character (! , _ , . , -).\n";
-                }
-              }
-
-              // Confirm password validation
-              if (!passwordsMatch) {
-                errorMessage += "Passwords do not match.\n";
-              }
-
-              // If there are any errors, show modal with the message
-              if (errorMessage) {
-                setModalMessage(errorMessage);
-                setShowModal(true);
-
-                // Clear the previous timeout if it's still running
-                if (timeoutRef.current) {
-                  clearTimeout(timeoutRef.current);
-                }
-
-                // Automatically close modal after 8 seconds
-                timeoutRef.current = setTimeout(
-                  () => setShowModal(false),
-                  8000
-                );
-              } else {
-                // If validation passes, submit the form
-                handleSubmit(new FormData()); // Pass form data for submission
-                console.log("submitted");
-              }
-            }}
+            formAction={handleSubmit}
           />
         </div>
       </form>
