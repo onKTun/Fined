@@ -5,6 +5,7 @@ import Search from "src/components/search/Search";
 import Letterbox from "./components/letterbox/Letterbox";
 import termsData from "src/data/terms.json";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Glossary() {
   const [termsByLetter, setTermsByLetter] = useState<{
@@ -18,6 +19,13 @@ export default function Glossary() {
   return (
     <div className={styles.bodyDash}>
       <div className={styles.bannerContainer}>
+        <Image
+          src="/assets/backgrounds/MAINBACKGROUND.png" // replace with your image path
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          className={styles.backgroundImage}
+        />
         <div className={styles.bannerTop}>
           <div className={styles.pageIndicator}>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">

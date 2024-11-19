@@ -6,10 +6,8 @@
   flex-direction: column;
   flex-grow: 1;
 }
-.noSidebar {
-  width: 100vw;
-}
 .bannerContainer {
+  position: relative;
   width: 100%;
   background-image: url(/assets/backgrounds/image.png);
   background-repeat: repeat;
@@ -21,6 +19,11 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  z-index: 0;
 }
 .pageIndicator {
   width: fit-content;
@@ -52,6 +55,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 .underlinedText {
   text-decoration: underline;

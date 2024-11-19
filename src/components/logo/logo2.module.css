@@ -1,0 +1,45 @@
+.logoSVGwrapper {
+  transition: all 0.3s var(--transition);
+  z-index: 0;
+  position: absolute;
+  left: 22px;
+  background-color: var(--finedblue);
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+.logoWrapper {
+  position: relative;
+  width: fit-content;
+  padding: 13px 25px 13px 25px;
+  background-color: white;
+  border: 1px solid var(--finedblue);
+  border-radius: 5px;
+  display: flex;
+  column-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  .logoText {
+    color: var(--finedblue);
+    font-size: 1.7rem;
+    font-weight: 550;
+    z-index: 1;
+    margin: 0;
+  }
+  .logosvg {
+    z-index: 10;
+  }
+  &:hover {
+    cursor: pointer;
+    color: white;
+    .logoText {
+      color: white;
+    }
+    .logoSVGwrapper {
+      transition: all 0.3s var(--transition);
+      width: 100%;
+      height: 100%;
+      left: 0;
+    }
+  }
+}

@@ -6,6 +6,8 @@ type JSONObject = {
 
 type JSONArray = Array<JSONValue>;
 
+type AccountType = "student" | "educator";
+
 /*
 example implementation:
 function printJSON(jsonData: JSONValue) {

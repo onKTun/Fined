@@ -87,3 +87,8 @@
   align-items: center;
   column-gap: 2em;
 }
+@media only screen and (max-width: 1280px) {
+  .search {
+    width: 20em;
+  }
+}
