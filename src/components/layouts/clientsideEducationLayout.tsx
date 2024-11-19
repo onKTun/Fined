@@ -2,7 +2,6 @@
 
 import React from "react";
 import { SidebarProvider } from "../../components/sidebar/sidebarContext";
-import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
 import DefaultHeader from "src/components/header/DefaultHeader";
 
@@ -18,7 +17,7 @@ export default function ClientsideEducationLayout({
   return (
     <SidebarProvider>
       <div className="viewport">
-        {loggedIn ? <Header /> : <DefaultHeader />}
+        <DefaultHeader loggedIn={loggedIn} />
         <div className="contentWithSidebar">
           <Sidebar />
           <div className="content" id="root">
