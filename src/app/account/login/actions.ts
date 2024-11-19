@@ -28,6 +28,9 @@ export async function login(formData: FormData) {
     });
     return error.message;
   }
+
+  revalidatePath("/", "layout");
+  redirect("/education/dashboard");
 }
 
 export async function signup(formData: FormData) {
