@@ -1,5 +1,4 @@
 "use client";
-import Header from "src/components/header/Header";
 import styles from "./landingpage.module.css";
 import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
@@ -53,7 +52,7 @@ export default function LandingPage() {
     <>
       <div className={styles.fullPage}>
         <div className={styles.viewport}>
-          {loggedIn ? <Header /> : <DefaultHeader />}
+          <DefaultHeader />
           <div className={styles.heroContainer}>
             <div className={styles.left}>
               <img src="/assets/finedSolid.png" width={70} />
