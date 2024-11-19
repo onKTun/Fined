@@ -17,7 +17,7 @@ export default function LoginForm() {
   const handleLogin = async (formData) => {
     const error = await login(formData);
     if (error) {
-      setModalMessage(error.message);
+      setModalMessage(error);
       setShowModal(true);
 
       // Clear the previous timeout if it's still running

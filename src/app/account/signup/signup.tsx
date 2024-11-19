@@ -78,7 +78,7 @@ export default function SignUpForm() {
       formData.append("account-type", accountType);
       const error = await signup(formData);
       if (error) {
-        setModalMessage(error.message);
+        setModalMessage(error);
         setShowModal(true);
 
         // Clear the previous timeout if it's still running
