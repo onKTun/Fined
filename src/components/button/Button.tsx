@@ -9,7 +9,7 @@ interface Props {
   formAction?: (formData: FormData) => Promise<void>;
   heightWidth: React.CSSProperties;
   onClick?: () => void;
-  arrow: boolean;
+  arrow?: boolean;
 }
 export default function Button({
   style,
