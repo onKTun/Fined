@@ -53,8 +53,8 @@ export default function ActivityPreviewItem({
       <RoutingButton
         style={"blue"}
         text={"View Analytics"}
-        ftSize={1}
-        additonalStyles={{ width: "fit-content", height: "fit-content" }}
+        ftSize={1.1}
+        additonalStyles={{}}
         url={""}
       />
     </div>
