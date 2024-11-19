@@ -15,7 +15,7 @@ create table if not exists students
     birthday          date,
     biography         varchar(500),
     grade_level       int,
-    experience_points int,
+    experience_points int default 0,
 
     constraint username_length check (char_length(username) >= 3)
 

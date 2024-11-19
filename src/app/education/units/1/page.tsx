@@ -154,7 +154,7 @@ export default function Unit1() {
             estTime={5}
             key={1}
             progress={0}
-            redirect="/education/activities/crossword"
+            href="/education/activities/crossword"
           />
           <Activity
             title={"Vocabulary Match"}
@@ -163,7 +163,7 @@ export default function Unit1() {
             estTime={5}
             key={1}
             progress={0}
-            redirect="/education/activities/money-can"
+            href="/education/activities/money-can"
           />
           {/* {activityData.map((activity, index) => (
             <Activity
