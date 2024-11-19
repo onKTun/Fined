@@ -1,24 +1,21 @@
 // RootLayout.js
-"use client";
-import React from "react";
-import { SidebarProvider } from "../../components/sidebar/sidebarContext";
-import Sidebar from "src/components/sidebar/Sidebar";
-import { createClient } from "../../../utils/supabase/client";
-import { useEffect, useState } from "react";
-import DefaultHeader from "src/components/header/DefaultHeader";
 
-export default function RootLayout({ children }) {
+import React from "react";
+
+import { getUserAndCache } from "utils/supabase/user";
+import ClientsideEducationLayout from "src/components/layouts/clientsideEducationLayout";
+
+export default async function RootLayout({ children }) {
+  const user = await getUserAndCache();
+
+  let isLoggedIn = false;
+  if (user != null) {
+    isLoggedIn = true;
+  }
+
   return (
-    <SidebarProvider>
-      <div className="viewport">
-        <DefaultHeader />
-        <div className="contentWithSidebar">
-          <Sidebar />
-          <div className="content" id="root">
-            {children}
-          </div>
-        </div>
-      </div>
-    </SidebarProvider>
+    <ClientsideEducationLayout loggedIn={isLoggedIn}>
+      {children}
+    </ClientsideEducationLayout>
   );
 }
