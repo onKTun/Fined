@@ -21,7 +21,7 @@ export async function login(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    redirect("/error");
+    return error;
   }
 
   revalidatePath("/", "layout");
@@ -46,13 +46,6 @@ export async function signup(formData: FormData) {
     lastName === "" ||
     !accountType
   ) {
-    console.log("form data error");
-    console.log("Email valid:", isEmailValid(email));
-    console.log("Password valid:", isPasswordValid(password));
-    console.log("Username valid:", isUsernameValid(username));
-    console.log("First name provided:", !!firstName);
-    console.log("Last name provided:", !!lastName);
-    console.log("Account type provided:", !!accountType);
     redirect("/error");
   }
 
@@ -75,7 +68,7 @@ export async function signup(formData: FormData) {
 
   if (error) {
     console.log(error);
-    redirect("/error");
+    return error;
   }
 
   revalidatePath("/", "layout");

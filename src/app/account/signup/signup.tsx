@@ -76,7 +76,19 @@ export default function SignUpForm() {
       timeoutRef.current = setTimeout(() => setShowModal(false), 8000);
     } else {
       formData.append("account-type", accountType);
-      signup(formData);
+      const error = await signup(formData);
+      if (error) {
+        setModalMessage(error.message);
+        setShowModal(true);
+
+        // Clear the previous timeout if it's still running
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+
+        // Automatically close modal after 8 seconds
+        timeoutRef.current = setTimeout(() => setShowModal(false), 8000);
+      }
     }
   }
 
