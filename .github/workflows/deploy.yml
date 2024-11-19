@@ -1,21 +1,27 @@
 name: Deploy prod app
-on: 
+
+on:
   push:
     branches:
       - production-branch
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - run: ssh
+      # SSH Deploy
       - name: SSH Deploy
         env:
-            username: ${{ secrets.USER }} # Your server's username
-            key: ${{ secrets.SSH_PRIVATE_KEY }} # Your server's SSH private key
-            script: |
-              cd /root/Fined # Specify the path to your app directory on the server
-              git switch production-branch
-              git pull
-              npm install
-              npm run build
-              pm2 restart fined-site # Replace with your PM2 service name
+          USER: ${{ secrets.USER }} # Your server's username
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} # Your server's SSH private key
+          
+        run: |
+          ssh -i "$SSH_PRIVATE_KEY" "$USER" << EOF
+            cd /root/Fined # Specify the path to your app directory on the server
+            git switch production-branch
+            git pull
+            npm install
+            npm run build
+            pm2 restart fined-site # Replace with your PM2 service name
+          EOF
