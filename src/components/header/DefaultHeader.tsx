@@ -4,12 +4,34 @@ import styles from "./DefaultHeader.module.css";
 import Search from "../search/Search";
 import RoutingButton from "../routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createClient } from "../../../utils/supabase/client";
 
 export default function DefaultHeader() {
   const [activeModal, setActiveModal] = useState(null);
   const [isCooldownActive, setIsCooldownActive] = useState(false);
   const cooldownTime = 100;
+
+  const supabase = createClient(); // Initialize Supabase client
+  const [loggedIn, setLoggedIn] = useState(false); // Track login status
+  useEffect(() => {
+    const checkSession = async () => {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession(); // Ensure to use getSession()
+
+      if (error) {
+        console.error("Error fetching user session:", error.message);
+      }
+
+      if (session) {
+        setLoggedIn(true);
+      }
+    };
+
+    checkSession();
+  }, [supabase]);
 
   // Open the modal when the user hovers
   const handleMouseEnter = (modalName) => {
@@ -249,21 +271,34 @@ export default function DefaultHeader() {
           </ul>
         </div>
         <div className={styles.buttonContainer}>
-          <Search wid={"30em"} rad={5} color={""} />
-          <RoutingButton
-            style={"gray"}
-            text={"Login"}
-            ftSize={1}
-            additonalStyles={{}}
-            url={"/account/login"}
-          />
-          <RoutingButton
-            style={"blue"}
-            text={"Sign up"}
-            ftSize={1}
-            additonalStyles={{ width: "7em" }}
-            url={"/account/signup"}
-          />
+          <Search wid={"23em"} rad={5} color={""} />
+          {!loggedIn && (
+            <>
+              <RoutingButton
+                style={"gray"}
+                text={"Login"}
+                ftSize={1}
+                additonalStyles={{}}
+                url={"/account/login"}
+              />
+              <RoutingButton
+                style={"blue"}
+                text={"Sign up"}
+                ftSize={1}
+                additonalStyles={{ width: "7em" }}
+                url={"/account/signup"}
+              />
+            </>
+          )}
+          {loggedIn && (
+            <RoutingButton
+              style={"blue"}
+              text={"Dashboard"}
+              ftSize={1}
+              additonalStyles={{}}
+              url={"/education/dashboard"}
+            />
+          )}
         </div>
         <ContactModal
           isEnabled={activeModal == "contact"}
