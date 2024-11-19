@@ -3,18 +3,24 @@ import styles from "./lessonpreview.module.css";
 import Breadcrumb from "src/components/breadcrumb/Breadcrumb";
 import Button from "src/components/button/Button";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
+import lessons from "../lessons.json";
 
-export default function LessonPreview() {
+export default function LessonPreview({ params }) {
+  console.log({ params });
   const router = useRouter();
+  const part = parseInt(params.preview, 10);
+
+  const selectedLesson = lessons.find((lesson) => lesson.id === part);
+
   return (
     <div className={styles.bodyDash}>
       <div className={styles.container}>
         <section className={styles.lesson}>
           <div className={styles.left_Container}>
             <div className={styles.absoluteTop_Container}>
-              <Breadcrumb unit="Unit One" lesson="Value of Money" />
+              <Breadcrumb unit="Unit One" lesson={"Lesson " + part} />
               <div className={styles.absoluteTop_progress}>
                 <Button
                   text="Back"
@@ -22,6 +28,7 @@ export default function LessonPreview() {
                   style="gray"
                   ftSize={1}
                   heightWidth={{}}
+                  arrow={false}
                 />
               </div>
             </div>
@@ -33,28 +40,27 @@ export default function LessonPreview() {
                     fill="rgb(255, 255, 255)"
                   ></path>
                 </svg>
-                Unit 1
+                Unit {selectedLesson?.unit}
               </div>
-              <div className={styles.title}>Value of Money</div>
+              <div className={styles.title}>{selectedLesson?.previewTitle}</div>
               <div className={styles.estTime}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19">
                   <g>
                     <path
-                      d="M 0 0 L 20 0 L 20 20 L 0 20 Z"
+                      d="M 0 0 L 19 0 L 19 19 L 0 19 Z"
                       fill="transparent"
                     ></path>
                     <path
-                      d="M 2.792 5.185 C 0.584 8.49 0.908 12.873 3.578 15.819 C 6.247 18.764 10.578 19.515 14.083 17.641 C 17.589 15.768 19.371 11.749 18.405 7.894 C 17.44 4.038 13.975 1.333 10 1.332 L 10 4.222 M 10 10 L 6.148 6.148"
+                      d="M 2.653 4.925 C 0.555 8.065 0.863 12.23 3.399 15.028 C 5.935 17.825 10.049 18.539 13.379 16.759 C 16.71 14.979 18.402 11.162 17.485 7.499 C 16.568 3.836 13.276 1.266 9.5 1.266 L 9.5 4.01 M 9.5 9.5 L 5.84 5.84"
                       fill="transparent"
-                      strokeWidth="2"
+                      stroke-width="1.9"
                       stroke="rgb(36, 36, 36)"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeDasharray=""
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     ></path>
                   </g>
                 </svg>
-                Lesson is around 30 minutes long
+                Lesson is around {selectedLesson?.videoLength} minutes long
               </div>
             </div>
             <div className={styles.description_Container}>
@@ -68,13 +74,7 @@ export default function LessonPreview() {
                 Description
               </div>
               <div className={styles.description_textBox}>
-                <p>
-                  In this lesson, you'll discover the importance of money and
-                  its many uses. We'll explore how money represents effort,
-                  unlocks opportunities, and helps you achieve goals. You'll
-                  also learn smart ways to manage, store, and save it for the
-                  future—preparing you for real-world financial adventures!
-                </p>
+                <div>{selectedLesson?.previewDesc}</div>
               </div>
               <div className={styles.description_question}>
                 <svg
@@ -127,7 +127,7 @@ export default function LessonPreview() {
             {" "}
             <Image
               alt={""}
-              src={"/assets/backgrounds/MAINBACKGROUND.png"}
+              src={selectedLesson?.imageUrl + ""}
               fill
               priority
               sizes="100%"

@@ -21,7 +21,6 @@ export default function ActivitySelectorButton({
         Lesson{" " + lessonNum}
       </button>
       {/* this is just for aesthetics idk how to implement progress lmao */}
-      <ProgressBar progress={lessonNum === 1 ? 80 : lessonNum < 4 ? 10 : 0} />
     </div>
   );
 }

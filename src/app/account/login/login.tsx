@@ -41,16 +41,17 @@ export default function LoginForm() {
                 Forgot your password?
               </Link>
             </div>
+          </div>
+          <Button
+            arrow={true}
+            formAction={login}
+            text="Sign in"
+            type="submit"
+            style={"blue"}
+            ftSize={1}
+            heightWidth={{}}
+          />
         </div>
-        <Button
-          arrow={true}
-          formAction={login}
-          text="Sign in"
-          type="submit"
-          style={"blue"}
-          ftSize={1}
-          heightWidth={{}}
-        />
       </form>
     </div>
   );

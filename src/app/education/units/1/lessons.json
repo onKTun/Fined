@@ -1,0 +1,66 @@
+[
+    {
+        "unit": 1,
+      "id": 1,
+      "title": "Lesson 1",
+      "imageUrl": "/assets/backgrounds/back.JPG",
+      "subtitle": "What Is The Meaning of Money?",
+      "shortDescText": "In this video, we will learn what money actually is and some basic finance terms",
+      "previewDesc": "In this lesson, you'll discover the importance of money and its many uses. We'll explore how money represents effort, unlocks opportunities, and helps you achieve goals. You'll also learn smart ways to manage, store, and save it for the future—preparing you for real-world financial adventures!",
+      "previewTitle": "Value of Money",
+      "videoProgress": 40,
+      "videoLength": 2,
+      "subsequentActivities": [
+        { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 8, "progress": 50, "href": "/education/activities/money-can"  },
+        { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 5 , "progress": 10, "href": "/education/activities/money-can"  },
+        { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 5 , "progress": 10, "href": "/education/activities/money-can"  }
+      ]
+    },{
+        "unit": 1,
+        "id": 2,
+        "title": "Lesson 2",
+        "imageUrl": "/assets/backgrounds/people.png",
+        "subtitle": "Comparison Shopping: Why? ",
+        "shortDescText": "Figure out the meaning of life and wonder how yorur going to get employed in this job market for comp sci.",
+      "previewDesc": "In that lesson, you'll discover the importance of money and its many uses. We'll explore how money represents effort, unlocks opportunities, and helps you achieve goals. You'll also learn smart ways to manage, store, and save it for the future—preparing you for real-world financial adventures!",
+      "previewTitle": "Comparison Shopping",
+        "videoProgress": 0,
+        "videoLength": 2,
+        "subsequentActivities": [
+          { "title": "None Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 5, "progress": 0, "href": "/education/activities/money-can"  },
+          { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 8, "progress": 0, "href": "/education/activities/money-can"  }
+          
+        ]
+      },{"unit": 1,
+        "id": 3,
+        "title": "Lesson 1",
+        "imageUrl": "/assets/backgrounds/back.JPG",
+        "subtitle": "Scams and Tricks",
+        "shortDescText": "Figure out the meaning of life and wonder how yorur going to get employed in this job market for comp sci.",
+        "previewDesc": "In this lesson, you'll discover the importance of money and its many uses. We'll explore how money represents effort, unlocks opportunities, and helps you achieve goals. You'll also learn smart ways to manage, store, and save it for the future—preparing you for real-world financial adventures!",
+        "previewTitle": "Value of Money",
+        "videoProgress": 0,
+        "videoLength": 2,
+        "subsequentActivities": [
+          { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 8, "progress": 0, "href": "/education/activities/money-can"  },
+          { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 5 , "progress": 0, "href": "/education/activities/money-can"  },
+          { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 5 , "progress": 0, "href": "/education/activities/money-can"  }
+        ]
+      },{"unit": 1,
+        "id": 4,
+        "title": "Lesson 1",
+        "imageUrl": "/assets/backgrounds/back.JPG",
+        "subtitle": "Bills and Taxes",
+        "shortDescText": "Figure out the meaning of life and wonder how yorur going to get employed in this job market for comp sci.",
+        "previewDesc": "In this lesson, you'll discover the importance of money and its many uses. We'll explore how money represents effort, unlocks opportunities, and helps you achieve goals. You'll also learn smart ways to manage, store, and save it for the future—preparing you for real-world financial adventures!",
+        "previewTitle": "Value of Money",
+        "videoProgress": 0,
+        "videoLength": 3,
+        "subsequentActivities": [
+          { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 8, "progress": 0, "href": "/education/activities/money-can"  },
+          { "title": "Crossword Puzzle", "desc": "Complete the following crossword to move onto the next activity", "svgPath": "/assets/activity/crossword.svg", "estTime": 5 , "progress": 0, "href": "/education/activities/money-can"  }
+        ]
+      }
+    
+  ]
+  

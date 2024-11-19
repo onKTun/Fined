@@ -145,18 +145,26 @@
 .video_titleDesc {
   display: flex;
   flex-direction: column;
-  row-gap: 2px;
+  row-gap: 7px;
 }
 .title {
   font-family: "Inter Tight", sans-serif;
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
 }
 .subtitle {
-  color: var(--subtext);
+  color: var(--black3);
   display: flex;
   flex-direction: column;
   row-gap: 2px;
   font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.025);
+  padding: 10px 10px;
+  border: 1px solid var(--inputborder);
+  border-left: 3px solid var(--bb);
+  border-radius: 0px 5px 5px 0px;
 }
 .button_Container {
   display: flex;
@@ -191,8 +199,48 @@
   font-size: 1.1rem;
 }
 .buttonRow {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   display: flex;
   column-gap: 10px;
+}
+.loadingScreen {
+  display: flex;
+  flex-grow: 1;
+  background-color: var(--inputcolor);
+  justify-content: center;
+  align-items: center;
+}
+.changeUnitButton {
+  transition: 0.3s var(--transition);
+  position: absolute;
+  right: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 30px;
+  font-size: 1rem;
+  background-color: white;
+  border: 1px solid var(--bb);
+  border-radius: 30px;
+  column-gap: 6px;
+  color: var(--black1);
+  &:hover {
+    transition: 0.3s var(--transition);
+    cursor: pointer;
+    background-color: var(--inputcolor);
+  }
+}
+.svgBoxCHB {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  background-color: var(--finedblue);
+  border-radius: 5px;
 }
 @media only screen and (max-width: 1248px) {
   .bottomContainer {
