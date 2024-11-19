@@ -30,8 +30,8 @@ export default function UAItem({ svgPath, title, unit }: Props) {
       <RoutingButton
         style={"blue"}
         text={"Start"}
-        ftSize={1}
-        additonalStyles={{ height: "2.5em", width: "7em" }}
+        ftSize={1.1}
+        additonalStyles={{ width: "7em" }}
         url={""}
       />
     </div>
