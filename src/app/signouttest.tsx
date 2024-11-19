@@ -13,6 +13,7 @@ export default function SignOutButton() {
       onClick={() => {
         signOut();
       }}
+      arrow={false}
     />
   );
 }

@@ -32,6 +32,9 @@ export async function signup(formData: FormData) {
   const supabase = createClient();
 
   const email = formData.get("email") as string;
+  if (!email || typeof email !== "string") {
+    return { error: "Invalid email" };
+  }
   const password = formData.get("password") as string;
   const username = formData.get("username") as string;
   const firstName = formData.get("firstName") as string;
