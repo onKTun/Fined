@@ -6,6 +6,7 @@ import RoutingButton from "../routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
 import { useState } from "react";
 import Logo from "../logo/logo";
+import { useSidebar } from "../sidebar/sidebarContext";
 
 interface DefaultHeaderProps {
   loggedIn: boolean;
@@ -15,7 +16,7 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
   const [activeModal, setActiveModal] = useState(null);
   const [isCooldownActive, setIsCooldownActive] = useState(false);
   const cooldownTime = 100;
-
+  const { toggleSidebar } = useSidebar();
   // Open the modal when the user hovers
   const handleMouseEnter = (modalName) => {
     setActiveModal(modalName);
@@ -86,6 +87,14 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
                 additonalStyles={{ width: "7em" }}
                 url={"/account/signup"}
               />
+              <button
+                onClick={toggleSidebar}
+                className={styles.sideBarMinimizer}
+              >
+                <div className={styles.hamburgerPart}></div>
+                <div className={styles.hamburgerPart}></div>
+                <div className={styles.hamburgerPart}></div>
+              </button>
             </>
           )}
         </div>
