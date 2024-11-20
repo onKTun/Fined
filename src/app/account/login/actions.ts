@@ -117,13 +117,32 @@ export async function changePassword(formData: FormData) {
   // in practice, you should validate your inputs
   const password = formData.get("password") as string;
 
-  if (!isPasswordValid(password)) {
-    return "Password is not valid.";
+  const valid = isPasswordValid(password);
+  if (!valid) {
+    let errorMessage = "";
+
+    if (password.length < 8) {
+      errorMessage += "Password must be at least 8 characters long.\n";
+    }
+    if (!/[A-Z]/.test(password)) {
+      errorMessage += "Password must contain at least one uppercase letter.\n";
+    }
+    if (!/\d/.test(password)) {
+      errorMessage += "Password must contain at least one number.\n";
+    }
+    if (!/[!_.-]/.test(password)) {
+      errorMessage +=
+        "Password must contain at least one special character (! , _ , . , -).\n";
+    }
+
+    return errorMessage;
   }
 
   const supabase = createClient();
 
-  const { error } = await supabase.auth.updateUser({ password: password });
+  const { error } = await supabase.auth.updateUser({
+    password: password,
+  });
 
   if (error) {
     console.log("Error details:", {
@@ -133,4 +152,7 @@ export async function changePassword(formData: FormData) {
     });
     return error.message;
   }
+
+  revalidatePath("/", "layout");
+  redirect("/education/dashboard");
 }
