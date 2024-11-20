@@ -1,0 +1,30 @@
+.wrapper {
+  transition: 0.3s var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  padding: 15px 30px;
+  background-color: white;
+  border: 1px solid var(--bb);
+  border-radius: 5px;
+  &:hover {
+    transition: 0.3s var(--transition);
+    cursor: pointer;
+    background-color: var(--inputcolor);
+  }
+}
+.selected {
+  transition: 0.1s var(--transition);
+  background-color: var(--finedblue);
+  color: white;
+  &:hover {
+    transition: 0.3s var(--transition);
+    background-color: rgba(var(--finedblueRGB), 0.8);
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
