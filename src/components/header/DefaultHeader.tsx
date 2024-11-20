@@ -5,7 +5,6 @@ import Search from "../search/Search";
 import RoutingButton from "../routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
 import { useState } from "react";
-
 import Logo from "../logo/logo";
 
 interface DefaultHeaderProps {
@@ -37,6 +36,7 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
     <>
       <div className={styles.headerContainer}>
         <div className={styles.leftContainer}>
+          {loggedIn && <div></div>}
           <Logo></Logo>
           <ul className={styles.list}>
             <li
@@ -50,21 +50,26 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
             <Link className={styles.listItem} href="/education/unitselector">
               Lessons
             </Link>
-            <form>
-              <button type="submit">Sign Out</button>
-            </form>
 
             <li className={styles.listItem}>Feedback</li>
+            <li className={styles.listItem}>
+              <form action="/auth/signout" method="post">
+                <button className={styles.signout} type="submit">
+                  Sign out
+                </button>
+              </form>
+            </li>
           </ul>
         </div>
         <div className={styles.buttonContainer}>
-          <Search wid={"23em"} rad={5} color={""} />
           {loggedIn ? (
-            <form action="/auth/signout" method="post">
-              <button className="button block" type="submit">
-                Sign out
-              </button>
-            </form>
+            <RoutingButton
+              style={"blue"}
+              text={"Dashboard"}
+              ftSize={1}
+              additonalStyles={{}}
+              url={"/education/dashboard"}
+            />
           ) : (
             <>
               <RoutingButton
@@ -82,15 +87,6 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
                 url={"/account/signup"}
               />
             </>
-          )}
-          {loggedIn && (
-            <RoutingButton
-              style={"blue"}
-              text={"Dashboard"}
-              ftSize={1}
-              additonalStyles={{}}
-              url={"/education/dashboard"}
-            />
           )}
         </div>
         <ContactModal
