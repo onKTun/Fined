@@ -14,16 +14,16 @@ jobs:
     steps:
       # SSH Deploy
       - name: SSH Deploy
-        env:
-          USER: ${{ secrets.USER }} # Your server's username
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} # Your server's SSH private key
-          
-        run: |
-          ssh -i "$SSH_PRIVATE_KEY" "$USER" << EOF
-            cd /root/Fined # Specify the path to your app directory on the server
+        uses: nekiro/ssh-job@main
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          user: ${{ secrets.SSH_USER }}
+          command: |
+            cd /root/Fined
             git switch production-branch
             git pull
             npm install
             npm run build
-            pm2 restart fined-site # Replace with your PM2 service name
-          EOF
+            pm2 restart Fined
+            
