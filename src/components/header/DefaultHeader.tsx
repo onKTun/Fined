@@ -63,14 +63,25 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
           </ul>
         </div>
         <div className={styles.buttonContainer}>
+          <Search rad={10} wid={"23em"} color="#f8f8f8" />
           {loggedIn ? (
-            <RoutingButton
-              style={"blue"}
-              text={"Dashboard"}
-              ftSize={1}
-              additonalStyles={{}}
-              url={"/education/dashboard"}
-            />
+            <>
+              <RoutingButton
+                style={"blue"}
+                text={"Dashboard"}
+                ftSize={1}
+                additonalStyles={{}}
+                url={"/education/dashboard"}
+              />
+              <button
+                onClick={toggleSidebar}
+                className={styles.sideBarMinimizer}
+              >
+                <div className={styles.hamburgerPart}></div>
+                <div className={styles.hamburgerPart}></div>
+                <div className={styles.hamburgerPart}></div>
+              </button>
+            </>
           ) : (
             <>
               <RoutingButton
@@ -87,14 +98,6 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
                 additonalStyles={{ width: "7em" }}
                 url={"/account/signup"}
               />
-              <button
-                onClick={toggleSidebar}
-                className={styles.sideBarMinimizer}
-              >
-                <div className={styles.hamburgerPart}></div>
-                <div className={styles.hamburgerPart}></div>
-                <div className={styles.hamburgerPart}></div>
-              </button>
             </>
           )}
         </div>
