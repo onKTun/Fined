@@ -50,6 +50,9 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
             <Link className={styles.listItem} href="/education/unitselector">
               Lessons
             </Link>
+            <form>
+              <button type="submit">Sign Out</button>
+            </form>
 
             <li className={styles.listItem}>Feedback</li>
           </ul>
