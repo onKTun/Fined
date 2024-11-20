@@ -36,7 +36,10 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
   return (
     <>
       <div className={styles.headerContainer}>
-        <div className={styles.leftContainer}>
+        <div
+          className={styles.leftContainer}
+          style={loggedIn ? { marginLeft: "3em" } : {}}
+        >
           {loggedIn && <div></div>}
           <Logo></Logo>
           <ul className={styles.list}>
