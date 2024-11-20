@@ -3,7 +3,7 @@ import styles from "./lessonpreview.module.css";
 import Breadcrumb from "src/components/breadcrumb/Breadcrumb";
 import Button from "src/components/button/Button";
 import RoutingButton from "src/components/routingbutton/RoutingButton";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import lessons from "../lessons.json";
 

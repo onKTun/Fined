@@ -1,4 +1,3 @@
-import ProgressBar from "src/components/progress/ProgressBar";
 import styles from "./activityselbutton.module.css";
 interface Props {
   isSelected: boolean;

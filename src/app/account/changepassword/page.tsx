@@ -3,20 +3,19 @@
 import styles from "../login/Login.module.css";
 import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
 import Button from "../../../components/button/Button";
-import Link from "next/link";
 import Image from "next/image";
 import Logo from "src/components/logo/logo";
-import { forgotPassword } from "../login/actions";
+import { changePassword } from "../login/actions";
 import { useState, useRef } from "react";
 import Modal from "src/components/preloginmodal/Modal";
 
-export default function ForgotPassword() {
+export default function ChangePassword() {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleForgotPassword = async (formData: FormData) => {
-    const error = await forgotPassword(formData);
+  const handleChangePassword = async (formData: FormData) => {
+    const error = await changePassword(formData);
     if (error) {
       setModalMessage(error);
       setShowModal(true);
@@ -38,41 +37,33 @@ export default function ForgotPassword() {
         <Logo logoStyle="outline"></Logo>
         <div className={styles.leftContent}>
           <div className={styles.title}>
-            <p className={styles.titleHeader}>Forgot your Password?</p>
+            <p className={styles.titleHeader}>Change your Password</p>
             <p className={styles.titleSubheader}>
-              No worries, please enter your details below
+              Enter your new password below.
             </p>
           </div>
           <form>
             <div className={styles.inputWrapper}>
-              <label htmlFor="email" className={styles.subtitle}>
-                Enter your account's corresponding email
+              <label htmlFor="password" className={styles.subtitle}>
+                Enter your new password.
               </label>
               <InputFieldPL
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Please enter email"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Please enter new password"
               />
             </div>
             <Button
               arrow={true}
-              text="Send Confirmation Email"
+              text="Change Password"
               type="submit"
               style={"blue"}
               ftSize={1}
-              formAction={handleForgotPassword}
+              formAction={handleChangePassword}
               heightWidth={{}}
             />{" "}
           </form>
-        </div>
-        <div className={styles.bottomLinkWrapper}>
-          <p className={styles.bottomLink}>
-            Don't have an account?&nbsp;
-            <Link href="/account/signup" className="highlightedText">
-              Sign in.
-            </Link>
-          </p>
         </div>
       </div>
       <div className={styles.right}>
