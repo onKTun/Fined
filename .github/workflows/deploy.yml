@@ -17,7 +17,7 @@ jobs:
         uses: nekiro/ssh-job@main
         with:
           host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
           user: ${{ secrets.SSH_USER }}
           command: |
             cd /root/Fined
