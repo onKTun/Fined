@@ -9,10 +9,14 @@ export async function GET(request: NextRequest) {
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = "/education/dashboard";
+  const redirect = searchParams.get("redirect");
 
   // Create redirect link without the secret token
   const redirectTo = request.nextUrl.clone();
   redirectTo.pathname = next;
+  if (redirect) {
+    redirectTo.pathname = redirect;
+  }
   redirectTo.searchParams.delete("token_hash");
   redirectTo.searchParams.delete("type");
 
