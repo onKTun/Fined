@@ -75,3 +75,18 @@
   height: fit-content;
   column-gap: 10px;
 }
+.empty {
+  height: 8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 3px;
+  &::before {
+    content: "Looks like you haven't completed anything. Head to Unit 1 to begin!";
+    color: var(--black3);
+  }
+  &::after {
+    content: "Hint: Click the three lines at the top left to find lessons.";
+    color: var(--subtext);
+  }
+}

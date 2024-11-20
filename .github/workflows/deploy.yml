@@ -1,0 +1,29 @@
+name: Deploy prod app
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - production-branch
+  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # SSH Deploy
+      - name: SSH Deploy
+        uses: nekiro/ssh-job@main
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          user: ${{ secrets.SSH_USER }}
+          command: |
+            cd /root/Fined
+            git switch production-branch
+            git pull
+            npm install
+            npm run build
+            pm2 restart Fined
+            

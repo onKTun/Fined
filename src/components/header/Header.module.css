@@ -1,17 +1,22 @@
 .headerContainer {
+  background-color: white;
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
   width: 100%;
   height: 70px;
   display: flex;
-  background-color: white;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0px 20px;
-  flex-shrink: 0;
+  background-color: white;
   z-index: 10;
 }
-
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  column-gap: 3em;
+  display: flex;
+}
 .logoSVGwrapper {
   z-index: 0;
   position: absolute;
@@ -21,44 +26,67 @@
   height: 40px;
   border-radius: 5px;
 }
-
-.buttonContainer {
+.logoWrapper {
+  position: relative;
+  width: fit-content;
+  padding: 10px 25px 10px 25px;
+  background-color: white;
   display: flex;
+  column-gap: 14px;
+  justify-content: center;
   align-items: center;
-  column-gap: 10px;
+  .logoText {
+    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    color: var(--finedblue);
+    font-size: 1.8rem;
+    font-weight: 570;
+    z-index: 1;
+    margin: 0;
+  }
+  .logoSVGwrapper {
+    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .logosvg {
+    z-index: 8;
+  }
+  &:hover {
+    cursor: pointer;
+    color: white;
+    .logoText {
+      transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      color: white;
+    }
+    .logoSVGwrapper {
+      transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      width: 100%;
+      height: 100%;
+      left: 0;
+    }
+  }
 }
 .list {
   display: flex;
+  justify-content: end;
+  flex-direction: row;
   column-gap: 2em;
   width: 10em;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.listItem {
+.link {
   transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   color: var(--black1);
   opacity: 0.6;
   &:hover {
-    cursor: pointer;
     transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
     opacity: 1;
   }
 }
-.signout {
-  width: fit-content;
-  height: fit-content;
-  text-wrap: nowrap;
-  font-size: 1rem;
-  background-color: transparent;
-  border: none;
-  padding: 0;
+.search {
+  width: 10em;
 }
-.leftContainer {
-  display: flex;
-  align-items: center;
-  column-gap: 2em;
-}
+
 .hamburgerPart {
   width: 16px;
   height: 3px;
@@ -91,8 +119,18 @@
     background-color: var(--black3);
   }
 }
+
 @media only screen and (max-width: 1280px) {
+  .headerWrapper {
+    width: 95%;
+    padding-left: 5em;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+  .list {
+    display: none;
+  }
   .search {
-    width: 20em;
+    width: 30em;
   }
 }
