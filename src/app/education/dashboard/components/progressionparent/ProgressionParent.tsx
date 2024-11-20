@@ -51,7 +51,9 @@ export default function ProgressionParent() {
       </div>
       <div className={styles.recentActivityContainer}>
         <div className={styles.RA_Header}>Recent Activity</div>
-        <div className={styles.recentActivityWrapper}>
+        {/* I put the empty style on here. Kevin implement a function that checks if there arent anythign to display, and if so that gets put; 
+        Hint: ${(function that returns boolean whether or not there is one) ? styles.empty : {} }*/}
+        <div className={`${styles.recentActivityWrapper} ${styles.empty}`}>
           {/* {activityData.map((data, index) => (
             <ActivityPreviewItem
               key={index}
