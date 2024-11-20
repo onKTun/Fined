@@ -44,7 +44,7 @@ export default function Unit1() {
                 fill="rgb(255, 255, 255)"
               ></path>
             </svg>
-            Unit 1
+            Unit 2
           </div>
           <p className={styles.bannerTitle}>FIN'ED© Introduction to Finance</p>
           <p className={styles.bannerText}>
