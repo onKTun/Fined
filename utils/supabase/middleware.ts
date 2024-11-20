@@ -42,6 +42,7 @@ export async function updateSession(request: NextRequest) {
     "/education/dashboard",
     "/education/profile",
     "/education/settings",
+    "/account/changepassword",
   ];
   const isProtectedRoute = protectedRoutes.includes(request.nextUrl.pathname);
 

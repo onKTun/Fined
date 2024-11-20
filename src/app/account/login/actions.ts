@@ -10,14 +10,22 @@ import {
 } from "utils/verification";
 
 export async function login(formData: FormData) {
-  console.log("login function called");
-  const supabase = createClient();
   // type-casting here for convenience
   // in practice, you should validate your inputs
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  if (!isEmailValid(email) || !isPasswordValid(password)) {
+    return "Email or password is not valid!";
+  }
+
+  const supabase = createClient();
+
   const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
+    email: email,
+    password: password,
   };
+
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
@@ -34,8 +42,6 @@ export async function login(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
-  const supabase = createClient();
-
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const username = formData.get("username") as string;
@@ -53,6 +59,7 @@ export async function signup(formData: FormData) {
   ) {
     redirect("/error");
   }
+  const supabase = createClient();
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -78,4 +85,74 @@ export async function signup(formData: FormData) {
 
   revalidatePath("/", "layout");
   redirect("/");
+}
+
+export async function forgotPassword(formData: FormData) {
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const email = formData.get("email") as string;
+
+  if (!isEmailValid(email)) {
+    return "Email is not valid.";
+  }
+
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: "https://fined.academy/account/changepassword",
+  });
+
+  if (error) {
+    console.log("Error details:", {
+      message: error.message,
+      status: error.status,
+      statusText: error.status,
+    });
+    return error.message;
+  }
+}
+
+export async function changePassword(formData: FormData) {
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const password = formData.get("password") as string;
+
+  const valid = isPasswordValid(password);
+  if (!valid) {
+    let errorMessage = "";
+
+    if (password.length < 8) {
+      errorMessage += "Password must be at least 8 characters long.\n";
+    }
+    if (!/[A-Z]/.test(password)) {
+      errorMessage += "Password must contain at least one uppercase letter.\n";
+    }
+    if (!/\d/.test(password)) {
+      errorMessage += "Password must contain at least one number.\n";
+    }
+    if (!/[!_.-]/.test(password)) {
+      errorMessage +=
+        "Password must contain at least one special character (! , _ , . , -).\n";
+    }
+
+    return errorMessage;
+  }
+
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password: password,
+  });
+
+  if (error) {
+    console.log("Error details:", {
+      message: error.message,
+      status: error.status,
+      statusText: error.status,
+    });
+    return error.message;
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/education/dashboard");
 }
