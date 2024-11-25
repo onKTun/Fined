@@ -1,17 +1,18 @@
 import Toggle from "src/components/toggle/Toggle";
 import styles from "./settingitem.module.css";
+import Image from "next/image";
 interface Props {
-  svgPath: string;
+  svgObject: React.ReactNode;
   title: string;
   desc: string;
 }
 
-export default function SettingItem({ svgPath, title, desc }: Props) {
+export default function SettingItem({ svgObject, title, desc }: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.left}>
         <div className={styles.title}>
-          <img src={svgPath} />
+          {svgObject}
           {title}
         </div>
         <div className={styles.description}>{desc}</div>

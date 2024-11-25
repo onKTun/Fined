@@ -52,7 +52,7 @@ ul {
 }
 .contentWithSidebar {
   display: flex;
-  height: calc(100vh - 71px);
+  height: calc(100vh - 70px);
   background-color: #fafafa;
 }
 .viewport {

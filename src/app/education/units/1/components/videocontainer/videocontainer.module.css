@@ -1,0 +1,123 @@
+.video_Container {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 27em;
+  height: fit-content;
+  padding: 25px 20px 20px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.headerWrapper {
+  height: fit-content;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 36px;
+    height: 36px;
+    background-color: var(--finedblue);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.headerLeft {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 1.2rem;
+}
+.infoButton {
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+.video_tags {
+  display: flex;
+  column-gap: 8px;
+}
+.video_tag {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.1rem;
+  background-color: #f2f8ff;
+  border: 1px solid rgba(var(--finedblueRGB), 0.1);
+  border-radius: 5px;
+  color: var(--finedblue);
+}
+.imagePreview {
+  position: relative;
+  display: flex;
+  flex-grow: 1 0;
+  height: 13em;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.completionTime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 6px;
+  font-size: 1.1rem;
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
+  padding: 12px 15px;
+  border-radius: 5px;
+  width: fit-content;
+}
+.video_titleDesc {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+}
+.title {
+  font-family: "Inter Tight", sans-serif;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+}
+.subtitle {
+  color: var(--black3);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.025);
+  padding: 10px 10px;
+  border: 1px solid var(--inputborder);
+  border-left: 3px solid var(--bb);
+  border-radius: 0px 5px 5px 0px;
+}
+.button_Container {
+  display: flex;
+  column-gap: 8px;
+}
+.activity_Container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 45em;
+  border-radius: 10px;
+}
+.header_Container {
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-grow: 1 0;
+  height: fit-content;
+  background-color: white;
+  border: rgba(0, 0, 0, 0.1) solid 1px;
+}

@@ -3,6 +3,10 @@ import styles from "./settings.module.css";
 import Search from "src/components/search/Search";
 import SettingItem from "./components/settingitem/SettingItem";
 import Image from "next/image";
+import ContrastSVG from "public/svg/options/ContrastSVG";
+import AnimationSVG from "public/svg/options/AnimationSVG";
+import MuteSVG from "public/svg/options/MuteSVG";
+import CCSVG from "public/svg/options/CCSVG";
 
 export default function Settings() {
   return (
@@ -17,7 +21,12 @@ export default function Settings() {
         />
         <div className={styles.bannerTop}>
           <div className={styles.pageIndicator}>
-            <img src="/assets/sidebar/settings.svg" />
+            <Image
+              width={25}
+              height={25}
+              alt=""
+              src="/assets/sidebar/settings.svg"
+            />
             Settings
           </div>
           <p className={styles.bannerTitle}>FIN'ED© Introduction to Finance</p>
@@ -58,36 +67,29 @@ export default function Settings() {
             </button>
           </div>
           <SettingItem
-            svgPath={"/assets/settingIcons/contrast.svg"}
+            svgObject={<ContrastSVG />}
             title={"High Contrast Mode"}
             desc={
               "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
             }
           />{" "}
           <SettingItem
-            svgPath={"/assets/settingIcons/animation.svg"}
+            svgObject={<AnimationSVG />}
             title={"Stop Playing Animations"}
             desc={
               "Great for those who have motion sickness; Makes all the animations static"
             }
           />{" "}
           <SettingItem
-            svgPath={"/assets/settingIcons/mute.svg"}
+            svgObject={<MuteSVG />}
             title={"Mute Video in Videos"}
             desc={
               "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
             }
           />
           <SettingItem
-            svgPath={"/assets/settingIcons/cc.svg"}
+            svgObject={<CCSVG />}
             title={"Show Caption in Videos"}
-            desc={
-              "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
-            }
-          />
-          <SettingItem
-            svgPath={"/assets/settingIcons/contrast.svg"}
-            title={"Remove Colors From Videos"}
             desc={
               "With this enabled, links will be highlighted and components with a low contrast ratio will be have their contrast ratio increased"
             }

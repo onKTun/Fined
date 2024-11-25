@@ -1,5 +1,6 @@
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 import styles from "./uaitem.module.css";
+import Image from "next/image";
 
 interface Props {
   svgPath: string;
@@ -12,7 +13,7 @@ export default function UAItem({ svgPath, title, unit }: Props) {
     <div className={styles.wrapper}>
       <div className={styles.detailWrapper}>
         <div className={styles.left}>
-          <img src={svgPath} height={25} />
+          <Image src={svgPath} height={25} width={25} alt="" />
         </div>
         <div className={styles.right}>
           <div className={styles.unit}>

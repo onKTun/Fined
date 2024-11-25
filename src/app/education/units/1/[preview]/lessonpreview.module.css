@@ -125,6 +125,13 @@
   flex-direction: column;
   row-gap: 2em;
 }
+.lesson {
+  display: flex;
+  flex-grow: 1;
+  column-gap: 2em;
+  height: fit-content;
+}
+
 @media only screen and (max-width: 1280px) {
   .picture_Container {
     display: none;
@@ -136,10 +143,4 @@
   .left_Container {
     width: 50em;
   }
-}
-.lesson {
-  display: flex;
-  flex-grow: 1;
-  column-gap: 2em;
-  height: fit-content;
 }

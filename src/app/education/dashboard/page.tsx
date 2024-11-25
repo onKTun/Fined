@@ -4,6 +4,7 @@ import UpcomingAssignmentParent from "./components/upcomingassigmentparent/Upcom
 import styles from "./dashboard.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import DashboardSVG from "public/svg/sidebar/DashbordSVG";
 
 export default function Dashboard() {
   return (
@@ -18,10 +19,12 @@ export default function Dashboard() {
         />
         <div className={styles.bannerTop}>
           <div className={styles.pageIndicator}>
-            <img src="/assets/sidebar/dashboard.svg" />
+            <DashboardSVG topValue={0} leftValue={0} positionAbs={false} />
             Dashboard
           </div>
-          <p className={styles.bannerTitle}>FIN'ED© Introduction to Finance</p>
+          <label className={styles.bannerTitle}>
+            FIN'ED© Introduction to Finance
+          </label>
           <p className={styles.bannerText}>
             Something doesn't feel right? Edit it! If you'd like to edit your
             information,{" "}
@@ -36,7 +39,12 @@ export default function Dashboard() {
             className={styles.lessonShortcut}
           >
             <div className={styles.svgContainer}>
-              <img src="/assets/sidebar/lessons.svg"></img>
+              <Image
+                alt=""
+                height={20}
+                width={20}
+                src="/assets/sidebar/lessons.svg"
+              ></Image>
             </div>{" "}
             Go to Lessons
           </Link>

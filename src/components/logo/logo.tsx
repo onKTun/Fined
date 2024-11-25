@@ -214,7 +214,7 @@ export default function Logo({
             />
           </g>
         </svg>
-        <div className={styles.logoText}>fin'ed</div>
+        <label className={styles.logoText}>fin'ed</label>
       </div>
     </Link>
   );

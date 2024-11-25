@@ -61,7 +61,7 @@ export default function LoginForm() {
             </div>
             <div className={styles.forgotPasswordText}>
               <Link href="/account/forgotpassword" className="highlightedText">
-                Forgot your password?
+                <label htmlFor="forgotPassword">Forgot your password?</label>
               </Link>
             </div>
           </div>

@@ -27,6 +27,7 @@ export default function ProgressionParent() {
     //const progress = calculateCumulativeProgress(progressData);
     setCumulativeProgress(0);
   }, []);
+  const empty = true;
 
   return (
     <div className={styles.container}>
@@ -40,9 +41,9 @@ export default function ProgressionParent() {
               ></path>
             </svg>
           </div>
-          Course Progression
+          <label htmlFor="subtitle">Course Progression</label>
         </div>
-        <div className={styles.progress}>{cumulativeProgress.toFixed(2)}%</div>
+        <div className={styles.progress}>{cumulativeProgress.toFixed(0)}%</div>
       </div>
       <div className={styles.progressContainer}>
         {progressData.map((data, index) => (
@@ -51,35 +52,28 @@ export default function ProgressionParent() {
       </div>
       <div className={styles.recentActivityContainer}>
         <div className={styles.RA_Header}>Recent Activity</div>
-        {/* I put the empty style on here. Kevin implement a function that checks if there arent anythign to display, and if so that gets put; 
-        Hint: ${(function that returns boolean whether or not there is one) ? styles.empty : {} }*/}
-        <div className={`${styles.recentActivityWrapper} ${styles.empty}`}>
-          {/* {activityData.map((data, index) => (
-            <ActivityPreviewItem
-              key={index}
-              unit={data.unit}
-              title={data.type}
-              dateCompleted={data.dateLastCompleted}
-              svgPath={data.altSVGPath}
-              attempts={data.attemps}
-              score={data.score}
-              linkTo={data.linkTo}
-            />
-          ))} */}
+        <div className={`${styles.recentActivityWrapper}`}>
+          {empty && (
+            <>
+              <div className={styles.empty}>Nothing to display</div>
+              <div className={styles.empty}>Nothing to display</div>
+              <div className={styles.empty}>Nothing to display</div>
+            </>
+          )}
         </div>
       </div>
       <div className={styles.buttonWrapper}>
         <RoutingButton
           style={"blue"}
-          text={"Go to Progress"}
-          ftSize={1.1}
+          text={"Go to Units"}
+          ftSize={1}
           additonalStyles={{}}
           url={"education/units/1"}
         />
         <RoutingButton
           style={"gray"}
-          text={"Go to Unit"}
-          ftSize={1.1}
+          text={"Reload"}
+          ftSize={1}
           additonalStyles={{}}
           url={"/education/units/1"}
         />

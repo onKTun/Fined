@@ -44,8 +44,17 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
           <Logo></Logo>
           <ul className={styles.list}>
             <li
-              onMouseEnter={() => handleMouseEnter("contact")}
-              onMouseLeave={handleMouseLeave}
+              onClick={() => {
+                const orgEmail = "finedorganization@gmail.com";
+                const subject = encodeURIComponent(
+                  "Inquiry About Your Organization"
+                );
+                const body = encodeURIComponent(
+                  "Hi, I’d like to know more about your services."
+                );
+                const mailtoLink = `mailto:${orgEmail}?subject=${subject}&body=${body}`;
+                window.location.href = mailtoLink;
+              }}
               className={styles.listItem}
             >
               Contact

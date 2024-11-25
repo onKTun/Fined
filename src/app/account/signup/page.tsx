@@ -21,12 +21,12 @@ export default function SignUpPage() {
           <SignUpForm />
         </div>
         <div className={styles.bottomLinkWrapper}>
-          <p className={styles.bottomLink}>
+          <label className={styles.bottomLink}>
             Already have an account?&nbsp;
             <Link href="/account/login" className="highlightedText">
               Sign in.
             </Link>
-          </p>
+          </label>
         </div>
       </div>
       <div className={styles.right}>

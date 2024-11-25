@@ -4,6 +4,7 @@ import RoutingButton from "src/components/routingbutton/RoutingButton";
 //import UAItem from "./components/uaitem/UAItem";
 
 export default function UpcomingAssignmentParent() {
+  const empty = true;
   return (
     <div className={styles.container}>
       {" "}
@@ -33,6 +34,11 @@ export default function UpcomingAssignmentParent() {
             unit={data.unit}
           />
         ))} */}
+        {empty && (
+          <>
+            <div className={styles.empty}>No upcoming acitivites.</div>
+          </>
+        )}
       </div>
       <RoutingButton
         style={"gray"}

@@ -1,4 +1,5 @@
 import styles from "./additionalinformation.module.css";
+import Image from "next/image";
 
 export default function AdditionalInformation() {
   //const [selectedSection, setSelectedSeciton] = useState(-1); commented out for es-lint
@@ -29,7 +30,12 @@ export default function AdditionalInformation() {
         <div className={styles.vocabContainer}>
           <div className={styles.vocabContainer_top}>
             <div className={styles.vocabContainer_topSVGWrapper}>
-              <img src="/assets/header/terms.svg" />
+              <Image
+                height={20}
+                width={20}
+                alt=""
+                src="/assets/header/terms.svg"
+              />
             </div>
             Terms in Video
           </div>
@@ -44,7 +50,12 @@ export default function AdditionalInformation() {
         <div className={styles.vocabContainer}>
           <div className={styles.vocabContainer_top}>
             <div className={styles.vocabContainer_topSVGWrapper}>
-              <img src="/assets/header/terms.svg" />
+              <Image
+                height={20}
+                width={20}
+                alt=""
+                src="/assets/header/terms.svg"
+              />
             </div>
             Summary
           </div>
