@@ -112,7 +112,7 @@
   flex-direction: column;
   row-gap: 1em;
   padding: 30px;
-  height: 50em;
+  height: fit-content;
   width: 60em;
   background-color: white;
   border: 1px solid var(--bb);

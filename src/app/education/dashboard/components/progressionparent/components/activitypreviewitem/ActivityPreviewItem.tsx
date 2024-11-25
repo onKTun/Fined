@@ -1,5 +1,6 @@
 import RoutingButton from "src/components/routingbutton/RoutingButton";
 import styles from "./activitypreviewitem.module.css";
+import Image from "next/image";
 interface Props {
   unit: number;
   title: string;
@@ -23,7 +24,7 @@ export default function ActivityPreviewItem({
     <div className={styles.wrapper}>
       <div className={styles.detailWrapper}>
         <div className={styles.left}>
-          <img src={svgPath} width={25} height={26} />
+          <Image alt={"svg"} src={svgPath} width={25} height={26} />
         </div>
         <ul className={styles.right}>
           <div className={styles.unit}>
@@ -46,7 +47,12 @@ export default function ActivityPreviewItem({
       <div className={styles.scoreWrapper}>
         <h6>Score:</h6>
         <div className={styles.score}>
-          <img src="/assets/status/complete.svg" height={18} width={18} />
+          <Image
+            alt=""
+            src="/assets/status/complete.svg"
+            height={18}
+            width={18}
+          />
           {score}%
         </div>
       </div>

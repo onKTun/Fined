@@ -13,12 +13,16 @@
   flex-direction: column;
   row-gap: 3px;
 }
+.borderRadius {
+  border-radius: 5px;
+}
 .name {
   font-size: 1rem;
 }
 .role {
   background-color: #eaf3ff;
   padding: 4px 15px;
+  width: fit-content;
   border-radius: 7px;
   font-size: 0.9rem;
   color: var(--finedblue);

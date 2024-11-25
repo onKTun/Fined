@@ -42,7 +42,12 @@ export default function ClientSideLandingPage({
           <DefaultHeader loggedIn={loggedIn} />
           <div className={styles.heroContainer}>
             <div className={styles.left}>
-              <img src="/assets/finedSolid.png" width={70} />
+              <Image
+                src="/assets/finedSolid.png"
+                width={70}
+                height={70}
+                alt=""
+              />
               <div className={styles.title}>
                 <h6 className={styles.onTitle}>Finance</h6>
                 Learn Finance

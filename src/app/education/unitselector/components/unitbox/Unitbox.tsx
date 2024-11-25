@@ -57,9 +57,9 @@ export default function Unitbox({
               fill="rgb(255, 255, 255)"
             ></path>
           </svg>
-          Unit {`${unit}`}
+          <label>Unit {`${unit}`}</label>
         </div>
-        <p className={styles.topicsCoveredText}>Topics Covered</p>
+        <label className={styles.topicsCoveredText}>Topics Covered</label>
         <div className={styles.line}></div>
         <ul className={styles.list}>
           {topicsCovered.map((_, index) => (
@@ -67,7 +67,7 @@ export default function Unitbox({
               key={index}
               className={`${findStyle(index + 1)} ${styles.topicDefault}`}
             >
-              {topicsCovered[index]}
+              <label>{topicsCovered[index]}</label>
             </li>
           ))}
         </ul>

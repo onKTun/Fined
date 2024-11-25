@@ -3,6 +3,7 @@ import { useVideoContext } from "src/app/education/units/1/videolesson/hooks/Vid
 import styles from "./videoactivity.module.css";
 import Card from "public/assets/videoactivity/card";
 import { useEffect } from "react";
+import Image from "next/image";
 
 interface Props {
   timeStamp: number;
@@ -41,7 +42,7 @@ export default function VideoActivityItem({
       }`}
     >
       <div className={styles.time}>{formatTime(timeStamp)}</div>
-      <img
+      <Image
         src={
           completed()
             ? "/assets/status/complete.svg"
@@ -51,6 +52,7 @@ export default function VideoActivityItem({
         }
         width={25}
         height={25}
+        alt=""
       />
       <div className={styles.text}>
         <Card
