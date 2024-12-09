@@ -10,7 +10,6 @@ export default function MoneyCanActivityPage() {
 
   return (
     <div className={styles.activitycontainer}>
-      <div className={styles.sideBarContainer}>ss</div>
       <div className={styles.container}>
         <Stage width={900} height={700} options={{ background: "3385FF" }}>
           <PixiApp run={script} data={testData}></PixiApp>

@@ -243,6 +243,18 @@ export default function Unit1() {
                 href={activity.href}
               />
             ))}
+            {selectedLesson?.id != 1 && (
+              <Activity
+                title={""}
+                desc={""}
+                svgPath={""}
+                estTime={0}
+                key={""}
+                progress={1}
+                href={""}
+                empty={true}
+              />
+            )}
             {/* {activityData.map((activity, index) => (
             <Activity
               title={activity.type}

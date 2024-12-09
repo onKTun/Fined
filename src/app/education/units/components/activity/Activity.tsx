@@ -10,6 +10,7 @@ interface Props {
   progress: number;
   estTime: number;
   href: string;
+  empty?: boolean;
 }
 
 export default function Activity({
@@ -19,6 +20,7 @@ export default function Activity({
   progress,
   estTime,
   href,
+  empty,
 }: Props) {
   const statusStyle = (() => {
     if (progress === 100) {
@@ -39,6 +41,14 @@ export default function Activity({
       return "Start";
     }
   })();
+
+  if (empty) {
+    return (
+      <div className={styles.wrapper}>
+        <div className={styles.buttonContainer}>Coming Soon!</div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -74,13 +84,6 @@ export default function Activity({
           additonalStyles={{ height: "45px", width: "9em" }}
           ftSize={1}
           text={titleText}
-          url={href}
-        />
-        <RoutingButton
-          style="gray"
-          additonalStyles={{ height: "45px", width: "9em" }}
-          ftSize={1}
-          text="Tutorial"
           url={href}
         />
       </div>
