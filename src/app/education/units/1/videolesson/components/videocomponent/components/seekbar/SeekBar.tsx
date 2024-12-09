@@ -1,3 +1,4 @@
+import { updateVideoProgress } from "utils/supabase/lessonProgressService";
 import { useVideoContext } from "../../../../hooks/VideoContext";
 import styles from "./seekbar.module.css";
 import React, { useState, useRef, useEffect } from "react";
@@ -18,10 +19,9 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
     isActivityActive: isActivityActive,
     maxProgress,
     setMaxProgress,
+    videoID,
   } = useVideoContext();
-  const [tempProgress, setTempProgress] = useState<number>(
-    (currentTime / duration) * 100
-  ); // Initialize tempProgress from currentTime
+  const [tempProgress, setTempProgress] = useState<number>(currentTime); // Initialize tempProgress from currentTime
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   const calcPointColor = (timeStamp: number) => {
@@ -30,13 +30,15 @@ export default function SeekBar({ onChange, whileDragging, duration }: Props) {
 
   useEffect(() => {
     const updateMaxProgress = () => {
-      const newMaxProgress = (currentTime / duration) * 100;
+      console.log(`Current Time: ${currentTime}, Max Progress: ${maxProgress}`);
+      const newMaxProgress = currentTime;
       if (newMaxProgress > maxProgress && !isActivityActive) {
         setMaxProgress(newMaxProgress);
+        updateVideoProgress(videoID, maxProgress);
       }
     };
 
-    const intervalId = setInterval(updateMaxProgress, 10);
+    const intervalId = setInterval(updateMaxProgress, 100);
 
     return () => {
       clearInterval(intervalId);

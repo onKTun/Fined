@@ -1,11 +1,11 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, use } from "react";
 import styles from "./video.module.css";
 import { useVideoContext } from "../../hooks/VideoContext";
 import AudioModal from "./components/audiomodal/AudioModal";
 import VideoActivity from "./components/videoactivity/VideoActivity";
 import SeekBar from "./components/seekbar/SeekBar";
-import { updateProgress } from "../../actions";
+import { updateVideoProgress } from "utils/supabase/lessonProgressService";
 
 /*
 video logic
@@ -27,7 +27,11 @@ onVideoEnd
   mark as complete
 */
 
-export default function Video() {
+interface VideoProps {
+  videoUrl: string;
+}
+
+export default function Video({ videoUrl }: VideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const {
     isPlaying,
@@ -35,6 +39,7 @@ export default function Video() {
     currentTime,
     setCurrentTime,
     volume,
+    maxProgress,
     isActivityActive: isActivityActive,
     setIsActivityActive: setIsActivityActive,
     isDragging,
@@ -89,7 +94,7 @@ export default function Video() {
 
       if (current === videoDuration) {
         console.log("video finished");
-        await updateProgress(100, "completed");
+        //await updateProgress(100, "completed");
       }
     };
 
@@ -157,12 +162,7 @@ export default function Video() {
   return (
     <div className={styles.wrapper} style={{ display: "flex" }}>
       <div className={styles.videoWrapper}>
-        <video
-          src="https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_1_720p.mp4?t=2024-10-23T17%3A49%3A25.308Z"
-          ref={videoRef}
-          width="100%"
-          height="100%"
-        >
+        <video src={videoUrl} ref={videoRef} width="100%" height="100%">
           Your browser does not support the video tag.
         </video>
         {/*toggles video activity visibility*/}

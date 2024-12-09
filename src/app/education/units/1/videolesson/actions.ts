@@ -2,7 +2,7 @@
 
 import { createClient } from "utils/supabase/server";
 
-export async function updateProgress(
+export async function updateVideoActivity(
   activityId: number,
   status: string,
   frqResponse?: string,
@@ -35,7 +35,7 @@ export async function updateProgress(
       const { data, error } = await supabase
         .from("activity_progress")
         .update({
-          status: status,
+          activity_status: status,
           ...(frqResponse && { frq_response: frqResponse }),
           ...(mcqResponse && { mcq_answer: mcqResponse }),
         })
@@ -62,7 +62,7 @@ export async function updateProgress(
           {
             activity_id: activityId,
             user_id: user.id,
-            status: status,
+            activity_status: status,
             ...(frqResponse && { frq_response: frqResponse }),
             ...(mcqResponse && { mcq_answer: mcqResponse }),
           },
