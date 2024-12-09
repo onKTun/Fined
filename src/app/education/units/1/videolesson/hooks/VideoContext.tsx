@@ -17,6 +17,7 @@ interface VideoContextType {
   currentActivity: number; //immediately upcoming or current activity number
   setCurrentActivity: (num: number) => void;
   videoID: number;
+  setVideoID: (num: number) => void;
 }
 
 interface VideoProviderProps {
@@ -56,6 +57,7 @@ export const VideoProvider: React.FC<
         currentActivity,
         setCurrentActivity,
         videoID,
+        setVideoID,
       }}
     >
       {children}

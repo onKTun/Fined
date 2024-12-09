@@ -1,11 +1,10 @@
 "use client";
-import { useRef, useState, useEffect, use } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./video.module.css";
 import { useVideoContext } from "../../hooks/VideoContext";
 import AudioModal from "./components/audiomodal/AudioModal";
 import VideoActivity from "./components/videoactivity/VideoActivity";
 import SeekBar from "./components/seekbar/SeekBar";
-import { updateVideoProgress } from "utils/supabase/lessonProgressService";
 
 /*
 video logic
@@ -39,7 +38,6 @@ export default function Video({ videoUrl }: VideoProps) {
     currentTime,
     setCurrentTime,
     volume,
-    maxProgress,
     isActivityActive: isActivityActive,
     setIsActivityActive: setIsActivityActive,
     isDragging,

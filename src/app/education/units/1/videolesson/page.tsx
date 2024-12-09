@@ -30,6 +30,7 @@ export default async function LessonVideo() {
       const { error } = await supabase
         .from("video_progress")
         .insert({ user_id: user.id, video_id: 1 });
+      console.log(error);
     } else {
       console.log("user video progress found");
       return (
