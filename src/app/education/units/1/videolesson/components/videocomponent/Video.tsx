@@ -5,6 +5,7 @@ import { useVideoContext } from "../../hooks/VideoContext";
 import AudioModal from "./components/audiomodal/AudioModal";
 import VideoActivity from "./components/videoactivity/VideoActivity";
 import SeekBar from "./components/seekbar/SeekBar";
+import { useUnitContext } from "src/components/UnitContext/UnitContext";
 
 /*
 video logic
@@ -45,6 +46,22 @@ export default function Video({ videoUrl }: VideoProps) {
   const [isCCEnabled, setCCEnable] = useState(false);
   const [isAudioModalOpen, setAudioModal] = useState(false);
   const videoDuration = videoRef.current?.duration || 0;
+
+  const { lessonID } = useUnitContext();
+
+  if (lessonID == 1) {
+    videoUrl =
+      "https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_1_720p.mp4?t=2024-12-08T22%3A13%3A58.130Z";
+  } else if (lessonID == 2) {
+    videoUrl =
+      "https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_2_720p.mp4?t=2024-12-09T01%3A55%3A59.280Z";
+  } else if (lessonID == 3) {
+    videoUrl =
+      "https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_3_720p.mp4?t=2024-12-09T01%3A56%3A08.947Z";
+  } else if (lessonID == 4) {
+    videoUrl =
+      "https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_4_720p.mp4?t=2024-12-09T01%3A56%3A14.333Z";
+  }
 
   // Formats the time for the bar at the bottom
   const formatTime = (timeInSeconds: number): string => {

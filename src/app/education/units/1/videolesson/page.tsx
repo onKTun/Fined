@@ -11,6 +11,7 @@ export default async function LessonVideo() {
   //fetch all video data
   const videoUrl =
     "https://kkwupcruwqnlbuzkkiom.supabase.co/storage/v1/object/public/videos/lesson_1_720p.mp4?t=2024-12-08T22%3A13%3A58.130Z";
+
   const user = await getUserAndCache();
 
   if (user) {

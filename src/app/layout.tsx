@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import "src/app/global.css";
+import { UnitProvider } from "src/components/UnitContext/UnitContext";
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -12,15 +13,17 @@ export const metadata = {
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="en">
-      <head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </head>
-      <body>
-        <div id="root">{children}</div>
-      </body>
-    </html>
+    <UnitProvider>
+      <html lang="en">
+        <head>
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} />
+        </head>
+        <body>
+          <div id="root">{children}</div>
+        </body>
+      </html>
+    </UnitProvider>
   );
 };
 
