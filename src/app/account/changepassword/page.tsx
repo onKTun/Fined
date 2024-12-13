@@ -1,13 +1,13 @@
 "use client";
 
 import styles from "../login/Login.module.css";
-import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Button from "../../../components/button/Button";
+import InputFieldPL from "src/components/ui/preloginInputfield/InputFieldPL";
+import Button from "../../../components/ui/button/Button";
 import Image from "next/image";
-import Logo from "src/components/logo/logo";
+import Logo from "src/components/ui/logo/logo";
 import { changePassword } from "../login/actions";
 import { useState, useRef } from "react";
-import Modal from "src/components/preloginmodal/Modal";
+import Modal from "src/components/ui/preloginmodal/Modal";
 import SecurityIndicator from "../signup/components/securityIndicator/SecurityIndicator";
 
 export default function ChangePassword() {

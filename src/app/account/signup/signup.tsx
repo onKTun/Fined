@@ -1,10 +1,10 @@
-import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Button from "src/components/button/Button";
+import InputFieldPL from "src/components/ui/preloginInputfield/InputFieldPL";
+import Button from "src/components/ui/button/Button";
 import styles from "../login/Login.module.css";
 import AccountTypeSelector from "src/app/account/signup/components/typeSelection/TypeSelector";
 import { signup } from "src/app/account/login/actions";
 import { useRef, useState } from "react";
-import Modal from "src/components/preloginmodal/Modal";
+import Modal from "src/components/ui/preloginmodal/Modal";
 import {
   isPasswordValid,
   isEmailValid,

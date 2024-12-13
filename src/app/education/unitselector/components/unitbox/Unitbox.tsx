@@ -1,4 +1,4 @@
-import ProgressBar from "src/components/progress/ProgressBar";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
 import styles from "./unitbox.module.css";
 interface Props {
   unit: number;

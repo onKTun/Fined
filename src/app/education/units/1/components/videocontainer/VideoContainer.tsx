@@ -1,6 +1,6 @@
 import styles from "./videocontainer.module.css";
-import RoutingButton from "src/components/routingbutton/RoutingButton";
-import ProgressBar from "src/components/progress/ProgressBar";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
 import Image from "next/image";
 interface Props {
   progress: number;

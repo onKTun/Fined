@@ -1,5 +1,5 @@
 "use client";
-import Button from "src/components/button/Button";
+import Button from "src/components/ui/button/Button";
 import { signOut } from "utils/supabase/signout";
 
 //test component for the temp site-map

@@ -1,4 +1,4 @@
-import RoutingButton from "src/components/routingbutton/RoutingButton";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import styles from "./uaitem.module.css";
 import Image from "next/image";
 

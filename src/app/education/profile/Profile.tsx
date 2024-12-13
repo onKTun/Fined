@@ -1,14 +1,14 @@
 "use client";
-import Search from "src/components/search/Search";
+import Search from "src/components/ui/search/Search";
 import styles from "./profile.module.css";
 import Link from "next/link";
 import data from "src/data/profile.json";
-import ProgressBar from "src/components/progress/ProgressBar";
-import Button from "src/components/button/Button";
-import ProfilePicture from "src/components/profilePicture/ProfilePicture";
-import InputModal from "src/components/inputmodal/InputModal";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
+import Button from "src/components/ui/button/Button";
+import ProfilePicture from "src/components/ui/profilePicture/ProfilePicture";
+import InputModal from "src/components/ui/inputmodal/InputModal";
 import { useState } from "react";
-import PasswordInputModal from "src/components/passwordinputmodal/PasswordInputModal";
+import PasswordInputModal from "src/components/ui/passwordinputmodal/PasswordInputModal";
 
 interface Props {
   avatarUrl?: string;

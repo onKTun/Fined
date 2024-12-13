@@ -3,7 +3,7 @@ import ProgressItem from "./components/progressitem/ProgressItem";
 import styles from "./progressionparent.module.css";
 import progressData from "src/data/info.json";
 
-import RoutingButton from "src/components/routingbutton/RoutingButton";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 //import ActivityPreviewItem from "./components/activitypreviewitem/ActivityPreviewItem";
 //import activityData from "src/data/video.json";
 // Function to calculate cumulative progress

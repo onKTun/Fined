@@ -1,5 +1,5 @@
 "use client";
-import ProgressBar from "src/components/progress/ProgressBar";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
 import styles from "./profile.module.css";
 import profileData from "../../../../data/profile.json";
 import { getUser } from "utils/supabase/client";

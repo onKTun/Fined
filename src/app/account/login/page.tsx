@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import LoginForm from "src/app/account/login/login";
-import Logo from "src/components/logo/logo";
+import Logo from "src/components/ui/logo/logo";
 
 export default function Login() {
   return (

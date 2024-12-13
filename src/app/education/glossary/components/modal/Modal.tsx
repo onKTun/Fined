@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./modal.module.css";
-import Button from "src/components/button/Button";
+import Button from "src/components/ui/button/Button";
 
 interface Term {
   term: string;

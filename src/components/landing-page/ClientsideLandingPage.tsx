@@ -1,7 +1,7 @@
 "use client";
 import styles from "src/app/landingpage.module.css";
 import DefaultHeader from "src/components/header/DefaultHeader";
-import RoutingButton from "src/components/routingbutton/RoutingButton";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 interface ClientSideLandingPageProps {

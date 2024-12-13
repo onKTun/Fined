@@ -1,6 +1,6 @@
-import ProgressBar from "src/components/progress/ProgressBar";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
 import styles from "./activity.module.css";
-import RoutingButton from "src/components/routingbutton/RoutingButton";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import Image from "next/image";
 
 interface Props {

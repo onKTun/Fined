@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import Button from "src/components/button/Button";
-import ProgressBar from "src/components/progress/ProgressBar";
+import Button from "src/components/ui/button/Button";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
 import VideoActivityItem from "../videoactivityitem/VideoActivityItem";
 import activityData from "src/data/videoactivity.json";
 import styles from "./activitybox.module.css";

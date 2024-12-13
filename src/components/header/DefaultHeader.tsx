@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
 import styles from "./DefaultHeader.module.css";
-import Search from "../search/Search";
-import RoutingButton from "../routingbutton/RoutingButton";
+import Search from "../ui/search/Search";
+import RoutingButton from "../ui/routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
 import { useState } from "react";
-import Logo from "../logo/logo";
+import Logo from "../ui/logo/logo";
 import { useSidebar } from "../sidebar/sidebarContext";
 
 interface DefaultHeaderProps {

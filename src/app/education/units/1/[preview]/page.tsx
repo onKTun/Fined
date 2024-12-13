@@ -1,8 +1,8 @@
 "use client";
 import styles from "./lessonpreview.module.css";
-import Breadcrumb from "src/components/breadcrumb/Breadcrumb";
-import Button from "src/components/button/Button";
-import RoutingButton from "src/components/routingbutton/RoutingButton";
+import Breadcrumb from "src/components/ui/breadcrumb/Breadcrumb";
+import Button from "src/components/ui/button/Button";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import lessons from "../lessons.json";

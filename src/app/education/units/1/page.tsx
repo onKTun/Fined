@@ -1,5 +1,5 @@
 "use client";
-import Search from "src/components/search/Search";
+import Search from "src/components/ui/search/Search";
 import styles from "../units.module.css";
 import Activity from "../components/activity/Activity";
 import ActivitySelectorButton from "../components/ActivitySelectorButton/ActivitySelectorButton";

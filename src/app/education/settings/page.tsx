@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./settings.module.css";
-import Search from "src/components/search/Search";
+import Search from "src/components/ui/search/Search";
 import SettingItem from "./components/settingitem/SettingItem";
 import Image from "next/image";
 import ContrastSVG from "public/svg/options/ContrastSVG";

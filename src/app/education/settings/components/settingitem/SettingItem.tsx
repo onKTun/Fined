@@ -1,4 +1,4 @@
-import Toggle from "src/components/toggle/Toggle";
+import Toggle from "src/components/ui/toggle/Toggle";
 import styles from "./settingitem.module.css";
 import Image from "next/image";
 interface Props {

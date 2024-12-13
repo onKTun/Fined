@@ -1,7 +1,7 @@
 "use client";
 
 import DashboardSVG from "public/svg/sidebar/DashbordSVG";
-import Search from "../search/Search";
+import Search from "../ui/search/Search";
 import Item from "./components/item/Item";
 import Profile from "./components/profile/Profile";
 import styles from "./Sidebar.module.css";

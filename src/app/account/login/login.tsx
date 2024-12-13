@@ -1,13 +1,13 @@
 "use client";
 import styles from "./Login.module.css";
-import InputFieldPL from "src/components/preloginInputfield/InputFieldPL";
-import Checkbox from "src/components/checkbox/Checkbox";
-import Button from "src/components/button/Button";
+import InputFieldPL from "src/components/ui/preloginInputfield/InputFieldPL";
+import Checkbox from "src/components/ui/checkbox/Checkbox";
+import Button from "src/components/ui/button/Button";
 import Link from "next/link";
 
 import { login } from "src/app/account/login/actions";
 import { useRef, useState } from "react";
-import Modal from "src/components/preloginmodal/Modal";
+import Modal from "src/components/ui/preloginmodal/Modal";
 
 export default function LoginForm() {
   const [showModal, setShowModal] = useState(false);

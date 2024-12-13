@@ -4,7 +4,7 @@ import styles from "../login/Login.module.css";
 import Link from "next/link";
 import SignUpForm from "./signup";
 import Image from "next/image";
-import Logo from "src/components/logo/logo";
+import Logo from "src/components/ui/logo/logo";
 
 export default function SignUpPage() {
   return (
