@@ -3,9 +3,44 @@ import Video from "./components/videocomponent/Video";
 import { VideoProvider } from "./hooks/VideoContext";
 import ActivityBox from "./components/activityboxcomponent/ActivityBox";
 import AdditionalInformation from "./components/additional/AdditonalInformation";
+import { inDevEnvironment } from "utils/dev/devenv";
+import { createClient } from "utils/supabase/server";
+import { supabaseNoSSR } from "utils/supabase/supabaseClient";
+
+export async function generateStaticParams() {
+  const { data, error } = await supabaseNoSSR.from("videos").select("*");
+  console.log(data);
+
+  if (data) {
+    return data.map((video) => ({
+      videoLessonSlug: video.video_id.toString(),
+    }));
+  }
+  return [{ videoLessonSlug: "1" }];
+}
 
 //static page generated at build
-export default function LessonVideo() {
+export default async function VideoLesson({
+  params,
+}: {
+  params: { videoLessonSlug: string };
+}) {
+  //fetch video data
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("videos")
+    .select("video_id, video_url")
+    .eq("video_id", params.videoLessonSlug)
+    .limit(1)
+    .single();
+
+  if (!data) {
+    return <p>No videos found...</p>;
+  }
+  if (error) {
+    return <p>{error}</p>;
+  }
+  const fetchedVideoURL = data?.video_url;
   return (
     <VideoProvider>
       <div className={styles.bodyDash}>
@@ -39,11 +74,12 @@ export default function LessonVideo() {
             </div>
             <div className={styles.videoDisplay}>
               <div className={styles.video}>
-                <Video />
+                <Video videoUrl={fetchedVideoURL}></Video>
               </div>
             </div>
+
+            <AdditionalInformation />
           </div>
-          <AdditionalInformation />
         </div>
       </div>
     </VideoProvider>

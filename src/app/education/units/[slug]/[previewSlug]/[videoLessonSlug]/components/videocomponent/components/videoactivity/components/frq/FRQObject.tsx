@@ -1,7 +1,7 @@
 import styles from "./frq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useRef, useState } from "react";
-import { updateVideoActivity } from "src/app/education/units/[slug]/videolesson/actions";
+import { updateVideoActivity } from "src/app/education/units/[slug]/[previewSlug]/[videoLessonSlug]/actions";
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
   onClick: () => void;
