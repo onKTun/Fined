@@ -1,7 +1,7 @@
 import styles from "./frq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useRef, useState } from "react";
-import { updateProgress } from "src/app/education/units/1/videolesson/actions";
+import { updateVideoActivity } from "src/app/education/units/1/videolesson/actions";
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
   onClick: () => void;
@@ -20,7 +20,7 @@ export default function FRQObject({ data, onClick }: Props) {
 
   const onSubmitFRQ = async () => {
     setIsAnimating(true); // Trigger animation
-    await updateProgress(data.id, "completed", text);
+    await updateVideoActivity(data.id, "completed", text);
   };
 
   const closeFRQ = () => {

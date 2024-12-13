@@ -8,6 +8,21 @@ import styles from "./activitybox.module.css";
 import { useVideoContext } from "src/app/education/units/1/videolesson/hooks/VideoContext";
 
 export default function ActivityBox() {
+  return (
+    <a href="https://docs.google.com/document/d/1EefHZ2QHoJy9tEejwWN--5sQeLjoszFHSG1VuWP18rk/edit?usp=sharing">
+      {" "}
+      <div className={styles.activity_Container}>
+        <Button
+          style={"blue"}
+          text={"Video Activities"}
+          ftSize={1.1}
+          heightWidth={{ height: "2.5em" }}
+          onClick={() => {}}
+        />
+      </div>
+    </a>
+  );
+
   const { currentTime, setCurrentActivity } = useVideoContext();
 
   const findInProgressActivity = (activities, currentTime) => {

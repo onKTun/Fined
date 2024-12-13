@@ -16,20 +16,28 @@ interface VideoContextType {
   setMaxProgress: (time: number) => void;
   currentActivity: number; //immediately upcoming or current activity number
   setCurrentActivity: (num: number) => void;
+  videoID: number;
+  setVideoID: (num: number) => void;
+}
+
+interface VideoProviderProps {
+  maxProgress?: number;
+  videoID?: number;
 }
 
 const VideoContext = createContext<VideoContextType | undefined>(undefined);
 
-export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const VideoProvider: React.FC<
+  VideoProviderProps & { children: React.ReactNode }
+> = ({ children, maxProgress: initialMaxProgress, videoID: tempVideoID }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [audio, setAudio] = useState<number>(0.05);
   const [isActivityActive, setIsActivityActive] = useState<boolean>(false); //to prevent fast fowarding past activity
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [maxProgress, setMaxProgress] = useState(0);
+  const [maxProgress, setMaxProgress] = useState(initialMaxProgress || 0);
   const [currentActivity, setCurrentActivity] = useState(0);
+  const [videoID, setVideoID] = useState(tempVideoID || 0);
 
   return (
     <VideoContext.Provider
@@ -48,6 +56,8 @@ export const VideoProvider: React.FC<{ children: React.ReactNode }> = ({
         setMaxProgress,
         currentActivity,
         setCurrentActivity,
+        videoID,
+        setVideoID,
       }}
     >
       {children}
