@@ -5,7 +5,7 @@ import Button from "src/components/ui/button/Button";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import lessons from "src/app/education/units/[slug]/lessons.json";
+import lessons from "src/app/education/units/[unitSlug]/lessons.json";
 
 interface ClientsideLessonPreviewProps {
   lessonSlug: string;

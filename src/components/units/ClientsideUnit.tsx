@@ -4,9 +4,9 @@ import styles from "src/components/units/units.module.css";
 import Activity from "src/app/education/units/components/activity/Activity";
 import ActivitySelectorButton from "src/app/education/units/components/ActivitySelectorButton/ActivitySelectorButton";
 import { useEffect, useState } from "react";
-import lessons from "src/app/education/units/[slug]/lessons.json";
+import lessons from "src/app/education/units/[unitSlug]/lessons.json";
 import Link from "next/link";
-import VideoContainer from "src/app/education/units/[slug]/components/videocontainer/VideoContainer";
+import VideoContainer from "src/app/education/units/[unitSlug]/components/videocontainer/VideoContainer";
 
 export default function ClientsideUnit() {
   /*
