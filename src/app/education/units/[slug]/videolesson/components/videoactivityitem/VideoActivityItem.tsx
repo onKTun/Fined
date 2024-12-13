@@ -1,5 +1,5 @@
 "use client";
-import { useVideoContext } from "src/app/education/units/1/videolesson/hooks/VideoContext";
+import { useVideoContext } from "src/app/education/units/[slug]/videolesson/hooks/VideoContext";
 import styles from "./videoactivity.module.css";
 import Card from "public/assets/videoactivity/card";
 import { useEffect } from "react";

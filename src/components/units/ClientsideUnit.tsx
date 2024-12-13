@@ -1,14 +1,14 @@
 "use client";
 import Search from "src/components/ui/search/Search";
-import styles from "../units.module.css";
-import Activity from "../components/activity/Activity";
-import ActivitySelectorButton from "../components/ActivitySelectorButton/ActivitySelectorButton";
+import styles from "src/components/units/units.module.css";
+import Activity from "src/app/education/units/components/activity/Activity";
+import ActivitySelectorButton from "src/app/education/units/components/ActivitySelectorButton/ActivitySelectorButton";
 import { useEffect, useState } from "react";
-import lessons from "./lessons.json";
+import lessons from "src/app/education/units/[slug]/lessons.json";
 import Link from "next/link";
-import VideoContainer from "./components/videocontainer/VideoContainer";
+import VideoContainer from "src/app/education/units/[slug]/components/videocontainer/VideoContainer";
 
-export default function Unit1() {
+export default function ClientsideUnit() {
   /*
   const completed = activityData.filter(
     (activity) => activity.progress == 100

@@ -1,7 +1,7 @@
 import styles from "./mcq.module.css";
 import otherStyles from "../../videoactivity.module.css";
 import { useEffect, useState } from "react";
-import { updateVideoActivity } from "src/app/education/units/1/videolesson/actions";
+import { updateVideoActivity } from "src/app/education/units/[slug]/videolesson/actions";
 
 interface Props {
   data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */;

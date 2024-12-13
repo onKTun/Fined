@@ -5,7 +5,7 @@ import ProgressBar from "src/components/ui/progress/ProgressBar";
 import VideoActivityItem from "../videoactivityitem/VideoActivityItem";
 import activityData from "src/data/videoactivity.json";
 import styles from "./activitybox.module.css";
-import { useVideoContext } from "src/app/education/units/1/videolesson/hooks/VideoContext";
+import { useVideoContext } from "src/app/education/units/[slug]/videolesson/hooks/VideoContext";
 
 export default function ActivityBox() {
   return (

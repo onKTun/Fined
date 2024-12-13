@@ -1,6 +1,6 @@
 import Link from "next/link";
-import styles1 from "src/components/logo/logo1.module.css";
-import styles2 from "src/components/logo/logo2.module.css";
+import styles1 from "src/components/ui/logo/logo1.module.css";
+import styles2 from "src/components/ui/logo/logo2.module.css";
 
 interface LogoProps {
   redirectTo?: string;
