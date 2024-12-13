@@ -33,14 +33,15 @@ export default async function VideoLesson({
     .eq("video_id", params.videoLessonSlug)
     .limit(1)
     .single();
-
+  if (error) {
+    return <p>Error fetching db data</p>;
+  }
   if (!data) {
     return <p>No videos found...</p>;
   }
-  if (error) {
-    return <p>{error}</p>;
-  }
+
   const fetchedVideoURL = data?.video_url;
+
   return (
     <VideoProvider>
       <div className={styles.bodyDash}>

@@ -30,7 +30,8 @@ create table if not exists videos
     lesson_id   int references lessons (lesson_id) on delete cascade not null,
     video_name  varchar(75)                                          not null,
     description varchar(500),
-    video_url   varchar(500) not null
+    video_url   varchar(500) not null,
+    alt_video_url varchar(500)
 
 );
 

@@ -3,11 +3,11 @@ import ClientsideLessonPreview from "src/components/lesson-preview/ClientsideLes
 export default function LessonPreview({
   params,
 }: {
-  params: { lessonSlug: string };
+  params: { lessonPreviewSlug: string };
 }) {
   return (
     <ClientsideLessonPreview
-      lessonSlug={params.lessonSlug}
+      lessonSlug={params.lessonPreviewSlug}
     ></ClientsideLessonPreview>
   );
 }

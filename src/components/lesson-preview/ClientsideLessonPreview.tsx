@@ -131,7 +131,7 @@ export default function ClientsideLessonPreview({
           <div className={styles.picture_Container}>
             {" "}
             <Image
-              alt={""}
+              alt={"lesson preview image"}
               src={selectedLesson?.imageUrl + ""}
               fill
               priority
