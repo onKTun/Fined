@@ -57,3 +57,5 @@ public/videos/test2.mp4
 *.wmv
 *.flv
 *.mkv
+
+supabase
