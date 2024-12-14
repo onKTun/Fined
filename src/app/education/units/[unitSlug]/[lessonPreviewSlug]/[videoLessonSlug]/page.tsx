@@ -3,13 +3,14 @@ import Video from "./components/videocomponent/Video";
 import { VideoProvider } from "./hooks/VideoContext";
 import ActivityBox from "./components/activityboxcomponent/ActivityBox";
 import AdditionalInformation from "./components/additional/AdditonalInformation";
-import { inDevEnvironment } from "utils/dev/devenv";
+
 import { createClient } from "utils/supabase/server";
 import { supabaseNoSSR } from "utils/supabase/supabaseClient";
 
 export async function generateStaticParams() {
   const { data, error } = await supabaseNoSSR.from("videos").select("*");
   console.log(data);
+  console.log(error);
 
   if (data) {
     return data.map((video) => ({

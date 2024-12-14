@@ -5,7 +5,7 @@ import { createClient } from "utils/supabase/server";
 export async function generateStaticParams() {
   return [{ unitSlug: "1" }];
 }
-
+/* eslint-disable */
 export default async function UnitPage({
   params,
 }: {

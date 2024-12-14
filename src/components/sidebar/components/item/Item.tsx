@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./item.module.css";
-import Image from "next/image";
+
 interface Props {
   text: string;
   svgObject: React.ReactNode;
