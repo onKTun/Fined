@@ -14,7 +14,7 @@
   background-image: url(/assets/backgrounds/image.png);
   background-repeat: repeat;
   background-size: 15em;
-  height: 20em;
+  height: 15em;
   display: flex;
   flex-direction: column;
   row-gap: 20px;

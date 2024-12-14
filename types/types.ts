@@ -1,9 +1,7 @@
 type JSONValue = string | number | boolean | JSONObject | JSONArray;
-
 type JSONObject = {
   [x: string]: JSONValue;
 };
-
 type JSONArray = Array<JSONValue>;
 
 type AccountType = "student" | "educator";

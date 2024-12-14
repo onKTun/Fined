@@ -1,23 +1,25 @@
-import styles from "./videocontainer.module.css";
+import styles from "./unitvideocontainer.module.css";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import ProgressBar from "src/components/ui/progress/ProgressBar";
 import Image from "next/image";
 interface Props {
   progress: number;
-  lesson: number;
+  lessonId: number;
   videoLength: number;
   shortDesc: string;
   subtitle: string;
   imgURL: string;
+  unitId: number;
 }
 
-export default function VideoContainer({
+export default function UnitVideoContainer({
   progress,
-  lesson,
+  lessonId,
   videoLength,
   shortDesc,
   subtitle,
   imgURL,
+  unitId,
 }: Props) {
   return (
     <div className={styles.video_Container}>
@@ -46,7 +48,7 @@ export default function VideoContainer({
               fill="rgb(51, 133, 255)"
             ></path>
           </svg>
-          Unit 1
+          Unit {unitId}
         </li>
         <li className={styles.video_tag}>
           <svg xmlns="http://www.w3.org/2000/svg" width="21.068" height="21">
@@ -59,7 +61,7 @@ export default function VideoContainer({
               fill="rgb(51, 133, 255)"
             ></path>
           </svg>
-          Lesson {lesson}
+          Lesson {lessonId}
         </li>
       </ul>
       <div className={styles.imagePreview}>
@@ -98,14 +100,7 @@ export default function VideoContainer({
           text={"Watch"}
           ftSize={1}
           additonalStyles={{ width: "9em", height: "45px" }}
-          url={`/education/units/1/${lesson}`}
-        />
-        <RoutingButton
-          style={"gray"}
-          text={"Restart"}
-          ftSize={1}
-          additonalStyles={{ width: "6em", height: "45px" }}
-          url={`/education/units/1/${lesson}`}
+          url={`/education/units/1/${lessonId}`}
         />
       </div>
     </div>

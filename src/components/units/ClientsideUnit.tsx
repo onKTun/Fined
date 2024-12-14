@@ -6,7 +6,7 @@ import ActivitySelectorButton from "src/app/education/units/components/ActivityS
 import { useEffect, useState } from "react";
 import lessons from "src/app/education/units/[unitSlug]/lessons.json";
 import Link from "next/link";
-import VideoContainer from "src/app/education/units/[unitSlug]/components/videocontainer/VideoContainer";
+import UnitVideoContainer from "src/components/units/unit-video-container/UnitVideoContainer";
 
 export default function ClientsideUnit() {
   /*
@@ -49,9 +49,6 @@ export default function ClientsideUnit() {
             Welcome to Unit One! As you begin your FIN'ED journey, click on the
             information symbols to learn more or get help
           </p>
-        </div>
-        <div className={styles.searchWrapper}>
-          <Search rad={30} wid="45em" color="white" />
         </div>
       </div>
       <div className={styles.lessonSelectorContainer}>
@@ -98,13 +95,14 @@ export default function ClientsideUnit() {
       </div>
       {!isLoading && (
         <div className={styles.bottomContainer}>
-          <VideoContainer
+          <UnitVideoContainer
             progress={selectedLesson?.videoProgress || 0}
-            lesson={selectedLesson?.id || 0}
+            lessonId={selectedLesson?.id || 0}
             imgURL={selectedLesson?.imageUrl + ""}
             videoLength={selectedLesson?.videoProgress ?? 0}
             shortDesc={selectedLesson?.shortDescText + ""}
             subtitle={selectedLesson?.subtitle + ""}
+            unitId={1}
           />
           <div className={styles.activity_Container}>
             <div className={styles.header_Container}>
