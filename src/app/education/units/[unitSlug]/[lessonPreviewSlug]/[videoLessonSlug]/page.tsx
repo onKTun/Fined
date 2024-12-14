@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import styles from "./lessonvideo.module.css";
 import Video from "./components/videocomponent/Video";
 import { VideoProvider } from "./hooks/VideoContext";
