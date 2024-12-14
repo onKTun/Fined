@@ -1,9 +1,10 @@
 "use client";
-import ProgressBar from "src/components/progress/ProgressBar";
+import ProgressBar from "src/components/ui/progress/ProgressBar";
 import styles from "./profile.module.css";
 import profileData from "../../../../data/profile.json";
 import { getUser } from "utils/supabase/client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Profile() {
   const [isUser, setIsUser] = useState(false);
@@ -22,6 +23,9 @@ export default function Profile() {
     isLoggedin();
   });
 
+  const displayName = () => {
+    return name.length > 13 ? name.substring(0, 14) + "..." : name;
+  };
   const eachLevel = 100;
   const level = Math.floor(profileData.xp / eachLevel);
   const xpUntilNext = 100 - (profileData.xp % eachLevel);
@@ -31,15 +35,16 @@ export default function Profile() {
       <>
         <div className={styles.topWrapper}>
           <div className={styles.leftWrapper}>
-            <img
+            <Image
               width={44}
               height={44}
               src={profileData.profilePicRel}
-              style={{ borderRadius: "5px" }}
-            ></img>
+              alt={""}
+              className={styles.borderRadius}
+            ></Image>
             <div className={styles.infoWrapper}>
-              <p className={styles.name}>{name}</p>
-              <p className={styles.role}>{profileData.role}</p>
+              <label className={styles.name}>{displayName()}</label>
+              <label className={styles.role}>{profileData.role}</label>
             </div>
           </div>
           <button type="button" className={styles.topButton}>
@@ -50,15 +55,17 @@ export default function Profile() {
         </div>
         <div className={styles.bottomWrapper}>
           <div className={styles.rowSpace}>
-            <p className={styles.leftText}>{profileData.xp}</p>
-            <p className={styles.rightText}>{xpUntilNext} XP To Next Level</p>
+            <label className={styles.leftText}>{profileData.xp}</label>
+            <label className={styles.rightText}>
+              {xpUntilNext} XP To Next Level
+            </label>
           </div>
           <div className={styles.secondRow}>
             <ProgressBar progress={profileData.xp % eachLevel} />
           </div>
           <div className={styles.rowSpace}>
-            <p className={styles.lvlText}>Lvl. {level}</p>
-            <p className={styles.lvlText}>Lvl. {level + 1}</p>
+            <label className={styles.lvlText}>Lvl. {level}</label>
+            <label className={styles.lvlText}>Lvl. {level + 1}</label>
           </div>
         </div>
       </>

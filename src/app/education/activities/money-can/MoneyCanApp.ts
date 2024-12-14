@@ -12,7 +12,7 @@ import TimerManager from "utils/pixiJS/time utils/TimerManager";
 import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
-import markComplete from "utils/supabase/lessonProgressService";
+import { markComplete } from "utils/supabase/lessonProgressService";
 import { InstructionModal } from "../ActivityModals";
 import clock from "public/assets/activity/clock.svg";
 

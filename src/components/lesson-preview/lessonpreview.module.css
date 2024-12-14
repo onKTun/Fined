@@ -1,0 +1,146 @@
+.bodyDash {
+  overflow: scroll;
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  height: fit-content;
+  padding: 30px;
+  column-gap: 20px;
+}
+.left_Container {
+  position: relative;
+  width: 34em;
+  height: fit-content;
+  border: 1px var(--bb) solid;
+  background-color: white;
+  border-radius: 10px;
+  padding: 120px 40px 45px 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  box-sizing: border-box;
+}
+.picture_Container {
+  display: flex;
+  flex-grow: 1;
+  border-radius: 10px;
+}
+.absoluteTop_Container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.absoluteTop_progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: fit-content;
+  border-radius: 30px;
+  color: var(--black1);
+}
+.unitIndicator {
+  background-color: var(--finedblue);
+  padding: 10px 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 7px;
+  border-radius: 30px;
+  color: white;
+  width: fit-content;
+}
+.title {
+  font-size: 1.8rem;
+  color: var(--black1);
+}
+
+.leftContainer_Top {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.estTime {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background-color: var(--inputcolor);
+  column-gap: 7px;
+  color: var(--black2);
+  border-radius: 5px;
+  border: 1px solid var(--inputborder);
+  padding: 12px 25px;
+  width: fit-content;
+}
+.description_Container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.description_title {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+}
+.description_textBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--inputcolor);
+  border: 1px solid var(--inputborder);
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+.description_question {
+  display: flex;
+  justify-content: end;
+  column-gap: 4px;
+  color: var(--finedblue);
+}
+.button_Container {
+  display: flex;
+  column-gap: 10px;
+}
+.picture_Container {
+  flex: 1;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.lesson {
+  display: flex;
+  flex-grow: 1 0;
+  column-gap: 2em;
+}
+.container {
+  display: flex;
+  width: 75em;
+  flex-direction: column;
+  row-gap: 2em;
+}
+.lesson {
+  display: flex;
+  flex-grow: 1;
+  column-gap: 2em;
+  height: fit-content;
+}
+
+@media only screen and (max-width: 1280px) {
+  .picture_Container {
+    display: none;
+  }
+  .container {
+    width: 50em;
+    width: fit-content;
+  }
+  .left_Container {
+    width: 50em;
+  }
+}

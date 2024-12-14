@@ -4,7 +4,7 @@ import styles from "../login/Login.module.css";
 import Link from "next/link";
 import SignUpForm from "./signup";
 import Image from "next/image";
-import Logo from "src/components/logo/logo";
+import Logo from "src/components/ui/logo/logo";
 
 export default function SignUpPage() {
   return (
@@ -21,12 +21,12 @@ export default function SignUpPage() {
           <SignUpForm />
         </div>
         <div className={styles.bottomLinkWrapper}>
-          <p className={styles.bottomLink}>
+          <label className={styles.bottomLink}>
             Already have an account?&nbsp;
             <Link href="/account/login" className="highlightedText">
               Sign in.
             </Link>
-          </p>
+          </label>
         </div>
       </div>
       <div className={styles.right}>

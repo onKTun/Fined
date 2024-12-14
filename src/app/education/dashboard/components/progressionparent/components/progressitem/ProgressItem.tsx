@@ -1,4 +1,5 @@
 import styles from "./progressitem.module.css";
+import Image from "next/image";
 
 interface Props {
   progress: number;
@@ -29,7 +30,7 @@ export default function ProgressItem({ progress, unit }: Props) {
   return (
     <div className={`${styles.container} ${styleClass}`}>
       <div className={styles.top}>
-        <img src={imagePath} alt="Progress Status" width={18} height={18} />
+        <Image src={imagePath} alt="Progress Status" width={18} height={18} />
         Unit {unit}
       </div>
       <div className={styles.progressContainer}>

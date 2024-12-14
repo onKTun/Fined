@@ -102,6 +102,7 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
+  margin-top: 0.2em;
   .forgotPasswordText {
     color: var(--finedblue);
     font-size: 16px;
@@ -114,7 +115,7 @@
   column-gap: 6px;
   width: fit-content;
   font-size: 16px;
-  height: 30px;
+  height: fit-content;
 }
 .requirements {
   height: fit-content;
