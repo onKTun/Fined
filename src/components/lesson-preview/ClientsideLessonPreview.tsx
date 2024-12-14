@@ -124,7 +124,7 @@ export default function ClientsideLessonPreview({
                 additonalStyles={{ flexGrow: "1" }}
                 ftSize={1}
                 text={"Start Lesson"}
-                url={"/education/units/1/1/videolesson"}
+                url={"/education/units/1/1/" + part}
               />
             </div>
           </div>
