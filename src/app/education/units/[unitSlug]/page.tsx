@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import ClientsideUnit from "src/components/units/ClientsideUnit";
 import { createClient } from "utils/supabase/server";
 import { getUserAndCache } from "utils/supabase/user";

@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 import styles from "./lessonvideo.module.css";
 import Video from "./components/videocomponent/Video";
 import { VideoProvider } from "./hooks/VideoContext";
-import ActivityBox from "./components/activityboxcomponent/ActivityBox";
+
 import AdditionalInformation from "./components/additional/AdditonalInformation";
 
 import { createClient } from "utils/supabase/server";
