@@ -47,7 +47,7 @@ export default async function VideoLesson({
   return (
     <VideoProvider>
       <div className={styles.bodyDash}>
-        <ActivityBox />
+        {/* <ActivityBox /> */}
         <div className={styles.rightColumn}>
           <div className={styles.videoContainer}>
             <div className={styles.headerWrapper}>

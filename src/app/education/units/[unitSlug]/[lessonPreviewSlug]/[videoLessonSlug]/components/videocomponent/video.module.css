@@ -99,4 +99,7 @@
   .wrapper {
     width: 40em;
   }
+  .videoWrapper {
+    height: fit-content;
+  }
 }

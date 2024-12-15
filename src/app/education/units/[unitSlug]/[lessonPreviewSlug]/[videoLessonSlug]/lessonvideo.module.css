@@ -22,13 +22,13 @@
   flex-grow: 1 0;
   justify-content: space-between;
   .svgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 36px;
     background-color: var(--finedblue);
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 .headerLeft {
@@ -61,7 +61,7 @@
 .videoContainer {
   display: flex;
   flex-direction: column;
-  width: 50em;
+  width: 50m;
   height: fit-content;
   row-gap: 1em;
   padding: 20px;
@@ -81,6 +81,6 @@
 }
 @media only screen and (max-width: 1280px) {
   .videoContainer {
-    width: 50em;
+    width: 40em;
   }
 }
