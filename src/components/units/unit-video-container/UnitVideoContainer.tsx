@@ -67,15 +67,14 @@ export default function UnitVideoContainer({
         </li>
       </ul>
       <div className={styles.imagePreview}>
-        {imgURL ||
-          (imgURL != "" && (
-            <Image
-              src={"" + imgURL}
-              layout="fill"
-              objectFit="cover"
-              alt="video preview image"
-            />
-          ))}
+        {imgURL != "" && (
+          <Image
+            src={"" + imgURL}
+            layout="fill"
+            objectFit="cover"
+            alt="video preview image"
+          />
+        )}
       </div>
       {progress && <ProgressBar progress={progress / videoLength} />}
       <div className={styles.completionTime}>

@@ -4,7 +4,7 @@ const cspHeader = `
     default-src 'self' kkwupcruwqnlbuzkkiom.supabase.co;
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
-    img-src * blob: data:;
+    img-src * blob: data: ;
     media-src 'self' kkwupcruwqnlbuzkkiom.supabase.co;
     font-src 'self';
     object-src 'none';
@@ -41,6 +41,15 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "kkwupcruwqnlbuzkkiom.supabase.co",
+        pathname: "/storage/v1/object/public/video_thumbnails/**",
+      },
+    ],
   },
 };
 
