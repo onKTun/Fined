@@ -1,148 +1,107 @@
 {
-    "A": [
-      { "term": "Asset", "definition": "Anything of value that can be converted into cash." },
-      { "term": "Amortization", "definition": "The process of gradually writing off the initial cost of an asset." },
-      { "term": "Annuity", "definition": "A fixed sum of money paid to someone each year." },
-      { "term": "Arbitrage", "definition": "The simultaneous purchase and sale of an asset to profit from a difference in the price." },
-      { "term": "Appreciation", "definition": "An increase in the value of an asset over time." }
-    ],
-    "B": [
-      { "term": "Balance Sheet", "definition": "A statement of the assets, liabilities, and capital of a business at a particular point in time." },
-      { "term": "Bonds", "definition": "A fixed income instrument that represents a loan made by an investor to a borrower." },
-      { "term": "Bear Market", "definition": "A market in which prices are falling, encouraging selling." },
-      { "term": "Broker", "definition": "An individual or firm that acts as an intermediary between an investor and a securities exchange." }
-    ],
-    "C": [
-      { "term": "Capital", "definition": "Wealth in the form of money or other assets owned by a person or organization." },
-      { "term": "Collateral", "definition": "Something pledged as security for repayment of a loan." },
-      { "term": "Commodities", "definition": "Raw materials or primary agricultural products that can be bought and sold." },
-      { "term": "Credit", "definition": "An arrangement to receive cash, goods, or services now and pay for them in the future." }
-    ],
-    "D": [
-      { "term": "Dividend", "definition": "A sum of money paid regularly by a company to its shareholders out of its profits." },
-      { "term": "Depreciation", "definition": "A reduction in the value of an asset over time." },
-      { "term": "Debt", "definition": "An amount of money borrowed by one party from another." },
-      { "term": "Derivatives", "definition": "A financial security with a value that is reliant upon or derived from an underlying asset or group of assets." },
-      { "term": "Dow Jones Industrial Average (DJIA)", "definition": "A stock market index that indicates the value of 30 large, publicly owned companies based in the United States." }
-    ],
-    "E": [
-      { "term": "Equity", "definition": "The value of an owner's interest in a property after deducting liabilities." },
-      { "term": "Exchange-Traded Fund (ETF)", "definition": "A type of investment fund that is traded on stock exchanges." },
-      { "term": "Earnings Per Share (EPS)", "definition": "A company's profit divided by the outstanding shares of its common stock." },
-      { "term": "Escrow", "definition": "A financial arrangement where a third party holds funds or assets until a condition is met." }
-    ],
-    "F": [
-      { "term": "Futures", "definition": "Financial contracts obligating the buyer to purchase an asset at a predetermined future date and price." },
-      { "term": "Fiscal Year", "definition": "A one-year period that companies and governments use for financial reporting and budgeting." },
-      { "term": "Fixed Costs", "definition": "Business expenses that remain the same regardless of the level of production or sales." },
-      { "term": "Foreclosure", "definition": "The process by which a lender takes control of a property from a borrower who has failed to make payments." }
-    ],
-    "G": [
-      { "term": "Gross Domestic Product (GDP)", "definition": "The total value of goods produced and services provided in a country during one year." },
-      { "term": "Gross Margin", "definition": "The difference between revenue and cost of goods sold divided by revenue, expressed as a percentage." },
-      { "term": "Goodwill", "definition": "An intangible asset that arises when a buyer acquires an existing business." },
-      { "term": "Guarantor", "definition": "A person or entity that agrees to be responsible for another's debt or obligation if they default." }
-    ],
-    "H": [
-      { "term": "Hedge", "definition": "An investment to reduce the risk of adverse price movements in an asset." },
-      { "term": "Holding Company", "definition": "A company created to own and control other companies' stock." },
-      { "term": "Home Equity Loan", "definition": "A type of loan in which the borrower uses the equity of their home as collateral." },
-      { "term": "Hyperinflation", "definition": "Extremely rapid or out of control inflation." }
-    ],
-    "I": [
-      { "term": "Interest Rate", "definition": "The proportion of a loan that is charged as interest to the borrower." },
-      { "term": "Index Fund", "definition": "A mutual fund or ETF designed to follow certain preset rules so that the fund can track a specified basket of underlying investments." },
-      { "term": "Initial Public Offering (IPO)", "definition": "The first time that the stock of a private company is offered to the public." },
-      { "term": "Inflation", "definition": "The rate at which the general level of prices for goods and services is rising." }
-    ],
-    "J": [
-      { "term": "Joint Venture", "definition": "A business arrangement in which two or more parties agree to pool their resources for a specific task." },
-      { "term": "Junk Bond", "definition": "A high-yield, high-risk security, typically issued by a company seeking to raise capital quickly." },
-      { "term": "Judgment", "definition": "A court's decision regarding the rights and liabilities of parties in a legal action." }
-    ],
-    "K": [
-      { "term": "KPI (Key Performance Indicator)", "definition": "A measurable value that demonstrates how effectively a company is achieving key business objectives." },
-      { "term": "KYC (Know Your Customer)", "definition": "A process that financial institutions and other regulated companies must perform to verify the identity of their clients." }
-    ],
-    "L": [
-      { "term": "Liquidity", "definition": "The availability of liquid assets to a market or company." },
-      { "term": "Leverage", "definition": "The use of various financial instruments or borrowed capital to increase the potential return of an investment." },
-      { "term": "Liabilities", "definition": "A company's legal debts or obligations that arise during the course of business operations." },
-      { "term": "Lender", "definition": "An individual, a public or private group, or a financial institution that makes funds available to another with the expectation that the funds will be repaid." }
-    ],
-    "M": [
-      { "term": "Market Capitalization", "definition": "The total market value of a company's outstanding shares of stock." },
-      { "term": "Mutual Fund", "definition": "An investment vehicle made up of a pool of money collected from many investors to invest in securities such as stocks, bonds, and other assets." },
-      { "term": "Mortgage", "definition": "A loan used to purchase or maintain a home, land, or other types of real estate." },
-      { "term": "Merger", "definition": "The combining of two or more companies into a single entity." }
-    ],
-    "N": [
-      { "term": "Net Income", "definition": "A company's total earnings, also called net profit." },
-      { "term": "NASDAQ", "definition": "An American stock exchange, the second-largest in the world by market capitalization." },
-      { "term": "Non-Performing Loan (NPL)", "definition": "A loan in which the borrower is not making interest payments or repaying any principal." }
-    ],
-    "O": [
-      { "term": "Option", "definition": "A contract which gives the buyer the right, but not the obligation, to buy or sell an underlying asset at a specified price before or on a specified date." },
-      { "term": "Overdraft", "definition": "An extension of credit from a lending institution when an account reaches zero." },
-      { "term": "Outstanding Shares", "definition": "All the shares of a corporation or financial asset that have been authorized, issued, and purchased by investors." }
-    ],
-    "P": [
-      { "term": "Profit Margin", "definition": "A measure of profitability, calculated as net income divided by revenue." },
-      { "term": "Portfolio", "definition": "A range of investments held by a person or organization." },
-      { "term": "Private Equity", "definition": "Capital investment made into companies that are not publicly traded." },
-      { "term": "Principal", "definition": "The amount of money borrowed or invested, excluding interest or earnings." }
-    ],
-    "Q": [
-      { "term": "Quarterly Earnings", "definition": "The profit or loss a company has made during a three-month period." },
-      { "term": "Quick Ratio", "definition": "A measure of a company's ability to meet its short-term obligations with its most liquid assets." },
-      { "term": "Qualitative Analysis", "definition": "Analysis based on subjective judgment rather than quantifiable data." }
-    ],
-    "R": [
-      { "term": "Return on Investment (ROI)", "definition": "A measure used to evaluate the efficiency or profitability of an investment." },
-      { "term": "Risk Management", "definition": "The process of identifying, assessing, and controlling threats to an organization's capital and earnings." },
-      { "term": "Revenue", "definition": "The total income generated by the sale of goods or services related to the company's primary operations." },
-      { "term": "Recession", "definition": "A period of temporary economic decline during which trade and industrial activity are reduced." }
-    ],
-    "S": [
-      { "term": "Stock", "definition": "A type of security that signifies ownership in a corporation and represents a claim on part of the corporation's assets and earnings." },
-      { "term": "Supply and Demand", "definition": "An economic model of price determination in a market." },
-      { "term": "Subprime Mortgage", "definition": "A type of mortgage offered to individuals with poor credit scores who are considered high-risk borrowers." },
-      { "term": "Shareholder", "definition": "An individual or institution that legally owns a share of stock in a public or private corporation." }
-    ],
-    "T": [
-      { "term": "Treasury Bond", "definition": "A marketable, fixed-interest U.S. government debt security with a maturity of more than 10 years." },
-      { "term": "Trust Fund", "definition": "A fund consisting of assets belonging to a trust, held by the trustees for the beneficiaries." },
-      { "term": "Taxable Income", "definition": "The amount of income used to calculate how much tax an individual or a company owes to the government in a given tax year." },
-      { "term": "Trade Deficit", "definition": "The amount by which the cost of a country's imports exceeds the value of its exports." }
-    ],
-    "U": [
-      { "term": "Unsecured Loan", "definition": "A loan that is not backed by collateral." },
-      { "term": "Underwriting", "definition": "The process by which an individual or institution takes on financial risk for a fee." },
-      { "term": "Utility", "definition": "A measure of preferences over some set of goods and services." }
-    ],
-    "V": [
-      { "term": "Venture Capital", "definition": "Financing provided to startups and small businesses with strong growth potential." },
-      { "term": "Volatility", "definition": "A statistical measure of the dispersion of returns for a given security or market index." },
-      { "term": "Value Investing", "definition": "An investment strategy that involves picking stocks that appear to be trading for less than their intrinsic or book value." }
-    ],
-    "W": [
-      { "term": "Working Capital", "definition": "The difference between a company's current assets and current liabilities." },
-      { "term": "Wealth Management", "definition": "A high-level professional service that combines financial and investment advice, accounting and tax services, and legal or estate planning." },
-      { "term": "Warrant", "definition": "A financial instrument that gives the holder the right to purchase the company's stock at a specific price before expiration." },
-      { "term": "Withholding Tax", "definition": "The amount of an employee's pay withheld by the employer and sent directly to the government as partial payment of income tax." }
-    ],
-    "X": [
-      { "term": "X-Dividend", "definition": "A stock trading without the value of the next dividend payment." }
-    ],
-    "Y": [
-      { "term": "Yield", "definition": "The income return on an investment, such as the interest or dividends received." },
-      { "term": "Yield Curve", "definition": "A line that plots interest rates at a set point in time for bonds having equal credit quality but differing maturity dates." },
-      { "term": "Year-End Financial Statements", "definition": "A comprehensive report on a company's financial activities at the end of the fiscal year." }
-    ],
-    "Z": [
-      { "term": "Zero-Based Budgeting", "definition": "A method of budgeting in which all expenses must be justified for each new period." },
-      { "term": "Zero-Coupon Bond", "definition": "A bond that is issued at a deep discount and pays no interest." },
-      { "term": "Zombie Company", "definition": "A company that needs bailouts to operate, unable to pay its debt and barely able to meet its financial obligations." }
-    ]
-  }
-  
+  "A": [
+      { "term": "Advertisement", "definition": "A message trying to get you to buy something." },
+      { "term": "Avoid", "definition": "Staying away from something, like taking on too much debt." }
+  ],
+  "B": [
+      { "term": "Balance", "definition": "Making sure we have a good mix of things (e.g., fun and important things)." },
+      { "term": "Bank", "definition": "A safe place where you can keep your money and use it later." },
+      { "term": "Borrow", "definition": "Using someone else’s money for a while, with plans to repay it." },
+      { "term": "Budget", "definition": "A plan for how to use your money." },
+      { "term": "Budgeting", "definition": "Planning how to spend and save your money wisely." },
+      { "term": "Buy", "definition": "Getting something in exchange for money, like food or toys." },
+      { "term": "Bulk", "definition": "Buying a lot of something at once, usually for a lower price per piece." }
+  ],
+  "C": [
+      { "term": "Cent", "definition": "A small part of a dollar, used to compare the cost of things." },
+      { "term": "Choice", "definition": "Picking between different things to do with your money." },
+      { "term": "Comparison", "definition": "Looking at two or more things to find the best option." },
+      { "term": "Cost", "definition": "The amount of money you need to buy something." },
+      { "term": "Credit", "definition": "Borrowing money with the promise to pay it back later." }
+  ],
+  "D": [
+      { "term": "Debt", "definition": "Money you owe to someone or a bank that you need to pay back." },
+      { "term": "Decision", "definition": "Choosing between different things." },
+      { "term": "Deal", "definition": "When something is a good price or gives you more for your money." },
+      { "term": "Debit", "definition": "Using your own money that’s in your account." },
+      { "term": "Detective", "definition": "Someone who looks for clues to solve a mystery, like finding the best price." },
+      { "term": "Digital", "definition": "Related to computers, phones, or online activities." },
+      { "term": "Dollar", "definition": "A type of money used in the U.S., like a green paper bill." },
+      { "term": "Dream", "definition": "Something you want to have or do in the future, like going on vacation." }
+  ],
+  "E": [
+      { "term": "Effort", "definition": "The energy or hard work you put into doing something." },
+      { "term": "Emergency Fund", "definition": "Money saved for surprises or emergencies (e.g., fixing a broken toy or bike)." }
+  ],
+  "F": [
+      { "term": "Fine Print", "definition": "Small details in a contract or ad that could be important." },
+      { "term": "Food", "definition": "What we eat to stay healthy." },
+      { "term": "Future", "definition": "A time that hasn’t happened yet, like tomorrow or next year." },
+      { "term": "Fun", "definition": "Something that makes us happy and enjoy ourselves." }
+  ],
+  "G": [
+      { "term": "Gift", "definition": "Something you buy for someone to make them happy." },
+      { "term": "Goal", "definition": "Something you want to save for, like a toy, vacation, or phone." }
+  ],
+  "I": [
+      { "term": "Identity", "definition": "Personal information that shows who you are." },
+      { "term": "Important", "definition": "Something that matters a lot and we need to think about." },
+      { "term": "Interest", "definition": "Extra money you pay when you borrow, like a fee for using someone else's money." }
+  ],
+  "L": [
+      { "term": "Label", "definition": "The sticker or tag that gives information about a product (e.g., price, size)." },
+      { "term": "Loan", "definition": "Borrowing money with a promise to return it later." }
+  ],
+  "M": [
+      { "term": "Misleading", "definition": "Giving the wrong idea or trying to trick you." },
+      { "term": "Money", "definition": "What we use to buy things." }
+  ],
+  "N": [
+      { "term": "Need", "definition": "Important things we must have to live (e.g., food, water, clothes)." }
+  ],
+  "O": [
+      { "term": "Ounce", "definition": "A way to measure how much something weighs (used for comparing snacks)." },
+      { "term": "Owe", "definition": "When you need to pay someone back money." }
+  ],
+  "P": [
+      { "term": "Password", "definition": "A secret code used to access your personal accounts." },
+      { "term": "Pay Off", "definition": "Giving back the full amount of what you borrowed, including interest." },
+      { "term": "Phishing", "definition": "A scam where someone pretends to be trustworthy to steal your information." },
+      { "term": "Piggy Bank", "definition": "A small container where you can save your money." },
+      { "term": "Plan", "definition": "A way to organize your money so you can save and spend wisely." },
+      { "term": "Price Tag", "definition": "The label that shows how much something costs." }
+  ],
+  "R": [
+      { "term": "Reputation", "definition": "What people think of you, based on your actions (e.g., credit score)." },
+      { "term": "Responsibility", "definition": "Being in charge of your choices and making sure you pay back what you owe." },
+      { "term": "Repay", "definition": "Giving back the money you borrowed, little by little or all at once." }
+  ],
+  "S": [
+      { "term": "Save", "definition": "Keeping your money to use later for something bigger or more important." },
+      { "term": "Scam", "definition": "A dishonest plan to trick you out of your money or info." },
+      { "term": "Secure", "definition": "Keeping something safe and protected." },
+      { "term": "Size", "definition": "How big or small something is (e.g., a big bag of snacks vs. a small one)." },
+      { "term": "Spend", "definition": "Using your money to buy things." },
+      { "term": "Strategy", "definition": "A smart way to handle something, like paying off debt." },
+      { "term": "Stretch", "definition": "Making your money go further by spending it wisely." },
+      { "term": "Suspicious", "definition": "Something that doesn’t seem quite right or could be a trap." }
+  ],
+  "T": [
+      { "term": "Toy", "definition": "Something fun to play with." },
+      { "term": "Transaction", "definition": "The process of buying something or transferring money." },
+      { "term": "Trap", "definition": "A trick designed to catch or fool you." },
+      { "term": "Trustworthy", "definition": "Someone or something you can count on to be honest." }
+  ],
+  "U": [
+      { "term": "Unit", "definition": "One part of something, like one snack or one piece of candy." }
+  ],
+  "V": [
+      { "term": "Value", "definition": "How important or useful something is." },
+      { "term": "Verify", "definition": "To check and make sure something is correct." }
+  ],
+  "W": [
+      { "term": "Wallet", "definition": "A small case to keep your money and cards in." },
+      { "term": "Want", "definition": "Fun things we like but don’t need to live (e.g., toys or games)." },
+      { "term": "Wisely", "definition": "Making good choices that help us in the long run." }
+  ]
+}

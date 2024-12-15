@@ -6,6 +6,7 @@ import AdditionalInformation from "./components/additional/AdditonalInformation"
 
 import { createClient } from "utils/supabase/server";
 import { supabaseNoSSR } from "utils/supabase/supabaseClient";
+import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 
 export async function generateStaticParams() {
   const { data, error } = await supabaseNoSSR.from("videos").select("*");
@@ -70,16 +71,19 @@ export default async function VideoLesson({
                   </div>
                 </div>
               </div>
-              <button className={styles.infoButton} type="button">
-                2/6
-              </button>
             </div>
             <div className={styles.videoDisplay}>
               <div className={styles.video}>
                 <Video videoUrl={fetchedVideoURL}></Video>
               </div>
             </div>
-
+            <RoutingButton
+              style={"gray"}
+              text={"Go to Activities"}
+              ftSize={1}
+              additonalStyles={{}}
+              url={""}
+            />
             <AdditionalInformation />
           </div>
         </div>

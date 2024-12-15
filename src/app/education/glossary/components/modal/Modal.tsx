@@ -43,13 +43,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, term, onClose }) => {
             </svg>
           </button>
         </div>
-        <div
-          className={styles.termPicture}
-          style={{
-            backgroundImage: "url(/assets/backgrounds/back.JPG)",
-            backgroundSize: "cover",
-          }}
-        ></div>
+
         <div className={styles.boxWrapper}>
           Term
           <div className={styles.modalText}>{term.term}</div>

@@ -1,6 +1,7 @@
 .letterboxWrapper {
   width: 20em;
-  height: 20em;
+  height: fit-content;
+  min-height: 20em;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1em;

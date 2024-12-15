@@ -37,26 +37,6 @@ export default function AdditionalInformation() {
                 src="/assets/header/terms.svg"
               />
             </div>
-            Terms in Video
-          </div>
-          <ul className={styles.termList}>
-            <h6 className={styles.term}>Finance</h6>
-            <h6 className={styles.term}>Taxes</h6>
-            <h6 className={styles.term}>Props</h6>
-            <h6 className={styles.term}>Money</h6>
-            <h6 className={styles.term}>Bills</h6>
-          </ul>
-        </div>
-        <div className={styles.vocabContainer}>
-          <div className={styles.vocabContainer_top}>
-            <div className={styles.vocabContainer_topSVGWrapper}>
-              <Image
-                height={20}
-                width={20}
-                alt=""
-                src="/assets/header/terms.svg"
-              />
-            </div>
             Summary
           </div>
           <div className={styles.summaryWrapper}>

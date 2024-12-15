@@ -62,8 +62,13 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
             <Link className={styles.listItem} href="/education/unitselector">
               Lessons
             </Link>
+            <Link className={styles.listItem} href="/education/glossary">
+              Glossary
+            </Link>
 
-            <li className={styles.listItem}>Feedback</li>
+            <Link className={styles.listItem} href={""}>
+              Feedback
+            </Link>
             <li className={styles.listItem}>
               <form action="/auth/signout" method="post">
                 <button className={styles.signout} type="submit">
