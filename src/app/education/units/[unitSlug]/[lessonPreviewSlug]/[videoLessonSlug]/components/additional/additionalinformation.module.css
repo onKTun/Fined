@@ -36,13 +36,13 @@
   flex-grow: 1 0;
   justify-content: space-between;
   .svgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 36px;
     background-color: var(--finedblue);
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 .headerLeft {
@@ -149,4 +149,12 @@
   border: 1px solid var(--bb);
   padding: 25px 20px;
   border-radius: 10px;
+}
+@media only screen and (max-width: 1280px) {
+  .wrapper {
+    width: 42.5em;
+  }
+  .summaryWrapper {
+    width: calc(40em - 60px);
+  }
 }
