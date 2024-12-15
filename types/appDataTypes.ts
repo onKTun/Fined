@@ -8,3 +8,16 @@ type LessonProgress = {
   videoLength: number;
   videoPercentComplete: number;
 };
+
+type LessonPage = {
+  lessonId: number;
+  lessonName: string;
+  videoName:string;
+  videoURL: string;
+  videoThumbnailURL: string;
+  videoShortDescription: string;
+  videoDescription: string;
+  videoLength: number;
+  videoMaxTimestamp?: number;
+
+}

@@ -7,13 +7,18 @@ import lessons from "src/app/education/units/[unitSlug]/lessons.json";
 import Link from "next/link";
 import UnitVideoContainer from "src/components/units/unit-video-container/UnitVideoContainer";
 
-export default function ClientsideUnit() {
-  /*
-  const completed = activityData.filter(
-    (activity) => activity.progress == 100
-  ).length;*/
-  const [currentLesson, setCurrentLesson] = useState(1);
+interface ClientsideUnitProps {
+  lessonPageData: LessonPage[];
+}
+
+export default function ClientsideUnit({
+  lessonPageData,
+}: ClientsideUnitProps) {
+  const [currentLesson, setCurrentLesson] = useState<LessonPage>(
+    lessonPageData[0]
+  );
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     // Trigger loading state when lesson changes
     setIsLoading(true);
@@ -22,13 +27,15 @@ export default function ClientsideUnit() {
       setIsLoading(false);
     }, 100);
 
+    console.log(currentLesson);
+
     return () => clearTimeout(timer);
   }, [currentLesson]);
 
-  const changeCurrentLesson = (lNum: number) => {
-    setCurrentLesson(lNum);
+  const getLessonById = (id: number) => {
+    const lesson = lessonPageData.find((lesson) => lesson.lessonId === id);
+    return lesson || lessonPageData[0];
   };
-  const selectedLesson = lessons.find((lesson) => lesson.id === currentLesson);
 
   return (
     <div className={styles.bodyDash}>
@@ -53,23 +60,23 @@ export default function ClientsideUnit() {
       <div className={styles.lessonSelectorContainer}>
         <div className={styles.buttonRow}>
           <ActivitySelectorButton
-            isSelected={currentLesson === 1}
-            onClick={() => changeCurrentLesson(1)}
+            isSelected={currentLesson.lessonId === 1}
+            onClick={() => setCurrentLesson(getLessonById(1))}
             lessonNum={1}
           />
           <ActivitySelectorButton
-            isSelected={currentLesson === 2}
-            onClick={() => changeCurrentLesson(2)}
+            isSelected={currentLesson.lessonId === 2}
+            onClick={() => setCurrentLesson(getLessonById(2))}
             lessonNum={2}
           />
           <ActivitySelectorButton
-            isSelected={currentLesson === 3}
-            onClick={() => changeCurrentLesson(3)}
+            isSelected={currentLesson.lessonId === 3}
+            onClick={() => setCurrentLesson(getLessonById(3))}
             lessonNum={3}
           />
           <ActivitySelectorButton
-            isSelected={currentLesson === 4}
-            onClick={() => changeCurrentLesson(4)}
+            isSelected={currentLesson.lessonId === 4}
+            onClick={() => setCurrentLesson(getLessonById(4))}
             lessonNum={4}
           />
           <Link
@@ -95,15 +102,16 @@ export default function ClientsideUnit() {
       {!isLoading && (
         <div className={styles.bottomContainer}>
           <UnitVideoContainer
-            progress={selectedLesson?.videoProgress || 0}
-            lessonId={selectedLesson?.id || 0}
-            imgURL={selectedLesson?.imageUrl + ""}
-            videoLength={selectedLesson?.videoProgress ?? 0}
-            shortDesc={selectedLesson?.shortDescText + ""}
-            subtitle={selectedLesson?.subtitle + ""}
+            progress={currentLesson?.videoMaxTimestamp}
+            lessonId={currentLesson?.lessonId || 0}
+            imgURL={currentLesson?.videoThumbnailURL + ""}
+            videoLength={currentLesson?.videoLength ?? 0}
+            shortDesc={currentLesson?.videoShortDescription + ""}
+            subtitle={currentLesson?.videoName + ""}
             unitId={1}
           />
-          <div className={styles.activity_Container}>
+
+          {/*<div className={styles.activity_Container}>
             <div className={styles.header_Container}>
               <div className={styles.headerWrapper}>
                 <div className={styles.headerLeft}>
@@ -122,12 +130,12 @@ export default function ClientsideUnit() {
                   Activities
                 </div>
                 <button className={styles.infoButton} type="button">
-                  {0}/{selectedLesson?.subsequentActivities.length}
+                  {0}/{currentLesson?.subsequentActivities.length}
                 </button>
               </div>
             </div>
 
-            {selectedLesson?.subsequentActivities.map((activity, index) => (
+            {currentLesson?.subsequentActivities.map((activity, index) => (
               <Activity
                 title={activity.title}
                 desc={activity.desc}
@@ -138,7 +146,7 @@ export default function ClientsideUnit() {
                 href={activity.href}
               />
             ))}
-            {/* {activityData.map((activity, index) => (
+            {{activityData.map((activity, index) => (
             <Activity
               title={activity.type}
               desc={activity.desc}
@@ -148,8 +156,9 @@ export default function ClientsideUnit() {
               progress={activity.progress}
               href={activity.linkTo}
             />
-          ))}*/}
+          ))}}
           </div>
+          */}
         </div>
       )}
       {isLoading && (
