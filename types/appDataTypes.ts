@@ -10,14 +10,15 @@ type LessonProgress = {
 };
 
 type LessonPage = {
+  unitId?: number;
   lessonId: number;
   lessonName: string;
-  videoName:string;
+  videoId?: number;
+  videoName: string;
   videoURL: string;
   videoThumbnailURL: string;
   videoShortDescription: string;
   videoDescription: string;
   videoLength: number;
   videoMaxTimestamp?: number;
-
-}
+};

@@ -5,19 +5,14 @@ import Button from "src/components/ui/button/Button";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import lessons from "src/app/education/units/[unitSlug]/lessons.json";
-
 interface ClientsideLessonPreviewProps {
-  lessonSlug: string;
+  lessonData: LessonPage;
 }
 
 export default function ClientsideLessonPreview({
-  lessonSlug,
+  lessonData,
 }: ClientsideLessonPreviewProps) {
   const router = useRouter();
-  const part = parseInt(lessonSlug, 10);
-
-  const selectedLesson = lessons.find((lesson) => lesson.id === part);
 
   return (
     <div className={styles.bodyDash}>
@@ -25,7 +20,10 @@ export default function ClientsideLessonPreview({
         <section className={styles.lesson}>
           <div className={styles.left_Container}>
             <div className={styles.absoluteTop_Container}>
-              <Breadcrumb unit="Unit One" lesson={"Lesson " + part} />
+              <Breadcrumb
+                unit="Unit One"
+                lesson={"Lesson " + lessonData.lessonId}
+              />
               <div className={styles.absoluteTop_progress}>
                 <Button
                   text="Back"
@@ -45,9 +43,9 @@ export default function ClientsideLessonPreview({
                     fill="rgb(255, 255, 255)"
                   ></path>
                 </svg>
-                Unit {selectedLesson?.unit}
+                Unit {lessonData?.unitId}
               </div>
-              <div className={styles.title}>{selectedLesson?.previewTitle}</div>
+              <div className={styles.title}>{lessonData?.videoName}</div>
               <div className={styles.estTime}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19">
                   <g>
@@ -65,7 +63,8 @@ export default function ClientsideLessonPreview({
                     ></path>
                   </g>
                 </svg>
-                Lesson is around {selectedLesson?.videoLength} minutes long
+                Lesson is around {Math.ceil(lessonData?.videoLength / 60)}{" "}
+                minutes long
               </div>
             </div>
             <div className={styles.description_Container}>
@@ -79,7 +78,7 @@ export default function ClientsideLessonPreview({
                 Description
               </div>
               <div className={styles.description_textBox}>
-                <div>{selectedLesson?.previewDesc}</div>
+                <div>{lessonData?.videoDescription}</div>
               </div>
               <div className={styles.description_question}>
                 <svg
@@ -124,7 +123,7 @@ export default function ClientsideLessonPreview({
                 additonalStyles={{ flexGrow: "1" }}
                 ftSize={1}
                 text={"Start Lesson"}
-                url={"/education/units/1/1/" + part}
+                url={"/education/units/1/1/" + lessonData?.videoId}
               />
             </div>
           </div>
@@ -132,7 +131,7 @@ export default function ClientsideLessonPreview({
             {" "}
             <Image
               alt={"lesson preview image"}
-              src={selectedLesson?.imageUrl + ""}
+              src={lessonData?.videoThumbnailURL + ""}
               fill
               priority
               sizes="100%"

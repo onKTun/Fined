@@ -1,9 +1,7 @@
 "use client";
 import styles from "src/components/units/units.module.css";
-import Activity from "src/app/education/units/components/activity/Activity";
 import ActivitySelectorButton from "src/app/education/units/components/ActivitySelectorButton/ActivitySelectorButton";
 import { useEffect, useState } from "react";
-import lessons from "src/app/education/units/[unitSlug]/lessons.json";
 import Link from "next/link";
 import UnitVideoContainer from "src/components/units/unit-video-container/UnitVideoContainer";
 

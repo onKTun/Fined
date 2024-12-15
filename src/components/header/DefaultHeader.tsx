@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import styles from "./DefaultHeader.module.css";
-import Search from "../ui/search/Search";
 import RoutingButton from "../ui/routingbutton/RoutingButton";
 import ContactModal from "./components/contact/ContactModal";
 import { useState } from "react";
