@@ -3,7 +3,7 @@ import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import ProgressBar from "src/components/ui/progress/ProgressBar";
 import Image from "next/image";
 interface Props {
-  progress: number;
+  progress?: number;
   lessonId: number;
   videoLength: number;
   shortDesc: string;
@@ -18,7 +18,7 @@ export default function UnitVideoContainer({
   videoLength,
   shortDesc,
   subtitle,
-  imgURL,
+  imgURL = "/assets/backgrounds/back.JPG",
   unitId,
 }: Props) {
   return (
@@ -36,9 +36,11 @@ export default function UnitVideoContainer({
           </div>
           Lesson Video
         </div>
-        <button className={styles.infoButton} type="button">
-          {progress + "%"}
-        </button>
+        {progress && (
+          <button className={styles.infoButton} type="button">
+            {progress + "%"}
+          </button>
+        )}
       </div>
       <ul className={styles.video_tags}>
         <li className={styles.video_tag}>
@@ -65,9 +67,17 @@ export default function UnitVideoContainer({
         </li>
       </ul>
       <div className={styles.imagePreview}>
-        <Image src={"" + imgURL} layout="fill" objectFit="cover" alt="" />
+        {imgURL ||
+          (imgURL != "" && (
+            <Image
+              src={"" + imgURL}
+              layout="fill"
+              objectFit="cover"
+              alt="video preview image"
+            />
+          ))}
       </div>
-      <ProgressBar progress={videoLength} />
+      {progress && <ProgressBar progress={progress / videoLength} />}
       <div className={styles.completionTime}>
         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19">
           <path
@@ -79,7 +89,7 @@ export default function UnitVideoContainer({
             strokeLinejoin="round"
           ></path>
         </svg>
-        {videoLength} Minutes
+        {Math.ceil(videoLength / 60)} Minutes
       </div>
       <div className={styles.video_titleDesc}>
         {/* My classnames might confuse u here, just ignore em.*/}

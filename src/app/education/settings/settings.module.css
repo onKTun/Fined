@@ -83,13 +83,13 @@
   display: flex;
   justify-content: space-between;
   .svgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 36px;
     background-color: var(--finedblue);
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 .headerLeft {
