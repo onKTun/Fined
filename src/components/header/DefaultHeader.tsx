@@ -75,7 +75,6 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
           </ul>
         </div>
         <div className={styles.buttonContainer}>
-          <Search rad={10} wid={"23em"} color="#f8f8f8" />
           {loggedIn ? (
             <>
               <RoutingButton

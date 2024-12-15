@@ -3,13 +3,14 @@ import Video from "./components/videocomponent/Video";
 import { VideoProvider } from "./hooks/VideoContext";
 import ActivityBox from "./components/activityboxcomponent/ActivityBox";
 import AdditionalInformation from "./components/additional/AdditonalInformation";
+import RoutingButton from "src/components/routingbutton/RoutingButton";
 
 //static page generated at build
 export default function LessonVideo() {
   return (
     <VideoProvider>
       <div className={styles.bodyDash}>
-        <ActivityBox />
+        {/* <ActivityBox /> */}
         <div className={styles.rightColumn}>
           <div className={styles.videoContainer}>
             <div className={styles.headerWrapper}>
@@ -43,6 +44,13 @@ export default function LessonVideo() {
               </div>
             </div>
           </div>
+          <RoutingButton
+            style="blue"
+            text="Go to Activity Sheet"
+            ftSize={1}
+            additonalStyles={{}}
+            url=""
+          />
           <AdditionalInformation />
         </div>
       </div>
