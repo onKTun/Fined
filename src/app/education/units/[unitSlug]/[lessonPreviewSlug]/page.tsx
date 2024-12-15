@@ -1,7 +1,19 @@
+export const dynamic = "force-dynamic";
 import ClientsideLessonPreview from "src/components/lesson-preview/ClientsideLessonPreview";
 import { createClient } from "utils/supabase/server";
+import { supabaseNoSSR } from "utils/supabase/supabaseClient";
 
 export async function generateStaticParams() {
+  const { data, error } = await supabaseNoSSR.from("lessons").select("*");
+  console.log(data);
+  console.log(error);
+
+  if (data) {
+    return data.map((lesson) => ({
+      lessonPreviewSlug: lesson.lesson_id.toString(),
+    }));
+  }
+
   return [{ lessonPreviewSlug: "1" }];
 }
 export default async function LessonPreview({
