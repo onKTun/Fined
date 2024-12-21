@@ -50,33 +50,6 @@ export default function Sidebar() {
             isOn={pathname === "/education/glossary"}
           />
         </div>
-        <div className={styles.buttonGroup}>
-          <div className={styles.subtitle}>Personal</div>
-          <Item
-            text="Updates"
-            svgObject={
-              <UpdatesSVG topValue={13} leftValue={20} positionAbs={true} />
-            }
-            link=""
-            isOn={pathname === ""}
-          />
-          <Item
-            text="Account"
-            svgObject={
-              <ProfileSVG topValue={13} leftValue={20} positionAbs={true} />
-            }
-            link="/education/profile"
-            isOn={pathname === "/education/profile"}
-          />
-          <Item
-            text="Settings"
-            svgObject={
-              <SettingSVG topValue={12} leftValue={19} positionAbs={true} />
-            }
-            link="/education/settings"
-            isOn={pathname === "/education/settings"}
-          />
-        </div>
       </div>
       <div className={styles.bottom}>
         <Profile />

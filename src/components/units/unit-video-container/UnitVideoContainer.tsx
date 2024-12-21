@@ -38,7 +38,7 @@ export default function UnitVideoContainer({
         </div>
         {progress && (
           <button className={styles.infoButton} type="button">
-            {Math.floor((progress / videoLength) * 100) + "%"}
+            {Math.round((progress / videoLength) * 100) + "%"}
           </button>
         )}
       </div>

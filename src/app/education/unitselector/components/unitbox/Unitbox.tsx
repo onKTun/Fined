@@ -59,7 +59,7 @@ export default function Unitbox({
           </svg>
           <label>Unit {`${unit}`}</label>
         </div>
-        <label className={styles.topicsCoveredText}>Topics Covered</label>
+        <label className={styles.topicsCoveredText}>Learning Objectives</label>
         <div className={styles.line}></div>
         <ul className={styles.list}>
           {topicsCovered.map((_, index) => (
