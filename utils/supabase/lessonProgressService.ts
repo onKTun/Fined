@@ -20,6 +20,7 @@ export async function updateVideoProgress(
   console.log(video_timestamp);
 
   if (user) {
+    console.log("user found for update video progress");
     if (video_status) {
       const { data, error } = await supabase
         .from("video_progress")
@@ -29,12 +30,14 @@ export async function updateVideoProgress(
         })
         .eq("user_id", user.id)
         .eq("video_id", video_id);
-    } else {
-      const { data, error } = await supabase
-        .from("video_progress")
-        .update({ video_timestamp: video_timestamp })
-        .eq("user_id", user.id)
-        .eq("video_id", video_id);
+      if (error) console.log(error);
     }
+    const { error } = await supabase
+      .from("video_progress")
+      .update({ video_timestamp: video_timestamp })
+      .eq("user_id", user.id)
+      .eq("video_id", video_id);
+    console.log(video_id);
+    if (error) console.log(error);
   }
 }

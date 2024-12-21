@@ -7,11 +7,11 @@ import AdditionalInformation from "./components/additional/AdditonalInformation"
 import { createClient } from "utils/supabase/server";
 import { supabaseNoSSR } from "utils/supabase/supabaseClient";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
+import { getUserAndCache } from "utils/supabase/user";
 
 export async function generateStaticParams() {
   const { data, error } = await supabaseNoSSR.from("videos").select("*");
-  console.log(data);
-  console.log(error);
+  console.log("video error:" + error);
 
   if (data) {
     return data.map((video) => ({
@@ -43,9 +43,21 @@ export default async function VideoLesson({
   }
 
   const fetchedVideoURL = data?.video_url;
+  const user = await getUserAndCache();
+  let maxProgress: number = 0;
+  if (user) {
+    const { data: progressData, error: progressError } = await supabase
+      .from("video_progress")
+      .select("video_timestamp, video_id")
+      .eq("video_id", params.videoLessonSlug)
+      .limit(1)
+      .single();
+
+    maxProgress = progressData?.video_timestamp;
+  }
 
   return (
-    <VideoProvider>
+    <VideoProvider videoID={data.video_id} maxProgress={maxProgress}>
       <div className={styles.bodyDash}>
         {/* <ActivityBox /> */}
         <div className={styles.rightColumn}>
