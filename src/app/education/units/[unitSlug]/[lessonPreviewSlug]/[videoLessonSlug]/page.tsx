@@ -31,7 +31,7 @@ export default async function VideoLesson({
   const supabase = createClient();
   const { data, error } = await supabase
     .from("videos")
-    .select("video_id, video_url")
+    .select("video_id, video_url, activity_url")
     .eq("video_id", params.videoLessonSlug)
     .limit(1)
     .single();
@@ -54,6 +54,10 @@ export default async function VideoLesson({
       .single();
 
     maxProgress = progressData?.video_timestamp;
+  }
+
+  if(data.activity_url == undefined){
+    data.activity_url = "";
   }
 
   return (
@@ -94,7 +98,7 @@ export default async function VideoLesson({
               text={"Go to Activities"}
               ftSize={1}
               additonalStyles={{}}
-              url={""}
+              url={data.activity_url}
             />
             <AdditionalInformation />
           </div>
