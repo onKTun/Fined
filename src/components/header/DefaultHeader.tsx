@@ -66,7 +66,14 @@ export default function DefaultHeader({ loggedIn }: DefaultHeaderProps) {
               Glossary
             </Link>
 
-            <Link className={styles.listItem} href={""}>
+            <Link
+              className={styles.listItem}
+              href={
+                "https://docs.google.com/forms/d/e/1FAIpQLSe2Nso-1AMmFrIuUtVLgWfYpncfeDDi26WMt8gtaiTP294syA/viewform?usp=sf_link"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Feedback
             </Link>
             <li className={styles.listItem}>
