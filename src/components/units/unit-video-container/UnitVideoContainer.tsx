@@ -38,7 +38,7 @@ export default function UnitVideoContainer({
         </div>
         {progress && (
           <button className={styles.infoButton} type="button">
-            {progress + "%"}
+            {Math.floor((progress / videoLength) * 100) + "%"}
           </button>
         )}
       </div>
@@ -76,7 +76,7 @@ export default function UnitVideoContainer({
           />
         )}
       </div>
-      {progress && <ProgressBar progress={progress / videoLength} />}
+      {progress && <ProgressBar progress={(progress / videoLength) * 100} />}
       <div className={styles.completionTime}>
         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19">
           <path
