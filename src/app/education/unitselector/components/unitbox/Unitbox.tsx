@@ -38,7 +38,7 @@ export default function Unitbox({
       }`}
       onClick={() => (!isLocked ? onClick() : {})}
     >
-      <div
+      {/*<div
         className={`${styles.topIndicator} ${
           isLocked
             ? styles.locked
@@ -48,7 +48,7 @@ export default function Unitbox({
             ? styles.inprogress
             : styles.completed
         }`}
-      ></div>
+      ></div>*/}
       <div className={styles.content}>
         <div className={styles.unitTitle}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -73,7 +73,7 @@ export default function Unitbox({
         </ul>
       </div>
       <div className={styles.progressPOS}>
-        <ProgressBar progress={progress} />
+        {/*<ProgressBar progress={progress} />*/}
       </div>
     </div>
   );

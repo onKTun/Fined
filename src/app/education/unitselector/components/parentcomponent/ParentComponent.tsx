@@ -29,7 +29,7 @@ export default function ParentComponent({ percent }: Props) {
           <Unitbox
             key={unitData.unit}
             unit={unitData.unit}
-            progress={unitData.progress}
+            progress={0}
             isSelected={selectedUnit === unitData.unit}
             onClick={() => handleUnitClick(unitData.unit)}
             topicsCovered={unitData.topicsCovered}

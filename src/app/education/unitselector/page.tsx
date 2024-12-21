@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export default function UnitSelector() {
   const percentValues = useMemo(() => [100, 24, 0, 0], []);
+
   return (
     <div className={styles.wrapper}>
       <Image
