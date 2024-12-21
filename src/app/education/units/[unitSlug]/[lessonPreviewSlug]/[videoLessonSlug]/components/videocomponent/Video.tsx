@@ -71,7 +71,7 @@ export default function Video({ videoUrl }: VideoProps) {
   };
 
   const toggleCC = () => setCCEnable(!isCCEnabled);
-
+  console.log(toggleCC);
   const toggleFullscreen = () => videoRef.current?.requestFullscreen();
 
   useEffect(() => {
