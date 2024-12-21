@@ -32,7 +32,7 @@ create table if not exists videos
     description varchar(500),
     short_description varchar(500),
     video_url   varchar(500) not null,
-    alt_video_url varchar(500),
+    activity_url varchar(500),
     video_thumbnail_url varchar(500),
     video_length int not null default 0
 
