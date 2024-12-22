@@ -9,9 +9,6 @@ import { useSidebar } from "./sidebarContext";
 import { usePathname } from "next/navigation";
 import LessonSVG from "public/svg/sidebar/LessonSVG";
 import GlossarySVG from "public/svg/sidebar/GlossarySVG";
-import UpdatesSVG from "public/svg/sidebar/UpdatesSVG";
-import ProfileSVG from "public/svg/sidebar/ProfileSVG";
-import SettingSVG from "public/svg/sidebar/SettingSVG";
 
 export default function Sidebar() {
   const { isSidebarActive } = useSidebar();

@@ -53,10 +53,15 @@ export default async function VideoLesson({
       .limit(1)
       .single();
 
-    maxProgress = progressData?.video_timestamp;
+    if (progressError) {
+      console.error("Error fetching video progress:", progressError.message);
+      maxProgress = 0; // Default value in case of error
+    } else {
+      maxProgress = progressData?.video_timestamp || 0; // Fallback to 0 if no timestamp
+    }
   }
 
-  if(data.activity_url == undefined){
+  if (data.activity_url == undefined) {
     data.activity_url = "";
   }
 
