@@ -66,7 +66,7 @@ export default function Unitbox({
               key={index}
               className={`${findStyle(index + 1)} ${styles.topicDefault}`}
             >
-              <label>{topicsCovered[index]}</label>
+              <label className={styles.label}>{topicsCovered[index]}</label>
             </li>
           ))}
         </ul>

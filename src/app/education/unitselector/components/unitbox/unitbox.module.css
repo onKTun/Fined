@@ -42,9 +42,9 @@
 }
 .content {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   row-gap: 10px;
-  width: fit-content;
 }
 .line {
   width: 175px;
@@ -135,6 +135,10 @@
   flex-direction: column;
   list-style: none;
   row-gap: 12px;
+  width: fit-content;
+}
+.label {
+  white-space: nowrap;
 }
 /* These are for the topics that are displayed in the content section (not top right) */
 .topicDefault {
