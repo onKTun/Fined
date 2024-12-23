@@ -6,7 +6,6 @@ import AdditionalInformation from "./components/additional/AdditonalInformation"
 
 import { createClient } from "utils/supabase/server";
 import { supabaseNoSSR } from "utils/supabase/supabaseClient";
-import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { getUserAndCache } from "utils/supabase/user";
 
 export async function generateStaticParams() {
