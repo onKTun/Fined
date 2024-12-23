@@ -217,6 +217,7 @@
   transition: 0.3s var(--transition);
   position: absolute;
   right: 1.5em;
+  top: -5em;
   display: flex;
   justify-content: center;
   align-items: center;

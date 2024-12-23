@@ -1,5 +1,6 @@
 "use client";
 import styles from "src/components/units/units.module.css";
+import buttonStyle from "src/app/education/units/components/ActivitySelectorButton/activityselbutton.module.css";
 import ActivitySelectorButton from "src/app/education/units/components/ActivitySelectorButton/ActivitySelectorButton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -77,6 +78,16 @@ export default function ClientsideUnit({
             onClick={() => setCurrentLesson(getLessonById(4))}
             lessonNum={4}
           />
+          <Link
+            href={
+              "https://drive.google.com/file/d/1Cgt8PkAoqkeufESsD56jX5Mpa4ss6kJL/view?usp=drive_link"
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonStyle.wrapper}
+          >
+            Activities
+          </Link>
           <Link
             className={styles.changeUnitButton}
             href="/education/unitselector"

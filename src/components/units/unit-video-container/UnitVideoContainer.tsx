@@ -106,7 +106,11 @@ export default function UnitVideoContainer({
       <div className={styles.button_Container}>
         <RoutingButton
           style={"blue"}
-          text={"Watch"}
+          text={
+            Math.round((progress ?? 0) / videoLength) * 100 == 100
+              ? "Rewatch"
+              : "Watch"
+          }
           ftSize={1}
           additonalStyles={{ width: "9em", height: "45px" }}
           url={`/education/units/1/${lessonId}`}

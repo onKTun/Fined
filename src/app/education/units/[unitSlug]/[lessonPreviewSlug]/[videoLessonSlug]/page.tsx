@@ -31,7 +31,7 @@ export default async function VideoLesson({
   const supabase = createClient();
   const { data, error } = await supabase
     .from("videos")
-    .select("video_id, video_url, activity_url")
+    .select("video_id, video_url, activity_url, activity_answer")
     .eq("video_id", params.videoLessonSlug)
     .limit(1)
     .single();
@@ -98,13 +98,24 @@ export default async function VideoLesson({
                 <Video videoUrl={fetchedVideoURL}></Video>
               </div>
             </div>
-            <RoutingButton
-              style={"gray"}
-              text={"Go to Activities"}
-              ftSize={1}
-              additonalStyles={{}}
-              url={data.activity_url}
-            />
+            {/* <div className={styles.buttonRow}>
+              <RoutingButton
+                style={"blue"}
+                text={"Go to Activities"}
+                ftSize={1}
+                additonalStyles={{ flexGrow: "1" }}
+                url={data.activity_url}
+              />{" "}
+              <RoutingButton
+                style={"gray"}
+                text={"Activity Answers"}
+                ftSize={1}
+                additonalStyles={{}}
+                url={data.activity_answer}
+              />
+              
+            </div>
+            */}
             <AdditionalInformation />
           </div>
         </div>

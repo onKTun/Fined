@@ -8,6 +8,7 @@
   background-color: white;
   border: 1px solid var(--bb);
   border-radius: 5px;
+  color: black;
   &:hover {
     transition: 0.3s var(--transition);
     cursor: pointer;
