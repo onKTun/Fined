@@ -8,6 +8,10 @@ A financial education website targeted towards special needs and younger childre
 - git pull
 - npm i
 - npm run dev
+- commit after every new feature added
+- make sure to do npm run lint before merging to main
+- run npm run build before merging to production-branch
+- pushing to production branch will auto build and deploy the site
 
 ## Demo
 
