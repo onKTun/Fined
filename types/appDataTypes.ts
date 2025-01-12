@@ -22,3 +22,5 @@ type LessonPage = {
   videoLength: number;
   videoMaxTimestamp?: number;
 };
+
+type GameActivityStates = "load" | "start" | "play" | "end" | "cleanup";
