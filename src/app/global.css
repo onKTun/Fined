@@ -50,16 +50,30 @@ ul {
   color: var(--finedblue);
   height: fit-content;
 }
-.contentWithSidebar {
-  display: flex;
-  height: calc(100vh - 70px);
-  background-color: #fafafa;
-}
 .viewport {
+  display: flex;
   height: 100vh;
   width: 100vw;
+  background-color: #fafafa;
 }
 .content {
+  position: relative;
   display: flex;
   flex-grow: 1;
+  flex-direction: column;
+  padding-left: 3.6em;
+  box-sizing: border-box;
+}
+.contentPreLogin {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.childrenContent {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  overflow: scroll;
 }

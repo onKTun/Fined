@@ -1,0 +1,28 @@
+.textInput {
+  display: flex;
+  flex-grow: 1;
+  padding: 18px 20px;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: 2px rgba(var(--finedblueRGB), 0) solid;
+}
+.textInput:focus {
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  outline: 2px rgba(var(--finedblueRGB), 1) solid;
+  outline-offset: -2px;
+}
+.container {
+  position: relative;
+  display: flex;
+}
+.button {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  background-color: transparent;
+  border: none;
+}
+.button:hover {
+  cursor: pointer;
+}

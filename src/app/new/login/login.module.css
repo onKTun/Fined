@@ -1,0 +1,259 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbfbfb;
+}
+.login_container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 32em;
+  height: fit-content;
+  background-color: white;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 50px 40px 30px 40px;
+}
+.login_header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+.login_header_svgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.2em;
+  height: 3.2em;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  border: 2px dotted rgba(0, 0, 0, 0.1);
+}
+.login_changeModeButton {
+  transition: 0.1s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: flex;
+  padding: 10px 20px;
+  height: fit-content;
+  width: 100%;
+  column-gap: 7px;
+  font-size: 1rem;
+  background-color: #fffdeb;
+  border: none;
+  border-radius: 10px;
+  color: #ffd365;
+  justify-content: center;
+  align-items: center;
+}
+.login_changeModeButtonOther {
+  transition: opacity 0.1s cubic-bezier(0.4, 0, 0, 1);
+  justify-content: center;
+  opacity: 0;
+  width: 100%;
+  border-radius: 0;
+  border-top: 2px rgba(0, 0, 0, 0.1) dashed;
+}
+.login_changeModeButtonOtherTrue {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0, 1);
+  opacity: 1;
+  width: 100%;
+  border-radius: 0;
+  border-top: 2px rgba(0, 0, 0, 0.1) dashed;
+}
+.toggledButton {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
+}
+.login_changeModeButton_expand {
+  overflow: hidden;
+  transition: 0.3s all cubic-bezier(0.4, 0, 0, 1);
+  position: absolute;
+  right: 0;
+  width: 8.5em;
+  height: 2.4em;
+  border: 2px #ffe8af dashed;
+  border-radius: 10px;
+}
+.login_changeModeButton_expandTrue {
+  transition: 0.3s all cubic-bezier(0.4, 0, 0, 1);
+  height: 5em;
+  background-color: rgb(251, 251, 251);
+  border: 2px rgba(0, 0, 0, 0.1) dashed;
+  color: rgba(0, 0, 0, 0.5);
+}
+.login_changeModeButton:hover {
+  transition: 0.1s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  cursor: pointer;
+  opacity: 0.8;
+}
+.login_textHeader {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  color: #838383;
+}
+.login_textHeader_title {
+  font-size: 1.2rem;
+  color: var(--black1);
+}
+.login_signUpWith_container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+}
+.login_signUpWith_buttons {
+  display: flex;
+  column-gap: 8px;
+}
+.login_signUpWith_buttonContainer {
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: flex;
+  justify-content: center;
+  column-gap: 7px;
+  align-items: center;
+  padding: 12px 30px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: 2px rgba(var(--finedblueRGB), 0) solid;
+}
+.login_signUpWith_buttonContainer:hover {
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+.login_signUpWith_buttonSelected {
+  outline: 2px rgba(var(--finedblueRGB), 1) solid;
+  outline-offset: -2px;
+}
+.login_orSignUpWith {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login_orSignUpWithLabel {
+  position: absolute;
+  background-color: white;
+  padding: 0px 5px;
+  color: lightgray;
+}
+.line {
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+.login_textInput_title {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+}
+.textInput {
+  display: flex;
+  padding: 18px 20px;
+  border: 1px rgba(0, 0, 0, 0.1) solid;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: 2px rgba(var(--finedblueRGB), 0) solid;
+}
+.textInput:focus {
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  outline: 2px rgba(var(--finedblueRGB), 1) solid;
+  outline-offset: -2px;
+}
+.button {
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--finedblue);
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1em;
+}
+.button:hover {
+  cursor: pointer;
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  opacity: 0.8;
+}
+.login_extra {
+  margin-top: 3px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.login_rememberMeWrapper {
+  display: flex;
+  column-gap: 7px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  border-bottom: 2px rgba(0, 0, 0, 0.05) solid;
+  height: 4.7em;
+  padding: 0px 20px 0px 20px;
+  box-sizing: border-box;
+}
+.bottomContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 3em;
+  flex-grow: 1;
+}
+.login_header_buttonContainer {
+  display: flex;
+  column-gap: 8px;
+}
+.headerButton {
+  transition: 0.2s var(--transition);
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.headerButton:hover {
+  transition: 0.2s var(--transition);
+  cursor: pointer;
+}
+.blue {
+  background-color: var(--finedblue);
+  color: white;
+  border: none;
+}
+.blue:hover {
+  background-color: rgba(var(--finedblueRGB), 0.8);
+}
+.gray {
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+}
+.gray:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.img {
+  display: flex;
+  flex-grow: 1;
+  width: 40em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.login_contentContainer {
+  display: flex;
+  column-gap: 1em;
+  height: fit-content;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}

@@ -1,0 +1,29 @@
+.modalContent {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  column-gap: 7px;
+  width: 25em;
+  height: 3.5em;
+  background-color: white;
+  border: 1px solid rgb(255, 154, 154);
+  color: rgb(255, 74, 74);
+  border-radius: 10px;
+  top: 6em;
+  font-weight: 400;
+}
+.shown {
+  transition: opacity 0.3s var(--transition) 0.1s, top 0.3s var(--transition) 0s,
+    right 0.3s var(--transition) 0s;
+  opacity: 1;
+  top: 6em;
+  right: 2em;
+}
+.hidden {
+  transition: opacity 0.3s var(--transition) 0.1s, top 0.3s var(--transition) 0s,
+    right 0.3s var(--transition) 0s;
+  opacity: 0;
+  right: -30em;
+}

@@ -1,0 +1,67 @@
+.container {
+  transition: all 0.1s var(--transition);
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+  color: black;
+  overflow: hidden;
+  width: 11.4em;
+  height: 2.6em;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+}
+.container:hover {
+  transition: all 0.3s var(--transition);
+  cursor: pointer;
+  background-color: rgb(246, 246, 246);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  .label {
+    color: rgba(0, 0, 0, 1);
+  }
+}
+.selectedClosed {
+  transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
+  width: 2.5em;
+  background-color: rgb(246, 246, 246);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.selectedOpen {
+  transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
+  width: 11.3em;
+  background-color: rgb(246, 246, 246);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.selectedOpen,
+.selectedClosed {
+  .label {
+    color: rgba(0, 0, 0, 1);
+  }
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  flex-shrink: 0;
+  padding-left: 0.2em;
+}
+.label {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+}
+.label:hover {
+  cursor: pointer;
+}
+.open {
+  transition: left 0.2s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0.07s;
+  position: absolute;
+  left: 3.3em;
+  opacity: 1;
+}
+.closed {
+  opacity: 0;
+  position: absolute;
+  left: -10em;
+}

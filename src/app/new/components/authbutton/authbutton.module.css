@@ -1,0 +1,18 @@
+.button {
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--finedblue);
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1em;
+}
+.button:hover {
+  cursor: pointer;
+  transition: 0.2s all cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  opacity: 0.8;
+}

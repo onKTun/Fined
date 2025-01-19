@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 60em;
+  padding-top: 5em;
+  row-gap: 40px;
+}
+
+.label {
+  z-index: 2;
+}

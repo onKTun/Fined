@@ -1,0 +1,47 @@
+.container {
+  position: absolute;
+  transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 10px 5px 20px 5px;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 10;
+}
+.open {
+  width: 13em;
+}
+.closed {
+  width: 3.6em;
+}
+.work {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+/*Logo*/
+.login_header_svgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 5px;
+  margin-left: 0.3em;
+}
+.line {
+  margin: 0;
+  opacity: 0.1;
+  margin: 2px 0px 2px 0px;
+}

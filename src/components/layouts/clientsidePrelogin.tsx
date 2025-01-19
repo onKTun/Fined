@@ -8,16 +8,14 @@ interface RootLayoutProps {
   loggedIn: boolean;
 }
 
-export default function ClientsideEducationLayout({
+export default function ClientsidePrelogin({
   children,
   loggedIn = false,
 }: RootLayoutProps) {
   return (
     <div className="viewport">
-      <Sidebar />
-      <div className="content">
-        <Header />
-        <div className="childrenContent">{children}</div>
+      <div className="contentPreLogin">
+        <div className="children">{children}</div>
       </div>
     </div>
   );
