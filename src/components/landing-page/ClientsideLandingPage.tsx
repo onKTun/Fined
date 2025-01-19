@@ -4,7 +4,6 @@ import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Head from "next/head";
 interface ClientSideLandingPageProps {
   loggedIn: boolean;
 }
