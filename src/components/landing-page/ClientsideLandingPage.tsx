@@ -49,6 +49,10 @@ export default function ClientSideLandingPage({
           content="FIN'ED, financial education, Adam Darzidan, Kevin Tun, Ishaan Gupta, Luke Varghese, special needs, finance, learn finance, financial independence, centennial, congressional"
         />
         <meta
+          name="google-site-verification"
+          content="Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w"
+        />
+        <meta
           name="author"
           content="Adam Darzidn, Kevin Tun, Ishaan Gupta, Luke Varghese"
         />

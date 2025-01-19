@@ -49,6 +49,10 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
         <meta name="keywords" content={metadata.keywords} />
         <meta name="author" content={metadata.author} />
         <meta name="robots" content={metadata.robots} />
+        <meta
+          name="google-site-verification"
+          content="Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w"
+        />
 
         {/* Open Graph Metadata */}
         <meta property="og:title" content={metadata.og.title} />
