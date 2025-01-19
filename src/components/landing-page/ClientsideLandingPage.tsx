@@ -136,6 +136,10 @@ export default function ClientSideLandingPage({
                   objectFit="cover" // Ensure the image fills the div without stretching
                 />
               )}
+              <p>Adam Darzidan</p>
+              <p>Ishaan Gupta</p>
+              <p>Kevin Tun</p>
+              <p>Luke Varghese</p>
             </div>
           </div>
         </div>
