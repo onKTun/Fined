@@ -65,7 +65,6 @@ export default function ClientSideLandingPage({
         <meta property="og:url" content="https://fined.academy" />
         <meta property="og:type" content="website" />
       </Head>
-
       <div className={styles.fullPage}>
         <div className={styles.viewport}>
           <DefaultHeader loggedIn={loggedIn} />
