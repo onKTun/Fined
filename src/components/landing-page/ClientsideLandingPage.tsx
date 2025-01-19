@@ -38,37 +38,6 @@ export default function ClientSideLandingPage({
 
   return (
     <>
-      <Head>
-        <title>FIN'ED - Financial Education for Everyone</title>
-        <meta
-          name="description"
-          content="FIN'ED creates accessible financial education tailored for students with special needs, empowering them with skills for financial independence."
-        />
-        <meta
-          name="keywords"
-          content="FIN'ED, financial education, Adam Darzidan, Kevin Tun, Ishaan Gupta, Luke Varghese, special needs, finance, learn finance, financial independence, centennial, congressional"
-        />
-        <meta
-          name="google-site-verification"
-          content="Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w"
-        />
-        <meta
-          name="author"
-          content="Adam Darzidn, Kevin Tun, Ishaan Gupta, Luke Varghese"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta
-          property="og:title"
-          content="FIN'ED - Financial Education for Everyone"
-        />
-        <meta
-          property="og:description"
-          content="Empowering students with special needs through accessible financial education. Learn finance with FIN'ED."
-        />
-        <meta property="og:image" content="/assets/backgrounds/image.png" />
-        <meta property="og:url" content="https://fined.academy" />
-        <meta property="og:type" content="website" />
-      </Head>
       <div className={styles.fullPage}>
         <div className={styles.viewport}>
           <DefaultHeader loggedIn={loggedIn} />
