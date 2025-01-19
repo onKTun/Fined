@@ -32,6 +32,7 @@ export const metadata = {
     image: "/assets/backgrounds/image.png",
     url: "https://fined.academy",
   },
+  googleSiteVerification: "Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w",
 };
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
@@ -40,6 +41,10 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <Head>
         {/* Basic Metadata */}
         <title>{metadata.title}</title>
+        <meta
+          name="google-site-verification"
+          content="Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w"
+        />
         <meta name="description" content={metadata.description} />
         <meta name="keywords" content={metadata.keywords} />
         <meta name="author" content={metadata.author} />
