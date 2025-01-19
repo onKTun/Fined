@@ -4,6 +4,7 @@ import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 interface ClientSideLandingPageProps {
   loggedIn: boolean;
 }
@@ -11,6 +12,33 @@ interface ClientSideLandingPageProps {
 export default function ClientSideLandingPage({
   loggedIn,
 }: ClientSideLandingPageProps) {
+  <Head>
+    <title>FIN'ED - Financial Education for Everyone</title>
+    <meta
+      name="description"
+      content="FIN'ED creates accessible financial education tailored for students with special needs, empowering them with skills for financial independence."
+    />
+    <meta
+      name="keywords"
+      content="FIN'ED, financial education, Adam Darzida, Kevin Tun, Ishaan Gupta, Luke Varghese, special needs, finance, learn finance, financial independence, centennial, congressional"
+    />
+    <meta
+      name="author"
+      content="Adam Darzidn, Kevin Tun, Ishaan Gupta, Luke Varghese"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      property="og:title"
+      content="FIN'ED - Financial Education for Everyone"
+    />
+    <meta
+      property="og:description"
+      content="Empowering students with special needs through accessible financial education. Learn finance with FIN'ED."
+    />
+    <meta property="og:image" content="/assets/finedSolid.png" />
+    <meta property="og:url" content="https://your-website-url.com" />
+    <meta property="og:type" content="website" />
+  </Head>;
   const [videoError, setVideoError] = useState(false);
 
   const onVideoError = () => {
