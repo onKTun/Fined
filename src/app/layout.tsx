@@ -7,6 +7,7 @@ interface RootLayoutProps {
 }
 export const metadata = {
   title: "FIN'ED - Financial Literacy for All",
+  googleSiteVerification: "Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w",
   description:
     "Empowering everyone with accessible financial literacy education.",
   keywords: [
@@ -32,14 +33,12 @@ export const metadata = {
     image: "/assets/backgrounds/image.png",
     url: "https://fined.academy",
   },
-  googleSiteVerification: "Ep_xJIDaW01ZolEzmJTM566Nw8rpZPQ16uYE3LnwN8w",
 };
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <Head>
-        {/* Basic Metadata */}
         <title>{metadata.title}</title>
         <meta
           name="google-site-verification"
