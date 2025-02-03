@@ -4,6 +4,8 @@ import DefaultHeader from "src/components/header/DefaultHeader";
 import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
+import Button from "../ui/button/Button";
 interface ClientSideLandingPageProps {
   loggedIn: boolean;
 }
@@ -12,6 +14,11 @@ export default function ClientSideLandingPage({
   loggedIn,
 }: ClientSideLandingPageProps) {
   const [videoError, setVideoError] = useState(false);
+  const [panelVisible, setPanelVisiblity] = useState(false);
+
+  const togglePanelVisiblity = () => {
+    setPanelVisiblity(!panelVisible);
+  };
 
   const onVideoError = () => {
     setVideoError(true);
@@ -37,6 +44,33 @@ export default function ClientSideLandingPage({
 
   return (
     <>
+      <Head>
+        <title>FIN'ED - Financial Education for Everyone</title>
+        <meta
+          name="description"
+          content="FIN'ED creates accessible financial education tailored for students with special needs, empowering them with skills for financial independence."
+        />
+        <meta
+          name="keywords"
+          content="FIN'ED, financial education, Adam Darzidan, Kevin Tun, Ishaan Gupta, Luke Varghese, special needs, finance, learn finance, financial independence, centennial, congressional"
+        />
+        <meta
+          name="author"
+          content="Adam Darzidn, Kevin Tun, Ishaan Gupta, Luke Varghese"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="FIN'ED - Financial Education for Everyone"
+        />
+        <meta
+          property="og:description"
+          content="Empowering students with special needs through accessible financial education. Learn finance with FIN'ED."
+        />
+        <meta property="og:image" content="/assets/backgrounds/image.png" />
+        <meta property="og:url" content="https://fined.academy" />
+        <meta property="og:type" content="website" />
+      </Head>
       <div className={styles.fullPage}>
         <div className={styles.viewport}>
           <DefaultHeader loggedIn={loggedIn} />
@@ -64,18 +98,18 @@ export default function ClientSideLandingPage({
                 </div>
                 <div className={styles.buttonContainer}>
                   <RoutingButton
-                    style={"gray"}
-                    text={"Learn More"}
-                    ftSize={1}
-                    additonalStyles={{}}
-                    url={"/account/login"}
-                  />
-                  <RoutingButton
                     style={"blue"}
                     text={"Try Now"}
                     ftSize={1}
                     additonalStyles={{ width: "7em" }}
                     url={loggedIn ? "/education/dashboard" : "/account/login"}
+                  />
+                  <Button
+                    style={"gray"}
+                    text={"Impact Report"}
+                    ftSize={1}
+                    heightWidth={{}}
+                    onClick={togglePanelVisiblity}
                   />
                 </div>
               </section>
@@ -112,6 +146,9 @@ export default function ClientSideLandingPage({
           </div>
         </div>
       </div>
+      {panelVisible && (
+        <img src="/assets/FRAME1.png" className={styles.panelContainer}></img>
+      )}
     </>
   );
 }
