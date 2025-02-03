@@ -5,6 +5,7 @@ import RoutingButton from "src/components/ui/routingbutton/RoutingButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
+import Button from "../ui/button/Button";
 interface ClientSideLandingPageProps {
   loggedIn: boolean;
 }
@@ -13,6 +14,11 @@ export default function ClientSideLandingPage({
   loggedIn,
 }: ClientSideLandingPageProps) {
   const [videoError, setVideoError] = useState(false);
+  const [panelVisible, setPanelVisiblity] = useState(false);
+
+  const togglePanelVisiblity = () => {
+    setPanelVisiblity(!panelVisible);
+  };
 
   const onVideoError = () => {
     setVideoError(true);
@@ -92,18 +98,18 @@ export default function ClientSideLandingPage({
                 </div>
                 <div className={styles.buttonContainer}>
                   <RoutingButton
-                    style={"gray"}
-                    text={"Learn More"}
-                    ftSize={1}
-                    additonalStyles={{}}
-                    url={"/account/login"}
-                  />
-                  <RoutingButton
                     style={"blue"}
                     text={"Try Now"}
                     ftSize={1}
                     additonalStyles={{ width: "7em" }}
                     url={loggedIn ? "/education/dashboard" : "/account/login"}
+                  />
+                  <Button
+                    style={"gray"}
+                    text={"Impact Report"}
+                    ftSize={1}
+                    heightWidth={{}}
+                    onClick={togglePanelVisiblity}
                   />
                 </div>
               </section>
@@ -140,6 +146,9 @@ export default function ClientSideLandingPage({
           </div>
         </div>
       </div>
+      {panelVisible && (
+        <img src="/assets/FRAME1.png" className={styles.panelContainer}></img>
+      )}
     </>
   );
 }
