@@ -1,0 +1,28 @@
+.container {
+  transition: 0.3s opacity var(--transition);
+  background-color: var(--finedblue);
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  font-size: 0.9rem;
+  width: fit-content;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+.blue {
+  background-color: var(--finedblue);
+  color: white;
+}
+.regular {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: black;
+}
+.opacityBlack {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}

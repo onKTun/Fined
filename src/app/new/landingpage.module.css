@@ -1,0 +1,86 @@
+.container {
+  position: relative;
+  width: 100vw;
+  height: 40em;
+  box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
+  justify-content: center;
+}
+.container::after {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  height: 10em;
+}
+.video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.title {
+  width: 8em;
+  display: flex;
+  font-size: 3rem;
+  color: white;
+}
+.subtitle {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-size: 1rem;
+  color: white;
+  width: 35em;
+}
+.textStack {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  row-gap: 12px;
+  position: absolute;
+  top: 12em;
+  left: 15em;
+  z-index: 9;
+}
+.buttonContainer {
+  margin-top: 0.5em;
+  display: flex;
+  column-gap: 7px;
+}
+.line {
+  width: 35em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0;
+}
+.subtitleHeader {
+  display: flex;
+  column-gap: 7px;
+  padding: 12px 15px;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  color: white;
+  border-radius: 50px;
+}
+.tutorialVideo {
+  display: flex;
+  position: absolute;
+  top: 12em;
+  right: 15em;
+  width: 30%;
+  height: 20em;
+  background-color: rgb(26, 26, 26);
+  border-radius: 10px;
+}
+.nextSection {
+  display: flex;
+  height: 15em;
+  background-color: rgb(240, 240, 240);
+}

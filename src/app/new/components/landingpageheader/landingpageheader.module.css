@@ -1,0 +1,45 @@
+.container {
+  position: fixed;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 3.5em;
+  z-index: 10;
+  margin: 25px 0px 0px 0px;
+  width: 80em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.leftElements {
+  display: flex;
+  column-gap: 2em;
+  align-items: center;
+}
+.hyperlinkWrapper {
+  display: flex;
+  column-gap: 25px;
+}
+.link {
+  color: black;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  &:hover {
+    transition: 0.2s opacity var(--transition);
+    opacity: 1;
+  }
+}
+.buttonContainer {
+  display: flex;
+  column-gap: 8px;
+}
+.rightElements {
+  display: flex;
+  column-gap: 10px;
+}
