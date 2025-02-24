@@ -1,30 +1,40 @@
 import { Container, Graphics, TextStyle, Text } from "pixi.js";
 
 class PixiActivityToast {
-  private container: Container;
+  private activityToastContainer: Container;
+  private containerText: Text;
 
   constructor(
     height: number,
     width: number,
     radius: number,
-    color: string,
     text: string,
-    textStyle?: TextStyle
+    textStyle?: TextStyle,
+    color?: number | string
   ) {
-    this.container = new Container();
+    if (!color) {
+      color = 0xffffff;
+    }
+    this.activityToastContainer = new Container();
 
     const containerGraphics = new Graphics();
     containerGraphics.beginFill(color);
     containerGraphics.drawRoundedRect(0, 0, width, height, radius);
 
-    const containerText = new Text(text, textStyle);
-    containerText.setTransform(container);
+    this.containerText = new Text(text, textStyle);
+    this.containerText.setTransform(width / 2, height / 2);
+    this.containerText.anchor.set(0.5);
 
-    this.container.addChild(containerGraphics, containerText);
+    this.activityToastContainer.addChild(containerGraphics, this.containerText);
   }
 
-  public getContainer(): Container {
-    return this.container;
+  public get container(): Container {
+    return this.activityToastContainer;
+  }
+
+  public set text(v: string) {
+    this.text = v;
+    this.containerText.text = this.text;
   }
 }
 

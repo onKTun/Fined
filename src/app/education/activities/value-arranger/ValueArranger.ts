@@ -11,6 +11,7 @@ import {
 
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import { GameManager } from "src/components/pixigame/GameManager";
+import PixiActivityToast from "src/components/pixigame/ui/PixiActivityToast";
 
 let pixiApp: Application;
 let gameManager: GameManager;
@@ -106,10 +107,40 @@ function Load() {
   currentBalanceValueContainer.setTransform(0, 25);
   currentBalanceContainer.setTransform(263, 21);
 
+  //right side
   const itemsContainer = new Container();
+
+  //ui at top
+
+  const itemsToast = new PixiActivityToast(
+    44,
+    163,
+    15,
+    "10 items left",
+    new TextStyle({
+      fontSize: 16,
+    })
+  );
+  itemsToast.container.setTransform(25, 21);
+
+  const timeToast = new PixiActivityToast(
+    44,
+    163,
+    15,
+    "32 seconds left",
+    new TextStyle({
+      fontSize: 16,
+    })
+  );
+  timeToast.container.setTransform(876, 21);
 
   dropContainer.setTransform(25, 239);
   infoContainer.setTransform(24, 100);
-  pixiApp.stage.addChild(background, leftContainer);
+  pixiApp.stage.addChild(
+    background,
+    leftContainer,
+    itemsToast.container,
+    timeToast.container
+  );
   return true;
 }
