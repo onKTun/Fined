@@ -40,7 +40,7 @@ class GameManager {
     this.setState(GameActivityStates.LOAD);
   }
 
-  private setState(state: GameActivityStates) {
+  setState(state: GameActivityStates) {
     switch (state) {
       case GameActivityStates.LOAD:
         // do stuff for LOAD
