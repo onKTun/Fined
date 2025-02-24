@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px;
+  column-gap: 7px;
+  border-radius: 10px;
+  border: 2px dashed;
+}
+.notStarted {
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.02);
+  color: rgba(0, 0, 0, 0.8);
+}
+.inProgress {
+  border-color: #ffe8af;
+  background-color: #fffdeb;
+  color: #ffd365;
+}
+.completed {
+  border-color: #a7ffa6;
+  background-color: #eeffed;
+  color: #10dc01;
+}

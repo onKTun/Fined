@@ -3,7 +3,6 @@ import styles from "./login.module.css";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { login } from "./actions";
-import Modal from "src/components/ui/preloginmodal/Modal";
 import InputFieldAuth from "../components/inputfieldauth/InputFieldAuth";
 import AuthButton from "../components/authbutton/AuthButton";
 import AuthModal from "../components/authmodal/AuthModal";

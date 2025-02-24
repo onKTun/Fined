@@ -1,8 +1,37 @@
 .container {
   display: flex;
-  flex-grow: 1;
-  background-size: 15em;
   flex-direction: column;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
+  background-color: var(--inputcolor);
+  background-size: 100em;
+  row-gap: 30px;
+  background: url("/assets/backgrounds/finedbackground.png");
+}
+.unitContainer {
+  transform: translateY(-3em);
+  display: flex;
+  column-gap: 20px;
+}
+.headerContainer {
+  display: flex;
+  transform: translateY(-3em);
+  width: 71.5em;
+  height: 3.2em;
+  border-radius: 10px;
+  background-color: white;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  column-gap: 12px;
+}
+.headerSVGContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--finedblue);
+  padding: 10px 10px;
+  height: fit-content;
+  border-radius: 5px;
 }

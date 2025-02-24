@@ -1,0 +1,415 @@
+{
+    "units": [
+      {
+        "unit": 1,
+        "locked": false,
+        "lessons": [
+          {
+            "lesson": "Finance Basics",
+            "video": "Lesson1_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "Basic Budgeting",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Income & Expenses",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Personal Finance Quiz",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Create a Budget",
+                "done": true,
+                "link": "Activity2_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Saving & Investing",
+            "video": "Lesson2_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "Savings Accounts",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Stock Market Intro",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Risk vs. Reward",
+                "done": true,
+                "link": "Activity3_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Credit & Loans",
+            "video": "Lesson3_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "How Credit Works",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Loan Terms",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Credit Scores",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Loan Calculator",
+                "done": true,
+                "link": "Activity2_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Financial Planning",
+            "video": "Lesson4_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "Set Financial Goals",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Retirement Basics",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Create a Plan",
+                "done": true,
+                "link": "Activity3_Link"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unit": 2,
+        "locked": false,
+        "lessons": [
+          {
+            "lesson": "Market Basics",
+            "video": "Lesson1_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "Financial Markets",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Reading Stock Quotes",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Market Trends",
+                "done": true,
+                "link": "Activity3_Link"
+              },
+              {
+                "activity": "Buy & Sell Stocks",
+                "done": true,
+                "link": "Activity4_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Risk Management",
+            "video": "Lesson2_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "Risk vs. Return",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Mitigation Strategies",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Diversifying",
+                "done": true,
+                "link": "Activity3_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Tax Basics",
+            "video": "Lesson3_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "How Taxes Work",
+                "done": true,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Tax Filing Basics",
+                "done": true,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Tax Deductions",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Tax Planning",
+                "done": false,
+                "link": "Activity4_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Investment Types",
+            "video": "Lesson4_Video.mp4",
+            "videoDone": true,
+            "activities": [
+              {
+                "activity": "Understanding Bonds",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Mutual Funds & ETFs",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Real Estate",
+                "done": false,
+                "link": "Activity3_Link"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unit": 3,
+        "locked": true,
+        "lessons": [
+          {
+            "lesson": "Statements Overview",
+            "video": "Lesson1_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Income Statement",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Balance Sheet",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Cash Flow",
+                "done": false,
+                "link": "Activity3_Link"
+              },
+              {
+                "activity": "Financial Ratios",
+                "done": false,
+                "link": "Activity4_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Corporate Finance",
+            "video": "Lesson2_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "What is Corporate Finance?",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Capital Structure",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Cost of Capital",
+                "done": false,
+                "link": "Activity3_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Market Analysis",
+            "video": "Lesson3_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Analyze Data",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Using Ratios",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Stock Performance",
+                "done": false,
+                "link": "Activity3_Link"
+              },
+              {
+                "activity": "Market Sentiment",
+                "done": false,
+                "link": "Activity4_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Advanced Investments",
+            "video": "Lesson4_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Hedge Funds",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Options & Derivatives",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Alternative Investments",
+                "done": false,
+                "link": "Activity3_Link"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unit": 4,
+        "locked": true,
+        "lessons": [
+          {
+            "lesson": "Advanced Planning",
+            "video": "Lesson1_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Retirement Strategies",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Estate Planning",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Advanced Budgeting",
+                "done": false,
+                "link": "Activity3_Link"
+              },
+              {
+                "activity": "Goal Setting",
+                "done": false,
+                "link": "Activity4_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Risk Strategies",
+            "video": "Lesson2_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Diversification",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Hedging & Insurance",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Managing Risk",
+                "done": false,
+                "link": "Activity3_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Forecasting",
+            "video": "Lesson3_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Financial Projections",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Forecasting Methods",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "Variance Analysis",
+                "done": false,
+                "link": "Activity3_Link"
+              }
+            ]
+          },
+          {
+            "lesson": "Global Finance",
+            "video": "Lesson4_Video.mp4",
+            "videoDone": false,
+            "activities": [
+              {
+                "activity": "Currency Basics",
+                "done": false,
+                "link": "Activity1_Link"
+              },
+              {
+                "activity": "Global Trends",
+                "done": false,
+                "link": "Activity2_Link"
+              },
+              {
+                "activity": "International Investing",
+                "done": false,
+                "link": "Activity3_Link"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

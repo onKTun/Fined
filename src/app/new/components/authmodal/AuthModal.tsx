@@ -12,7 +12,10 @@ export default function AuthModal({ message, isShown }: Props) {
         isShown ? styles.shown : styles.hidden
       }`}
     >
-      <ErrorXSVG />
+      <div className={styles.svgContainer}>
+        {" "}
+        <ErrorXSVG />
+      </div>
       <label className={styles.paragraph}>{message}</label>
     </div>
   );

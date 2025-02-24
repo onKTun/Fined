@@ -1,0 +1,8 @@
+.container {
+  padding: 8px 12px;
+  height: fit-content;
+  background-color: #eff5ff;
+  border: 2px dashed rgba(var(--finedblueRGB), 0.2);
+  border-radius: 10px;
+  color: var(--finedblue);
+}
