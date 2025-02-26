@@ -1,7 +1,7 @@
 import { Button } from "@pixi/ui";
 import { Container, Graphics, Text, TextStyle } from "pixi.js";
 
-export class InstructionModal {
+export class StartModal {
   container: Container;
   objectiveText: Text;
   stepsText: Text;

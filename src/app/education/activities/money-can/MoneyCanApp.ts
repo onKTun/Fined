@@ -13,8 +13,9 @@ import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
 import { markComplete } from "utils/supabase/lessonProgressService";
-import { InstructionModal } from "../ActivityModals";
+import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
+import { EndModal } from "src/components/pixigame/ui/EndModal";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -30,6 +31,10 @@ let cardsRemainingText: Text;
 let cardsLeft: number;
 let timeText: Text;
 let timer: Timer;
+let elapsedTime: number;
+
+let endModal: EndModal;
+let blurGraphics: Graphics;
 
 let onStart: () => void;
 
@@ -70,10 +75,11 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   timer.on("repeat", function (_elapsed, repeat) {
+    elapsedTime = repeat;
     updateTime(repeat);
   });
 
-  const blurGraphics = new Graphics();
+  blurGraphics = new Graphics();
   blurGraphics.beginFill(0x000000);
   blurGraphics.drawRect(0, 0, pixiApp.screen.width, pixiApp.screen.height);
   blurGraphics.alpha = 0.5;
@@ -83,20 +89,25 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
     blurGraphics.renderable = false;
   };
 
-  const instruction = new InstructionModal(
+  const instruction = new StartModal(
     "Welcome to Money Can. This activity will help you understand the ways that Money can help you, and the ways that Money can't help you. ",
     "When the game starts, you'll see cards with different actions written on them. Read each card and think: Can money do this? If yes, put the card in the Money Can pile. If no, put it in the Money Cannot pile.",
     10,
     onStart
   );
 
+  endModal = new EndModal("5:30", "100%", 100);
+  endModal.container.renderable = false;
+
   instruction.container.position.set(pixiApp.screen.width / 2, 200);
+  endModal.container.position.set(pixiApp.screen.width / 2, 200);
 
   pixiApp.stage.addChild(
     correctContainer,
     wrongContainer,
     blurGraphics,
-    instruction.container
+    instruction.container,
+    endModal.container
   );
   //main update loop
   pixiApp.ticker.add(() => {
@@ -495,5 +506,8 @@ function updateTime(timeElapsed) {
 function endGame() {
   console.log("End game called");
   timer.stop();
-  markComplete("money-can");
+  endModal.container.renderable = true;
+  blurGraphics.renderable = true;
+  endModal.setTimerText(elapsedTime + "");
+  //markComplete("money-can");
 }
