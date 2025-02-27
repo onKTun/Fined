@@ -40,7 +40,7 @@ let timer: Timer;
 let elapsedTime: number;
 let timeToast: PixiActivityToast;
 
-let correctSound, wrongSound: Sound;
+let correctSound: Sound;
 
 export default function ValueArrangerScript(app: Application, data: JSONValue) {
   pixiApp = app;
@@ -69,7 +69,6 @@ function Load() {
 
   //setup audio
   correctSound = Sound.from("/assets/pixijsaudio/right.mp3");
-  wrongSound = Sound.from("/assets/pixijsaudio/wrong.mp3");
 
   //ui for left side of game
   const leftContainer = new Container();
