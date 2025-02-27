@@ -1,0 +1,16 @@
+{
+    "optionArray": [
+        {
+            "description": "the amount of currency one has",
+            "correct": true
+        },
+        {
+            "description": "kevin is sus",
+            "correct": false
+        },
+        {
+            "description": "Adam is sus",
+            "correct": false
+        }
+    ]
+}
