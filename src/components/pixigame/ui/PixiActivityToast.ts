@@ -33,8 +33,7 @@ class PixiActivityToast {
   }
 
   public set text(v: string) {
-    this.text = v;
-    this.containerText.text = this.text;
+    this.containerText.text = v;
   }
 }
 

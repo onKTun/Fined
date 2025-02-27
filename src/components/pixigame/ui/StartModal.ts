@@ -49,7 +49,7 @@ export class StartModal {
     this.objectiveText.x = textPadding;
     this.stepsText.x = textPadding;
     this.objectiveText.y = 10;
-    this.stepsText.y = this.stepsText.height + 20;
+    this.stepsText.y = this.objectiveText.height + 20;
 
     textBoxContainer.addChild(this.objectiveText, this.stepsText);
     textBoxContainer.calculateBounds();
