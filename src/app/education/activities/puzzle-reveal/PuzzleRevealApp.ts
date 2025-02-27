@@ -51,12 +51,15 @@ import {
     
     const optionArray: JSONArray = jsonData["optionArray"];
     const optionsContainer = new Container();
+
+    let i = 0;
     for (const option in optionArray){
         const optionBox = new OptionBox(option["description"], option["correct"], optionBoxDimensions);
         optionBank.push(optionBox);
         optionsContainer.addChild(optionBox.boxContainer);
-
-    };
+        optionBox.boxDimensions.x += (i * 100);
+        i++;
+    };  
     pixiApp.stage.addChild(optionsContainer);
     
     
