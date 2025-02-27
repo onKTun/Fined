@@ -17,6 +17,7 @@ import { StartModal } from "src/components/pixigame/ui/StartModal";
 import { MoneyObject } from "./MoneyObject";
 import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
+import { Sound } from "@pixi/sound";
 
 let pixiApp: Application;
 let gameManager: GameManager;
@@ -38,6 +39,8 @@ let dropContainer: Container;
 let timer: Timer;
 let elapsedTime: number;
 let timeToast: PixiActivityToast;
+
+let correctSound, wrongSound: Sound;
 
 export default function ValueArrangerScript(app: Application, data: JSONValue) {
   pixiApp = app;
@@ -63,6 +66,10 @@ function Load() {
   blurGraphics.beginFill(0x000000);
   blurGraphics.drawRect(0, 0, pixiApp.screen.width, pixiApp.screen.height);
   blurGraphics.alpha = 0.5;
+
+  //setup audio
+  correctSound = Sound.from("/assets/pixijsaudio/right.mp3");
+  wrongSound = Sound.from("/assets/pixijsaudio/wrong.mp3");
 
   //ui for left side of game
   const leftContainer = new Container();
@@ -345,6 +352,7 @@ function onDragEnd() {
       UpdateValues();
 
       if (Check()) {
+        correctSound.play();
         // move onto next balance due, update items left, text, etc
         balancesDue.pop();
         if (balancesDue.length === 0) {

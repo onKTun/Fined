@@ -18,6 +18,7 @@ import clock from "public/assets/activity/clock.svg";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
 import { useRouter } from "next/router";
 import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
+import { Sound } from "@pixi/sound";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -39,6 +40,9 @@ let correct: number;
 
 let endModal: EndModal;
 let blurGraphics: Graphics;
+
+let correctSound: Sound;
+let wrongSound: Sound;
 
 let onStart: () => void;
 
@@ -133,6 +137,10 @@ function setup() {
   background.width = pixiApp.screen.width;
   background.height = pixiApp.screen.height;
   pixiApp.stage.addChild(background);
+
+  //setup audio
+  correctSound = Sound.from("/assets/pixijsaudio/right.mp3");
+  wrongSound = Sound.from("/assets/pixijsaudio/wrong.mp3");
 
   //cards left
   const scoreBoxDimensions = {
@@ -410,6 +418,7 @@ function onDragEnd() {
     if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
       attempts++;
       if (dragTarget.answer) {
+        correctSound.play();
         cardsLeft--;
         correct++;
         cardsRemainingText.text = cardsLeft + " Cards Remaining";
@@ -420,6 +429,7 @@ function onDragEnd() {
 
         cardBank.pop();
       } else {
+        wrongSound.play();
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
       }
@@ -430,6 +440,7 @@ function onDragEnd() {
     ) {
       attempts++;
       if (!dragTarget.answer) {
+        correctSound.play();
         cardsLeft--;
         correct++;
         cardsRemainingText.text = cardsLeft + " Cards Remaining";
@@ -440,6 +451,7 @@ function onDragEnd() {
         dragTarget.cardContainer.y = 487.5;
         cardBank.pop();
       } else {
+        wrongSound.play();
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
         dragTarget.cardContainer.y = 217.5;
       }
