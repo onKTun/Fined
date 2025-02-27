@@ -466,6 +466,6 @@ function endGame() {
   endModal.container.renderable = true;
   blurGraphics.renderable = true;
   endModal.setTimerText(elapsedTime + " sec");
-  endModal.setScoreText((correct / attempts) * 100 + "%");
+  endModal.setScoreText(Math.floor((correct / attempts) * 100) + "%");
   //markComplete("money-can");
 }
