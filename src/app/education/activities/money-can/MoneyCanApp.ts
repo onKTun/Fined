@@ -16,6 +16,7 @@ import { markComplete } from "utils/supabase/lessonProgressService";
 import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
+import { useRouter } from "next/router";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -32,6 +33,8 @@ let cardsLeft: number;
 let timeText: Text;
 let timer: Timer;
 let elapsedTime: number;
+let attempts: number;
+let correct: number;
 
 let endModal: EndModal;
 let blurGraphics: Graphics;
@@ -61,7 +64,8 @@ const subTextCard = new TextStyle({
 export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp = app;
   setup();
-
+  attempts = 0;
+  correct = 0;
   propagateCards(data);
 
   const timerManager = new TimerManager();
@@ -96,7 +100,9 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
     onStart
   );
 
-  endModal = new EndModal("5:30", "100%", 100);
+  endModal = new EndModal("5:30", "100%", 100, () => {
+    history.back();
+  });
   endModal.container.renderable = false;
 
   instruction.container.position.set(pixiApp.screen.width / 2, 200);
@@ -401,8 +407,10 @@ function onDragEnd() {
     //check answer + detect overlap
     //correct container scenario
     if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
+      attempts++;
       if (dragTarget.answer) {
         cardsLeft--;
+        correct++;
         cardsRemainingText.text = cardsLeft + " Cards Remaining";
 
         dragTarget.cardContainer.off("pointerdown", onDragStart);
@@ -419,8 +427,10 @@ function onDragEnd() {
     else if (
       getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3
     ) {
+      attempts++;
       if (!dragTarget.answer) {
         cardsLeft--;
+        correct++;
         cardsRemainingText.text = cardsLeft + " Cards Remaining";
 
         dragTarget.cardContainer.off("pointerdown", onDragStart);
@@ -508,6 +518,7 @@ function endGame() {
   timer.stop();
   endModal.container.renderable = true;
   blurGraphics.renderable = true;
-  endModal.setTimerText(elapsedTime + "");
+  endModal.setTimerText(elapsedTime + " sec");
+  endModal.setScoreText((correct / attempts) * 100 + "%");
   //markComplete("money-can");
 }
