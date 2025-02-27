@@ -7,7 +7,7 @@ interface Props {
   title: string;
   desc: string;
   svgPath: string;
-  progress: number;
+  progress?: number;
   estTime: number;
   href: string;
 }
@@ -21,6 +21,9 @@ export default function Activity({
   href,
 }: Props) {
   const statusStyle = (() => {
+    if (!progress) {
+      return styles.notstarted;
+    }
     if (progress === 100) {
       return styles.completed;
     } else if (progress < 100 && progress !== 0) {
@@ -31,6 +34,9 @@ export default function Activity({
   })();
 
   const titleText = (() => {
+    if (!progress) {
+      return "Start";
+    }
     if (progress === 100) {
       return "Restart";
     } else if (progress < 100 && progress !== 0) {
@@ -57,7 +63,7 @@ export default function Activity({
             </svg>
             {estTime} Minutes
           </div>
-          <div className={`${styles.topIndicator} ${statusStyle}`}></div>
+          {progress && <div className={`${styles.topIndicator} ${statusStyle}`}></div>}
         </div>
         <div className={styles.textualDetails}>
           <div className={styles.titleContainer}>
@@ -66,7 +72,8 @@ export default function Activity({
           </div>
           {desc}
         </div>
-        <ProgressBar progress={progress} />
+        {progress ? <ProgressBar progress={progress} /> : <ProgressBar progress={0} />}
+
       </div>
       <div className={styles.buttonContainer}>
         <RoutingButton
@@ -76,13 +83,13 @@ export default function Activity({
           text={titleText}
           url={href}
         />
-        <RoutingButton
+        {/*<RoutingButton
           style="gray"
           additonalStyles={{ height: "45px", width: "9em" }}
           ftSize={1}
           text="Tutorial"
           url={href}
-        />
+        />*/}
       </div>
     </div>
   );

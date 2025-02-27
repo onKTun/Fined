@@ -1,7 +1,7 @@
 import { Button } from "@pixi/ui";
 import { Container, Graphics, Text, TextStyle } from "pixi.js";
 
-export class InstructionModal {
+export class StartModal {
   container: Container;
   objectiveText: Text;
   stepsText: Text;
@@ -49,7 +49,7 @@ export class InstructionModal {
     this.objectiveText.x = textPadding;
     this.stepsText.x = textPadding;
     this.objectiveText.y = 10;
-    this.stepsText.y = this.stepsText.height + 20;
+    this.stepsText.y = this.objectiveText.height + 20;
 
     textBoxContainer.addChild(this.objectiveText, this.stepsText);
     textBoxContainer.calculateBounds();

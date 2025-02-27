@@ -22,9 +22,6 @@ export default async function UnitPage({
       video short description
     activities
       total complete
-
-     
-
   */
   const supabase = createClient();
   const user = await getUserAndCache();
@@ -47,6 +44,14 @@ export default async function UnitPage({
         .limit(1)
         .single();
 
+      const { data: activityData, error: activityError } = await supabase
+        .from("activities")
+        .select(
+          '*'
+        )
+        .eq("lesson_id", lesson.lesson_id)
+        .eq("activity_type", 'game')
+
       const data: LessonPage = {
         lessonId: lesson.lesson_id,
         lessonName: lesson.lesson_name,
@@ -58,6 +63,17 @@ export default async function UnitPage({
         videoLength: videoData?.video_length,
       };
 
+      if (activityData) {
+        const activities: PixiActivity[] = activityData.map(activity => ({
+          activityID: activity.activity_id,
+          activityName: activity.activity_name,
+          description: activity.description,
+          href: activity.activity_url
+        }));
+
+        console.log(activities)
+        data.activities = activities;
+      }
       if (user) {
         const { data: videoProgressData, error: videoProgressError } =
           await supabase

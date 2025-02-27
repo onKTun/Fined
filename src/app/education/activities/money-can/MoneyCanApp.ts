@@ -13,8 +13,11 @@ import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
 import { markComplete } from "utils/supabase/lessonProgressService";
-import { InstructionModal } from "../ActivityModals";
+import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
+import { EndModal } from "src/components/pixigame/ui/EndModal";
+import { useRouter } from "next/router";
+import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -30,6 +33,12 @@ let cardsRemainingText: Text;
 let cardsLeft: number;
 let timeText: Text;
 let timer: Timer;
+let elapsedTime: number;
+let attempts: number;
+let correct: number;
+
+let endModal: EndModal;
+let blurGraphics: Graphics;
 
 let onStart: () => void;
 
@@ -56,7 +65,8 @@ const subTextCard = new TextStyle({
 export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp = app;
   setup();
-
+  attempts = 0;
+  correct = 0;
   propagateCards(data);
 
   const timerManager = new TimerManager();
@@ -70,10 +80,11 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   timer.on("repeat", function (_elapsed, repeat) {
+    elapsedTime = repeat;
     updateTime(repeat);
   });
 
-  const blurGraphics = new Graphics();
+  blurGraphics = new Graphics();
   blurGraphics.beginFill(0x000000);
   blurGraphics.drawRect(0, 0, pixiApp.screen.width, pixiApp.screen.height);
   blurGraphics.alpha = 0.5;
@@ -83,20 +94,27 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
     blurGraphics.renderable = false;
   };
 
-  const instruction = new InstructionModal(
+  const instruction = new StartModal(
     "Welcome to Money Can. This activity will help you understand the ways that Money can help you, and the ways that Money can't help you. ",
     "When the game starts, you'll see cards with different actions written on them. Read each card and think: Can money do this? If yes, put the card in the Money Can pile. If no, put it in the Money Cannot pile.",
     10,
     onStart
   );
 
+  endModal = new EndModal("5:30", "100%", 100, () => {
+    history.back();
+  });
+  endModal.container.renderable = false;
+
   instruction.container.position.set(pixiApp.screen.width / 2, 200);
+  endModal.container.position.set(pixiApp.screen.width / 2, 200);
 
   pixiApp.stage.addChild(
     correctContainer,
     wrongContainer,
     blurGraphics,
-    instruction.container
+    instruction.container,
+    endModal.container
   );
   //main update loop
   pixiApp.ticker.add(() => {
@@ -390,8 +408,10 @@ function onDragEnd() {
     //check answer + detect overlap
     //correct container scenario
     if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
+      attempts++;
       if (dragTarget.answer) {
         cardsLeft--;
+        correct++;
         cardsRemainingText.text = cardsLeft + " Cards Remaining";
 
         dragTarget.cardContainer.off("pointerdown", onDragStart);
@@ -408,8 +428,10 @@ function onDragEnd() {
     else if (
       getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3
     ) {
+      attempts++;
       if (!dragTarget.answer) {
         cardsLeft--;
+        correct++;
         cardsRemainingText.text = cardsLeft + " Cards Remaining";
 
         dragTarget.cardContainer.off("pointerdown", onDragStart);
@@ -434,60 +456,6 @@ function onDragEnd() {
   }
 }
 
-function isColliding(object1: DisplayObject, object2: DisplayObject): boolean {
-  /*
-  Recalculates the bounds of the container.
-  This implementation will automatically fit the children's bounds into the calculation. Each child's bounds is limited to its mask's bounds or filterArea, if any is applied.
-  */
-  object1.calculateBounds();
-  object2.calculateBounds();
-
-  if (
-    object1._bounds.maxX < object2._bounds.minX ||
-    object2._bounds.maxX < object1._bounds.minX
-  ) {
-    return false;
-  }
-  if (
-    object1._bounds.maxY < object2._bounds.minY ||
-    object2._bounds.maxY < object1._bounds.minY
-  ) {
-    return false;
-  }
-
-  return true;
-}
-
-function getOverlapPercent(object1: DisplayObject, object2: DisplayObject) {
-  if (!isColliding(object1, object2)) {
-    return 0;
-  }
-
-  object1.calculateBounds();
-  object2.calculateBounds();
-
-  const lengthX =
-    Math.min(object1._bounds.maxX, object2._bounds.maxX) -
-    Math.max(object1._bounds.minX, object2._bounds.minX);
-  const lengthY =
-    Math.min(object1._bounds.maxY, object2._bounds.maxY) -
-    Math.max(object1._bounds.minY, object2._bounds.minY);
-
-  const overlapArea = lengthX * lengthY;
-
-  const object1Area =
-    (object1._bounds.maxX - object1._bounds.minX) *
-    (object1._bounds.maxY - object1._bounds.minY);
-  const object2Area =
-    (object2._bounds.maxX - object2._bounds.minX) *
-    (object2._bounds.maxY - object2._bounds.minY);
-
-  const totalArea = object1Area + object2Area - overlapArea;
-  const overlapPercent = overlapArea / totalArea;
-
-  return overlapPercent;
-}
-
 function updateTime(timeElapsed) {
   timeText.text = "Time Elapsed: " + timeElapsed;
 }
@@ -495,5 +463,9 @@ function updateTime(timeElapsed) {
 function endGame() {
   console.log("End game called");
   timer.stop();
-  markComplete("money-can");
+  endModal.container.renderable = true;
+  blurGraphics.renderable = true;
+  endModal.setTimerText(elapsedTime + " sec");
+  endModal.setScoreText((correct / attempts) * 100 + "%");
+  //markComplete("money-can");
 }
