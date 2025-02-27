@@ -1,4 +1,6 @@
 //copy this for your game script file
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { Application, Sprite, Texture } from "pixi.js";
 
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";

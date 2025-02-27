@@ -6,17 +6,14 @@ import {
   Container,
   Text,
   TextStyle,
-  DisplayObject,
 } from "pixi.js";
 import TimerManager from "utils/pixiJS/time utils/TimerManager";
 import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
-import { markComplete } from "utils/supabase/lessonProgressService";
 import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
-import { useRouter } from "next/router";
 import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
