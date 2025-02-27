@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@pixi/react": "^7.1.2",
+    "@pixi/sound": "^5.2.3",
     "@pixi/ui": "^1.1.5",
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
