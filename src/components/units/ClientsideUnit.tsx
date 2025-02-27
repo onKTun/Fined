@@ -121,7 +121,7 @@ export default function ClientsideUnit({
             unitId={1}
           />
 
-          <div className={styles.activity_Container}>
+          {currentLesson.activities && currentLesson.activities.length > 0 && <div className={styles.activity_Container}>
             <div className={styles.header_Container}>
               <div className={styles.headerWrapper}>
                 <div className={styles.headerLeft}>
@@ -145,16 +145,19 @@ export default function ClientsideUnit({
                 </button>*/}
               </div>
             </div>
+            {currentLesson.activities.map((activity, index) => (
+              <Activity
+                title={activity.activityName}
+                desc={activity.description}
+                svgPath={"/assets/activity/card.svg"}
+                estTime={5}
+                key={index}
+                href={activity.href}
+              />
+            ))}
 
-            <Activity
-              title={"Money Can"}
-              desc={"True or False"}
-              svgPath={"/assets/activity/card.svg"}
-              estTime={10}
-              key={1}
-              href={"/education/activities/money-can"}
-            />
-          </div>
+          </div>}
+
 
         </div>
       )}
