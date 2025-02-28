@@ -1,16 +1,39 @@
 {
     "optionArray": [
-        {
+        
+            {
             "description": "the amount of currency one has",
+            "correct": true},
+            {
+                "description": "kevin is sus",
+                "correct": false
+            },
+            {
+                "description": "Adam is sus",
+                "correct": false
+            },
+            {
+                "description": "Landon is cool",
+                "correct": true
+            },
+        
+        
+        
+            {
+            "description": "League of Legends is more important than family",
             "correct": true
-        },
-        {
-            "description": "kevin is sus",
+            },
+            {
+            "description": "Family First, League second",
             "correct": false
-        },
-        {
-            "description": "Adam is sus",
-            "correct": false
-        }
+            },
+            {
+                "description": "Adam eats chopotle every day",
+                "correct": true
+            },
+            {
+                "description": "Kevin smells like cheese",
+                "correct": false
+            }    
     ]
 }

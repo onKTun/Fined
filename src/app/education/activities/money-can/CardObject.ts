@@ -84,7 +84,7 @@ export default class CardObject {
     text.x = cardDimensions.width / 2;
     text.y = cardDimensions.height / 2;
     this.cardContainer.addChild(text);
-
+    console.log("Money can descript", this.description);
     //card interactivity
     this.cardContainer.eventMode = "static";
     this.cardContainer.cursor = "pointer";
