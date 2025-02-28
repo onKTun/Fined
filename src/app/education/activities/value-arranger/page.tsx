@@ -1,10 +1,10 @@
 "use client";
 import GameActivityComponent from "src/components/pixigame/GameActivityComponent";
-import script from "src/app/education/activities/value-arranger/ValueArranger";
 import data from "src/data/valuearranger.json";
 import styles from "src/app/education/activities/money-can/activity.module.css";
 
-export default function ValueArrangerGamePage() {
+export default async function ValueArrangerGamePage() {
+  const script = (await import("src/app/education/activities/value-arranger/ValueArranger")).default
   return (
     <div className={styles.activitycontainer}>
       <div className={styles.container}>
