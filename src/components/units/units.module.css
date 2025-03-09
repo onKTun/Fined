@@ -81,9 +81,9 @@
   flex-grow: 1;
   justify-content: space-between;
   .svgWrapper {
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
     width: 36px;
     height: 36px;
     background-color: var(--finedblue);
