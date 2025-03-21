@@ -1,4 +1,5 @@
 //component that contains the actual game, required parameter of a function housing game logic
+"use client"
 import { useApp } from "@pixi/react";
 import { useEffect } from "react";
 import { Application } from "pixi.js";
