@@ -15,7 +15,7 @@ export default function PixiApp({ run = script, data }: PixiAppProps) {
   useEffect(() => {
     app.stage.removeChildren();
     run(app, data);
-  }, [app]);
+  }, [app, run]);
 
   return <></>;
 }
