@@ -13,6 +13,7 @@ import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
 import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
+import card from "public/assets/activity/white-card.svg";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
 import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
 import { Sound } from "@pixi/sound";
@@ -64,11 +65,11 @@ const subTextCard = new TextStyle({
 });
 
 export default function moneyCanScript(app: Application, data: JSONValue) {
+  console.log("money time!");
   pixiApp = app;
   setup();
   attempts = 0;
   correct = 0;
-  propagateCards(data);
 
   const timerManager = new TimerManager();
   timer = timerManager.createTimer(1000);
@@ -109,14 +110,14 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
 
   instruction.container.position.set(pixiApp.screen.width / 2, 200);
   endModal.container.position.set(pixiApp.screen.width / 2, 200);
-
+  pixiApp.stage.addChild(correctContainer, wrongContainer);
+  propagateCards(data);
   pixiApp.stage.addChild(
-    correctContainer,
-    wrongContainer,
     blurGraphics,
     instruction.container,
     endModal.container
   );
+
   //main update loop
   pixiApp.ticker.add(() => {
     timerManager.update();
@@ -127,9 +128,6 @@ function setup() {
   //setup background
   const backgroundTexture = Texture.from(backgroundImage.src);
   const background = new Sprite(backgroundTexture);
-
-  const svgImage = Texture.from(clock.src);
-  const svgClock = new Sprite(svgImage);
 
   background.width = pixiApp.screen.width;
   background.height = pixiApp.screen.height;
@@ -172,14 +170,31 @@ function setup() {
       fontFamily: "Helvetica",
       fontSize: 16,
       wordWrap: true,
-      wordWrapWidth: scoreBoxDimensions.width,
+      wordWrapWidth: scoreBoxDimensions.width - 25,
       align: "right",
     })
   );
 
   cardsRemainingText.anchor.set(0.5);
+  cardsRemainingText.setTransform(20);
 
-  cardsRemainingContainer.addChild(cardsRemainingGraphics, cardsRemainingText);
+  const cardsBoxSVGContainerGraphic = new Graphics();
+  cardsBoxSVGContainerGraphic.beginFill("#3385FF");
+  cardsBoxSVGContainerGraphic.drawRoundedRect(-85, -15, 30, 30, 4);
+
+  const cardSvgImage = Texture.from(card.src);
+  const svgCard = new Sprite(cardSvgImage);
+
+  svgCard.width = cardsBoxSVGContainerGraphic.width - 5;
+  svgCard.height = cardsBoxSVGContainerGraphic.height - 5;
+  svgCard.position.set(-82, -12);
+
+  cardsRemainingContainer.addChild(
+    cardsRemainingGraphics,
+    cardsBoxSVGContainerGraphic,
+    cardsRemainingText,
+    svgCard
+  );
 
   //timer
   const timeContainer = new Container();
@@ -219,6 +234,9 @@ function setup() {
   timeText.anchor.set(0.5);
   timeText.x = 9;
   timeText.y = -1;
+
+  const svgImage = Texture.from(clock.src);
+  const svgClock = new Sprite(svgImage);
 
   svgClock.width = timeBoxSVGContainerGraphic.width - 10;
   svgClock.height = timeBoxSVGContainerGraphic.height - 10;
@@ -377,7 +395,11 @@ function propagateCards(jsonData: JSONValue) {
     cardObject.cardContainer.x = pixiApp.screen.width / 2;
     cardObject.cardContainer.y = 217.5;
     cardBank.push(cardObject);
-    pixiApp.stage.addChildAt(cardObject.cardContainer, 3);
+
+    pixiApp.stage.addChildAt(
+      cardObject.cardContainer,
+      pixiApp.stage.children.length
+    );
 
     cardObject.cardContainer.on("pointerdown", onDragStart, cardObject);
   }
@@ -425,6 +447,7 @@ function onDragEnd() {
         dragTarget.cardContainer.y = 487.5;
 
         cardBank.pop();
+        pixiApp.stage.removeChild(dragTarget.cardContainer);
       } else {
         wrongSound.play();
         dragTarget.cardContainer.x = pixiApp.screen.width / 2;
@@ -446,6 +469,7 @@ function onDragEnd() {
         dragTarget.cardContainer.x =
           pixiApp.screen.width - pixiApp.screen.width / 4;
         dragTarget.cardContainer.y = 487.5;
+        pixiApp.stage.removeChild(dragTarget.cardContainer);
         cardBank.pop();
       } else {
         wrongSound.play();
