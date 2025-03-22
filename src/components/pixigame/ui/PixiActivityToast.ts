@@ -1,4 +1,4 @@
-import { Container, Graphics, TextStyle, Text } from "pixi.js";
+import { Container, Graphics, TextStyle, Text, Sprite } from "pixi.js";
 
 class PixiActivityToast {
   private activityToastContainer: Container;
@@ -10,7 +10,8 @@ class PixiActivityToast {
     radius: number,
     text: string,
     textStyle?: TextStyle,
-    color?: number | string
+    color?: number | string,
+    icon?: Sprite
   ) {
     if (!color) {
       color = 0xffffff;
@@ -25,7 +26,15 @@ class PixiActivityToast {
     this.containerText.setTransform(width / 2, height / 2);
     this.containerText.anchor.set(0.5);
 
-    this.activityToastContainer.addChild(containerGraphics, this.containerText);
+    const iconGraphics = new Graphics();
+    iconGraphics.beginFill("#3385FF");
+    iconGraphics.drawRoundedRect(-90, -5, height, height - 10, 4);
+
+    this.activityToastContainer.addChild(
+      containerGraphics,
+      iconGraphics,
+      this.containerText
+    );
   }
 
   public get container(): Container {
