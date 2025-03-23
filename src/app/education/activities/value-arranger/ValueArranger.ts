@@ -18,6 +18,7 @@ import { MoneyObject } from "./MoneyObject";
 import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
 import { Sound } from "@pixi/sound";
+import clock from "public/assets/activity/clock.svg";
 
 let pixiApp: Application;
 let gameManager: GameManager;
@@ -203,16 +204,19 @@ function Load() {
   );
   itemsToast.container.setTransform(25, 21);
 
+  const svgImage = Texture.from(clock.src);
+  const svgClock = new Sprite(svgImage);
   timeToast = new PixiActivityToast(
     44,
-    163,
+    200,
     15,
     "0 seconds elapsed",
     new TextStyle({
       fontSize: 16,
-    })
+    }),
+    svgClock
   );
-  timeToast.container.setTransform(876, 21);
+  timeToast.container.setTransform(865, 21);
 
   //start UI
   const startModal = new StartModal(

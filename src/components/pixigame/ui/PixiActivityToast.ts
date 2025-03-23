@@ -10,8 +10,8 @@ class PixiActivityToast {
     radius: number,
     text: string,
     textStyle?: TextStyle,
-    color?: number | string,
-    icon?: Sprite
+    icon?: Sprite,
+    color?: number | string
   ) {
     if (!color) {
       color = 0xffffff;
@@ -23,18 +23,27 @@ class PixiActivityToast {
     containerGraphics.drawRoundedRect(0, 0, width, height, radius);
 
     this.containerText = new Text(text, textStyle);
-    this.containerText.setTransform(width / 2, height / 2);
-    this.containerText.anchor.set(0.5);
+    if (icon) {
+      this.containerText.setTransform(10 + height - 5, height / 2);
+      this.containerText.anchor.set(0, 0.5);
+    } else {
+      this.containerText.setTransform(width / 2, height / 2);
+      this.containerText.anchor.set(0.5);
+    }
 
-    const iconGraphics = new Graphics();
-    iconGraphics.beginFill("#3385FF");
-    iconGraphics.drawRoundedRect(-90, -5, height, height - 10, 4);
+    this.activityToastContainer.addChild(containerGraphics, this.containerText);
 
-    this.activityToastContainer.addChild(
-      containerGraphics,
-      iconGraphics,
-      this.containerText
-    );
+    if (icon) {
+      const iconGraphics = new Graphics();
+      iconGraphics.beginFill("#3385FF");
+      iconGraphics.drawRoundedRect(10, 7, height - 15, height - 15, 4);
+
+      icon.width = height - 20;
+      icon.height = height - 20;
+      icon.anchor.set(0, 0.5);
+      icon.position.set(12.5, height / 2);
+      this.activityToastContainer.addChild(iconGraphics, icon);
+    }
   }
 
   public get container(): Container {
