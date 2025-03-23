@@ -4,12 +4,8 @@
   padding: 30px;
 }
 .activityContainer {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
+  height: 1400px;
   border-radius: 10px;
-  border: 1px solid var(--bb);
-  background-color: white;
 }
 .headerContainer {
   display: flex;

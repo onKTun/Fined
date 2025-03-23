@@ -6,6 +6,7 @@ import {
   Container,
   Text,
   TextStyle,
+  Color,
 } from "pixi.js";
 import TimerManager from "utils/pixiJS/time utils/TimerManager";
 import Timer from "utils/pixiJS/time utils/Timer";
@@ -17,6 +18,7 @@ import card from "public/assets/activity/white-card.svg";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
 import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
 import { Sound } from "@pixi/sound";
+import { gsap } from "gsap"
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -65,6 +67,10 @@ const subTextCard = new TextStyle({
 });
 
 export default function moneyCanScript(app: Application, data: JSONValue) {
+  const music = new Audio('/assets/pixijsaudio/prism.mp3'); // Replace with your music file path
+  music.loop = true; // Optionally loop the music
+  music.volume = 0.1;
+  music.play();
   console.log("money time!");
   pixiApp = app;
   setup();
@@ -92,6 +98,7 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   blurGraphics.alpha = 0.5;
 
   onStart = () => {
+    
     timer.start();
     blurGraphics.renderable = false;
   };
@@ -332,6 +339,7 @@ function setup() {
     8
   );
   cardAnswerGraphicsWrong.endFill();
+  
   //container texts
   const containerTrueText = new Text("Money Can", whiteTextStyleBold);
   containerTrueText.anchor.set(0.5);
@@ -423,72 +431,118 @@ function onDragStart() {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   dragTarget = this;
   if (dragTarget) {
-    dragTarget.cardContainer.alpha = 0.5;
+    dragTarget.cardContainer.alpha = 0.7;
   }
   pixiApp.stage.on("pointermove", onDragMove);
 }
 
-function onDragEnd() {
-  if (dragTarget) {
-    pixiApp.stage.off("pointermove", onDragMove);
-    dragTarget.cardContainer.alpha = 1; //opacity
-    //check answer + detect overlap
-    //correct container scenario
-    if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
-      attempts++;
-      if (dragTarget.answer) {
-        correctSound.play();
-        cardsLeft--;
-        correct++;
-        cardsRemainingText.text = cardsLeft + " Cards Remaining";
+function pulseEffect(target: Sprite) {
+  if (!target) return;
 
-        dragTarget.cardContainer.off("pointerdown", onDragStart);
-        dragTarget.cardContainer.x = pixiApp.screen.width / 4;
-        dragTarget.cardContainer.y = 487.5;
+  gsap.to(target.scale, {
+    x: 1.1,
+    y: 1.1,
+    duration: 0.1,
+    yoyo: true,
+    repeat: 1,
+  });
+}
 
-        cardBank.pop();
-        pixiApp.stage.removeChild(dragTarget.cardContainer);
-      } else {
-        wrongSound.play();
-        dragTarget.cardContainer.x = pixiApp.screen.width / 2;
-        dragTarget.cardContainer.y = 217.5;
-      }
+
+function pulseBackground(color) {
+  // Create a graphics object
+  const background = new Graphics();
+  
+  // Set the initial background color (transparent black for overlay effect)
+  background.beginFill(color, 0.3); // 1 alpha for solid color
+  background.drawRect(0, 0, window.innerWidth, window.innerHeight); 
+  background.endFill();
+  
+  // Add the background to the stage
+  pixiApp.stage.addChild(background);
+  
+  // Pulse animation using GSAP (or other tween libraries)
+  gsap.to(background, {
+    alpha: 0.6, // Pulse between 1 and 0.2 alpha
+    duration: 0.2, // Duration for the pulse
+    ease: "power1.inOut", // Easing for smooth transition
+    onComplete: () => {
+      // Remove the background from the stage after one pulse
+      pixiApp.stage.removeChild(background);
     }
-    //wrong container scenario
-    else if (
-      getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3
-    ) {
-      attempts++;
-      if (!dragTarget.answer) {
-        correctSound.play();
-        cardsLeft--;
-        correct++;
-        cardsRemainingText.text = cardsLeft + " Cards Remaining";
+  });
+}
 
-        dragTarget.cardContainer.off("pointerdown", onDragStart);
-        dragTarget.cardContainer.x =
-          pixiApp.screen.width - pixiApp.screen.width / 4;
-        dragTarget.cardContainer.y = 487.5;
-        pixiApp.stage.removeChild(dragTarget.cardContainer);
-        cardBank.pop();
-      } else {
-        wrongSound.play();
-        dragTarget.cardContainer.x = pixiApp.screen.width / 2;
-        dragTarget.cardContainer.y = 217.5;
-      }
+function onDragEnd() {
+  if (!dragTarget) return;
+
+  pixiApp.stage.off("pointermove", onDragMove);
+  dragTarget.cardContainer.alpha = 1; // Reset opacity
+
+  const cardSprite = dragTarget.cardContainer as Sprite; // Ensure it's a Sprite
+
+  // Correct container scenario
+  if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
+    attempts++;
+    if (dragTarget.answer) {
+      correctSound.play();
+      pulseEffect(cardSprite); // Green pulse
+      pulseBackground("green")
+      cardsLeft--;
+      correct++;
+      cardsRemainingText.text = cardsLeft + " Cards Remaining";
+
+      dragTarget.cardContainer.off("pointerdown", onDragStart);
+      dragTarget.cardContainer.x = pixiApp.screen.width / 4;
+      dragTarget.cardContainer.y = 487.5;
+
+      cardBank.pop();
+      pixiApp.stage.removeChild(dragTarget.cardContainer);
     } else {
+      wrongSound.play();
+      pulseEffect(cardSprite); // Red pulse
+      pulseBackground("red")
+
       dragTarget.cardContainer.x = pixiApp.screen.width / 2;
       dragTarget.cardContainer.y = 217.5;
     }
-
-    if (cardsLeft == 0) {
-      endGame();
-    }
-
-    dragTarget = null;
   }
-}
+  // Wrong container scenario
+  else if (getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3) {
+    attempts++;
+    if (!dragTarget.answer) {
+      correctSound.play();
+      pulseEffect(cardSprite); // Green pulse
 
+      pulseBackground("green")
+      cardsLeft--;
+      correct++;
+      cardsRemainingText.text = cardsLeft + " Cards Remaining";
+
+      dragTarget.cardContainer.off("pointerdown", onDragStart);
+      dragTarget.cardContainer.x = pixiApp.screen.width - pixiApp.screen.width / 4;
+      dragTarget.cardContainer.y = 487.5;
+      pixiApp.stage.removeChild(dragTarget.cardContainer);
+      cardBank.pop();
+    } else {
+      wrongSound.play();
+      pulseEffect(cardSprite); // Red pulse
+      pulseBackground("red")
+
+      dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+      dragTarget.cardContainer.y = 217.5;
+    }
+  } else {
+    dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+    dragTarget.cardContainer.y = 217.5;
+  }
+
+  if (cardsLeft == 0) {
+    endGame();
+  }
+
+  dragTarget = null;
+}
 function updateTime(timeElapsed) {
   timeText.text = "Time Elapsed: " + timeElapsed;
 }
