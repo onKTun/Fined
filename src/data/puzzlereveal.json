@@ -1,39 +1,225 @@
 {
-    "optionArray": [
-        
-            {
-            "description": "the amount of currency one has",
-            "correct": true},
-            {
-                "description": "kevin is sus",
-                "correct": false
-            },
-            {
-                "description": "Adam is sus",
-                "correct": false
-            },
-            {
-                "description": "Landon is cool",
-                "correct": true
-            },
-        
-        
-        
-            {
-            "description": "League of Legends is more important than family",
-            "correct": true
-            },
-            {
-            "description": "Family First, League second",
-            "correct": false
-            },
-            {
-                "description": "Adam eats chopotle every day",
-                "correct": true
-            },
-            {
-                "description": "Kevin smells like cheese",
-                "correct": false
-            }    
+    "questionArray": [
+        {
+            "id": 1,
+            "description": "Define Aura.",
+            "options":[
+                {
+                    "optionDescription": "The amount of currency one has",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "How much rizz you have",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "How much spritual pressure you have",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Landon Acuna",
+                    "correct": true
+                }
+            ]
+            
+        },
+        {
+            "id": 2,
+            "description": "Money...?",
+            "options": [
+                {
+                    "optionDescription": "Grows on trees",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Is everything",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "Should dictate your life",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Is important but not number one",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "description": "What makes someone sus?",
+            "options": [
+                {
+                    "optionDescription": "Kevin Tun",
+                    "correct": true
+                },
+                {
+                    "optionDescription": "Reading interesting comics",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "Watching too much anime",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Playing Amongus",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "description": "How much priority should you have with League of Legends?",
+            "options": [
+                {
+                    "optionDescription": "Family First, League Second",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "LEAGUE OVER EVERYONE",
+                    "correct":true
+                },
+                {
+                    "optionDescription": "Go Outside",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Touch Grass",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "description": "What is Adam Darzidan eating for lunch today?",
+            "options": [
+                {
+                    "optionDescription": "School lunch",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Home-made food",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "Chipotle",
+                    "correct": true
+                },
+                {
+                    "optionDescription": "Salad",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "description": "What will be the future of COMPSCI Majors?",
+            "options": [
+                {
+                    "optionDescription": "Billionare",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "Professional Brawl Stars Player",
+                    "correct": true
+                },
+                {
+                    "optionDescription": "Homeless",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Middleclass Demon",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "description": "Describe Deliciousness",
+            "options": [
+                {
+                    "optionDescription": "Filipino Food",
+                    "correct": true
+                },
+                {
+                    "optionDescription": "Burma Food",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "Korean Food",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Hamburger",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "description": "To be wealthy I need...?",
+            "options": [
+                {
+                    "optionDescription": "To be rich",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "To have a loving wife with kids",
+                    "correct":true
+                },
+                {
+                    "optionDescription": "To abandon EVERYONE",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "To be greedy",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "description": "Which person has the most aura?",
+            "options": [
+                {
+                    "optionDescription": "Chuu (Loona)",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Kendrick (Lamar)",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "Mihir Sud",
+                    "correct": true
+                },
+                {
+                    "optionDescription": "Faker (LoL)",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "description": "Who is the best singer?",
+            "options": [
+                {
+                    "optionDescription": "John Pork",
+                    "correct":false
+                },
+                {
+                    "optionDescription": "NBA Young Boi",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Beabadoobee",
+                    "correct": false
+                },
+                {
+                    "optionDescription": "Kyle Ramil",
+                    "correct":true
+                }
+            ]
+        }
     ]
 }

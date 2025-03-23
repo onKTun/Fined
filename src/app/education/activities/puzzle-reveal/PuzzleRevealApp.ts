@@ -13,6 +13,7 @@ import {
   import TimerManager from "utils/pixiJS/time utils/TimerManager";
   import Timer from "utils/pixiJS/time utils/Timer";
   import OptionBox from "./OptionBox";
+  import QuestionBox from "./QuestionBox";
   import { markComplete } from "utils/supabase/lessonProgressService";
   import { StartModal } from "../../../../components/pixigame/ui/StartModal";
   import clock from "public/assets/activity/clock.svg";
@@ -26,12 +27,14 @@ import {
   //colors for option boxes
   const optionBoxColors = ["FF8254", "FFC954", "549EFF", "4CCF53"];
 
-  const questionBlockDimensions = {width: 100, height: 100, x:230, y:100};
+  const questionBlockDimensions = {width: 334, height: 41, x:280, y:400};
+
+  const letters = ["A", "B", "C", "D"];
 
   //option box dimensions, x are different for spacing purposes
   const optionBoxWidth = 194;
   const optionBoxHeight = 140;
-  const optionBoxY = 450;
+  const optionBoxY = 500;
   const optionBoxRad = 10;
   const optionBoxDimensions = [
     {
@@ -51,9 +54,10 @@ import {
   //variables
   let pixiApp : Application;
 
-  let optionBank : OptionBox[] =[];
+  let questionBank : QuestionBox[] =[];
+  let optionBank : OptionBox[] = [];
   let overlayArray: Graphics[] = [];
-  let optionArray: any[] = [];
+  let questionArray: any[] = [];
 
   let overlayGraphic: Graphics;
   let questionBlockGraphic: Graphics;
@@ -64,12 +68,11 @@ import {
   let questionBlockContainer: Container;
 
   let revealedPieces = 0;
+  let optionsIndex = 0;
   let questionIndex = 0;
-  
   
   let piecesRemainingText: Text;
   let timeText: Text;
-  let questionBlockText: Text;
 
   let timer: Timer;
 
@@ -162,7 +165,7 @@ import {
     const scoreBoxDimensions = {
       width: 190,
       height: 50,
-      x: 120,
+      x: 110,
       y: 50,
       radius: 10,
     };
@@ -253,75 +256,84 @@ import {
           svgClock
         );
 
-        pixiApp.stage.addChild(timeContainer);
-        
-        // questionBlockGraphic = new Graphics();
-        // questionBlockGraphic.beginFill(0xffffff);
-        // questionBlockGraphic.drawRect(questionBlockDimensions.x, questionBlockDimensions.y, questionBlockDimensions.width, questionBlockDimensions.height);
-        // questionBlockGraphic.endFill();
+        pixiApp.stage.addChild(timeContainer); 
 
-        // questionBlockContainer = new Container();
+        const optionBlockBackgroundShape = new Rectangle(
+          0,
+          360,
+          900,
+          350
+        )
+        const optionBlockBackground = new Graphics();
+        optionBlockBackground.beginFill("0x2568CC");
+        optionBlockBackground.drawShape(optionBlockBackgroundShape);
+        optionBlockBackground.endFill();
 
-        // questionBlockText = new Text(
-        //   "Define the Following: ",
-        //   new TextStyle({
-        //     fontFamily: "Helvetica",
-        //     fontSize: 16,
-        //     wordWrap: true,
-        //     wordWrapWidth: questionBlockDimensions.width + 10,
-        //     align: "center",
-        //   })
-        // );
-        // const questionText = new Text(this.description, boxTextStyle);
-        // boxText.anchor.set(0.0);
-        // boxText.x = boxDimensions.x + (boxDimensions.width / 4);
-        // boxText.y = boxDimensions.y + (boxDimensions.height / 2);
+        const optionBlockBackground2Shape = new Rectangle(
+          0,
+          465,
+          900,
+          200
+        )
+        const optionBlockBackground2 = new Graphics();
+        optionBlockBackground.beginFill("0x3F78CC");
+        optionBlockBackground.drawShape(optionBlockBackground2Shape);
+        optionBlockBackground.endFill();
 
-        // boxContainer.addChild(boxText);
+        pixiApp.stage.addChild(optionBlockBackground, optionBlockBackground2);
 
-        // this.boxContainer.eventMode = "static";
-        // this.boxContainer.cursor = "pointer";
-        // questionBlockContainer.addChild(questionBlockGraphic, questionBlockText);
 
-        // pixiApp.stage.addChild(questionBlockContainer);
-        
   }
 
   function createOptions(jsonData: JSONValue) {
-    //assigns optionArray to data in ./data/puzzleReveal
-    optionArray = jsonData["optionArray"];
+
+    questionArray = jsonData["questionArray"];
+
     optionsContainer = new Container();
-    console.log(optionArray);
+    questionBlockContainer = new Container();
+
+    questionBank = [];
     optionBank = [];
-    //xIndex to assign certain squares, certain x values
-    let xIndex = 0;
-    
-    for (let j = 0; j < 4; j++){
 
-      //if any go out of bounds, return
-        if (xIndex >= 4){
-          return;
+    optionsIndex = 4;
+    questionIndex = 0;
+
+    for (let j = 0; j < questionArray.length; j++){
+        
+        for (let y = 0; y < 4; y++){
+
+          const optionBox = new OptionBox(
+            questionArray[j].options[y]["optionDescription"], 
+            questionArray[j].options[y]["correct"], 
+            optionBoxDimensions[y],
+            optionBoxColors[y],
+            letters[y]
+          );
+          // console.log("optionBox", optionBox);
+          // optionsContainer.addChild(optionBox.boxContainer);
+          optionBank.push(optionBox);
+          optionBox.boxContainer.on("pointerdown", onClick, optionBox);
         }
-        if (questionIndex >= optionArray.length){
-          return;
-        }
-
-        //assigns new OptionBox object to values from optionArray - values from the json file
-        const optionBox = new OptionBox(
-          optionArray[j]["description"], 
-          optionArray[j]["correct"], 
-          optionBoxDimensions[xIndex],
-          optionBoxColors[xIndex]
-        );
-        optionsContainer.addChild(optionBox.boxContainer);
-        optionBank.push(optionBox);
-        xIndex++;
-        questionIndex++;
-        pixiApp.stage.addChild(optionsContainer);
-        //event listener for click
-        optionBox.boxContainer.on("pointerdown", onClick, optionBox);
-
+        const questionBox = new QuestionBox(
+          questionArray[j]["description"],
+          questionBlockDimensions
+        )
+        questionBank.push(questionBox);
+        //width: number, height: number, x:number, y:number
+        // xIndex++;
+        
+        // pixiApp.stage.addChild(optionsContainer);
     };  
+    
+    questionBlockContainer.addChild(questionBank[questionIndex].boxContainer);
+    pixiApp.stage.addChild(questionBlockContainer);
+    for (let i = 0; i < optionsIndex; i ++){
+      optionsContainer.addChild(optionBank[i].boxContainer);
+      pixiApp.stage.addChild(optionsContainer);
+    
+    }
+    console.log("bank", optionBank);
+
   }
 
     
@@ -353,7 +365,8 @@ import {
           
           piecesLeft--;
           piecesRemainingText.text = piecesLeft + " Pieces Remaining";
-        // changeQuestions();
+          
+        changeQuestions();
             
       }
       else {
@@ -362,7 +375,50 @@ import {
     }
 
     function changeQuestions(){
+
+      optionsContainer.removeChildren();
+      questionBlockContainer.removeChildren();
+      if (optionsIndex >= 39){
+        console.log("puzzleComplete!");
+          
+        return;
+      }
+      else{
+        questionIndex++;
+        questionBlockContainer.addChild(questionBank[questionIndex].boxContainer);
+        for (let i = optionsIndex; i < optionsIndex + 4; i++){
+          console.log("i", i);
+          optionsContainer.addChild(optionBank[i].boxContainer);
+          pixiApp.stage.addChild(optionsContainer);
+        }
+      }
+      
+      optionsIndex += 4;
+      
+      // optionsContainer.
       //to be created
+      /*
+        - rewrite the puzzlereveal.json format
+          -  question array
+              - question 1
+                  - questionText
+                  - option array
+                    - option 1
+                      - description
+                      - isCorrect
+                    - option 2
+              - question 2
+
+        - rewrite the createOptions to suit new data structure
+        - for changeQuestions
+          - keep track of what question you are
+          - just increment the questionsIndex and then update all accordingly
+          - i think you can access the data like
+          questionArray[] = {data from json here}
+          questionArray[questionIndex]["questionText"]
+          questionArray[questionIndex]["optionArray"][optionIndex] <-- loop through all the indexes to update option
+      
+       */
     }
  
     //This entire timer was KevinGPT'ed
