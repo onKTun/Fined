@@ -1,131 +1,151 @@
 import { Button } from "@pixi/ui";
-import { Container, Graphics, Text, TextStyle } from "pixi.js";
+import { Container, Graphics, Sprite, Text, TextStyle, Texture } from "pixi.js";
+import clock from "public/assets/activity/clock.svg";
 
 export class StartModal {
   container: Container;
-  objectiveText: Text;
+  descriptionText: Text;
   stepsText: Text;
 
-  size: { width: number; height: number };
-
   constructor(
-    objective: string,
-    steps: string,
-    width: number,
-    onStart: () => void
+    title: string,
+    description: string,
+    onStart: () => void,
+    size?: { width: number; height: number }
   ) {
-    const textBoxPadding = 25;
-    const textPadding = 20;
-    const overhead = 40;
-
-    const textBoxContainer = new Container();
-
-    this.objectiveText = new Text(
-      `Objective: ${objective}`,
+    //main description text section
+    this.descriptionText = new Text(
+      description,
       new TextStyle({
-        fontSize: 16,
+        fontSize: 14,
+        fill: "3A3A3A",
         wordWrap: true,
-        wordWrapWidth: 400,
+        wordWrapWidth: size?.width ?? 250,
       })
     );
-    this.stepsText = new Text(
-      `Steps: ${steps}`,
-      new TextStyle({
-        fontSize: 16,
-        wordWrap: true,
-        wordWrapWidth: 400,
-      })
-    );
-
-    const title = new Text(
-      `Instructions`,
-      new TextStyle({
-        fontSize: 24,
-        wordWrap: true,
-        wordWrapWidth: 400,
-      })
-    );
-
-    this.objectiveText.x = textPadding;
-    this.stepsText.x = textPadding;
-    this.objectiveText.y = 10;
-    this.stepsText.y = this.objectiveText.height + 20;
-
-    textBoxContainer.addChild(this.objectiveText, this.stepsText);
-    textBoxContainer.calculateBounds();
-
-    const textBoxGraphics = new Graphics();
-    textBoxGraphics.beginFill("#F5F5F5");
-    textBoxGraphics.drawRoundedRect(
+    const descriptionBackingGraphics = new Graphics();
+    descriptionBackingGraphics.beginFill("F2F2F2");
+    descriptionBackingGraphics.drawRoundedRect(
       0,
       0,
-      textBoxContainer.getBounds().width + 2 * textPadding,
-      textBoxContainer.getBounds().height + 2 * textPadding - 10,
-      10
+      this.descriptionText.width + 50,
+      this.descriptionText.height + 50,
+      5
     );
-    textBoxContainer.addChildAt(textBoxGraphics, 0);
+    this.descriptionText.setTransform(25, 25);
+    descriptionBackingGraphics.addChild(this.descriptionText);
 
-    const buttonContainer = new Container();
+    //icon section
+    const svgImage = Texture.from(clock.src);
+    const icon = new Sprite(svgImage);
+    const iconGraphics = new Graphics();
+    iconGraphics.beginFill("D7D7D7");
+    iconGraphics.drawCircle(14, 14, 14);
+    icon.width = 16;
+    icon.height = 16;
+    icon.anchor.set(0.5);
+    icon.position.set(14, 14);
+    iconGraphics.addChild(icon);
+    //title text section
+
+    const titleText = new Text(
+      title,
+      new TextStyle({
+        fontSize: 20,
+      })
+    );
+    const subtitleText = new Text(
+      "Instructions",
+      new TextStyle({
+        fontSize: 16,
+        fill: "AAAAAA",
+      })
+    );
+    iconGraphics.setTransform(35, 35);
+    titleText.setTransform(71, 31);
+    subtitleText.setTransform(71, 52);
+
+    //button section
 
     const buttonText = new Text(
-      "Begin Activity",
+      "Begin",
       new TextStyle({
-        fontSize: 18,
+        fontSize: 16,
         fill: "#FFFFFF",
       })
     );
     const buttonGraphics = new Graphics();
     buttonGraphics.beginFill("#3385FF");
-    buttonGraphics.drawRoundedRect(
-      0,
-      0,
-      buttonText.width + 2 * 10,
-      buttonText.height + 2 * 10,
-      10
-    );
-
+    buttonGraphics.drawRoundedRect(0, 0, 110, 40, 5);
     buttonText.anchor.set(0.5);
     buttonText.position.set(
       buttonGraphics.width / 2,
       buttonGraphics.height / 2
     );
-
+    const buttonContainer = new Container();
     buttonContainer.addChild(buttonGraphics, buttonText);
-    buttonContainer.x = textBoxPadding;
-    buttonContainer.y =
-      textBoxPadding + title.height + 15 + textBoxGraphics.height + 15;
+
     const button = new Button(buttonContainer);
-
-    const backGraphics = new Graphics();
-    backGraphics.beginFill("#FFFFFF");
-    backGraphics.drawRoundedRect(
-      0,
-      0,
-      textBoxContainer.getBounds().width + textBoxPadding * 2,
-      textBoxContainer.getBounds().height +
-        textBoxPadding * 2 +
-        2 * title.height +
-        buttonGraphics.height,
-      10
-    );
-    backGraphics.endFill();
-
-    this.container = new Container();
-    this.container.pivot.set(backGraphics.width / 2, overhead);
-
-    textBoxContainer.position.set(
-      textBoxPadding,
-      textBoxPadding + title.height + 15
-    );
-
-    title.x = textBoxPadding + 10;
-    title.y = textBoxPadding;
 
     button.onPress.connect(() => {
       this.container.renderable = false;
       onStart();
     });
 
-    this.container.addChild(backGraphics, textBoxContainer, title, button.view);
+    //home button
+    const homeButtonText = new Text(
+      "Home",
+      new TextStyle({
+        fontSize: 16,
+        fill: "000000",
+      })
+    );
+    const homeButtonGraphics = new Graphics();
+    homeButtonGraphics.beginFill("EEEEEE");
+    homeButtonGraphics.drawRoundedRect(0, 0, 110, 40, 5);
+    homeButtonText.anchor.set(0.5);
+    homeButtonText.position.set(
+      homeButtonGraphics.width / 2,
+      homeButtonGraphics.height / 2
+    );
+    const homeButtonContainer = new Container();
+    homeButtonContainer.addChild(homeButtonGraphics, homeButtonText);
+
+    const homeButton = new Button(homeButtonContainer);
+
+    homeButton.onPress.connect(() => {
+      history.back();
+    });
+    descriptionBackingGraphics.setTransform(35, 84);
+    buttonContainer.setTransform(
+      35,
+      descriptionBackingGraphics.height + descriptionBackingGraphics.y + 24
+    );
+    homeButtonContainer.setTransform(
+      156,
+      descriptionBackingGraphics.height + descriptionBackingGraphics.y + 24
+    );
+    this.container = new Container();
+    this.container.addChild(
+      descriptionBackingGraphics,
+      iconGraphics,
+      titleText,
+      subtitleText,
+      buttonContainer,
+      homeButtonContainer
+    );
+
+    //backing graphics
+    const backingGraphics = new Graphics();
+    backingGraphics.beginFill("FFFFFF");
+    backingGraphics.drawRoundedRect(
+      0,
+      0,
+      this.container.width + 70,
+      this.container.height + 60,
+      5
+    );
+    this.container.addChildAt(backingGraphics, 0);
+    this.container.pivot.set(this.container.width / 2, 0);
   }
 }

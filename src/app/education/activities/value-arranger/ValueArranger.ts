@@ -220,9 +220,9 @@ function Load() {
 
   //start UI
   const startModal = new StartModal(
-    "Students will add up cash and coins to match the total balance due.",
-    "When the game starts, you'll see a bank with different bills and coins. Use these bills and coins to add up to the total sum due by dragging them towards the left side of the screen. If you would like to remove a bill, drag it outside.",
-    10,
+    "Value Arranger",
+    "Students will add up cash and coins to match the total balance due. When the game starts, you'll see a bank with different bills and coins. Use these bills and coins to add up to the total sum due by dragging them towards the left side of the screen. If you would like to remove a bill, drag it outside.",
+
     () => {
       gameManager.setState(1);
     }

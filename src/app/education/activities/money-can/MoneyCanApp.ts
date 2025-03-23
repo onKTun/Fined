@@ -97,9 +97,8 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   };
 
   const instruction = new StartModal(
-    "Welcome to Money Can. This activity will help you understand the ways that Money can help you, and the ways that Money can't help you. ",
-    "When the game starts, you'll see cards with different actions written on them. Read each card and think: Can money do this? If yes, put the card in the Money Can pile. If no, put it in the Money Cannot pile.",
-    10,
+    "Money Can",
+    "Welcome to Money Can. This activity will help you understand the ways that Money can help you, and the ways that Money can't help you.  When the game starts, you'll see cards with different actions written on them. Read each card and think: Can money do this? If yes, put the card in the Money Can pile. If no, put it in the Money Cannot pile.",
     onStart
   );
 
