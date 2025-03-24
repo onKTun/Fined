@@ -32,4 +32,11 @@ type PixiActivity = {
   lessonID?: number;
 };
 
+type McqQuestion = {
+  questionId?: number;
+  questionName: string;
+  answerChoices: string[];
+  correctAnswer: string;
+};
+
 type GameActivityStates = "load" | "start" | "play" | "end" | "cleanup";
