@@ -1,22 +1,30 @@
+//dont use this shit bro
 "use client";
-import { Stage } from "@pixi/react";
+import { useState, useEffect } from "react";
 import PixiApp from "src/components/pixigame/PixiApp";
-import { PixiAppProps } from "src/components/pixigame/PixiApp";
 
 interface GameActivityComponentProps {
-  width?: number;
-  height?: number;
+  scriptPath: string;
+  data?: JSONValue
 }
+export default function GameActivityComponent({ scriptPath, data }: GameActivityComponentProps) {
+  const [script, setScript] = useState(() => () => { });
 
-export default function GameActivityComponent({
-  width = 900,
-  height = 700,
-  run,
-  data,
-}: GameActivityComponentProps & PixiAppProps) {
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadFunction() {
+      const script = (await import(scriptPath)).default
+      if (isMounted) setScript(() => script);
+    }
+
+    loadFunction();
+
+    return () => {
+      isMounted = false; // Prevent setting state on unmounted component
+    };
+  }, []);
   return (
-    <Stage width={width} height={height} options={{ background: "3385FF" }}>
-      <PixiApp run={run} data={data}></PixiApp>
-    </Stage>
+    <PixiApp run={script} data={data}></PixiApp>
   );
 }
