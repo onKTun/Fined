@@ -5,6 +5,7 @@ import { Stage } from "@pixi/react";
 import { Suspense, useEffect, useState } from "react";
 import LoadingModal from "src/components/loading/LoadingModal";
 import PixiApp from "src/components/pixigame/PixiApp";
+import data from "src/data/racing.json"
 
 const Game = () => {
     const [script, setScript] = useState(() => () => { });
@@ -24,7 +25,7 @@ const Game = () => {
         };
     }, []);
     return (
-        <PixiApp run={script} ></PixiApp>
+        <PixiApp run={script} data={data}></PixiApp>
     );
 }
 export default function RacingGamePage() {

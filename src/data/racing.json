@@ -1,0 +1,72 @@
+[
+  {
+    "questionName": "What is the basic unit of currency in the United States?",
+    "answerChoices": ["Dollar", "Euro", "Yen"],
+    "correctAnswer": "Dollar"
+  },
+  {
+    "questionName": "Which of the following is a common type of savings account?",
+    "answerChoices": [
+      "Checking account",
+      "Money market account",
+      "Credit card account"
+    ],
+    "correctAnswer": "Money market account"
+  },
+  {
+    "questionName": "What does 'APR' stand for in finance?",
+    "answerChoices": [
+      "Annual Percentage Rate",
+      "Annual Payment Ratio",
+      "Average Profit Return"
+    ],
+    "correctAnswer": "Annual Percentage Rate"
+  },
+  {
+    "questionName": "Which financial institution is typically used for depositing money?",
+    "answerChoices": ["Bank", "Stock Exchange", "Credit Bureau"],
+    "correctAnswer": "Bank"
+  },
+  {
+    "questionName": "What is a budget?",
+    "answerChoices": [
+      "A plan for managing money",
+      "A type of bank account",
+      "A government tax policy"
+    ],
+    "correctAnswer": "A plan for managing money"
+  },
+  {
+    "questionName": "Which of the following is a type of investment?",
+    "answerChoices": ["Stocks", "Loans", "Insurance"],
+    "correctAnswer": "Stocks"
+  },
+  {
+    "questionName": "What is a credit score used for?",
+    "answerChoices": [
+      "Determining loan eligibility",
+      "Calculating taxes",
+      "Measuring wealth"
+    ],
+    "correctAnswer": "Determining loan eligibility"
+  },
+  {
+    "questionName": "Which of these is an example of a liability?",
+    "answerChoices": ["Mortgage", "Savings account", "Investment"],
+    "correctAnswer": "Mortgage"
+  },
+  {
+    "questionName": "What is the main purpose of an emergency fund?",
+    "answerChoices": [
+      "To cover unexpected expenses",
+      "To invest in the stock market",
+      "To buy a new car"
+    ],
+    "correctAnswer": "To cover unexpected expenses"
+  },
+  {
+    "questionName": "Which of the following is an example of income?",
+    "answerChoices": ["Salary", "Debt", "Mortgage"],
+    "correctAnswer": "Salary"
+  }
+]

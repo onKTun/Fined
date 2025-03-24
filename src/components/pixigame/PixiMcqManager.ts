@@ -1,18 +1,23 @@
+import { Button } from "@pixi/ui";
 import { Text } from "pixi.js";
 
 class PixiMcqManager {
   private answerTexts: Text[];
   private questionText: Text;
   private questionData: McqQuestion[];
+  private answerButtons: Button[];
   private currentQuestionIndex: number = 0;
+
   constructor(
     questionData: McqQuestion[],
     answerTexts: Text[],
-    questionText: Text
+    questionText: Text,
+    answerButtons?: Button[]
   ) {
     this.questionData = questionData;
     this.answerTexts = answerTexts;
     this.questionText = questionText;
+    if (answerButtons) this.answerButtons = answerButtons;
 
     //set first state
     const currentQuestion = this.questionData[this.currentQuestionIndex];
@@ -32,6 +37,15 @@ class PixiMcqManager {
     } else {
       console.log("No more questions available.");
     }
+  }
+  public randomQuestion(): void {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * this.questionData.length);
+    } while (randomIndex === this.currentQuestionIndex);
+
+    this.currentQuestionIndex = randomIndex;
+    this.updateQuestionAndAnswers(this.currentQuestionIndex);
   }
 
   public updateQuestionAndAnswers(index: number): void {
@@ -56,4 +70,10 @@ class PixiMcqManager {
       onIncorrectCallback();
     }
   }
+
+  public get currentQuestion(): McqQuestion {
+    return this.questionData[this.currentQuestionIndex];
+  }
 }
+
+export { PixiMcqManager };
