@@ -8,10 +8,14 @@ have it be a long ass freaking strip
         ending animation where strip stops moving and then car starts moving
 when car passes the end trigger the end script
 every question right is a speed up and wrong is speed down (have a multiplier)
+
+have everything not interactive until start
+
 */
 import {
   Application,
   Container,
+  DisplayObject,
   Graphics,
   Sprite,
   Text,
@@ -28,14 +32,25 @@ import asphalt from "public/assets/activity/asphalt-background.jpg";
 import car from "public/assets/activity/red-car.png";
 import { PixiMcqManager } from "src/components/pixigame/PixiMcqManager";
 import { Button } from "@pixi/ui";
+import { StartModal } from "src/components/pixigame/ui/StartModal";
+import TimerManager from "utils/pixiJS/time utils/TimerManager";
+import Timer from "utils/pixiJS/time utils/Timer";
+import PixiActivityToast from "src/components/pixigame/ui/PixiActivityToast";
+import { EndModal } from "src/components/pixigame/ui/EndModal";
 
 let pixiApp: Application;
 let gameData: JSONValue;
 let gameManager: GameManager;
+let blurGraphics: Graphics;
+
+let timer: Timer;
+let elapsedTime: number;
+let timeToast: PixiActivityToast;
 
 let asphaltSprite: TilingSprite;
+const asphaltWidth = 924 * 2;
 let carSprite: Sprite;
-let speedMultiplier: number;
+let speedMultiplier: number = 1;
 
 let buttons: Button[];
 let mcqManager: PixiMcqManager;
@@ -47,10 +62,14 @@ export default function RacingGameScript(app: Application, data: JSONValue) {
   const background = new Sprite(backgroundTexture);
   pixiApp.stage.addChild(background);
 
-  gameManager = new GameManager(Load);
+  gameManager = new GameManager({
+    loadFunction: load,
+    startFunction: start,
+    endFunction: end,
+  });
 }
 
-function Load() {
+function load() {
   //grass
   const grassSprite = Sprite.from(grass.src);
   grassSprite.setTransform(0, 131);
@@ -140,7 +159,7 @@ function Load() {
   mcqManager = new PixiMcqManager(mcqData, answerTexts, questionText);
   mcqManager.updateQuestionAndAnswers(0);
   buttons = [button1, button2, button3];
-  setButtons(mcqManager.currentQuestion);
+  //setButtons(mcqManager.currentQuestion);
 
   const buttonContainer = new Container();
   buttonContainer.addChild(answerGraphics1, answerGraphics2, answerGraphics3);
@@ -162,16 +181,35 @@ function Load() {
 
   //asphalt
   const asphaltTexture = Texture.from(asphalt.src);
-  asphaltSprite = new TilingSprite(asphaltTexture, 924 * 4, 101);
+  asphaltSprite = new TilingSprite(asphaltTexture, asphaltWidth, 101);
   asphaltSprite.tileScale.set(0.1);
   //draw white lines on asphalt
   const asphaltGraphics = new Graphics();
 
   asphaltGraphics.beginFill("FFFFFF");
-  for (let i = 0; i <= asphaltSprite.width / 136; i++) {
+  for (let i = 0; i <= (asphaltWidth - 200) / 136; i++) {
     asphaltGraphics.drawRect(i * 136, 46, 46, 7);
   }
-  asphaltSprite.addChild(asphaltGraphics);
+  asphaltGraphics.endFill();
+  asphaltGraphics.beginFill("B3B3B3");
+  asphaltGraphics.drawRect(asphaltWidth - 150, 0, 6, 101);
+  asphaltGraphics.drawRect(asphaltWidth - 135, 0, 4, 101);
+  asphaltGraphics.drawRect(asphaltWidth - 125, 0, 4, 101);
+  const asphaltText = new Text(
+    "Finish",
+    new TextStyle({
+      fill: "B3B3B3",
+    })
+  );
+  asphaltText.anchor.set(0.5);
+  asphaltText.setTransform(
+    asphaltWidth - 100,
+    asphaltSprite.height / 2,
+    1,
+    1,
+    Math.PI / 2
+  );
+  asphaltSprite.addChild(asphaltGraphics, asphaltText);
   asphaltSprite.setTransform(0, 223);
   pixiApp.stage.addChild(asphaltSprite);
 
@@ -180,6 +218,74 @@ function Load() {
   carSprite.setTransform(0, 223);
   pixiApp.stage.addChild(carSprite);
 
+  //timer toast
+  timeToast = new PixiActivityToast(44, 190, 20, "Time");
+  timeToast.container.setTransform(708, 21);
+  pixiApp.stage.addChild(timeToast.container);
+
+  //blur
+  blurGraphics = new Graphics();
+  blurGraphics.beginFill(0x000000);
+  blurGraphics.drawRect(0, 0, pixiApp.screen.width, pixiApp.screen.height);
+  blurGraphics.alpha = 0.5;
+  //start modal
+  const startModal = new StartModal(
+    "Value Arranger",
+    "Students will add up cash and coins to match the total balance due. When the game starts, you'll see a bank with different bills and coins. Use these bills and coins to add up to the total sum due by dragging them towards the left side of the screen. If you would like to remove a bill, drag it outside.",
+    () => {
+      gameManager.setState(1);
+    }
+  );
+  startModal.container.position.set(pixiApp.screen.width / 2, 100);
+  pixiApp.stage.addChild(blurGraphics, startModal.container);
+
+  return true;
+}
+
+function start() {
+  setButtons(mcqManager.currentQuestion);
+  blurGraphics.renderable = false;
+
+  //timer
+  const timerManager = new TimerManager();
+  timer = timerManager.createTimer(1000);
+
+  timer.loop = true;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  timer.on("start", function (_elapsed) {
+    console.log("timer started");
+  });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  timer.on("repeat", function (_elapsed, repeat) {
+    elapsedTime = repeat;
+    timeToast.text = repeat + " seconds elapsed";
+  });
+
+  //main update loop
+  pixiApp.ticker.add(() => {
+    timerManager.update();
+    if (asphaltSprite.x + asphaltWidth > 924) {
+      asphaltSprite.x -= 1 * speedMultiplier;
+    } else if (carSprite.x < 1000) {
+      //end animation
+      carSprite.x += 1 * speedMultiplier;
+    } else {
+      gameManager.setState(4);
+      pixiApp.ticker.stop();
+    }
+  });
+  timer.start();
+
+  return true;
+}
+
+function end() {
+  blurGraphics.renderable = true;
+  const endModal = new EndModal(elapsedTime + "", "100", 200);
+  endModal.container.position.set(pixiApp.screen.width / 2, 200);
+  pixiApp.stage.addChild(endModal.container);
+  clearButtons();
   return true;
 }
 
@@ -192,12 +298,19 @@ function setButtons(currentQuestion: McqQuestion) {
     });
   }
 }
+function clearButtons() {
+  buttons.forEach((button) => {
+    button.onPress.disconnectAll();
+  });
+}
 function onCorrect() {
   console.log("Correct!");
+  speedMultiplier += 1;
   nextQuestion();
 }
 function onIncorrect() {
   console.log("Incorrect.");
+  speedMultiplier -= 1;
   nextQuestion();
 }
 

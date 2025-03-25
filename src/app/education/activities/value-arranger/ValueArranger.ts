@@ -48,13 +48,11 @@ export default function ValueArrangerScript(app: Application, data: JSONValue) {
   balancesDue = data["balancesDue"];
   currentBalance = 0;
 
-  gameManager = new GameManager(
-    Load,
-    Start,
-    () => true,
-    () => true,
-    End
-  );
+  gameManager = new GameManager({
+    loadFunction: Load,
+    startFunction: Start,
+    endFunction: End,
+  });
   gameManager.setState(0);
 }
 

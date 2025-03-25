@@ -18,20 +18,22 @@ class GameManager {
   private unloadFunction: () => boolean;
 
   constructor(
-    loadFunction?: () => boolean,
-    startFunction?: () => boolean,
-    runFunction?: () => boolean,
-    pauseFunction?: () => boolean,
-    endFunction?: () => boolean,
-    unloadFunction?: () => boolean
+    functions: {
+      loadFunction?: () => boolean;
+      startFunction?: () => boolean;
+      runFunction?: () => boolean;
+      pauseFunction?: () => boolean;
+      endFunction?: () => boolean;
+      unloadFunction?: () => boolean;
+    } = {}
   ) {
     this.state = GameActivityStates.LOAD;
-    this.loadFunction = loadFunction || (() => true);
-    this.startFunction = startFunction || (() => true);
-    this.runFunction = runFunction || (() => true);
-    this.pauseFunction = pauseFunction || (() => true);
-    this.endFunction = endFunction || (() => true);
-    this.unloadFunction = unloadFunction || (() => true);
+    this.loadFunction = functions.loadFunction || (() => true);
+    this.startFunction = functions.startFunction || (() => true);
+    this.runFunction = functions.runFunction || (() => true);
+    this.pauseFunction = functions.pauseFunction || (() => true);
+    this.endFunction = functions.endFunction || (() => true);
+    this.unloadFunction = functions.unloadFunction || (() => true);
     this.initialize();
   }
 
