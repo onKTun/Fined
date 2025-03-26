@@ -21,7 +21,7 @@
     "incremental": true,
     "types": [
       "pixi.js"
-    ], // Ensure PixiJS types are included
+    ], 
     "strictNullChecks": true,
     "plugins": [
       {

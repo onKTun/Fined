@@ -46,6 +46,9 @@ let wrongSound: Sound;
 
 let onStart: () => void;
 
+
+const music = new Audio('/assets/pixijsaudio/prism.mp3'); // Replace with your music file path
+
 const whiteTextStyleBold = new TextStyle({
   fontFamily: "Helvetica",
   fill: "#ffffff",
@@ -67,7 +70,6 @@ const subTextCard = new TextStyle({
 });
 
 export default function moneyCanScript(app: Application, data: JSONValue) {
-  const music = new Audio('/assets/pixijsaudio/prism.mp3'); // Replace with your music file path
   music.loop = true; // Optionally loop the music
   music.volume = 0.1;
   music.play();
@@ -129,6 +131,11 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   pixiApp.ticker.add(() => {
     timerManager.update();
   });
+}
+
+function stopMusic() {
+  music.pause();
+  music.currentTime = 0;
 }
 
 function setup() {
@@ -549,7 +556,9 @@ function updateTime(timeElapsed) {
 
 function endGame() {
   console.log("End game called");
+  stopMusic();
   timer.stop();
+  music.play();
   endModal.container.renderable = true;
   blurGraphics.renderable = true;
   endModal.setTimerText(elapsedTime + " sec");
