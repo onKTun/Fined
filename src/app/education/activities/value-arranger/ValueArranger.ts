@@ -115,6 +115,9 @@ function Load() {
       fontSize: 17,
     })
   );
+
+  balanceDueValueText.x = 15;
+  balanceDueValueText.y = 5;
   balanceDueValueContainer.addChild(
     balanceDueValueGraphics,
     balanceDueValueText
@@ -142,7 +145,10 @@ function Load() {
       fill: "#4A4A4A",
       fontSize: 17,
     })
+  
   );
+  currentBalanceValueText.x = 15;
+  currentBalanceValueText.y = 5;
   currentBalanceValueContainer.addChild(
     currentBalanceValueGraphics,
     currentBalanceValueText
