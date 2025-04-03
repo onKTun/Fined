@@ -1,0 +1,14 @@
+.videoContainer_header {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.videoContainer_headerSVG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: var(--finedblue);
+  height: fit-content;
+}

@@ -246,6 +246,7 @@
   width: 40em;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+  background: url("/assets/backgrounds/finedbackground.png");
 }
 .login_contentContainer {
   display: flex;
@@ -256,4 +257,18 @@
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+}
+
+@media only screen and (max-width: 1200px), (max-height: 800px) {
+  .img {
+    display: none;
+  }
+  .login_container {
+    width: 40em;
+  }
+}
+@media only screen and (max-width: 800px), (max-height: 800px) {
+  .login_container {
+    width: 32em;
+  }
 }

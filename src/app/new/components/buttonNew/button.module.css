@@ -5,7 +5,8 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  padding: 12px 15px;
+  padding: 10px 20px;
+  column-gap: 8px;
   font-size: 0.9rem;
   width: fit-content;
   &:hover {
@@ -21,6 +22,9 @@
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   color: black;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
 }
 .opacityBlack {
   background-color: rgba(0, 0, 0, 0.5);

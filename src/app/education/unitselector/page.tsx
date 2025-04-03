@@ -1,7 +1,6 @@
 // UnitSelector.tsx
 "use client";
 import { useMemo } from "react";
-import ParentComponent from "./components/parentcomponent/ParentComponent";
 import styles from "./unitselector.module.css";
 import Image from "next/image";
 
@@ -33,9 +32,7 @@ export default function UnitSelector() {
             Please select one of the following unit.
           </p>
         </div>
-        <div className={styles.bannerBottom}>
-          <ParentComponent percent={percentValues} />
-        </div>
+        <div className={styles.bannerBottom}></div>
       </div>
     </div>
   );

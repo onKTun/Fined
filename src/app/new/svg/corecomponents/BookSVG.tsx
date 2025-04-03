@@ -1,13 +1,15 @@
 interface Props {
   color: string;
+  width: number;
+  height: number;
 }
 
-export default function BookSVG({ color }: Props) {
+export default function BookSVG({ color, width, height }: Props) {
   return (
     <>
       <svg
-        width="21"
-        height="19"
+        width={width}
+        height={height}
         viewBox="0 0 21 19"
         fill={color}
         xmlns="http://www.w3.org/2000/svg"

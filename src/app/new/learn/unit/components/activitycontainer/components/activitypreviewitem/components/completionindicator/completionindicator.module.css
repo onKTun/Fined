@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  font-size: 0.9rem;
+  color: gray;
+}
+.complete {
+  color: #10dc01;
+}

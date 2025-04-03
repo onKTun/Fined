@@ -1,9 +1,7 @@
 "use client";
-import ParentComponent from "src/app/education/unitselector/components/parentcomponent/ParentComponent";
 import styles from "./unitselector.module.css";
 import unitData from "src/data/unitdata.json";
 import UnitModal from "./components/unitmodal/UnitModal";
-import { useState } from "react";
 
 export default function UnitSelector() {
   return (
