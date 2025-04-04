@@ -6,15 +6,19 @@ import {
   Container,
   Text,
   TextStyle,
-  DisplayObject,
+  Color,
 } from "pixi.js";
 import TimerManager from "utils/pixiJS/time utils/TimerManager";
 import Timer from "utils/pixiJS/time utils/Timer";
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import CardObject from "src/app/education/activities/money-can/CardObject";
-import { markComplete } from "utils/supabase/lessonProgressService";
-import { InstructionModal } from "../ActivityModals";
+import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
+import card from "public/assets/activity/white-card.svg";
+import { EndModal } from "src/components/pixigame/ui/EndModal";
+import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
+import { Sound } from "@pixi/sound";
+import { gsap } from "gsap"
 
 const cardDimensions = { width: 187, height: 275, radius: 10 };
 let dragTarget: CardObject | null;
@@ -30,6 +34,15 @@ let cardsRemainingText: Text;
 let cardsLeft: number;
 let timeText: Text;
 let timer: Timer;
+let elapsedTime: number;
+let attempts: number;
+let correct: number;
+
+let endModal: EndModal;
+let blurGraphics: Graphics;
+
+let correctSound: Sound;
+let wrongSound: Sound;
 
 let onStart: () => void;
 
@@ -54,10 +67,15 @@ const subTextCard = new TextStyle({
 });
 
 export default function moneyCanScript(app: Application, data: JSONValue) {
+  const music = new Audio('/assets/pixijsaudio/prism.mp3'); // Replace with your music file path
+  music.loop = true; // Optionally loop the music
+  music.volume = 0.1;
+  music.play();
+  console.log("money time!");
   pixiApp = app;
   setup();
-
-  propagateCards(data);
+  attempts = 0;
+  correct = 0;
 
   const timerManager = new TimerManager();
   timer = timerManager.createTimer(1000);
@@ -70,34 +88,43 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   timer.on("repeat", function (_elapsed, repeat) {
+    elapsedTime = repeat;
     updateTime(repeat);
   });
 
-  const blurGraphics = new Graphics();
+  blurGraphics = new Graphics();
   blurGraphics.beginFill(0x000000);
   blurGraphics.drawRect(0, 0, pixiApp.screen.width, pixiApp.screen.height);
   blurGraphics.alpha = 0.5;
 
   onStart = () => {
+    
     timer.start();
     blurGraphics.renderable = false;
   };
 
-  const instruction = new InstructionModal(
+  const instruction = new StartModal(
     "Welcome to Money Can. This activity will help you understand the ways that Money can help you, and the ways that Money can't help you. ",
     "When the game starts, you'll see cards with different actions written on them. Read each card and think: Can money do this? If yes, put the card in the Money Can pile. If no, put it in the Money Cannot pile.",
     10,
     onStart
   );
 
-  instruction.container.position.set(pixiApp.screen.width / 2, 200);
+  endModal = new EndModal("5:30", "100%", 100, () => {
+    history.back();
+  });
+  endModal.container.renderable = false;
 
+  instruction.container.position.set(pixiApp.screen.width / 2, 200);
+  endModal.container.position.set(pixiApp.screen.width / 2, 200);
+  pixiApp.stage.addChild(correctContainer, wrongContainer);
+  propagateCards(data);
   pixiApp.stage.addChild(
-    correctContainer,
-    wrongContainer,
     blurGraphics,
-    instruction.container
+    instruction.container,
+    endModal.container
   );
+
   //main update loop
   pixiApp.ticker.add(() => {
     timerManager.update();
@@ -109,12 +136,13 @@ function setup() {
   const backgroundTexture = Texture.from(backgroundImage.src);
   const background = new Sprite(backgroundTexture);
 
-  const svgImage = Texture.from(clock.src);
-  const svgClock = new Sprite(svgImage);
-
   background.width = pixiApp.screen.width;
   background.height = pixiApp.screen.height;
   pixiApp.stage.addChild(background);
+
+  //setup audio
+  correctSound = Sound.from("/assets/pixijsaudio/right.mp3");
+  wrongSound = Sound.from("/assets/pixijsaudio/wrong.mp3");
 
   //cards left
   const scoreBoxDimensions = {
@@ -149,14 +177,31 @@ function setup() {
       fontFamily: "Helvetica",
       fontSize: 16,
       wordWrap: true,
-      wordWrapWidth: scoreBoxDimensions.width,
+      wordWrapWidth: scoreBoxDimensions.width - 25,
       align: "right",
     })
   );
 
   cardsRemainingText.anchor.set(0.5);
+  cardsRemainingText.setTransform(20);
 
-  cardsRemainingContainer.addChild(cardsRemainingGraphics, cardsRemainingText);
+  const cardsBoxSVGContainerGraphic = new Graphics();
+  cardsBoxSVGContainerGraphic.beginFill("#3385FF");
+  cardsBoxSVGContainerGraphic.drawRoundedRect(-85, -15, 30, 30, 4);
+
+  const cardSvgImage = Texture.from(card.src);
+  const svgCard = new Sprite(cardSvgImage);
+
+  svgCard.width = cardsBoxSVGContainerGraphic.width - 5;
+  svgCard.height = cardsBoxSVGContainerGraphic.height - 5;
+  svgCard.position.set(-82, -12);
+
+  cardsRemainingContainer.addChild(
+    cardsRemainingGraphics,
+    cardsBoxSVGContainerGraphic,
+    cardsRemainingText,
+    svgCard
+  );
 
   //timer
   const timeContainer = new Container();
@@ -196,6 +241,9 @@ function setup() {
   timeText.anchor.set(0.5);
   timeText.x = 9;
   timeText.y = -1;
+
+  const svgImage = Texture.from(clock.src);
+  const svgClock = new Sprite(svgImage);
 
   svgClock.width = timeBoxSVGContainerGraphic.width - 10;
   svgClock.height = timeBoxSVGContainerGraphic.height - 10;
@@ -291,6 +339,7 @@ function setup() {
     8
   );
   cardAnswerGraphicsWrong.endFill();
+  
   //container texts
   const containerTrueText = new Text("Money Can", whiteTextStyleBold);
   containerTrueText.anchor.set(0.5);
@@ -354,7 +403,11 @@ function propagateCards(jsonData: JSONValue) {
     cardObject.cardContainer.x = pixiApp.screen.width / 2;
     cardObject.cardContainer.y = 217.5;
     cardBank.push(cardObject);
-    pixiApp.stage.addChildAt(cardObject.cardContainer, 3);
+
+    pixiApp.stage.addChildAt(
+      cardObject.cardContainer,
+      pixiApp.stage.children.length
+    );
 
     cardObject.cardContainer.on("pointerdown", onDragStart, cardObject);
   }
@@ -378,116 +431,118 @@ function onDragStart() {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   dragTarget = this;
   if (dragTarget) {
-    dragTarget.cardContainer.alpha = 0.5;
+    dragTarget.cardContainer.alpha = 0.7;
   }
   pixiApp.stage.on("pointermove", onDragMove);
 }
 
-function onDragEnd() {
-  if (dragTarget) {
-    pixiApp.stage.off("pointermove", onDragMove);
-    dragTarget.cardContainer.alpha = 1; //opacity
-    //check answer + detect overlap
-    //correct container scenario
-    if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
-      if (dragTarget.answer) {
-        cardsLeft--;
-        cardsRemainingText.text = cardsLeft + " Cards Remaining";
+function pulseEffect(target: Sprite) {
+  if (!target) return;
 
-        dragTarget.cardContainer.off("pointerdown", onDragStart);
-        dragTarget.cardContainer.x = pixiApp.screen.width / 4;
-        dragTarget.cardContainer.y = 487.5;
+  gsap.to(target.scale, {
+    x: 1.1,
+    y: 1.1,
+    duration: 0.1,
+    yoyo: true,
+    repeat: 1,
+  });
+}
 
-        cardBank.pop();
-      } else {
-        dragTarget.cardContainer.x = pixiApp.screen.width / 2;
-        dragTarget.cardContainer.y = 217.5;
-      }
+
+function pulseBackground(color) {
+  // Create a graphics object
+  const background = new Graphics();
+  
+  // Set the initial background color (transparent black for overlay effect)
+  background.beginFill(color, 0.3); // 1 alpha for solid color
+  background.drawRect(0, 0, window.innerWidth, window.innerHeight); 
+  background.endFill();
+  
+  // Add the background to the stage
+  pixiApp.stage.addChild(background);
+  
+  // Pulse animation using GSAP (or other tween libraries)
+  gsap.to(background, {
+    alpha: 0.6, // Pulse between 1 and 0.2 alpha
+    duration: 0.2, // Duration for the pulse
+    ease: "power1.inOut", // Easing for smooth transition
+    onComplete: () => {
+      // Remove the background from the stage after one pulse
+      pixiApp.stage.removeChild(background);
     }
-    //wrong container scenario
-    else if (
-      getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3
-    ) {
-      if (!dragTarget.answer) {
-        cardsLeft--;
-        cardsRemainingText.text = cardsLeft + " Cards Remaining";
+  });
+}
 
-        dragTarget.cardContainer.off("pointerdown", onDragStart);
-        dragTarget.cardContainer.x =
-          pixiApp.screen.width - pixiApp.screen.width / 4;
-        dragTarget.cardContainer.y = 487.5;
-        cardBank.pop();
-      } else {
-        dragTarget.cardContainer.x = pixiApp.screen.width / 2;
-        dragTarget.cardContainer.y = 217.5;
-      }
+function onDragEnd() {
+  if (!dragTarget) return;
+
+  pixiApp.stage.off("pointermove", onDragMove);
+  dragTarget.cardContainer.alpha = 1; // Reset opacity
+
+  const cardSprite = dragTarget.cardContainer as Sprite; // Ensure it's a Sprite
+
+  // Correct container scenario
+  if (getOverlapPercent(dragTarget.cardContainer, correctContainer) >= 0.3) {
+    attempts++;
+    if (dragTarget.answer) {
+      correctSound.play();
+      pulseEffect(cardSprite); // Green pulse
+      pulseBackground("green")
+      cardsLeft--;
+      correct++;
+      cardsRemainingText.text = cardsLeft + " Cards Remaining";
+
+      dragTarget.cardContainer.off("pointerdown", onDragStart);
+      dragTarget.cardContainer.x = pixiApp.screen.width / 4;
+      dragTarget.cardContainer.y = 487.5;
+
+      cardBank.pop();
+      pixiApp.stage.removeChild(dragTarget.cardContainer);
     } else {
+      wrongSound.play();
+      pulseEffect(cardSprite); // Red pulse
+      pulseBackground("red")
+
       dragTarget.cardContainer.x = pixiApp.screen.width / 2;
       dragTarget.cardContainer.y = 217.5;
     }
+  }
+  // Wrong container scenario
+  else if (getOverlapPercent(dragTarget.cardContainer, wrongContainer) >= 0.3) {
+    attempts++;
+    if (!dragTarget.answer) {
+      correctSound.play();
+      pulseEffect(cardSprite); // Green pulse
 
-    if (cardsLeft == 0) {
-      endGame();
+      pulseBackground("green")
+      cardsLeft--;
+      correct++;
+      cardsRemainingText.text = cardsLeft + " Cards Remaining";
+
+      dragTarget.cardContainer.off("pointerdown", onDragStart);
+      dragTarget.cardContainer.x = pixiApp.screen.width - pixiApp.screen.width / 4;
+      dragTarget.cardContainer.y = 487.5;
+      pixiApp.stage.removeChild(dragTarget.cardContainer);
+      cardBank.pop();
+    } else {
+      wrongSound.play();
+      pulseEffect(cardSprite); // Red pulse
+      pulseBackground("red")
+
+      dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+      dragTarget.cardContainer.y = 217.5;
     }
-
-    dragTarget = null;
+  } else {
+    dragTarget.cardContainer.x = pixiApp.screen.width / 2;
+    dragTarget.cardContainer.y = 217.5;
   }
+
+  if (cardsLeft == 0) {
+    endGame();
+  }
+
+  dragTarget = null;
 }
-
-function isColliding(object1: DisplayObject, object2: DisplayObject): boolean {
-  /*
-  Recalculates the bounds of the container.
-  This implementation will automatically fit the children's bounds into the calculation. Each child's bounds is limited to its mask's bounds or filterArea, if any is applied.
-  */
-  object1.calculateBounds();
-  object2.calculateBounds();
-
-  if (
-    object1._bounds.maxX < object2._bounds.minX ||
-    object2._bounds.maxX < object1._bounds.minX
-  ) {
-    return false;
-  }
-  if (
-    object1._bounds.maxY < object2._bounds.minY ||
-    object2._bounds.maxY < object1._bounds.minY
-  ) {
-    return false;
-  }
-
-  return true;
-}
-
-function getOverlapPercent(object1: DisplayObject, object2: DisplayObject) {
-  if (!isColliding(object1, object2)) {
-    return 0;
-  }
-
-  object1.calculateBounds();
-  object2.calculateBounds();
-
-  const lengthX =
-    Math.min(object1._bounds.maxX, object2._bounds.maxX) -
-    Math.max(object1._bounds.minX, object2._bounds.minX);
-  const lengthY =
-    Math.min(object1._bounds.maxY, object2._bounds.maxY) -
-    Math.max(object1._bounds.minY, object2._bounds.minY);
-
-  const overlapArea = lengthX * lengthY;
-
-  const object1Area =
-    (object1._bounds.maxX - object1._bounds.minX) *
-    (object1._bounds.maxY - object1._bounds.minY);
-  const object2Area =
-    (object2._bounds.maxX - object2._bounds.minX) *
-    (object2._bounds.maxY - object2._bounds.minY);
-
-  const totalArea = object1Area + object2Area - overlapArea;
-  const overlapPercent = overlapArea / totalArea;
-
-  return overlapPercent;
-}
-
 function updateTime(timeElapsed) {
   timeText.text = "Time Elapsed: " + timeElapsed;
 }
@@ -495,5 +550,9 @@ function updateTime(timeElapsed) {
 function endGame() {
   console.log("End game called");
   timer.stop();
-  markComplete("money-can");
+  endModal.container.renderable = true;
+  blurGraphics.renderable = true;
+  endModal.setTimerText(elapsedTime + " sec");
+  endModal.setScoreText(Math.floor((correct / attempts) * 100) + "%");
+  //markComplete("money-can");
 }

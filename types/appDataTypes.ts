@@ -22,4 +22,15 @@ type LessonPage = {
   videoLength: number;
   videoMaxTimestamp?: number;
   releaseDate: string;
+  activities?: PixiActivity[];
 };
+
+type PixiActivity = {
+  activityID: number;
+  activityName: string;
+  description: string;
+  href: string;
+  lessonID?: number;
+};
+
+type GameActivityStates = "load" | "start" | "play" | "end" | "cleanup";

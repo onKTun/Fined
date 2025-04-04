@@ -5,6 +5,7 @@ import ActivitySelectorButton from "src/app/education/units/components/ActivityS
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import UnitVideoContainer from "src/components/units/unit-video-container/UnitVideoContainer";
+import Activity from "src/app/education/units/components/activity/Activity";
 
 interface ClientsideUnitProps {
   lessonPageData: LessonPage[];
@@ -80,7 +81,7 @@ export default function ClientsideUnit({
           />
           <Link
             href={
-              "https://drive.google.com/file/d/1Cgt8PkAoqkeufESsD56jX5Mpa4ss6kJL/view?usp=drive_link"
+              "https://drive.google.com/file/d/1Qua5FZfyqPJgsVjCzLIl36zHwM-yKzOY/view?usp=sharing"
             }
             target="_blank"
             rel="noopener noreferrer"
@@ -120,7 +121,7 @@ export default function ClientsideUnit({
             unitId={1}
           />
 
-          {/*<div className={styles.activity_Container}>
+          {currentLesson.activities && currentLesson.activities.length > 0 && <div className={styles.activity_Container}>
             <div className={styles.header_Container}>
               <div className={styles.headerWrapper}>
                 <div className={styles.headerLeft}>
@@ -138,36 +139,26 @@ export default function ClientsideUnit({
                   </div>
                   Activities
                 </div>
-                <button className={styles.infoButton} type="button">
-                  {0}/{currentLesson?.subsequentActivities.length}
-                </button>
+
+                {/*<button className={styles.infoButton} type="button">
+                  {0}/{10}
+                </button>*/}
               </div>
             </div>
-
-            {currentLesson?.subsequentActivities.map((activity, index) => (
+            {currentLesson.activities.map((activity, index) => (
               <Activity
-                title={activity.title}
-                desc={activity.desc}
-                svgPath={activity.svgPath}
-                estTime={activity.estTime}
+                title={activity.activityName}
+                desc={activity.description}
+                svgPath={"/assets/activity/card.svg"}
+                estTime={5}
                 key={index}
-                progress={activity.progress}
                 href={activity.href}
               />
             ))}
-            {{activityData.map((activity, index) => (
-            <Activity
-              title={activity.type}
-              desc={activity.desc}
-              svgPath={activity.svgPath}
-              estTime={activity.estTime}
-              key={index}
-              progress={activity.progress}
-              href={activity.linkTo}
-            />
-          ))}}
-          </div>
-          */}
+
+          </div>}
+
+
         </div>
       )}
       {isLoading && (
