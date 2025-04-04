@@ -2,9 +2,8 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./video.module.css";
 import { useVideoContext } from "../../hooks/VideoContext";
-import AudioModal from "./components/audiomodal/AudioModal";
-import VideoActivity from "./components/videoactivity/VideoActivity";
-import SeekBar from "./components/seekbar/SeekBar";
+import SeekBar from "../seekbar/SeekBar";
+import AudioModal from "../audiomodal/AudioModal";
 
 /*
 video logic
@@ -61,13 +60,6 @@ export default function Video({ videoUrl }: VideoProps) {
         videoRef.current.pause();
       }
     }
-  };
-
-  const closeVideoActivity = () => {
-    console.log("close video activity");
-    setIsActivityActive(false);
-    setIsPlaying(true);
-    videoRef.current?.play();
   };
 
   const toggleCC = () => setCCEnable(!isCCEnabled);
@@ -157,7 +149,7 @@ export default function Video({ videoUrl }: VideoProps) {
   };
 
   return (
-    <div className={styles.wrapper} style={{ display: "flex" }}>
+    <div className={styles.container}>
       <div className={styles.videoWrapper}>
         <video src={videoUrl} ref={videoRef} width="100%" height="100%">
           Your browser does not support the video tag.
@@ -167,9 +159,7 @@ export default function Video({ videoUrl }: VideoProps) {
           className={`${styles.activityWrapper} ${
             isActivityActive ? styles.open : styles.closed
           }`}
-        >
-          <VideoActivity onClick={closeVideoActivity} />
-        </div>
+        ></div>
       </div>
 
       <ul className={styles.videoHotbar}>
@@ -185,9 +175,9 @@ export default function Video({ videoUrl }: VideoProps) {
         >
           {volume != 0 && (
             <svg
-              fill="var(--black5)"
-              width="34px"
-              height="34px"
+              fill="var(--black4)"
+              width="28px"
+              height="28px"
               viewBox="-1.5 0 19 19"
               xmlns="http://www.w3.org/2000/svg"
               className={styles.svgFill}
@@ -197,7 +187,7 @@ export default function Video({ videoUrl }: VideoProps) {
           )}
           {volume == 0 && (
             <svg
-              fill="var(--black5)"
+              fill="var(--black4)"
               width="34px"
               height="34px"
               viewBox="-1.5 0 19 19"
@@ -216,9 +206,9 @@ export default function Video({ videoUrl }: VideoProps) {
         >
           {isPlaying ? (
             <svg
-              fill="var(--black5)"
-              height="22px"
-              width="22px"
+              fill="var(--black4)"
+              height="18px"
+              width="18px"
               version="1.1"
               className={styles.svgFill}
               id="Capa_1"
@@ -239,8 +229,8 @@ export default function Video({ videoUrl }: VideoProps) {
             </svg>
           ) : (
             <svg
-              width="22px"
-              height="22px"
+              width="18px"
+              height="18px"
               viewBox="-3 0 28 28"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +247,7 @@ export default function Video({ videoUrl }: VideoProps) {
                   className={styles.svgFill}
                   id="Icon-Set-Filled"
                   transform="translate(-419.000000, -571.000000)"
-                  fill="var(--black5)"
+                  fill="var(--black4)"
                 >
                   <path
                     d="M440.415,583.554 L421.418,571.311 C420.291,570.704 419,570.767 419,572.946 L419,597.054 C419,599.046 420.385,599.36 421.418,598.689 L440.415,586.446 C441.197,585.647 441.197,584.353 440.415,583.554"
@@ -293,13 +283,13 @@ export default function Video({ videoUrl }: VideoProps) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="30"
+            width="24"
             viewBox="0 0 22 22"
           >
             <g
               className={styles.svgFill}
               transform="matrix(.58303 0 0 .58303 2.73 2.728)"
-              fill="var(--black5)"
+              fill="var(--black4)"
             >
               <path d="m28.36 19.595c0-.868-.665-1.57-1.491-1.57-.819.002-1.492.702-1.492 1.57v3.25l-6.02-6.02c-.582-.583-1.524-.583-2.106 0-.582.582-.582 1.527 0 2.109l5.989 5.987h-3.235c-.881.002-1.591.669-1.591 1.491 0 .824.71 1.49 1.591 1.49h6.761c.881 0 1.59-.665 1.593-1.49-.003-.022-.006-.039-.009-.061.003-.028.009-.058.009-.087v-6.668h-.0001" />
               <path d="m9 16.824l-6.01 6.02v-3.25c0-.868-.672-1.568-1.493-1.57-.824 0-1.49.702-1.49 1.57l-.002 6.669c0 .029.008.059.001.087-.002.021-.006.038-.008.061.002.825.712 1.49 1.592 1.49h6.762c.879 0 1.59-.666 1.59-1.49 0-.822-.711-1.489-1.59-1.491h-3.235l5.989-5.987c.58-.582.58-1.527 0-2.109-.583-.584-1.526-.584-2.11-.0001" />

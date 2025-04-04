@@ -1,23 +1,27 @@
+import { ReactElement } from "react";
+import styles from "./button.module.css";
 import Link from "next/link";
-import styles from "../buttonNew/button.module.css";
 
 interface Props {
   text: string;
-  redirectURL: string;
   styleType: string;
+  svg?: ReactElement;
+  redirectURL: string;
 }
-
 export default function RedirectButton({
-  redirectURL,
   text,
   styleType,
+  svg,
+  redirectURL,
 }: Props) {
   return (
     <Link
-      href={redirectURL}
       className={`${styles.container} ${styles[styleType] || ""}`}
+      type="button"
+      href={redirectURL}
     >
-      {text}
+      {svg != null && svg}
+      {text} 
     </Link>
   );
 }

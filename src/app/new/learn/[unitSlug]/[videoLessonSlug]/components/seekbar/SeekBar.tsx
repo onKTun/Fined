@@ -1,7 +1,7 @@
 import { updateVideoProgress } from "utils/supabase/lessonProgressService";
-import { useVideoContext } from "../../../../hooks/VideoContext";
 import styles from "./seekbar.module.css";
 import React, { useState, useRef, useEffect } from "react";
+import { useVideoContext } from "../../hooks/VideoContext";
 
 interface Props {
   onChange: (time: number) => void;

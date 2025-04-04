@@ -29,7 +29,7 @@ interface Props {
 }
 
 export default function UnitModal({ data }: Props) {
-  const unitHref = `/new/learn/unit`;
+  const unitHref = `/new/learn/` + data.unit;
   // Track the completion status of each lesson
   const lessonProgress = data.lessons.map((lesson) => {
     // Check if the lesson is fully completed (video + all activities)

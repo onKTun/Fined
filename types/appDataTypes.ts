@@ -21,4 +21,5 @@ type LessonPage = {
   videoDescription: string;
   videoLength: number;
   videoMaxTimestamp?: number;
+  releaseDate: string;
 };

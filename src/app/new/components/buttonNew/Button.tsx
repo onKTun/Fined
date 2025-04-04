@@ -5,12 +5,14 @@ interface Props {
   text: string;
   styleType: string;
   svg?: ReactElement;
+  onClick?: () => void;
 }
-export default function Button({ text, styleType, svg }: Props) {
+export default function Button({ text, styleType, svg, onClick }: Props) {
   return (
     <button
       className={`${styles.container} ${styles[styleType] || ""}`}
       type="button"
+      onClick={onClick}
     >
       {svg != null && svg}
       {text} 

@@ -2,6 +2,8 @@
   transition: 0.3s opacity var(--transition);
   background-color: var(--finedblue);
   border: none;
+  height: fit-content;
+  width: fit-content;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -29,4 +31,10 @@
 .opacityBlack {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
+}
+.blueOutline {
+  background-color: var(--finedblue);
+  color: white;
+  outline: solid var(--finedblue) 2px;
+  outline-offset: 2px;
 }

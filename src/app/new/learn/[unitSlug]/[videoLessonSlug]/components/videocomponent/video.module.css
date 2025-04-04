@@ -1,14 +1,16 @@
-.wrapper {
+.container {
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: fit-content;
 }
 
 .videoHotbar_button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.5em;
-  height: 100%;
+  width: 3em;
+  height: 3em;
   background-color: white;
   border: none;
   padding: 0;
@@ -21,18 +23,7 @@
     }
   }
 }
-.ccEnabled {
-  background-color: var(--finedblue);
-  .svgFill {
-    fill: white;
-  }
-  &:hover {
-    background-color: rgba(var(--finedblueRGB), 0.8);
-    .svgFill {
-      fill: white;
-    }
-  }
-}
+
 .rightAlignedButton {
   border-right: 1px solid var(--bb);
 }
@@ -45,19 +36,20 @@
   background-color: white;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 0px;
 }
 .videoHotbar {
   position: relative;
   display: flex;
   width: 100%;
-  height: 2.8em;
+  height: fit-content;
   box-sizing: border-box;
   border-top: 1px solid var(--bb);
 }
 .playVideo_wrapper {
   display: flex;
   flex-grow: 1;
+  padding: 0px 20px 0px 20px;
   justify-content: center;
   align-items: center;
   column-gap: 1em;
@@ -94,6 +86,8 @@
 .videoWrapper {
   position: relative;
   height: 450px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 @media only screen and (max-width: 1280px) {
   .wrapper {
@@ -102,4 +96,7 @@
   .videoWrapper {
     height: fit-content;
   }
+}
+.timeContainer {
+  color: var(--black3);
 }

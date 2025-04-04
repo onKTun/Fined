@@ -1,4 +1,4 @@
-import { useVideoContext } from "../../../../hooks/VideoContext";
+import { useVideoContext } from "../../hooks/VideoContext";
 import styles from "./audiomodal.module.css";
 import React, { useState, useRef, useEffect } from "react";
 

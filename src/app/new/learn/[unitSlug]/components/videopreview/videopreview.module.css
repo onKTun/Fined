@@ -1,7 +1,7 @@
 .videoContainer {
   display: flex;
   flex-direction: column;
-  width: 22em;
+  width: 23em;
   height: fit-content;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);

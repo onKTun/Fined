@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./landingpageheader.module.css";
 import Search from "../searchNew/Search";
-import RedirectButton from "../redirectButton/RedirectButton";
+import RedirectButton from "../buttonNew/RedirectButton";
 export default function LandingPageHeader() {
   return (
     <section className={styles.container}>
