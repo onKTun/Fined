@@ -46,11 +46,9 @@ export default async function UnitPage({
 
       const { data: activityData, error: activityError } = await supabase
         .from("activities")
-        .select(
-          '*'
-        )
+        .select("*")
         .eq("lesson_id", lesson.lesson_id)
-        .eq("activity_type", 'game')
+        .eq("activity_type", "game");
 
       const data: LessonPage = {
         lessonId: lesson.lesson_id,
@@ -61,17 +59,18 @@ export default async function UnitPage({
         videoShortDescription: videoData?.short_description,
         videoDescription: videoData?.description,
         videoLength: videoData?.video_length,
+        releaseDate: "",
       };
 
       if (activityData) {
-        const activities: PixiActivity[] = activityData.map(activity => ({
+        const activities: PixiActivity[] = activityData.map((activity) => ({
           activityID: activity.activity_id,
           activityName: activity.activity_name,
           description: activity.description,
-          href: activity.activity_url
+          href: activity.activity_url,
         }));
 
-        console.log(activities)
+        console.log(activities);
         data.activities = activities;
       }
       if (user) {

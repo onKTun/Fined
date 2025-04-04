@@ -7,13 +7,13 @@ import { Suspense, useEffect, useState } from "react";
 import LoadingModal from "src/components/loading/LoadingModal";
 
 const Game = () => {
-  const [script, setScript] = useState(() => () => { });
+  const [script, setScript] = useState(() => () => {});
 
   useEffect(() => {
     let isMounted = true;
 
     async function loadFunction() {
-      const script = (await import("./MoneyCanApp")).default
+      const script = (await import("./MoneyCanApp")).default;
       if (isMounted) setScript(() => script);
     }
 
@@ -23,21 +23,21 @@ const Game = () => {
       isMounted = false; // Prevent setting state on unmounted component
     };
   }, []);
-  return (
-    <PixiApp run={script} data={testData}></PixiApp>
-  );
-}
+  return <PixiApp run={script} data={testData}></PixiApp>;
+};
 
 export default function MoneyCanActivityPage() {
   //TODO implement load json data, and pass to component, error handling if no data
 
-  return (<div className={styles.activitycontainer}>
-    <div className={styles.container}>
-      <Stage width={900} height={700} options={{ background: "3385FF" }}>
-        <Suspense fallback={<LoadingModal />}><Game></Game></Suspense>
-      </Stage>
+  return (
+    <div className={styles.activitycontainer}>
+      <div className={styles.container}>
+        <Stage width={900} height={700} options={{ background: "3385FF" }}>
+          <Suspense fallback={<LoadingModal />}>
+            <Game></Game>
+          </Suspense>
+        </Stage>
+      </div>
     </div>
-  </div>
-
-  )
+  );
 }

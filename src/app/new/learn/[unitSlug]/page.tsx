@@ -47,6 +47,12 @@ export default async function UnitPage({
         .limit(1)
         .single();
 
+      const { data: activityData, error: activityError } = await supabase
+        .from("activities")
+        .select("*")
+        .eq("lesson_id", lesson.lesson_id)
+        .eq("activity_type", "game");
+
       const data: LessonPage = {
         lessonId: lesson.lesson_id,
         lessonName: lesson.lesson_name,
@@ -58,20 +64,31 @@ export default async function UnitPage({
         videoLength: videoData?.video_length,
         releaseDate: videoData?.release_date,
       };
+      if (activityData) {
+        const activities: PixiActivity[] = activityData.map((activity) => ({
+          activityID: activity.activity_id,
+          activityName: activity.activity_name,
+          description: activity.description,
+          href: activity.activity_url,
+        }));
 
-      if (user) {
-        const { data: videoProgressData, error: videoProgressError } =
-          await supabase
-            .from("video_progress")
-            .select("video_timestamp, video_id")
-            .eq("video_id", videoData?.video_id)
-            .limit(1)
-            .single();
+        console.log(activities);
+        data.activities = activities;
 
-        data.videoMaxTimestamp = videoProgressData?.video_timestamp;
+        if (user) {
+          const { data: videoProgressData, error: videoProgressError } =
+            await supabase
+              .from("video_progress")
+              .select("video_timestamp, video_id")
+              .eq("video_id", videoData?.video_id)
+              .limit(1)
+              .single();
+
+          data.videoMaxTimestamp = videoProgressData?.video_timestamp;
+        }
+        pageData.push(data);
       }
-      pageData.push(data);
     }
+    return <ClientsideUnit lessonPageData={pageData}></ClientsideUnit>;
   }
-  return <ClientsideUnit lessonPageData={pageData}></ClientsideUnit>;
 }

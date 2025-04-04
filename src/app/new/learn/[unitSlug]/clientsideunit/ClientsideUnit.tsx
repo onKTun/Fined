@@ -85,7 +85,7 @@ export default function Unit({ lessonPageData }: ClientsideUnitProps) {
                 videoID={currentLesson?.lessonId || 1}
                 unit={currentLesson?.unitId || 1}
               />
-              <ActivityContainer />
+              <ActivityContainer data={currentLesson?.activities || []} />
             </>
           )}
         </div>

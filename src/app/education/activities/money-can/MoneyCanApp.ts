@@ -16,7 +16,7 @@ import { StartModal } from "../../../../components/pixigame/ui/StartModal";
 import clock from "public/assets/activity/clock.svg";
 import card from "public/assets/activity/white-card.svg";
 import { EndModal } from "src/components/pixigame/ui/EndModal";
-import { getOverlapPercent } from "utils/pixiJS/pixiUtils";
+import { getOverlapPercent } from "utils/pixiJS/pixiUtils"; 
 import { Sound } from "@pixi/sound";
 import { gsap } from "gsap"
 

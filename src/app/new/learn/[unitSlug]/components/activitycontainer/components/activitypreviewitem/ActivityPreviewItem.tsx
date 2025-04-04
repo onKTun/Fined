@@ -3,6 +3,7 @@ import styles from "./activitypreviewitem.module.css";
 import Button from "src/app/new/components/buttonNew/Button";
 import PlaySVG from "src/app/new/svg/video/PlaySVG";
 import CompletionIndicator from "./components/completionindicator/CompletionIndicator";
+import RedirectButton from "src/app/new/components/buttonNew/RedirectButton";
 interface Props {
   svg: ReactElement;
   text: string;
@@ -28,10 +29,11 @@ export default function ActivityPreviewItem({
         </div>
       </div>
 
-      <Button
+      <RedirectButton
         text={complete ? "Restart" : "Start"}
         styleType={"blue"}
         svg={<PlaySVG />}
+        redirectURL={activityUrl}
       />
     </div>
   );

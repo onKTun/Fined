@@ -50,6 +50,7 @@ export default async function LessonPreview({
     videoShortDescription: videoData?.short_description,
     videoDescription: videoData?.description,
     videoLength: videoData?.video_length,
+    releaseDate: "",
   };
 
   return <ClientsideLessonPreview lessonData={data}></ClientsideLessonPreview>;
