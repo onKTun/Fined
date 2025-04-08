@@ -1,107 +1,107 @@
 {
-    "A": [
-      { "term": "Advertisement", "definition": "A message trying to get you to buy something. For example, a TV commercial showing a new toy you might want." },
-      { "term": "Avoid", "definition": "Staying away from something, like taking on too much debt. For example, not borrowing more money than you can pay back." }
-    ],
-    "B": [
-      { "term": "Balance", "definition": "Making sure we have a good mix of things, like fun and important things. For example, doing your homework first and then playing video games." },
-      { "term": "Bank", "definition": "A safe place where you can keep your money and use it later. For example, putting your birthday money into a savings account." },
-      { "term": "Borrow", "definition": "Using someone else’s money for a while, with plans to repay it. For example, asking your friend for $5 to buy a snack and paying them back later." },
-      { "term": "Budget", "definition": "A plan for how to use your money. For example, deciding to spend $10 on toys and save $5 for later." },
-      { "term": "Budgeting", "definition": "Planning how to spend and save your money wisely. For example, making a list of what you need before going to the store." },
-      { "term": "Buy", "definition": "Getting something in exchange for money, like food or toys. For example, giving $2 to buy a bag of chips." },
-      { "term": "Bulk", "definition": "Buying a lot of something at once, usually for a lower price per piece. For example, buying a big pack of 20 juice boxes instead of just one." }
-    ],
-    "C": [
-      { "term": "Cent", "definition": "A small part of a dollar, used to compare the cost of things. For example, a candy might cost 25 cents, while a toy costs many dollars." },
-      { "term": "Choice", "definition": "Picking between different things to do with your money. For example, choosing to buy a book instead of a toy." },
-      { "term": "Comparison", "definition": "Looking at two or more things to find the best option. For example, checking prices at two stores to see which has cheaper apples." },
-      { "term": "Cost", "definition": "The amount of money you need to buy something. For example, the cost of a sandwich might be $5." },
-      { "term": "Credit", "definition": "Borrowing money with the promise to pay it back later. For example, using a credit card to buy a video game and paying for it next month." }
-    ],
-    "D": [
-      { "term": "Debt", "definition": "Money you owe to someone or a bank that you need to pay back. For example, if you borrow $10, you are in debt until you pay it back." },
-      { "term": "Decision", "definition": "Choosing between different things. For example, deciding whether to buy a toy or save your money." },
-      { "term": "Deal", "definition": "When something is a good price or gives you more for your money. For example, buying one candy bar and getting another for free." },
-      { "term": "Debit", "definition": "Using your own money that’s in your account. For example, paying for a snack with a debit card linked to your savings." },
-      { "term": "Detective", "definition": "Someone who looks for clues to solve a mystery, like finding the best price. For example, checking different stores to see where a toy costs less." },
-      { "term": "Digital", "definition": "Related to computers, phones, or online activities. For example, buying a movie online to watch on your tablet." },
-      { "term": "Dollar", "definition": "A type of money used in the U.S., like a green paper bill. For example, you might use a $1 bill to buy a drink." },
-      { "term": "Dream", "definition": "Something you want to have or do in the future, like going on vacation. For example, dreaming of saving enough money to visit Disneyland." }
-    ],
-    "E": [
-      { "term": "Effort", "definition": "The energy or hard work you put into doing something. For example, studying hard to get a good grade on a test." },
-      { "term": "Emergency Fund", "definition": "Money saved for surprises or emergencies. For example, using your saved money to fix your bike if it breaks." }
-    ],
-    "F": [
-      { "term": "Fine Print", "definition": "Small details in a contract or ad that could be important. For example, reading the fine print to know if there are extra costs." },
-      { "term": "Food", "definition": "What we eat to stay healthy. For example, spending money on fruits and vegetables." },
-      { "term": "Future", "definition": "A time that hasn’t happened yet, like tomorrow or next year. For example, saving money for a future trip." },
-      { "term": "Fun", "definition": "Something that makes us happy and enjoy ourselves. For example, spending money to go to an amusement park." }
-    ],
-    "G": [
-      { "term": "Gift", "definition": "Something you buy for someone to make them happy. For example, buying your friend a toy for their birthday." },
-      { "term": "Goal", "definition": "Something you want to save for, like a toy, vacation, or phone. For example, saving $50 to buy a new video game." }
-    ],
-    "I": [
-      { "term": "Identity", "definition": "Personal information that shows who you are. For example, your name and birthday are part of your identity." },
-      { "term": "Important", "definition": "Something that matters a lot and we need to think about. For example, saving money for school supplies is important." },
-      { "term": "Interest", "definition": "Extra money you pay when you borrow, like a fee for using someone else's money. For example, borrowing $100 and paying back $110." }
-    ],
-    "L": [
-      { "term": "Label", "definition": "The sticker or tag that gives information about a product, like price or size. For example, reading the label to see how much a bag of chips costs." },
-      { "term": "Loan", "definition": "Borrowing money with a promise to return it later. For example, getting a loan to buy a car and paying it back over time." }
-    ],
-    "M": [
-      { "term": "Misleading", "definition": "Giving the wrong idea or trying to trick you. For example, an ad that says something is free but charges you later." },
-      { "term": "Money", "definition": "What we use to buy things. For example, using coins to buy a snack from a vending machine." }
-    ],
-    "N": [
-      { "term": "Need", "definition": "Important things we must have to live, like food, water, or clothes. For example, buying a jacket to stay warm in winter." }
-    ],
-    "O": [
-      { "term": "Ounce", "definition": "A way to measure how much something weighs, used for comparing snacks. For example, checking how many ounces are in two bags of chips." },
-      { "term": "Owe", "definition": "When you need to pay someone back money. For example, owing your friend $5 after they lend it to you." }
-    ],
-    "P": [
-      { "term": "Password", "definition": "A secret code used to access your personal accounts. For example, using a password to log in to your email." },
-      { "term": "Pay Off", "definition": "Giving back the full amount of what you borrowed, including interest. For example, paying off a $100 loan by giving back $110." },
-      { "term": "Phishing", "definition": "A scam where someone pretends to be trustworthy to steal your information. For example, getting a fake email asking for your password." },
-      { "term": "Piggy Bank", "definition": "A small container where you can save your money. For example, putting coins into a piggy bank to save for a toy." },
-      { "term": "Plan", "definition": "A way to organize your money so you can save and spend wisely. For example, planning to save $5 each week for a month." },
-      { "term": "Price Tag", "definition": "The label that shows how much something costs. For example, checking the price tag to see if a toy costs $10 or $20." }
-    ],
-    "R": [
-      { "term": "Reputation", "definition": "What people think of you, based on your actions, like your credit score. For example, paying back loans on time gives you a good reputation." },
-      { "term": "Responsibility", "definition": "Being in charge of your choices and making sure you pay back what you owe. For example, saving money to pay for your school trip." },
-      { "term": "Repay", "definition": "Giving back the money you borrowed, little by little or all at once. For example, repaying your friend $2 each week until the $10 you borrowed is paid back." }
-    ],
-    "S": [
-      { "term": "Save", "definition": "Keeping your money to use later for something bigger or more important. For example, saving $10 each week to buy a bike." },
-      { "term": "Scam", "definition": "A dishonest plan to trick you out of your money or info. For example, someone pretending to sell you a toy but never giving it to you." },
-      { "term": "Secure", "definition": "Keeping something safe and protected. For example, locking your wallet in a safe place." },
-      { "term": "Size", "definition": "How big or small something is, like a big bag of snacks versus a small one. For example, buying a bigger bag if it’s cheaper per ounce." },
-      { "term": "Spend", "definition": "Using your money to buy things. For example, spending $5 on ice cream." },
-      { "term": "Strategy", "definition": "A smart way to handle something, like paying off debt. For example, paying a little extra each month to pay off a loan faster." },
-      { "term": "Stretch", "definition": "Making your money go further by spending it wisely. For example, buying items on sale to save money." },
-      { "term": "Suspicious", "definition": "Something that doesn’t seem quite right or could be a trap. For example, a deal that seems too good to be true might be suspicious." }
-    ],
-    "T": [
-      { "term": "Toy", "definition": "Something fun to play with. For example, a doll, action figure, or puzzle." },
-      { "term": "Transaction", "definition": "The process of buying something or transferring money. For example, paying for groceries at the store is a transaction." },
-      { "term": "Trap", "definition": "A trick designed to catch or fool you. For example, a fake website asking for your credit card details." },
-      { "term": "Trustworthy", "definition": "Someone or something you can count on to be honest. For example, a bank is trustworthy because it keeps your money safe." }
-    ],
-    "U": [
-      { "term": "Unit", "definition": "One part of something, like one snack or one piece of candy. For example, buying one apple instead of a whole bag." }
-    ],
-    "V": [
-      { "term": "Value", "definition": "How important or useful something is. For example, a coat has value because it keeps you warm." },
-      { "term": "Verify", "definition": "To check and make sure something is correct. For example, verifying the price of a toy before buying it." }
-    ],
-    "W": [
-      { "term": "Wallet", "definition": "A small case to keep your money and cards in. For example, putting your allowance in your wallet to keep it safe." },
-      { "term": "Want", "definition": "Fun things we like but don’t need to live, like toys or games. For example, wanting a new video game even though you don’t need it." },
-      { "term": "Wisely", "definition": "Making good choices that help us in the long run. For example, saving money for school supplies instead of spending it all on candy." }
-    ]
-  }
+  "A": [
+      { "term": "Advertisement", "definition": "A message trying to get you to buy something." },
+      { "term": "Avoid", "definition": "Staying away from something, like taking on too much debt." }
+  ],
+  "B": [
+      { "term": "Balance", "definition": "Making sure we have a good mix of things (e.g., fun and important things)." },
+      { "term": "Bank", "definition": "A safe place where you can keep your money and use it later." },
+      { "term": "Borrow", "definition": "Using someone else’s money for a while, with plans to repay it." },
+      { "term": "Budget", "definition": "A plan for how to use your money." },
+      { "term": "Budgeting", "definition": "Planning how to spend and save your money wisely." },
+      { "term": "Buy", "definition": "Getting something in exchange for money, like food or toys." },
+      { "term": "Bulk", "definition": "Buying a lot of something at once, usually for a lower price per piece." }
+  ],
+  "C": [
+      { "term": "Cent", "definition": "A small part of a dollar, used to compare the cost of things." },
+      { "term": "Choice", "definition": "Picking between different things to do with your money." },
+      { "term": "Comparison", "definition": "Looking at two or more things to find the best option." },
+      { "term": "Cost", "definition": "The amount of money you need to buy something." },
+      { "term": "Credit", "definition": "Borrowing money with the promise to pay it back later." }
+  ],
+  "D": [
+      { "term": "Debt", "definition": "Money you owe to someone or a bank that you need to pay back." },
+      { "term": "Decision", "definition": "Choosing between different things." },
+      { "term": "Deal", "definition": "When something is a good price or gives you more for your money." },
+      { "term": "Debit", "definition": "Using your own money that’s in your account." },
+      { "term": "Detective", "definition": "Someone who looks for clues to solve a mystery, like finding the best price." },
+      { "term": "Digital", "definition": "Related to computers, phones, or online activities." },
+      { "term": "Dollar", "definition": "A type of money used in the U.S., like a green paper bill." },
+      { "term": "Dream", "definition": "Something you want to have or do in the future, like going on vacation." }
+  ],
+  "E": [
+      { "term": "Effort", "definition": "The energy or hard work you put into doing something." },
+      { "term": "Emergency Fund", "definition": "Money saved for surprises or emergencies (e.g., fixing a broken toy or bike)." }
+  ],
+  "F": [
+      { "term": "Fine Print", "definition": "Small details in a contract or ad that could be important." },
+      { "term": "Food", "definition": "What we eat to stay healthy." },
+      { "term": "Future", "definition": "A time that hasn’t happened yet, like tomorrow or next year." },
+      { "term": "Fun", "definition": "Something that makes us happy and enjoy ourselves." }
+  ],
+  "G": [
+      { "term": "Gift", "definition": "Something you buy for someone to make them happy." },
+      { "term": "Goal", "definition": "Something you want to save for, like a toy, vacation, or phone." }
+  ],
+  "I": [
+      { "term": "Identity", "definition": "Personal information that shows who you are." },
+      { "term": "Important", "definition": "Something that matters a lot and we need to think about." },
+      { "term": "Interest", "definition": "Extra money you pay when you borrow, like a fee for using someone else's money." }
+  ],
+  "L": [
+      { "term": "Label", "definition": "The sticker or tag that gives information about a product (e.g., price, size)." },
+      { "term": "Loan", "definition": "Borrowing money with a promise to return it later." }
+  ],
+  "M": [
+      { "term": "Misleading", "definition": "Giving the wrong idea or trying to trick you." },
+      { "term": "Money", "definition": "What we use to buy things." }
+  ],
+  "N": [
+      { "term": "Need", "definition": "Important things we must have to live (e.g., food, water, clothes)." }
+  ],
+  "O": [
+      { "term": "Ounce", "definition": "A way to measure how much something weighs (used for comparing snacks)." },
+      { "term": "Owe", "definition": "When you need to pay someone back money." }
+  ],
+  "P": [
+      { "term": "Password", "definition": "A secret code used to access your personal accounts." },
+      { "term": "Pay Off", "definition": "Giving back the full amount of what you borrowed, including interest." },
+      { "term": "Phishing", "definition": "A scam where someone pretends to be trustworthy to steal your information." },
+      { "term": "Piggy Bank", "definition": "A small container where you can save your money." },
+      { "term": "Plan", "definition": "A way to organize your money so you can save and spend wisely." },
+      { "term": "Price Tag", "definition": "The label that shows how much something costs." }
+  ],
+  "R": [
+      { "term": "Reputation", "definition": "What people think of you, based on your actions (e.g., credit score)." },
+      { "term": "Responsibility", "definition": "Being in charge of your choices and making sure you pay back what you owe." },
+      { "term": "Repay", "definition": "Giving back the money you borrowed, little by little or all at once." }
+  ],
+  "S": [
+      { "term": "Save", "definition": "Keeping your money to use later for something bigger or more important." },
+      { "term": "Scam", "definition": "A dishonest plan to trick you out of your money or info." },
+      { "term": "Secure", "definition": "Keeping something safe and protected." },
+      { "term": "Size", "definition": "How big or small something is (e.g., a big bag of snacks vs. a small one)." },
+      { "term": "Spend", "definition": "Using your money to buy things." },
+      { "term": "Strategy", "definition": "A smart way to handle something, like paying off debt." },
+      { "term": "Stretch", "definition": "Making your money go further by spending it wisely." },
+      { "term": "Suspicious", "definition": "Something that doesn’t seem quite right or could be a trap." }
+  ],
+  "T": [
+      { "term": "Toy", "definition": "Something fun to play with." },
+      { "term": "Transaction", "definition": "The process of buying something or transferring money." },
+      { "term": "Trap", "definition": "A trick designed to catch or fool you." },
+      { "term": "Trustworthy", "definition": "Someone or something you can count on to be honest." }
+  ],
+  "U": [
+      { "term": "Unit", "definition": "One part of something, like one snack or one piece of candy." }
+  ],
+  "V": [
+      { "term": "Value", "definition": "How important or useful something is." },
+      { "term": "Verify", "definition": "To check and make sure something is correct." }
+  ],
+  "W": [
+      { "term": "Wallet", "definition": "A small case to keep your money and cards in." },
+      { "term": "Want", "definition": "Fun things we like but don’t need to live (e.g., toys or games)." },
+      { "term": "Wisely", "definition": "Making good choices that help us in the long run." }
+  ]
+}

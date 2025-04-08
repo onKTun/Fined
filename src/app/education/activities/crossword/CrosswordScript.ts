@@ -279,7 +279,7 @@ function End() {
     if (window.history.length > 1) {
       history.back();
     } else {
-      window.location.href = "/education/unitselector"; // Replace with your desired URL
+      window.location.href = "/education/unitselector";
     }
   });
 

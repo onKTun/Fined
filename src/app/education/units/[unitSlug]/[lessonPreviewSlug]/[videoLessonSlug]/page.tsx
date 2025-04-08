@@ -94,7 +94,7 @@ export default async function VideoLesson({
             </div>
             <div className={styles.videoDisplay}>
               <div className={styles.video}>
-                <Video videoUrl={fetchedVideoURL}></Video>
+                <Video videoUrl={fetchedVideoURL} start={0}></Video>
               </div>
             </div>
             {/* <div className={styles.buttonRow}>

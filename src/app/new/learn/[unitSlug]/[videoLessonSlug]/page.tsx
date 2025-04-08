@@ -29,13 +29,25 @@ export default async function VideoLesson({
 }) {
   //fetch video data
   const supabase = createClient();
-  console.log("Fetching video for:", params.videoLessonSlug);
   const { data, error } = await supabase
     .from("videos")
     .select("video_id, video_url, activity_url, activity_answer")
     .eq("video_id", params.videoLessonSlug)
     .limit(1)
     .single();
+
+  const { data: progressData } = await supabase
+    .from("video_progress")
+    .select("video_timestamp, video_id")
+    .eq("video_id", params.videoLessonSlug)
+    .limit(1)
+    .single();
+
+  if (error) {
+    console.error("Error fetching video progress:", error.message);
+    return 0;
+  }
+
   if (error) {
     return <p>Error fetching db data</p>;
   }
@@ -73,7 +85,11 @@ export default async function VideoLesson({
           text={"The Impact of Financial"}
           svg={<BookSVG color={"white"} width={15} height={15} />}
         />
-        <Video videoUrl={fetchedVideoURL}></Video>
+
+        <Video
+          videoUrl={fetchedVideoURL}
+          start={progressData?.video_timestamp || 0}
+        ></Video>
       </div>
     </VideoProvider>
   );

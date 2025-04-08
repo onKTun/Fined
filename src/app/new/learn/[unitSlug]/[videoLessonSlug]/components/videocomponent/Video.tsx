@@ -26,9 +26,10 @@ onVideoEnd
 */
 interface VideoProps {
   videoUrl: string;
+  start: number;
 }
 
-export default function Video({ videoUrl }: VideoProps) {
+export default function Video({ videoUrl, start }: VideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const {
     isPlaying,
