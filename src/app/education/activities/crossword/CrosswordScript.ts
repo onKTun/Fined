@@ -225,12 +225,11 @@ function Setup(data: JSONValue) {
   downContainer.addChild(downGraphics, downTitleText, downTextContainer);
 
   const startModal = new StartModal(
-    "Students will practice their financial vocabulary using this crossword puzzle.",
-    "When the game starts, click on a row or column to focus it, then type to enter the terms. Use the backspace key to delete letters.",
-    10,
+    "Crossword",
+    "Students will practice their financial vocabulary using this crossword puzzle. When the game starts, click on a row or column to focus it, then type to enter the terms. Use the backspace key to delete letters.",
     Start
   );
-  startModal.container.position.set(pixiApp.screen.width / 2, 200);
+  startModal.container.position.set(pixiApp.screen.width / 2, 150);
 
   pixiApp.stage.addChild(
     background,

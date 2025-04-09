@@ -26,6 +26,7 @@ import {
 
 import backgroundImage from "public/assets/backgrounds/fined_background_1.svg";
 import { GameManager } from "src/components/pixigame/GameManager";
+import clock from "public/assets/activity/clock.svg";
 
 import grass from "public/assets/activity/grass-background.jpg";
 import asphalt from "public/assets/activity/asphalt-background.jpg";
@@ -219,7 +220,18 @@ function load() {
   pixiApp.stage.addChild(carSprite);
 
   //timer toast
-  timeToast = new PixiActivityToast(44, 190, 20, "Time");
+  const svgImage = Texture.from(clock.src);
+  const svgClock = new Sprite(svgImage);
+  svgClock.width = 18;
+  svgClock.height = 18;
+  timeToast = new PixiActivityToast(
+    44,
+    190,
+    20,
+    "0 seconds",
+    new TextStyle({ fontSize: 18 }),
+    svgClock
+  );
   timeToast.container.setTransform(708, 21);
   pixiApp.stage.addChild(timeToast.container);
 
@@ -230,8 +242,8 @@ function load() {
   blurGraphics.alpha = 0.5;
   //start modal
   const startModal = new StartModal(
-    "Value Arranger",
-    "Students will add up cash and coins to match the total balance due. When the game starts, you'll see a bank with different bills and coins. Use these bills and coins to add up to the total sum due by dragging them towards the left side of the screen. If you would like to remove a bill, drag it outside.",
+    "Race to the Finish",
+    "Students will answer trivia questions in this racing game! Correct answers will speed up and wrong answers will slow the car down. Aim to achieve the lowest time possible!",
     () => {
       gameManager.setState(1);
     }
@@ -259,7 +271,7 @@ function start() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   timer.on("repeat", function (_elapsed, repeat) {
     elapsedTime = repeat;
-    timeToast.text = repeat + " seconds elapsed";
+    timeToast.text = repeat + " seconds";
   });
 
   //main update loop
@@ -282,7 +294,9 @@ function start() {
 
 function end() {
   blurGraphics.renderable = true;
-  const endModal = new EndModal(elapsedTime + "", "100", 200);
+  const endModal = new EndModal(elapsedTime + "", "100", 100, () => {
+    history.back();
+  });
   endModal.container.position.set(pixiApp.screen.width / 2, 200);
   pixiApp.stage.addChild(endModal.container);
   clearButtons();
@@ -305,12 +319,17 @@ function clearButtons() {
 }
 function onCorrect() {
   console.log("Correct!");
-  speedMultiplier += 1;
+  const maxSpeedMultiplier = 5; // Set the speed limit
+  if (speedMultiplier < maxSpeedMultiplier) {
+    speedMultiplier += 1;
+  } else {
+    console.log("Speed limit reached!");
+  }
   nextQuestion();
 }
 function onIncorrect() {
   console.log("Incorrect.");
-  speedMultiplier -= 1;
+  speedMultiplier = Math.max(1, speedMultiplier - 1);
   nextQuestion();
 }
 

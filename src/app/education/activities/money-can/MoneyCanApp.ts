@@ -107,7 +107,7 @@ export default function moneyCanScript(app: Application, data: JSONValue) {
   });
   endModal.container.renderable = false;
 
-  instruction.container.position.set(pixiApp.screen.width / 2, 200);
+  instruction.container.position.set(pixiApp.screen.width / 2, 100);
   endModal.container.position.set(pixiApp.screen.width / 2, 200);
   pixiApp.stage.addChild(correctContainer, wrongContainer);
   propagateCards(data);
