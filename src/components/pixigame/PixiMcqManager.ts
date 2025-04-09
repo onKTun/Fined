@@ -47,7 +47,7 @@ class PixiMcqManager {
     this.currentQuestionIndex = randomIndex;
     this.updateQuestionAndAnswers(this.currentQuestionIndex);
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public updateQuestionAndAnswers(index: number): void {
     const currentQuestion = this.questionData[this.currentQuestionIndex];
     this.questionText.text = currentQuestion.questionName;

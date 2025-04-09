@@ -1,5 +1,4 @@
 "use client";
-import GameActivityComponent from "src/components/pixigame/GameActivityComponent";
 import data from "src/data/valuearranger.json";
 import styles from "src/app/education/activities/money-can/activity.module.css";
 import { Stage } from "@pixi/react";

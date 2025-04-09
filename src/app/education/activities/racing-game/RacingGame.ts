@@ -101,7 +101,7 @@ function load() {
   mcqBackingGraphics.drawRect(0, 0, 924, 349);
   mcqBackingGraphics.alpha = 0.3;
   //answers
-  let answerTexts: Text[];
+
   const mcqData: McqQuestion[] = gameData as McqQuestion[];
 
   const answerGraphics1 = new Graphics()
@@ -155,7 +155,7 @@ function load() {
   answerGraphics3.addChild(answerText3);
   const button3 = new Button(answerGraphics3);
 
-  answerTexts = [answerText1, answerText2, answerText3];
+  const answerTexts = [answerText1, answerText2, answerText3];
 
   mcqManager = new PixiMcqManager(mcqData, answerTexts, questionText);
   mcqManager.updateQuestionAndAnswers(0);
